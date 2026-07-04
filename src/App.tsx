@@ -28,6 +28,8 @@ const DesignIdeas = React.lazy(() => import('./pages/DesignIdeas'));
 const Laboratory = React.lazy(() => import('./pages/Laboratory'));
 const DesignReport = React.lazy(() => import('./pages/DesignReport'));
 const ProjectVault = React.lazy(() => import('./pages/ProjectVault'));
+const ServiceLanding = React.lazy(() => import('./pages/ServiceLanding'));
+const CostGuideLanding = React.lazy(() => import('./pages/CostGuideLanding'));
 import { AppProvider } from './context/AppContext';
 import { Mic } from 'lucide-react';
 import CommandPalette from './components/CommandPalette';
@@ -96,6 +98,8 @@ const AppContent: React.FC = () => {
             <Route path="/luxury-design/:location" element={<LocationLanding />} />
             <Route path="/cities/:cityName" element={<LocationLanding />} />
             <Route path="/interiors-at/:projectName" element={<ProjectLanding />} />
+            <Route path="/services/:serviceName" element={<ServiceLanding />} />
+            <Route path="/cost-guide/:location" element={<CostGuideLanding />} />
             <Route path="/tectonic-series" element={<TectonicSeries />} />
             <Route path="/modular" element={<Services />} />
             <Route path="/turnkey" element={<Services />} />

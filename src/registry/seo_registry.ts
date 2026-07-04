@@ -1,39 +1,28 @@
 /**
  * Atelier Genesis - Core SEO Registry
- * Containing the intensive gamut of keywords for Pune & Mumbai market dominance.
+ * Containing the intensive gamut of keywords for Pune market dominance.
  */
 
-export const SEO_CORE_KEYWORDS = [
-  "interior designer Pune",
-  "best interior designer Pune",
-  "luxury interior designers Pune",
-  "interior designer Mumbai",
-  "best interior designer Goa",
-  "luxury interior designer Indore",
-  "residential interior designer Mumbai",
-  "villa interior designer Goa",
-  "premium interior designer Indore",
-  "Lodha Belmondo interior designer",
-  "Kasturi Balmoral luxury interiors",
-  "Kalpataru Jade interior packages",
-  "Shapoorji Sensorium interior design"
-];
+export const PUNE_MARKETS = {
+  WEST_PUNE: ["Baner", "Baner Annexe", "Balewadi", "Mahalunge", "Sus", "Pashan", "Aundh", "Bavdhan", "Kothrud", "Warje", "Karve Nagar", "Erandwane", "Prabhat Road", "Shivajinagar", "Model Colony", "SB Road", "University Road", "Law College Road", "Deccan", "FC Road", "JM Road"],
+  IT_CORRIDOR: ["Hinjawadi Phase 1", "Hinjawadi Phase 2", "Hinjawadi Phase 3", "Wakad", "Punawale", "Tathawade", "Ravet", "Kiwale", "Pimple Saudagar", "Pimple Nilakh", "Kalewadi", "Thergaon", "Nigdi", "Pimpri", "Chinchwad"],
+  EAST_PUNE: ["Kharadi", "New Kharadi", "Viman Nagar", "Koregaon Park", "Kalyani Nagar", "Magarpatta", "Mundhwa", "Hadapsar", "Manjari", "Wagholi", "Lohegaon", "Dhanori", "Yerawada", "Keshav Nagar"],
+  SOUTH_PUNE: ["NIBM", "Mohammed Wadi", "Undri", "Kondhwa", "Pisoli", "Bibwewadi", "Katraj", "Narhe", "Sinhagad Road", "Ambegaon", "Dhankawadi", "PCMC", "Moshi", "Chikhali", "Charholi", "Akurdi", "Bhosari", "Talawade", "Pradhikaran", "Chakan", "Spine Road"]
+};
 
+// Flattened for easy iteration
 export const SEO_LOCATIONS = {
-  west: ["Baner", "Balewadi", "Aundh", "Wakad", "Hinjewadi", "Pashan", "Bavdhan", "Kothrud", "Warje", "Sus"],
-  central: ["Shivajinagar", "Deccan", "Model Colony", "Sadashiv Peth", "Erandwane"],
-  east: ["Kharadi", "Viman Nagar", "Wagholi", "Magarpatta", "Hadapsar", "Mundhwa", "Keshav Nagar"],
-  south: ["Kondhwa", "NIBM Road", "Undri", "Pisoli", "Bibwewadi"],
-  north: ["Pimpri", "Chinchwad", "Akurdi", "Nigdi", "Ravet", "Tathawade"],
-  mumbai: ["Bandra West", "Juhu", "Powai", "Worli", "Lower Parel", "Khar West", "Andheri West", "Goregaon", "Malad West", "Borivali West"],
-  goa: ["Panjim", "Assagao", "Baga", "Calangute", "Candolim", "Anjuna", "Porvorim"],
-  indore: ["Vijay Nagar", "Palasia", "Mahalaxmi Nagar", "Bicholi Mardana", "Rajendra Nagar"]
+  west: PUNE_MARKETS.WEST_PUNE,
+  central: ["Shivajinagar", "Deccan", "Model Colony", "Erandwane"],
+  east: PUNE_MARKETS.EAST_PUNE,
+  south: PUNE_MARKETS.SOUTH_PUNE,
+  north: PUNE_MARKETS.IT_CORRIDOR,
 };
 
 export const PUNE_NEIGHBORHOOD_USPS: Record<string, string> = {
   "Baner": "High-altitude luxury residences with panoramic hilltop views.",
   "Wakad": "Tech-luxe functional designs for high-speed IT professionals.",
-  "Hinjewadi": "Ergonomic work-from-home sanctuaries for the technology elite.",
+  "Hinjawadi Phase 1": "Ergonomic work-from-home sanctuaries for the technology elite.",
   "Kharadi": "Modern high-rise silhouettes with expansive eastern light.",
   "Balewadi": "Sophisticated river-facing monographs with quiet luxury vibes.",
   "Bavdhan": "Biophilic bungalow architecture integrated with nature.",
@@ -44,52 +33,27 @@ export const PUNE_NEIGHBORHOOD_USPS: Record<string, string> = {
 };
 
 export const SEO_PROPERTY_TYPES = [
-  "1 BHK interior Pune",
-  "2 BHK interior designer Mumbai",
-  "3 BHK interior designer Pune",
-  "4 BHK luxury interior Mumbai",
-  "luxury villa interior Goa",
-  "bungalow interior designer Indore",
-  "beach house interior Goa",
-  "penthouse interior Mumbai"
+  "Apartment Interiors", "Luxury Apartment Interiors", "Studio Apartment", 
+  "2 BHK", "2.5 BHK", "3 BHK", "3.5 BHK", "4 BHK", "4.5 BHK", "5 BHK", 
+  "Villa", "Bungalow", "Farmhouse", "Row House", "Independent House", 
+  "Penthouse", "Duplex", "Builder Floors"
 ];
 
-export const SEO_SERVICES = [
-  "modular kitchen designer Pune",
-  "wardrobe design Pune",
-  "false ceiling designer Pune",
-  "living room interior designer Pune",
-  "bedroom interior designer Pune",
-  "office interior designer Pune",
-  "retail shop interior designer Pune",
-  "cafe interior designer Pune",
-  "restaurant interior designer Pune",
-  "salon interior designer Pune",
-  "Pricing Architecture & Investment Registry",
-  "Design Idea Library & Spacial Registry"
-];
+export const SERVICE_SILOS = {
+  RESIDENTIAL: ["Luxury Apartments", "Premium Apartments", "Budget Apartments", "2 BHK", "3 BHK", "4 BHK", "5 BHK", "Penthouse", "Duplex", "Villa", "Bungalow", "Farmhouse", "Row House", "Independent House", "Smart Homes", "Minimal Homes", "Modern Homes", "Luxury Homes"],
+  COMMERCIAL: ["Office Interior", "IT Office", "Corporate Office", "Startup Office", "Restaurant", "Cafe", "Retail", "Showroom", "Hospital", "Clinic", "Salon", "Gym", "Hotel", "Coworking Space", "Educational Institute", "Industrial Office", "Warehouse Office"],
+  TURNKEY: ["Complete Home Interiors", "Interior Execution", "Project Management", "Furniture Manufacturing", "Civil Work", "Electrical", "Plumbing", "Painting", "Automation", "False Ceiling", "Flooring", "Lighting", "Curtains", "Soft Furnishing"],
+  LUXURY: ["Italian Interior", "Modern Luxury", "Minimal Luxury", "Scandinavian", "Japanese", "Industrial", "Contemporary", "Classic", "Neo Classical", "Luxury Villas", "Luxury Bungalows", "Luxury Apartments", "Luxury Offices"],
+  BUDGET: ["Affordable Interiors", "Budget Apartments", "Budget Homes", "Budget Kitchen", "Budget Wardrobes", "Budget Renovation", "Affordable Turnkey", "Budget Commercial"],
+  MODULAR: ["Modular Kitchen", "L Shape Kitchen", "U Shape Kitchen", "Island Kitchen", "Parallel Kitchen", "Straight Kitchen", "Wardrobes", "Sliding Wardrobes", "Walk-in Wardrobes", "TV Units", "Vanity", "Crockery Unit", "Bookshelf", "Study Unit", "Custom Furniture"]
+};
 
-export const SEO_INTENT_KEYWORDS = [
-  "affordable interior designer Pune",
-  "budget interior designer Pune",
-  "low cost interior designer Pune",
-  "interior designers Pune price",
-  "interior cost per sq ft Pune",
-  "interior designer near me Pune",
-  "turnkey interior Pune cost",
-  "EMI interior design Pune",
-  "professional interior investment calculator Pune",
-  "luxury design ideas catalog Pune"
-];
+export const SEO_SERVICES = [...SERVICE_SILOS.RESIDENTIAL, ...SERVICE_SILOS.COMMERCIAL, ...SERVICE_SILOS.TURNKEY, ...SERVICE_SILOS.MODULAR];
 
-export const SEO_LUXURY_KEYWORDS = [
-  "premium interior designers Pune",
-  "luxury home interiors Pune",
-  "high end interior designers Pune",
-  "modern luxury interiors Pune",
-  "minimalist interior designer Pune",
-  "vastu compliant interior designer Pune",
-  "smart home interiors Pune"
+export const COST_GUIDES = [
+  "Interior Cost Pune", "Interior Cost Baner", "Interior Cost Wakad", "Interior Cost Hinjawadi", "Interior Cost Kharadi",
+  "Luxury Interior Cost", "Budget Interior Cost", "Villa Interior Cost", "Bungalow Interior Cost", "Office Interior Cost", 
+  "Commercial Interior Cost", "Kitchen Cost", "Wardrobe Cost", "Renovation Cost", "False Ceiling Cost", "Painting Cost"
 ];
 
 export const SEO_LONG_TAIL = [

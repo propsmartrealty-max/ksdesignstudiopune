@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Instagram } from 'lucide-react';
 
+import { SEO_LOCATIONS, SEO_SERVICES } from '../registry/seo_registry';
+
 const Footer: React.FC = () => {
   const regions = [
     {
@@ -115,6 +117,28 @@ const Footer: React.FC = () => {
                   </div>
                 </div>
               ))}
+           </div>
+        </div>
+
+        {/* Enterprise SEO Internal Link Directory (Low Visual Priority) */}
+        <div className="pt-20 pb-10 border-t border-charcoal/5 mb-10">
+           <h4 className="text-[8px] uppercase tracking-[0.5em] font-black text-charcoal/20 mb-8">Service Areas Directory</h4>
+           <div className="flex flex-wrap gap-4 opacity-40 hover:opacity-100 transition-opacity duration-700">
+             {SEO_LOCATIONS.west.slice(0, 15).map(loc => (
+               <Link key={loc} to={`/cost-guide/${loc.toLowerCase().replace(/\s+/g, '-')}`} className="text-[8px] text-charcoal/40 hover:text-brass uppercase tracking-widest font-bold">
+                 Interior Cost in {loc}
+               </Link>
+             ))}
+             {SEO_SERVICES.slice(0, 20).map(service => (
+               <Link key={service} to={`/services/${service.toLowerCase().replace(/\s+/g, '-')}`} className="text-[8px] text-charcoal/40 hover:text-brass uppercase tracking-widest font-bold">
+                 {service} Designer Pune
+               </Link>
+             ))}
+             {SEO_LOCATIONS.east.slice(0, 10).map(loc => (
+               <Link key={loc} to={`/interiors-in/${loc.toLowerCase().replace(/\s+/g, '-')}`} className="text-[8px] text-charcoal/40 hover:text-brass uppercase tracking-widest font-bold">
+                 Best Interior Designer in {loc}
+               </Link>
+             ))}
            </div>
         </div>
 
