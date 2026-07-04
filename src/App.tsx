@@ -5,27 +5,29 @@ import Footer from './components/Footer';
 import AIAssistant from './components/AIAssistant';
 import WhatsAppButton from './components/WhatsAppButton';
 import DesignLiveWorkshop from './components/DesignLiveWorkshop';
-import Home from './pages/Home';
-import About from './pages/About';
-import Services from './pages/Services';
-import Portfolio from './pages/Portfolio';
-import ProjectDetail from './pages/ProjectDetail';
-import Process from './pages/Process';
-import Contact from './pages/Contact';
-import KnowledgeHub from './pages/KnowledgeHub';
-import BlogDetail from './pages/BlogDetail';
-import Admin from './pages/Admin';
-import LocationLanding from './pages/LocationLanding';
-import ProjectLanding from './pages/ProjectLanding';
-import TectonicSeries from './pages/TectonicSeries';
-import Pricing from './pages/Pricing';
-import DesignIdeas from './pages/DesignIdeas';
 import FloatingContactCTA from './components/FloatingContactCTA';
 import Schema from './components/SEO/Schema';
 import CinematicLab from './components/CinematicLab';
-import Laboratory from './pages/Laboratory';
-import DesignReport from './pages/DesignReport';
-import ProjectVault from './pages/ProjectVault';
+
+// Lazy load pages for Code Splitting
+const Home = React.lazy(() => import('./pages/Home'));
+const About = React.lazy(() => import('./pages/About'));
+const Services = React.lazy(() => import('./pages/Services'));
+const Portfolio = React.lazy(() => import('./pages/Portfolio'));
+const ProjectDetail = React.lazy(() => import('./pages/ProjectDetail'));
+const Process = React.lazy(() => import('./pages/Process'));
+const Contact = React.lazy(() => import('./pages/Contact'));
+const KnowledgeHub = React.lazy(() => import('./pages/KnowledgeHub'));
+const BlogDetail = React.lazy(() => import('./pages/BlogDetail'));
+const Admin = React.lazy(() => import('./pages/Admin'));
+const LocationLanding = React.lazy(() => import('./pages/LocationLanding'));
+const ProjectLanding = React.lazy(() => import('./pages/ProjectLanding'));
+const TectonicSeries = React.lazy(() => import('./pages/TectonicSeries'));
+const Pricing = React.lazy(() => import('./pages/Pricing'));
+const DesignIdeas = React.lazy(() => import('./pages/DesignIdeas'));
+const Laboratory = React.lazy(() => import('./pages/Laboratory'));
+const DesignReport = React.lazy(() => import('./pages/DesignReport'));
+const ProjectVault = React.lazy(() => import('./pages/ProjectVault'));
 import { AppProvider } from './context/AppContext';
 import { Mic } from 'lucide-react';
 import CommandPalette from './components/CommandPalette';
@@ -74,33 +76,35 @@ const AppContent: React.FC = () => {
       {!isAdminPage && <Navbar scrolled={scrolled} />}
       
       <main className="flex-grow">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/portfolio/:id" element={<ProjectDetail />} />
-          <Route path="/process" element={<Process />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/knowledge" element={<KnowledgeHub />} />
-          <Route path="/knowledge/:id" element={<BlogDetail />} />
-          <Route path="/laboratory" element={<Laboratory />} />
-          <Route path="/laboratory/report" element={<DesignReport />} />
-          <Route path="/vault" element={<ProjectVault />} />
-          <Route path="/pricing" element={<Pricing />} />
-          <Route path="/design-ideas" element={<DesignIdeas />} />
-          <Route path="/interiors-in/:location" element={<LocationLanding />} />
-          <Route path="/luxury-design/:location" element={<LocationLanding />} />
-          <Route path="/cities/:cityName" element={<LocationLanding />} />
-          <Route path="/interiors-at/:projectName" element={<ProjectLanding />} />
-          <Route path="/tectonic-series" element={<TectonicSeries />} />
-          <Route path="/modular" element={<Services />} />
-          <Route path="/turnkey" element={<Services />} />
-          <Route path="/ateliers" element={<Services />} />
-          <Route path="/renovations" element={<Services />} />
-          <Route path="/partners" element={<About />} />
-          <Route path="/admin" element={<Admin />} />
-        </Routes>
+        <React.Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-white"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brass"></div></div>}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/portfolio/:id" element={<ProjectDetail />} />
+            <Route path="/process" element={<Process />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/knowledge" element={<KnowledgeHub />} />
+            <Route path="/knowledge/:id" element={<BlogDetail />} />
+            <Route path="/laboratory" element={<Laboratory />} />
+            <Route path="/laboratory/report" element={<DesignReport />} />
+            <Route path="/vault" element={<ProjectVault />} />
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/design-ideas" element={<DesignIdeas />} />
+            <Route path="/interiors-in/:location" element={<LocationLanding />} />
+            <Route path="/luxury-design/:location" element={<LocationLanding />} />
+            <Route path="/cities/:cityName" element={<LocationLanding />} />
+            <Route path="/interiors-at/:projectName" element={<ProjectLanding />} />
+            <Route path="/tectonic-series" element={<TectonicSeries />} />
+            <Route path="/modular" element={<Services />} />
+            <Route path="/turnkey" element={<Services />} />
+            <Route path="/ateliers" element={<Services />} />
+            <Route path="/renovations" element={<Services />} />
+            <Route path="/partners" element={<About />} />
+            <Route path="/admin" element={<Admin />} />
+          </Routes>
+        </React.Suspense>
       </main>
       
       {!isAdminPage && (
