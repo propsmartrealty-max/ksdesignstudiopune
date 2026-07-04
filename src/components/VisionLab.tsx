@@ -77,7 +77,7 @@ const VisionLab: React.FC = () => {
               <input type="file" ref={fileInputRef} className="hidden" accept="image/*" onChange={handleImageUpload} />
               {selectedImage ? (
                 <div className="relative w-full aspect-square">
-                  <img src={selectedImage} className="w-full h-full object-cover rounded-2xl shadow-2xl" />
+                  <img src={selectedImage} alt="User Uploaded Vision Reference" className="w-full h-full object-cover rounded-2xl shadow-2xl" />
                   <button onClick={(e) => { e.stopPropagation(); setSelectedImage(null); }} className="absolute top-4 right-4 bg-black/80 p-2 rounded-full hover:bg-red-500 transition-all shadow-xl"><X size={18} /></button>
                 </div>
               ) : (
