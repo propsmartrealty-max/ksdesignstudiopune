@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Instagram } from 'lucide-react';
 
-import { SEO_LOCATIONS, SEO_SERVICES } from '../registry/seo_registry';
+import { SEO_LOCATIONS, SEO_SERVICES, BUYER_INTENT_KEYWORDS, BRAND_TRUST_KEYWORDS } from '../registry/seo_registry';
 
 const Footer: React.FC = () => {
   const regions = [
@@ -137,6 +137,16 @@ const Footer: React.FC = () => {
              {SEO_LOCATIONS.east.slice(0, 10).map(loc => (
                <Link key={loc} to={`/interiors-in/${loc.toLowerCase().replace(/\s+/g, '-')}`} className="text-[8px] text-charcoal/40 hover:text-brass uppercase tracking-widest font-bold">
                  Best Interior Designer in {loc}
+               </Link>
+             ))}
+             {BUYER_INTENT_KEYWORDS.slice(0, 15).map(intent => (
+               <Link key={intent} to={`/services/${intent.toLowerCase().replace(/\s+/g, '-')}`} className="text-[8px] text-charcoal/40 hover:text-brass uppercase tracking-widest font-bold">
+                 {intent}
+               </Link>
+             ))}
+             {BRAND_TRUST_KEYWORDS.slice(0, 10).map(trust => (
+               <Link key={trust} to={`/services/${trust.toLowerCase().replace(/\s+/g, '-')}`} className="text-[8px] text-charcoal/40 hover:text-brass uppercase tracking-widest font-bold">
+                 {trust}
                </Link>
              ))}
            </div>
