@@ -2,14 +2,16 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { SEO_LOCATIONS, SEO_LONG_TAIL, SEO_PROPERTY_TYPES, PUNE_NEIGHBORHOOD_USPS } from '../registry/seo_registry';
 import { MapPin, CheckCircle, ArrowRight, Star, Map as MapIcon } from 'lucide-react';
+import { generateDynamicCopy } from '../utils/copyEngine';
 
 const LocationLanding: React.FC = () => {
   const { location } = useParams<{ location: string }>();
   
   // Format location name for display
-  const formattedLocation = location?.charAt(0).toUpperCase() + location?.slice(1).replace('-', ' ') || 'Pune';
+  const formattedLocation = location?.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') || 'Pune';
   
   const neighborhoodUSP = PUNE_NEIGHBORHOOD_USPS[formattedLocation];
+  const uniqueCopy = generateDynamicCopy(location || 'pune', `Interior Design in ${formattedLocation}`);
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -55,7 +57,7 @@ const LocationLanding: React.FC = () => {
               <span className="italic">in {formattedLocation}</span>
             </h1>
             <p className="text-charcoal/50 text-xl font-light leading-relaxed mb-10">
-               Delivering high-fidelity interior architecture to the elite residences and corporate sanctuaries of {formattedLocation}. From initial spatial strategy to turnkey execution.
+               {uniqueCopy}
             </p>
             <div className="flex flex-wrap gap-4">
               <Link to="/contact" className="bg-[#1A1A1A] text-white px-10 py-5 text-[10px] uppercase font-black tracking-widest rounded-full hover:bg-brass transition-all shadow-lg">

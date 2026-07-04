@@ -1,12 +1,16 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { MapPin, CheckCircle, ArrowRight, Star, Settings } from 'lucide-react';
+import { generateDynamicCopy } from '../utils/copyEngine';
 
 const ServiceLanding: React.FC = () => {
   const { serviceName } = useParams<{ serviceName: string }>();
   
   // Format service name for display
   const formattedService = serviceName?.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') || 'Interior Design';
+  
+  // Generate deterministic dynamic copy based on URL
+  const uniqueCopy = generateDynamicCopy(serviceName || 'default', formattedService);
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -50,7 +54,7 @@ const ServiceLanding: React.FC = () => {
               <span className="italic">{formattedService}</span>
             </h1>
             <p className="text-charcoal/50 text-xl font-light leading-relaxed mb-10">
-               Elevating the standard of {formattedService} in Pune. We merge structural integrity with bespoke aesthetic vocabularies to create masterful environments.
+               {uniqueCopy}
             </p>
             <div className="flex flex-wrap gap-4">
               <Link to="/contact" className="bg-[#1A1A1A] text-white px-10 py-5 text-[10px] uppercase font-black tracking-widest rounded-full hover:bg-brass transition-all shadow-lg">

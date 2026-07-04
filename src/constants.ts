@@ -1,20 +1,20 @@
 import { Project, Service, Testimonial, Blog, Guideline, SignatureModule } from './types';
-import ksTectonicKitchen from './assets/images/ks_tectonic_kitchen.png';
-import ksMonographBedroom from './assets/images/ks_monograph_bedroom.png';
-import ksCorporateOffice from './assets/images/ks_corporate_office.png';
-import materialTexture from './assets/images/material_texture.png';
-import portfolioKitchen from './assets/images/portfolio_kitchen.png';
+import ksTectonicKitchen from './assets/images/ks_tectonic_kitchen.webp';
+import ksMonographBedroom from './assets/images/ks_monograph_bedroom.webp';
+import ksCorporateOffice from './assets/images/ks_corporate_office.webp';
+import materialTexture from './assets/images/material_texture.webp';
+import portfolioKitchen from './assets/images/portfolio_kitchen.webp';
 
 // Newly Generated High-Fidelity Assets
-import ksBalmoralBalcony from './assets/images/ks_balmoral_balcony.png';
-import ksJadeLiving from './assets/images/ks_jade_living.png';
-import ksSensoriumTech from './assets/images/ks_sensorium_tech.png';
-import ksKekaravBungalow from './assets/images/ks_kekarav_bungalow.png';
-import blogPuneLuxury from './assets/images/blog_pune_luxury.png';
-import blogMumbaiMinimalism from './assets/images/blog_mumbai_minimalism.png';
-import blogWakadTech from './assets/images/blog_wakad_tech.png';
-import blogBandraBohemian from './assets/images/blog_bandra_bohemian.png';
-import blogRavetTrends from './assets/images/blog_ravet_trends.png';
+import ksBalmoralBalcony from './assets/images/ks_balmoral_balcony.webp';
+import ksJadeLiving from './assets/images/ks_jade_living.webp';
+import ksSensoriumTech from './assets/images/ks_sensorium_tech.webp';
+import ksKekaravBungalow from './assets/images/ks_kekarav_bungalow.webp';
+import blogPuneLuxury from './assets/images/blog_pune_luxury.webp';
+import blogMumbaiMinimalism from './assets/images/blog_mumbai_minimalism.webp';
+import blogWakadTech from './assets/images/blog_wakad_tech.webp';
+import blogBandraBohemian from './assets/images/blog_bandra_bohemian.webp';
+import blogRavetTrends from './assets/images/blog_ravet_trends.webp';
 const japandiTheme = "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800";
 const industrialTheme = "https://images.unsplash.com/photo-1595514535313-5a022f4621c9?auto=format&fit=crop&q=80&w=800";
 
