@@ -30,7 +30,7 @@ const BUILDER_PROJECTS = ["VTP Blue Waters", "Godrej Hillside", "Kolte Patil 24K
 const COMPARISONS = ["Baner vs Wakad", "Kharadi vs Viman Nagar", "Balewadi vs Mahalunge"];
 const AI_QUERIES = ["Who is the best interior designer in Pune", "How much does home interior cost in Pune"];
 
-const BASE_URL = 'https://ksdesignstudio.in/#';
+const BASE_URL = 'https://ksdesignstudio.in';
 
 function formatSlug(text) {
   return text.toLowerCase().replace(/\s+/g, '-');

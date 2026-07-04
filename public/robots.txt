@@ -1,4 +1,17 @@
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /_next/
+Disallow: /*?*
+
+# Optimize Crawl Budget for Googlebot
+User-agent: Googlebot
+Allow: /
+Allow: /interiors-in/
+Allow: /services/
+Allow: /magazine/
+Disallow: /admin
+Disallow: /*?*
 
 Sitemap: https://ksdesignstudio.in/sitemap.xml

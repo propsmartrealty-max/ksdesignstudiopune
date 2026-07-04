@@ -16,6 +16,9 @@
   <meta property="og:url" content="https://ksdesignstudio.in" />
   <meta property="og:image" content="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200" />
 
+  <!-- Neural Acceleration: LCP Preload -->
+  <link rel="preload" href="/assets/webp/hero_foyer-Dmv-Yoj7.webp" as="image" type="image/webp" />
+
   <!-- Google tag (gtag.js) - Placeholder for Measurement ID -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
@@ -25,7 +28,20 @@
     gtag('config', 'G-XXXXXXXXXX');
   </script>
 
-  <link rel="manifest" href="/manifest.json" />
+  <!-- PWA Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').then(registration => {
+          console.log('SW registered: ', registration);
+        }).catch(registrationError => {
+          console.log('SW registration failed: ', registrationError);
+        });
+      });
+    }
+  </script>
+
+  <link rel="manifest" href="./manifest.json" />
   <meta name="theme-color" content="#1A1A1A" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />

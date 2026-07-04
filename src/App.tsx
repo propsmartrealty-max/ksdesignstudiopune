@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import AIAssistant from './components/AIAssistant';
@@ -7,6 +7,8 @@ import WhatsAppButton from './components/WhatsAppButton';
 import DesignLiveWorkshop from './components/DesignLiveWorkshop';
 import FloatingContactCTA from './components/FloatingContactCTA';
 import Schema from './components/SEO/Schema';
+import CanonicalTag from './components/SEO/CanonicalTag';
+import SEOMeta from './components/SEO/SEOMeta';
 import CinematicLab from './components/CinematicLab';
 
 // Lazy load pages for Code Splitting
@@ -30,6 +32,8 @@ const DesignReport = React.lazy(() => import('./pages/DesignReport'));
 const ProjectVault = React.lazy(() => import('./pages/ProjectVault'));
 const ServiceLanding = React.lazy(() => import('./pages/ServiceLanding'));
 const CostGuideLanding = React.lazy(() => import('./pages/CostGuideLanding'));
+const MagazineLanding = React.lazy(() => import('./pages/MagazineLanding'));
+const MagazineArticle = React.lazy(() => import('./pages/MagazineArticle'));
 import { AppProvider } from './context/AppContext';
 import { Mic } from 'lucide-react';
 import CommandPalette from './components/CommandPalette';
@@ -74,6 +78,8 @@ const AppContent: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen bg-white selection:bg-brass selection:text-white">
       <Schema />
+      <CanonicalTag />
+      <SEOMeta />
       <CinematicLab />
       {!isAdminPage && <Navbar scrolled={scrolled} />}
       
@@ -107,6 +113,8 @@ const AppContent: React.FC = () => {
             <Route path="/renovations" element={<Services />} />
             <Route path="/partners" element={<About />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/magazine" element={<MagazineLanding />} />
+            <Route path="/magazine/:slug" element={<MagazineArticle />} />
           </Routes>
         </React.Suspense>
       </main>

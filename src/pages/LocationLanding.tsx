@@ -38,10 +38,29 @@ const LocationLanding: React.FC = () => {
     ]
   };
 
+  const localServiceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Interior Design",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "KS Design Studio"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": formattedLocation
+    },
+    "description": uniqueCopy,
+    "name": `Interior Designers in ${formattedLocation}`
+  };
+
   return (
-    <div className="pt-32 pb-20 bg-white relative overflow-hidden">
+    <div className="pt-32 pb-20 bg-white relative overflow-hidden" itemScope itemType="https://schema.org/LocalBusiness">
       <script type="application/ld+json">
         {JSON.stringify(breadcrumbSchema)}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(localServiceSchema)}
       </script>
       <div className="absolute inset-0 architect-grid opacity-5 pointer-events-none" />
       
@@ -52,13 +71,14 @@ const LocationLanding: React.FC = () => {
               <MapPin size={16} />
               <span className="text-[10px] uppercase font-black tracking-[0.4em]">Curated Design Laboratory</span>
             </div>
-            <h1 className="text-5xl md:text-7xl  text-charcoal leading-tight mb-8">
+            <h1 className="text-5xl md:text-7xl  text-charcoal leading-tight mb-8" itemProp="name">
               Best Interior Designer <br /> 
               <span className="italic">in {formattedLocation}</span>
             </h1>
-            <p className="text-charcoal/50 text-xl font-light leading-relaxed mb-10">
-               {uniqueCopy}
-            </p>
+            <p 
+              className="text-charcoal/50 text-xl font-light leading-relaxed mb-10"
+              dangerouslySetInnerHTML={{ __html: uniqueCopy }}
+            />
             <div className="flex flex-wrap gap-4">
               <Link to="/contact" className="bg-[#1A1A1A] text-white px-10 py-5 text-[10px] uppercase font-black tracking-widest rounded-full hover:bg-brass transition-all shadow-lg">
                 Book Consultation
@@ -128,14 +148,18 @@ const LocationLanding: React.FC = () => {
         <div className="pt-20 border-t border-charcoal/5">
           <span className="text-annotation block mb-12">Programmatic SEO Clusters // {formattedLocation}</span>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-8">
-             {SEO_PROPERTY_TYPES.slice(0, 8).map((type, i) => (
-               <div key={i} className="group cursor-pointer">
-                 <p className="text-[11px] font-bold text-charcoal/40 uppercase tracking-widest group-hover:text-brass transition-colors truncate">
-                   {type.replace('Pune', formattedLocation)}
-                 </p>
-                 <div className="h-[1px] w-0 bg-brass transition-all duration-500 group-hover:w-full mt-2" />
-               </div>
-             ))}
+             {SEO_PROPERTY_TYPES.slice(0, 8).map((type, i) => {
+               const searchStr = type.replace('Pune', formattedLocation);
+               const linkPath = `/services/${searchStr.toLowerCase().replace(/\s+/g, '-')}`;
+               return (
+                 <Link key={i} to={linkPath} className="group cursor-pointer">
+                   <p className="text-[11px] font-bold text-charcoal/40 uppercase tracking-widest group-hover:text-brass transition-colors truncate">
+                     {searchStr}
+                   </p>
+                   <div className="h-[1px] w-0 bg-brass transition-all duration-500 group-hover:w-full mt-2" />
+                 </Link>
+               );
+             })}
           </div>
         </div>
       </div>

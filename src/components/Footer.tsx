@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-white text-charcoal pt-32 pb-16 border-t border-slate-100 relative overflow-hidden">
+    <footer className="bg-white text-charcoal pt-32 pb-16 border-t border-slate-100 relative overflow-hidden" role="contentinfo">
       <div className="absolute inset-0 architect-grid opacity-[0.02] pointer-events-none" />
       
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">

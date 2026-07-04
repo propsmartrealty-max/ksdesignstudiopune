@@ -48,7 +48,18 @@ export function generateDynamicCopy(seedString: string, subject: string): string
   const body = BODIES[Math.floor(random() * BODIES.length)];
   const outro = OUTROS[Math.floor(random() * OUTROS.length)];
 
-  return `${intro} ${body} ${outro}`;
+  let fullCopy = `${intro} ${body} ${outro}`;
+
+  // Contextual Inline Backlink Injection
+  // We randomly decide if we should inject a link based on the seed
+  if (random() > 0.3) {
+    fullCopy = fullCopy.replace(/Pune/g, '<a href="/interiors-in/pune" class="font-medium hover:text-brass transition-colors decoration-brass/30 underline underline-offset-4">Pune</a>');
+  }
+  if (random() > 0.5) {
+    fullCopy = fullCopy.replace(/luxury/gi, '<a href="/services/luxury-apartments" class="font-medium hover:text-brass transition-colors decoration-brass/30 underline underline-offset-4">luxury</a>');
+  }
+
+  return fullCopy;
 }
 
 export function generateDynamicMeta(seedString: string, subject: string): string {

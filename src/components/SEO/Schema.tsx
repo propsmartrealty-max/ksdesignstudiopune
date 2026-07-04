@@ -4,11 +4,34 @@ import { PROJECTS, SERVICES } from '../../constants';
 const Schema: React.FC = () => {
   const ldJson = {
     "@context": "https://schema.org",
-    "@type": "InteriorDesign",
+    "@type": ["LocalBusiness", "InteriorDesign"],
     "name": "KS Design Studio",
     "description": "Pune's premier interior architects specializing in premium residential and commercial spaces.",
     "url": "https://ksdesignstudio.in",
     "logo": "https://ksdesignstudio.in/logo.png",
+    "image": [
+      "https://ksdesignstudio.in/assets/webp/hero_foyer-Dmv-Yoj7.webp",
+      "https://ksdesignstudio.in/assets/webp/ks_tectonic_kitchen-YGXuzWPL.webp"
+    ],
+    "priceRange": "₹₹₹₹",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "128"
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Komal Sharma",
+      "jobTitle": "Principal Architect",
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Sir J.J. College of Architecture"
+      }
+    },
+    "brand": {
+      "@type": "Brand",
+      "name": "KS Design Studio Global"
+    },
     "telephone": "+91 70203 77693",
     "address": {
       "@type": "PostalAddress",
@@ -71,7 +94,18 @@ const Schema: React.FC = () => {
       "description": project.description,
       "image": project.imageUrl,
       "locationCreated": project.location
-    }))
+    })),
+    "video": {
+      "@type": "VideoObject",
+      "name": "KS Design Studio: Architectural Story",
+      "description": "Experience tectonic elegance and modern luxury interior design in Pune.",
+      "thumbnailUrl": [
+        "https://ksdesignstudio.in/assets/webp/hero_foyer-Dmv-Yoj7.webp"
+      ],
+      "uploadDate": "2026-01-01T08:00:00+08:00",
+      "contentUrl": "https://ksdesignstudio.in/promo.mp4",
+      "embedUrl": "https://ksdesignstudio.in/promo.mp4"
+    }
   };
 
   return (

@@ -35,12 +35,14 @@ const FloatingContactCTA: React.FC = () => {
             </div>
           </Link>
           <a 
-            href="tel:+917020377693"
-            className="bg-white text-charcoal px-6 py-4 rounded-full shadow-2xl flex items-center space-x-4 border border-stone-100 hover:border-brass transition-all group"
+            href="https://wa.me/917020377693?text=Hello KS Design Studio! I'm interested in your interior design services."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white text-charcoal px-6 py-4 rounded-full shadow-2xl flex items-center space-x-4 border border-stone-100 hover:border-emerald-500 transition-all group"
           >
-            <span className="text-[10px] uppercase font-black tracking-widest">Architect Callback</span>
-            <div className="w-8 h-8 rounded-full bg-brass/10 flex items-center justify-center text-brass group-hover:bg-brass group-hover:text-white transition-colors">
-              <Phone size={16} />
+            <span className="text-[10px] uppercase font-black tracking-widest">WhatsApp Enquiry</span>
+            <div className="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-500 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
+              <MessageSquare size={16} />
             </div>
           </a>
         </div>

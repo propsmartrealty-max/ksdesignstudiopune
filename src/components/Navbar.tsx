@@ -34,7 +34,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
   };
 
   return (
-    <nav className="fixed w-full z-[150] transition-all duration-700 pointer-events-none">
+    <nav className="fixed w-full z-[150] transition-all duration-700 pointer-events-none" aria-label="Main Navigation">
       {/* Layer 1: Top Utility Bar (Hides on scroll for focus) */}
       <div className={`hidden md:block w-full border-b transition-all duration-700 ${
         scrolled ? 'h-0 opacity-0 overflow-hidden border-transparent' : 'h-10 opacity-100 border-white/10 bg-white/5'
@@ -45,6 +45,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
               <Link 
                 key={link.name} 
                 to={link.href} 
+                aria-label={`Go to ${link.name}`}
                 className="text-[9px] uppercase tracking-[0.3em] font-black text-white/80 hover:text-brass transition-colors"
               >
                 {link.name}
@@ -52,11 +53,15 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
             ))}
           </div>
           <div className="flex items-center space-x-6">
-             <a href="tel:+912067000000" className="text-[9px] uppercase tracking-[0.3em] font-black text-white/90 hover:text-white transition-colors">Enquiry: +91 20 6700 0000</a>
+             <a href="tel:+912067000000" aria-label="Call for enquiry" className="text-[9px] uppercase tracking-[0.3em] font-black text-white/90 hover:text-white transition-colors">Enquiry: +91 20 6700 0000</a>
              <div className="h-2 w-[1px] bg-white/10" />
              <div className="flex space-x-4">
-               <Instagram size={12} className="text-white/20 hover:text-white transition-colors cursor-pointer" />
-               <Mail size={12} className="text-white/20 hover:text-white transition-colors cursor-pointer" />
+               <a href="https://www.instagram.com/ksdesignstudiopune/" aria-label="Visit Instagram Profile" target="_blank" rel="noopener noreferrer">
+                 <Instagram size={12} className="text-white/20 hover:text-white transition-colors cursor-pointer" />
+               </a>
+               <a href="mailto:hello@ksdesignstudio.in" aria-label="Send Email">
+                 <Mail size={12} className="text-white/20 hover:text-white transition-colors cursor-pointer" />
+               </a>
              </div>
           </div>
         </div>
@@ -66,7 +71,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
       <div className={`w-full py-6 lg:py-8 transition-all duration-700 ${scrolled ? 'pt-4' : ''}`}>
         <div className="max-w-[1440px] mx-auto flex justify-between items-center px-6 lg:px-12 pointer-events-auto">
           {/* Brand Identity */}
-          <Link to="/" className="flex items-center group relative whitespace-nowrap shrink-0">
+          <Link to="/" aria-label="KS Design Studio Home" className="flex items-center group relative whitespace-nowrap shrink-0">
             <div className={`flex flex-col border-l-[3px] border-brass pl-5 transition-all duration-500 group-hover:pl-7 ${scrolled ? 'drop-shadow-sm' : 'drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]'}`}>
               <span className={`text-3xl font-black tracking-tighter leading-none transition-all duration-700 ${scrolled ? 'text-[#1A1A1A]' : 'text-white'}`}>
                 KS <span className="text-brass drop-shadow-[0_0_8px_rgba(212,175,55,0.4)]">DESIGN</span>
@@ -86,11 +91,13 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
               ? 'bg-white/70 backdrop-blur-3xl shadow-[0_20px_40px_rgba(0,0,0,0.08)] border-white/50' 
               : 'bg-white/10 border-white/20 backdrop-blur-xl shadow-lg'
           }`}>
-            <div className="flex items-center space-x-12">
+            <div className="flex items-center space-x-12" role="menubar">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   to={link.href}
+                  role="menuitem"
+                  aria-label={`Go to ${link.name}`}
                   className={`text-[10px] uppercase tracking-[0.4em] font-black transition-all duration-500 relative group/link py-1 whitespace-nowrap ${
                     isActive(link.href) 
                       ? 'text-brass drop-shadow-[0_0_10px_rgba(212,175,55,0.3)] font-black' 
@@ -108,6 +115,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
             }`}>
               <Link 
                 to="/contact" 
+                aria-label="Book a free consultation session"
                 className={`text-[10px] uppercase tracking-[0.4em] font-black transition-all duration-500 px-10 py-4 rounded-full whitespace-nowrap shadow-xl ${
                   scrolled ? 'bg-[#1A1A1A] text-white hover:bg-brass' : 'bg-brass text-white hover:bg-white hover:text-[#1A1A1A]'
                 }`}
@@ -118,6 +126,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
               {/* Vault Trigger */}
               <Link
                 to="/vault"
+                aria-label="Access Sovereign Vault"
                 className={`ml-6 p-3 rounded-full transition-all duration-500 flex items-center space-x-3 group ${
                   scrolled ? 'text-zinc-400 hover:text-brass' : 'text-white/40 hover:text-white'
                 }`}
@@ -128,6 +137,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
               {/* Search Trigger */}
               <button 
                 onClick={() => window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }))}
+                aria-label="Open global search (Cmd+K)"
                 className={`ml-6 p-3 rounded-full transition-all duration-500 flex items-center space-x-3 group ${
                   scrolled ? 'text-zinc-400 hover:text-[#1A1A1A]' : 'text-white/40 hover:text-white'
                 }`}
