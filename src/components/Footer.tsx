@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Instagram } from 'lucide-react';
 
-import { SEO_LOCATIONS, SEO_SERVICES, BUYER_INTENT_KEYWORDS, BRAND_TRUST_KEYWORDS } from '../registry/seo_registry';
+import { SEO_LOCATIONS, SEO_SERVICES, BUYER_INTENT_KEYWORDS, BRAND_TRUST_KEYWORDS, BUILDER_PROJECTS, SEO_COMPARISONS, AI_VOICE_SEARCH } from '../registry/seo_registry';
 
 const Footer: React.FC = () => {
   const regions = [
@@ -147,6 +147,21 @@ const Footer: React.FC = () => {
              {BRAND_TRUST_KEYWORDS.slice(0, 10).map(trust => (
                <Link key={trust} to={`/services/${trust.toLowerCase().replace(/\s+/g, '-')}`} className="text-[8px] text-charcoal/40 hover:text-brass uppercase tracking-widest font-bold">
                  {trust}
+               </Link>
+             ))}
+             {BUILDER_PROJECTS.slice(0, 5).map(builder => (
+               <Link key={builder} to={`/interiors-at/${builder.toLowerCase().replace(/\s+/g, '-')}`} className="text-[8px] text-charcoal/40 hover:text-brass uppercase tracking-widest font-bold">
+                 Interiors for {builder}
+               </Link>
+             ))}
+             {SEO_COMPARISONS.slice(0, 5).map(comp => (
+               <Link key={comp} to={`/compare/${comp.toLowerCase().replace(/\s+/g, '-')}`} className="text-[8px] text-charcoal/40 hover:text-brass uppercase tracking-widest font-bold">
+                 {comp}
+               </Link>
+             ))}
+             {AI_VOICE_SEARCH.slice(0, 5).map(ai => (
+               <Link key={ai} to={`/services/${ai.toLowerCase().replace(/\s+/g, '-')}`} className="text-[8px] text-charcoal/40 hover:text-brass uppercase tracking-widest font-bold">
+                 {ai}
                </Link>
              ))}
            </div>

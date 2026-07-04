@@ -9,7 +9,13 @@ const PUNE_MARKETS = [
   "NIBM", "Mohammed Wadi", "Undri", "Kondhwa", "Pisoli", "Bibwewadi", "Katraj", "Narhe", "Sinhagad Road", "Ambegaon", "Dhankawadi", "PCMC", "Moshi", "Chikhali", "Charholi", "Akurdi", "Bhosari", "Talawade", "Pradhikaran", "Chakan", "Spine Road"
 ];
 
-const TARGET_MICRO_MARKETS = ["Baner", "Baner Annexe", "Balewadi", "Mahalunge", "Aundh", "Sus", "Pashan", "Bavdhan", "Kothrud"];
+// High intent micro-markets for cross-multiplication
+const TARGET_MICRO_MARKETS = [
+  "Baner", "Balewadi", "Mahalunge", "Aundh", "Kothrud",
+  "Wakad", "Hinjawadi", "Tathawade", "Punawale", "Ravet", "Pimple Saudagar", "Thergaon",
+  "Kharadi", "Viman Nagar", "Kalyani Nagar", "Koregaon Park", "Magarpatta", "Hadapsar",
+  "NIBM", "Kondhwa", "Undri", "Katraj"
+];
 
 const SERVICES = [
   "Luxury Apartments", "Premium Apartments", "Budget Apartments", "2 BHK", "3 BHK", "4 BHK", "5 BHK", "Penthouse", "Duplex", "Villa", "Bungalow", "Farmhouse", "Row House", "Independent House", "Smart Homes", "Minimal Homes", "Modern Homes", "Luxury Homes",
@@ -20,6 +26,9 @@ const SERVICES = [
 
 const CONFIGURATIONS = ["2 BHK", "3 BHK", "4 BHK", "5 BHK", "Penthouse", "Duplex", "Villa", "Bungalow"];
 const INTENT_PREFIXES = ["Luxury", "Premium", "Affordable", "Budget", "Best", "Top"];
+const BUILDER_PROJECTS = ["VTP Blue Waters", "Godrej Hillside", "Kolte Patil 24K", "Life Republic", "Panchshil Towers"];
+const COMPARISONS = ["Baner vs Wakad", "Kharadi vs Viman Nagar", "Balewadi vs Mahalunge"];
+const AI_QUERIES = ["Who is the best interior designer in Pune", "How much does home interior cost in Pune"];
 
 const BASE_URL = 'https://ksdesignstudio.in/#';
 
@@ -65,7 +74,7 @@ function generateXML() {
   </url>\n`;
   }
 
-  // Hyperlocal Cross-Multiplication (Volume 2)
+  // Hyperlocal Cross-Multiplication (Volume 2 & 3)
   for (const micro of TARGET_MICRO_MARKETS) {
      for (const config of CONFIGURATIONS) {
         xml += `  <url>
@@ -81,6 +90,29 @@ function generateXML() {
     <priority>0.9</priority>
   </url>\n`;
      }
+  }
+
+  // Volume 3: Builders, Comparisons, and AI Voice Search
+  for (const builder of BUILDER_PROJECTS) {
+     xml += `  <url>
+    <loc>${BASE_URL}/interiors-at/${formatSlug(builder)}</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>\n`;
+  }
+  for (const comp of COMPARISONS) {
+     xml += `  <url>
+    <loc>${BASE_URL}/compare/${formatSlug(comp)}</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>\n`;
+  }
+  for (const ai of AI_QUERIES) {
+     xml += `  <url>
+    <loc>${BASE_URL}/services/${formatSlug(ai)}</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>\n`;
   }
 
   xml += `</urlset>`;

@@ -82,6 +82,42 @@ export const COST_GUIDES = [
   "Commercial Interior Cost", "Kitchen Cost", "Wardrobe Cost", "Renovation Cost", "False Ceiling Cost", "Painting Cost"
 ];
 
+// VOLUME 3 DATA INJECTIONS
+export const BUILDER_PROJECTS = [
+  "VTP Blue Waters", "VTP Bellissimo", "VTP Sierra", "VTP Leonara", "VTP Earth One",
+  "K Raheja Vistas", "Kolte Patil 24K", "Godrej Hillside", "Godrej Park World", "Life Republic",
+  "Paranjape Blue Ridge", "Megapolis", "Kohinoor Tinsel County", "Krisala Aventis", "GK Signature",
+  "Shapoorji Joyville", "Panchshil Towers", "Marvel Piazza", "Nyati Projects", "Gera Projects"
+];
+
+export const SEO_COMPARISONS = [
+  "Best Interior Designers Baner vs Wakad",
+  "Baner Interior Designers vs Aundh",
+  "Wakad vs Hinjawadi Interior Designers",
+  "Kharadi vs Viman Nagar Interior Designers",
+  "Bavdhan vs Kothrud Interior Designers",
+  "Balewadi vs Mahalunge Interior Designers",
+  "Baner vs Balewadi Home Interiors",
+  "Luxury Interior Designers Baner vs Kalyani Nagar",
+  "Budget Interior Designers Wakad vs Tathawade",
+  "Premium Interior Designers Kharadi vs Koregaon Park"
+];
+
+export const AI_VOICE_SEARCH = [
+  "Who is the best interior designer in Pune",
+  "Which interior designer is best in Baner",
+  "Which interior designer is affordable in Wakad",
+  "How much does home interior cost in Pune",
+  "How much does a 3 BHK interior cost",
+  "What is included in turnkey interiors",
+  "How long does home interior work take",
+  "Which modular kitchen is best",
+  "What is the average interior design budget",
+  "Best luxury interior design company in Pune",
+  "Best turnkey home interior company in Pune",
+  "Sustainable interior design company in Pune"
+];
+
 export const SEO_LONG_TAIL = [
   "best interior designer for 2 bhk in Pune", "turnkey interior designer in Baner Pune", "affordable interior designer in Wakad Pune",
   "luxury villa interior designer in Kharadi Pune", "modular kitchen designer in Hadapsar Pune", "office interior designer in Hinjewadi Pune",
