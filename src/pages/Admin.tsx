@@ -21,10 +21,20 @@ const Admin: React.FC = () => {
   const SECRET_PASSKEY = "KS_PREMIUM_2025";
 
   useEffect(() => {
+    document.title = "Sovereign Vault | Admin | KS Design Studio";
+    const meta = document.createElement('meta');
+    meta.name = "robots";
+    meta.content = "noindex, nofollow";
+    document.head.appendChild(meta);
+
     if (isAuthenticated) {
       const storedLeads = JSON.parse(localStorage.getItem('ks_leads') || '[]');
       setLeads(storedLeads);
     }
+
+    return () => {
+      document.head.removeChild(meta);
+    };
   }, [isAuthenticated]);
 
   const handleLogin = (e: React.FormEvent) => {

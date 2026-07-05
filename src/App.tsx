@@ -34,6 +34,7 @@ const ServiceLanding = React.lazy(() => import('./pages/ServiceLanding'));
 const CostGuideLanding = React.lazy(() => import('./pages/CostGuideLanding'));
 const MagazineLanding = React.lazy(() => import('./pages/MagazineLanding'));
 const MagazineArticle = React.lazy(() => import('./pages/MagazineArticle'));
+const NotFound = React.lazy(() => import('./pages/NotFound'));
 import { AppProvider } from './context/AppContext';
 import { Mic } from 'lucide-react';
 import CommandPalette from './components/CommandPalette';
@@ -115,6 +116,7 @@ const AppContent: React.FC = () => {
             <Route path="/admin" element={<Admin />} />
             <Route path="/magazine" element={<MagazineLanding />} />
             <Route path="/magazine/:slug" element={<MagazineArticle />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </React.Suspense>
       </main>
