@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { SEO_LOCATIONS, SEO_LONG_TAIL, SEO_PROPERTY_TYPES, PUNE_NEIGHBORHOOD_USPS } from '../registry/seo_registry';
 import { MapPin, CheckCircle, ArrowRight, Star, Map as MapIcon } from 'lucide-react';
 import { generateDynamicCopy } from '../utils/copyEngine';
@@ -54,6 +54,19 @@ const LocationLanding: React.FC = () => {
     "name": `Interior Designers in ${formattedLocation}`
   };
 
+  const navigate = useNavigate();
+
+  const handleContentClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const target = e.target as HTMLElement;
+    if (target.tagName === 'A') {
+      const href = target.getAttribute('href');
+      if (href && href.startsWith('/')) {
+        e.preventDefault();
+        navigate(href);
+      }
+    }
+  };
+
   return (
     <div className="pt-32 pb-20 bg-white relative overflow-hidden" itemScope itemType="https://schema.org/LocalBusiness">
       <script type="application/ld+json">
@@ -75,9 +88,10 @@ const LocationLanding: React.FC = () => {
               Best Interior Designer <br /> 
               <span className="italic">in {formattedLocation}</span>
             </h1>
-            <p 
+            <div 
               className="text-charcoal/50 text-xl font-light leading-relaxed mb-10"
               dangerouslySetInnerHTML={{ __html: uniqueCopy }}
+              onClick={handleContentClick}
             />
             <div className="flex flex-wrap gap-4">
               <Link to="/contact" className="bg-[#1A1A1A] text-white px-10 py-5 text-[10px] uppercase font-black tracking-widest rounded-full hover:bg-brass transition-all shadow-lg">
