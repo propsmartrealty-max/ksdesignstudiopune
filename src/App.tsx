@@ -38,6 +38,7 @@ const NotFound = React.lazy(() => import('./pages/NotFound'));
 import { AppProvider } from './context/AppContext';
 import { Mic } from 'lucide-react';
 import CommandPalette from './components/CommandPalette';
+import ErrorBoundary from './components/ErrorBoundary';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -85,40 +86,42 @@ const AppContent: React.FC = () => {
       {!isAdminPage && <Navbar scrolled={scrolled} />}
       
       <main className="flex-grow">
-        <React.Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-white"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brass"></div></div>}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/portfolio/:id" element={<ProjectDetail />} />
-            <Route path="/process" element={<Process />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/knowledge" element={<KnowledgeHub />} />
-            <Route path="/knowledge/:id" element={<BlogDetail />} />
-            <Route path="/laboratory" element={<Laboratory />} />
-            <Route path="/laboratory/report" element={<DesignReport />} />
-            <Route path="/vault" element={<ProjectVault />} />
-            <Route path="/pricing" element={<Pricing />} />
-            <Route path="/design-ideas" element={<DesignIdeas />} />
-            <Route path="/interiors-in/:location" element={<LocationLanding />} />
-            <Route path="/luxury-design/:location" element={<LocationLanding />} />
-            <Route path="/cities/:cityName" element={<LocationLanding />} />
-            <Route path="/interiors-at/:projectName" element={<ProjectLanding />} />
-            <Route path="/services/:serviceName" element={<ServiceLanding />} />
-            <Route path="/cost-guide/:location" element={<CostGuideLanding />} />
-            <Route path="/tectonic-series" element={<TectonicSeries />} />
-            <Route path="/modular" element={<Services />} />
-            <Route path="/turnkey" element={<Services />} />
-            <Route path="/ateliers" element={<Services />} />
-            <Route path="/renovations" element={<Services />} />
-            <Route path="/partners" element={<About />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/magazine" element={<MagazineLanding />} />
-            <Route path="/magazine/:slug" element={<MagazineArticle />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </React.Suspense>
+        <ErrorBoundary>
+          <React.Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-white"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brass"></div></div>}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/portfolio/:id" element={<ProjectDetail />} />
+              <Route path="/process" element={<Process />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/knowledge" element={<KnowledgeHub />} />
+              <Route path="/knowledge/:id" element={<BlogDetail />} />
+              <Route path="/laboratory" element={<Laboratory />} />
+              <Route path="/laboratory/report" element={<DesignReport />} />
+              <Route path="/vault" element={<ProjectVault />} />
+              <Route path="/pricing" element={<Pricing />} />
+              <Route path="/design-ideas" element={<DesignIdeas />} />
+              <Route path="/interiors-in/:location" element={<LocationLanding />} />
+              <Route path="/luxury-design/:location" element={<LocationLanding />} />
+              <Route path="/cities/:cityName" element={<LocationLanding />} />
+              <Route path="/interiors-at/:projectName" element={<ProjectLanding />} />
+              <Route path="/services/:serviceName" element={<ServiceLanding />} />
+              <Route path="/cost-guide/:location" element={<CostGuideLanding />} />
+              <Route path="/tectonic-series" element={<TectonicSeries />} />
+              <Route path="/modular" element={<Services />} />
+              <Route path="/turnkey" element={<Services />} />
+              <Route path="/ateliers" element={<Services />} />
+              <Route path="/renovations" element={<Services />} />
+              <Route path="/partners" element={<About />} />
+              <Route path="/admin" element={<Admin />} />
+              <Route path="/magazine" element={<MagazineLanding />} />
+              <Route path="/magazine/:slug" element={<MagazineArticle />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </React.Suspense>
+        </ErrorBoundary>
       </main>
       
       {!isAdminPage && (
