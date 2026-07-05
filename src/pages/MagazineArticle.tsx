@@ -2,24 +2,32 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { MAGAZINE_ARTICLES, MagazineArticle as ArticleType } from '../registry/magazine_registry';
 import { ArrowLeft, Share2, BookmarkPlus } from 'lucide-react';
+import NotFound from './NotFound';
 
 const MagazineArticle: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const [article, setArticle] = useState<ArticleType | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const foundArticle = MAGAZINE_ARTICLES.find(a => a.slug === slug);
     if (foundArticle) {
       setArticle(foundArticle);
     }
+    setLoading(false);
   }, [slug]);
 
-  if (!article) {
+  if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brass"></div>
       </div>
     );
+  }
+
+  if (!article) {
+    // If we finished loading but no article was found, redirect to our new 404 page
+    return <NotFound />;
   }
 
   // Use a cinematic scroll effect for the header

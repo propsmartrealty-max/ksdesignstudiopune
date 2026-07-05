@@ -3,17 +3,14 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { PROJECTS } from '../constants';
 import { ArrowLeft, MapPin, Calendar, Ruler, Clock, Crosshair, Plus } from 'lucide-react';
 
+import NotFound from './NotFound';
+
 const ProjectDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const project = PROJECTS.find(p => p.id === id);
 
   if (!project) {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-white text-charcoal text-center">
-        <h1 className="text-4xl mb-4">Monograph Not Found</h1>
-        <Link to="/portfolio" className="text-brass uppercase tracking-widest text-xs font-bold hover:underline">Return to Gallery</Link>
-      </div>
-    );
+    return <NotFound />;
   }
 
   return (

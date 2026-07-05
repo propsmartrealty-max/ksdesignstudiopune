@@ -3,17 +3,14 @@ import { useParams, Link } from 'react-router-dom';
 import { BLOGS } from '../constants';
 import { ArrowLeft, Calendar, User, Share2 } from 'lucide-react';
 
+import NotFound from './NotFound';
+
 const BlogDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const blog = BLOGS.find(b => b.id === id);
 
   if (!blog) {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-white text-charcoal">
-        <h1 className="text-4xl mb-4">Insight Not Found</h1>
-        <Link to="/knowledge" className="text-brass uppercase tracking-widest text-xs font-bold hover:underline">Return to Hub</Link>
-      </div>
-    );
+    return <NotFound />;
   }
 
   return (
