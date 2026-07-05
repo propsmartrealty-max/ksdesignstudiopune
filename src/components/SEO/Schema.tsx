@@ -108,10 +108,23 @@ const Schema: React.FC = () => {
     }
   };
 
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "KS Design Studio",
+    "alternateName": ["KS Design Studio Pune", "KS Design Studio Global"],
+    "url": "https://ksdesignstudio.in"
+  };
+
   return (
-    <script type="application/ld+json">
-      {JSON.stringify(ldJson)}
-    </script>
+    <>
+      <script type="application/ld+json">
+        {JSON.stringify(websiteSchema)}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(ldJson)}
+      </script>
+    </>
   );
 };
 
