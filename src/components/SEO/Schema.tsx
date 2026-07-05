@@ -8,11 +8,18 @@ const Schema: React.FC = () => {
     "name": "KS Design Studio",
     "description": "Pune's premier interior architects specializing in premium residential and commercial spaces.",
     "url": "https://ksdesignstudio.in",
-    "logo": "https://ksdesignstudio.in/logo.png",
+    "logo": "https://ksdesignstudio.in/icon-512.png",
     "image": [
       "https://ksdesignstudio.in/assets/webp/hero_foyer-Dmv-Yoj7.webp",
       "https://ksdesignstudio.in/assets/webp/ks_tectonic_kitchen-YGXuzWPL.webp"
     ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-70203-77693",
+      "contactType": "customer service",
+      "areaServed": "IN",
+      "availableLanguage": ["English", "Hindi", "Marathi"]
+    },
     "priceRange": "₹₹₹₹",
     "aggregateRating": {
       "@type": "AggregateRating",
