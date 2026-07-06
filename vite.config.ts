@@ -12,8 +12,8 @@ export default defineConfig(({ mode }) => ({
       jpg: { quality: 80 },
     }),
   ],
-  // Use root base for dev to prevent navigation hangs, but relative for production
-  base: mode === 'production' ? './' : '/',
+  // Use root base unconditionally for BrowserRouter SPA routing
+  base: '/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',

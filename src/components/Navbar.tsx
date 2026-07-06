@@ -164,7 +164,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
       {/* Mobile Menu Overlay */}
       <div 
         className={`fixed inset-0 bg-charcoal z-[200] flex flex-col justify-center items-center transition-all duration-1000 ease-[cubic-bezier(0.85,0,0.15,1)] lg:hidden ${
-          isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'
+          isOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-full pointer-events-none'
         }`}
       >
         <div className="absolute inset-0 architect-grid opacity-5 pointer-events-none" />
