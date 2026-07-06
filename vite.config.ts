@@ -12,8 +12,8 @@ export default defineConfig(({ mode }) => ({
       jpg: { quality: 80 },
     }),
   ],
-  // Use root base unconditionally for BrowserRouter SPA routing
-  base: '/',
+  // Use repository name for GitHub Pages deployment
+  base: '/ksdesignstudiopune/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
