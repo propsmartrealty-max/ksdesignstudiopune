@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/generate-sitemap.js && tsc && vite build",
+    "build": "node scripts/generate-sitemap.js && tsc && vite build && cp dist/index.html dist/404.html",
     "preview": "vite preview",
     "seo:index": "node scripts/google-index.js"
   },
