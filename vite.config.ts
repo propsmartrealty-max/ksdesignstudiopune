@@ -12,8 +12,8 @@ export default defineConfig(({ mode }) => ({
       jpg: { quality: 80 },
     }),
   ],
-  // Use repository name for GitHub Pages deployment
-  base: '/ksdesignstudiopune/',
+  // Use root base unconditionally for Vercel / Custom Domain
+  base: '/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',

@@ -155,7 +155,7 @@ const AppContent: React.FC = () => {
 const App: React.FC = () => {
   return (
     <AppProvider>
-      <Router basename="/ksdesignstudiopune">
+      <Router>
         <ScrollToTop />
         <AppContent />
       </Router>
