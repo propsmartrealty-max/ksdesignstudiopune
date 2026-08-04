@@ -15,7 +15,7 @@ export interface MagazineArticle {
   costBreakdown?: { item: string; cost: string }[];
 }
 
-export const MAGAZINE_ARTICLES: MagazineArticle[] = [
+const STATIC_ARTICLES: MagazineArticle[] = [
   {
     id: "mag_01",
     slug: "rise-of-japandi-in-pune",
@@ -42,6 +42,23 @@ export const MAGAZINE_ARTICLES: MagazineArticle[] = [
       { item: "Microtopping Floors (Per Sq.Ft)", cost: "₹250 - ₹450" },
       { item: "Bespoke Minimalist Furniture (Per Unit)", cost: "₹45,000+" }
     ]
+  },
+  {
+    id: "mag_02",
+    slug: "future-of-kitchens-pune",
+    title: "The Tectonic Kitchen: Beyond Modular",
+    subtitle: "Why the standard modular kitchen is dying, and what replaces it.",
+    category: "Architecture",
+    date: "July 28, 2026",
+    author: "Ketan Shete",
+    readTime: "6 Min Read",
+    coverImage: "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&q=80&w=1200",
+    content: [
+      "For a decade, the 'modular kitchen' has been the ultimate buzzword in Indian interior design. But a paradigm shift is occurring in Pune's luxury segment. We are moving beyond the modular box towards the 'Tectonic Kitchen'—a fully integrated architectural volume.",
+      "The Tectonic Kitchen completely conceals its utility. When not in active use, it looks like a sequence of beautifully paneled wood and stone walls. Appliances are perfectly flush, handles are non-existent, and countertops are made of ultra-compact sintered stone that can withstand direct fire.",
+      "This evolution is driven by the open-plan layout becoming standard in premium apartments. When your kitchen is fully visible from your formal living room, it cannot look like a kitchen. It must look like a piece of bespoke furniture."
+    ],
+    tags: ["Kitchen", "Pune", "Luxury", "Tectonic"]
   },
   {
     id: "mag_02",
@@ -206,3 +223,6 @@ export const MAGAZINE_ARTICLES: MagazineArticle[] = [
     tags: ["Lighting", "Technical Guide", "Lux Levels"]
   }
 ];
+
+import { PILLAR_ARTICLES } from './pillars';
+export const MAGAZINE_ARTICLES: MagazineArticle[] = [...STATIC_ARTICLES, ...PILLAR_ARTICLES];
