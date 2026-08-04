@@ -34,8 +34,9 @@ function formatSlug(text) {
 
 function createSitemapXML(urls) {
   let xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+  const today = new Date().toISOString().split('T')[0];
   urls.forEach(url => {
-    xml += `  <url>\n    <loc>${BASE_URL}${url.route}</loc>\n    <changefreq>${url.changefreq}</changefreq>\n    <priority>${url.priority}</priority>\n  </url>\n`;
+    xml += `  <url>\n    <loc>${BASE_URL}${url.route}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${url.changefreq}</changefreq>\n    <priority>${url.priority}</priority>\n  </url>\n`;
   });
   xml += `</urlset>`;
   return xml;

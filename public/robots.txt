@@ -11,6 +11,8 @@ User-agent: Baiduspider
 User-agent: YandexBot
 Disallow: /admin/
 Disallow: /api/
+Disallow: /vault/
+Disallow: /assets/js/
 Allow: /
 
 # =========================================================================
@@ -53,7 +55,10 @@ Disallow: /
 User-agent: *
 Disallow: /admin/
 Disallow: /api/
+Disallow: /vault/
+Disallow: /assets/js/
 Allow: /
+Crawl-delay: 1
 
 # =========================================================================
 # SITEMAP INDEX LOCATION

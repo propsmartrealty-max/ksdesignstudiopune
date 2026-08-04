@@ -59,6 +59,17 @@ const SEOMeta: React.FC = () => {
     setMetaTag('twitter:title', title);
     setMetaTag('twitter:description', description);
     setMetaTag('twitter:image', image);
+    
+    // Aggressive Indexing Directives (Hardening)
+    // Prevent indexing of vault or admin routes, encourage everything else
+    if (path.startsWith('/admin') || path.startsWith('/vault')) {
+      setMetaTag('robots', 'noindex, nofollow');
+      setMetaTag('googlebot', 'noindex, nofollow');
+    } else {
+      setMetaTag('robots', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
+      setMetaTag('googlebot', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
+      setMetaTag('bingbot', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
+    }
 
   }, [location.pathname]);
 
