@@ -22,16 +22,16 @@ export const KnowledgeGraph: React.FC<KnowledgeGraphProps> = ({ location, servic
     "description": "Premium Turnkey Interior Design Studio in Pune specializing in luxury residences, villas, and commercial spaces.",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Baner - Pashan Link Road",
-      "addressLocality": "Pune",
+      "streetAddress": "623, Vision One Mall, Bhumkar Chowk",
+      "addressLocality": "Wakad, Pune",
       "addressRegion": "Maharashtra",
-      "postalCode": "411045",
+      "postalCode": "411057",
       "addressCountry": "IN"
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 18.5590,
-      "longitude": 73.7868
+      "latitude": 18.5996,
+      "longitude": 73.7486
     },
     "telephone": "+91-7020377693",
     "priceRange": "₹₹₹₹",

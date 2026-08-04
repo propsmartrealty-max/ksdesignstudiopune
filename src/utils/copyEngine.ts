@@ -21,7 +21,8 @@ const INTROS = [
   "Recognized as the #1 premium design studio redefining {SUBJECT} in {LOCATION}.",
   "Masterful architectural interventions specializing in ultra-luxury {SUBJECT}.",
   "Uncompromising A-grade quality and precision engineering for {SUBJECT}.",
-  "Delivering Pune's top-tier {SUBJECT} with absolute discretion and flawless execution in {LOCATION}."
+  "Delivering Pune's top-tier {SUBJECT} with absolute discretion and flawless execution in {LOCATION}.",
+  "Looking for the best interior designer near you in {LOCATION}? We deliver uncompromising A-grade quality and precision engineering for {SUBJECT}."
 ];
 
 const BODIES = [
