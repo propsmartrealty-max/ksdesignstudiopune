@@ -44,6 +44,7 @@ function createSitemapXML(urls) {
 
 function generateSitemaps() {
   const publicDir = path.join(process.cwd(), 'public');
+  const allRoutes = [];
   
   // 1. Core Static Routes
   const coreRoutes = ['', '/about', '/services', '/portfolio', '/process', '/contact', '/knowledge', '/design-ideas', '/laboratory', '/tectonic-series', '/vault', '/pricing'];
@@ -113,7 +114,15 @@ function generateSitemaps() {
   indexXml += `</sitemapindex>`;
   fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), indexXml, 'utf8');
 
-  console.log('✅ Enterprise Sitemap Index Generated');
+  // Also output a flat JSON array of routes for the prerender script
+  coreUrls.forEach(u => allRoutes.push(u.route));
+  locUrls.forEach(u => allRoutes.push(u.route));
+  srvUrls.forEach(u => allRoutes.push(u.route));
+  projUrls.forEach(u => allRoutes.push(u.route));
+  magUrls.forEach(u => allRoutes.push(u.route));
+  fs.writeFileSync(path.join(publicDir, 'routes.json'), JSON.stringify(allRoutes), 'utf8');
+
+  console.log('✅ Enterprise Sitemap Index & Routes JSON Generated');
 }
 
 generateSitemaps();

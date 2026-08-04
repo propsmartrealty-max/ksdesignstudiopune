@@ -1,85 +1,99 @@
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import puppeteer from 'puppeteer';
 import express from 'express';
-import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const distPath = path.resolve(__dirname, '../dist');
+const routesPath = path.resolve(__dirname, '../public/routes.json');
+
+const PORT = 3005;
 
 async function prerender() {
-  const distDir = path.resolve(__dirname, '../dist');
+  console.log('🚀 Starting SSG Prerendering Engine...');
   
-  if (!fs.existsSync(distDir)) {
-    console.error('dist directory not found. Run build first.');
+  if (!fs.existsSync(routesPath)) {
+    console.error('❌ routes.json not found. Run generate-sitemap.js first.');
     process.exit(1);
   }
 
-  const sitemapPath = path.resolve(__dirname, '../public/sitemap.xml');
-  if (!fs.existsSync(sitemapPath)) {
-    console.error('sitemap.xml not found. Run generate-sitemap.js first.');
-    process.exit(1);
-  }
+  const routes = JSON.parse(fs.readFileSync(routesPath, 'utf8'));
+  console.log(`📌 Found ${routes.length} routes to prerender.`);
 
-  const sitemapXml = fs.readFileSync(sitemapPath, 'utf8');
-  // Simple regex to extract URLs
-  const urlRegex = /<loc>(.*?)<\/loc>/g;
-  let match;
-  const routes = [];
-  while ((match = urlRegex.exec(sitemapXml)) !== null) {
-    const url = new URL(match[1]);
-    routes.push(url.pathname);
-  }
-
-  console.log(`Found ${routes.length} routes to prerender.`);
-
-  // Start a local express server to serve the dist folder
+  // Spin up local static server
   const app = express();
-  app.use(express.static(distDir));
-  // SPA fallback
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(distDir, 'index.html'));
+  app.use(express.static(distPath));
+  // SPA Fallback
+  app.use((req, res) => {
+    res.sendFile(path.join(distPath, 'index.html'));
   });
 
-  const server = app.listen(0, async () => {
-    const port = server.address().port;
-    console.log(`Server started on port ${port}`);
-    
-    const browser = await puppeteer.launch({ headless: 'new' });
-    const page = await browser.newPage();
+  const server = app.listen(PORT, '127.0.0.1', () => {
+    console.log(`🌐 Local server running on http://127.0.0.1:${PORT}`);
+  });
 
-    for (const route of routes) {
-      if (route === '/') continue; // Skip root, handled by default or we can overwrite
+  console.log('🕷️ Launching Headless Browser (Puppeteer)...');
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
+  });
 
-      const url = `http://localhost:${port}${route}`;
-      try {
-        await page.goto(url, { waitUntil: 'networkidle0', timeout: 30000 });
-        const html = await page.content();
-        
-        // Save the HTML
-        const routePath = path.join(distDir, route);
-        if (!fs.existsSync(routePath)) {
-          fs.mkdirSync(routePath, { recursive: true });
-        }
-        fs.writeFileSync(path.join(routePath, 'index.html'), html);
-        console.log(`Prerendered: ${route}`);
-      } catch (err) {
-        console.error(`Failed to prerender ${route}:`, err.message);
-      }
+  const page = await browser.newPage();
+  
+  // Speed optimizations for Puppeteer
+  await page.setCacheEnabled(true);
+  await page.setRequestInterception(true);
+  page.on('request', (req) => {
+    const resourceType = req.resourceType();
+    if (['image', 'font', 'stylesheet', 'media'].includes(resourceType)) {
+      req.abort(); // Don't load heavy assets, we only care about HTML rendering
+    } else {
+      req.continue();
     }
-
-    // Prerender root
-    try {
-      await page.goto(`http://localhost:${port}/`, { waitUntil: 'networkidle0' });
-      const html = await page.content();
-      fs.writeFileSync(path.join(distDir, 'index.html'), html);
-      console.log(`Prerendered: /`);
-    } catch (err) {}
-
-    await browser.close();
-    server.close();
-    console.log('Prerendering complete.');
   });
+
+  let successCount = 0;
+
+  for (const route of routes) {
+    try {
+      const targetUrl = `http://127.0.0.1:${PORT}${route}`;
+      // Go to page
+      await page.goto(targetUrl, { waitUntil: 'domcontentloaded', timeout: 10000 });
+      // Wait for React to render content into the root div (more than just empty HTML)
+      await page.waitForFunction('document.getElementById("root") && document.getElementById("root").innerHTML.length > 200', { timeout: 10000 });
+      // Wait an extra fraction of a second for any useEffect SEO/schema injections
+      await new Promise(r => setTimeout(r, 200));
+      
+      // Extract the fully rendered HTML
+      const html = await page.content();
+      
+      // Determine file path (e.g. /interiors-in/baner -> dist/interiors-in/baner/index.html)
+      // Root route ('') goes to dist/index.html
+      let filePath = path.join(distPath, route, 'index.html');
+      if (route === '') {
+        filePath = path.join(distPath, 'index.html');
+      } else {
+        const dir = path.dirname(filePath);
+        if (!fs.existsSync(dir)) {
+          fs.mkdirSync(dir, { recursive: true });
+        }
+      }
+
+      fs.writeFileSync(filePath, html, 'utf8');
+      console.log(`✅ Prerendered: ${route || '/'}`);
+      successCount++;
+    } catch (error) {
+      console.error(`❌ Failed to prerender: ${route}`, error.message);
+    }
+  }
+
+  await browser.close();
+  server.close();
+  
+  console.log(`🎉 SSG Complete: ${successCount}/${routes.length} routes prerendered into static HTML!`);
+  process.exit(0);
 }
 
 prerender();
