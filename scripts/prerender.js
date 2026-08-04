@@ -19,7 +19,18 @@ async function prerender() {
     process.exit(1);
   }
 
-  const routes = JSON.parse(fs.readFileSync(routesPath, 'utf8'));
+  let routes = JSON.parse(fs.readFileSync(routesPath, 'utf8'));
+
+  // HYBRID CORE STRATEGY: 
+  // We have 10,000+ routes in the sitemap for SPA indexing. 
+  // We only physically prerender the top 1000 highest priority routes 
+  // to prevent Vercel/Netlify CI/CD build timeouts (45m max).
+  const PRERENDER_LIMIT = 1000;
+  if (routes.length > PRERENDER_LIMIT) {
+    console.log(`⚠️ Massive Silo Detected: Limiting physical SSG from ${routes.length} to top ${PRERENDER_LIMIT} pages.`);
+    routes = routes.slice(0, PRERENDER_LIMIT);
+  }
+
   console.log(`📌 Found ${routes.length} routes to prerender.`);
 
   // Spin up local static server
