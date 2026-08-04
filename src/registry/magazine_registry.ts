@@ -9,8 +9,10 @@ export interface MagazineArticle {
   readTime: string;
   coverImage: string;
   content: string[];
-  pullQuote: string;
+  pullQuote?: string;
   tags: string[];
+  faqs?: { question: string; answer: string }[];
+  costBreakdown?: { item: string; cost: string }[];
 }
 
 export const MAGAZINE_ARTICLES: MagazineArticle[] = [
@@ -29,8 +31,17 @@ export const MAGAZINE_ARTICLES: MagazineArticle[] = [
       "Japandi is not merely a visual trend; it is a psychological response to urban density. By marrying the cozy warmth of Scandinavian 'hygge' with the imperfect, natural elegance of Japanese 'wabi-sabi', designers are creating sanctuaries suspended hundreds of feet above the city.",
       "At KS Design Studio, we have observed a 400% increase in requests for raw timber, muted lime-wash walls, and low-profile furniture among our clientele in premium zip codes. The reason is simple: when the exterior world is chaotic, the interior must be perfectly calibrated for stillness."
     ],
-    pullQuote: "When the exterior world is chaotic, the interior must be perfectly calibrated for stillness.",
-    tags: ["Japandi", "Minimalism", "Pune Architecture", "Residential"]
+    pullQuote: "Japandi isn't just an aesthetic; it's a recalibration of how we interact with space.",
+    tags: ["Japandi", "Pune", "Wabi-Sabi", "Minimalism"],
+    faqs: [
+      { question: "What is Japandi interior design?", answer: "Japandi is a hybrid design style that blends Japanese rustic minimalism (wabi-sabi) with Scandinavian functionality (hygge)." },
+      { question: "Is Japandi design expensive in Pune?", answer: "While Japandi focuses on minimalism, it relies heavily on high-quality, authentic materials like solid wood and natural stone, which can require a premium investment." }
+    ],
+    costBreakdown: [
+      { item: "Solid Wood Joinery (Per Sq.Ft)", cost: "₹1,800 - ₹2,500" },
+      { item: "Microtopping Floors (Per Sq.Ft)", cost: "₹250 - ₹450" },
+      { item: "Bespoke Minimalist Furniture (Per Unit)", cost: "₹45,000+" }
+    ]
   },
   {
     id: "mag_02",

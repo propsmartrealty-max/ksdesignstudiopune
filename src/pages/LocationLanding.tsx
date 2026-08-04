@@ -5,6 +5,7 @@ import { MapPin, CheckCircle, ArrowRight, Star, Map as MapIcon } from 'lucide-re
 import { generateDynamicCopy } from '../utils/copyEngine';
 import SEOClusterLinks from '../components/SEO/SEOClusterLinks';
 import KnowledgeGraph from '../components/SEO/KnowledgeGraph';
+import BreadcrumbSchema from '../components/SEO/BreadcrumbSchema';
 
 const LocationLanding: React.FC = () => {
   const { location } = useParams<{ location: string }>();
@@ -17,45 +18,24 @@ const LocationLanding: React.FC = () => {
   
   const geo = GEO_COORDINATES[formattedLocation] || GEO_COORDINATES["Default"];
 
-  const breadcrumbSchema = {
+  // Removed hardcoded breadcrumb in favor of component
+  const localBusinessSchema = {
     "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://ksdesignpune.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Portfolio",
-        "item": "https://ksdesignpune.com/#/portfolio"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": formattedLocation,
-        "item": `https://ksdesignpune.com/#/interiors-in/${location || 'pune'}`
-      }
-    ]
-  };
-
-  const localServiceSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "Interior Design",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "KS Design Studio"
-    },
+    "@type": "HomeAndConstructionBusiness",
+    "name": "KS Design Studio",
+    "image": "https://ksdesignstudio.in/logo.png",
+    "description": uniqueCopy,
     "areaServed": {
       "@type": "City",
       "name": formattedLocation
     },
-    "description": uniqueCopy,
-    "name": `Interior Designers in ${formattedLocation}`
+    "telephone": "+91-9876543210",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": formattedLocation,
+      "addressRegion": "Maharashtra",
+      "addressCountry": "IN"
+    }
   };
 
   const navigate = useNavigate();
@@ -73,11 +53,13 @@ const LocationLanding: React.FC = () => {
 
   return (
     <div className="pt-32 pb-20 bg-white relative overflow-hidden" itemScope itemType="https://schema.org/LocalBusiness">
+      <BreadcrumbSchema items={[
+        { name: 'Home', url: '/' },
+        { name: 'Locations', url: '/portfolio' },
+        { name: `Interior Designers in ${formattedLocation}`, url: window.location.pathname }
+      ]} />
       <script type="application/ld+json">
-        {JSON.stringify(breadcrumbSchema)}
-      </script>
-      <script type="application/ld+json">
-        {JSON.stringify(localServiceSchema)}
+        {JSON.stringify(localBusinessSchema)}
       </script>
       <KnowledgeGraph location={formattedLocation} />
       <div className="absolute inset-0 architect-grid opacity-5 pointer-events-none" />

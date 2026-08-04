@@ -4,6 +4,7 @@ import { IndianRupee, CheckCircle, ArrowRight, TrendingUp } from 'lucide-react';
 import { generateDynamicCopy } from '../utils/copyEngine';
 import SEOClusterLinks from '../components/SEO/SEOClusterLinks';
 import KnowledgeGraph from '../components/SEO/KnowledgeGraph';
+import BreadcrumbSchema from '../components/SEO/BreadcrumbSchema';
 
 const CostGuideLanding: React.FC = () => {
   const { locationName, locationSlug, propertyType } = useParams<{ locationName?: string, locationSlug?: string, propertyType?: string }>();
@@ -41,6 +42,11 @@ const CostGuideLanding: React.FC = () => {
 
   return (
     <div className="pt-32 pb-20 bg-white relative overflow-hidden">
+      <BreadcrumbSchema items={[
+        { name: 'Home', url: '/' },
+        { name: 'Cost Guides', url: '/pricing' },
+        { name: `${formattedProperty} Cost Guide in ${formattedLocation}`, url: window.location.pathname }
+      ]} />
       <script type="application/ld+json">
         {JSON.stringify(faqSchema)}
       </script>

@@ -1,6 +1,7 @@
 import React from 'react';
 import InvestmentEstimator from '../components/InvestmentEstimator';
 import { Ruler, Shield, Layers, Package, ArrowRight } from 'lucide-react';
+import BreadcrumbSchema from '../components/SEO/BreadcrumbSchema';
 
 const Pricing: React.FC = () => {
   const costDrivers = [
@@ -26,8 +27,29 @@ const Pricing: React.FC = () => {
     }
   ];
 
+  const softwareSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "KS Design Interior Cost Estimator",
+    "applicationCategory": "CalculatorApplication",
+    "operatingSystem": "All",
+    "description": "Interactive calculator to estimate interior design costs for premium residential projects in Pune and Mumbai.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  };
+
   return (
     <div className="pt-32 pb-20 bg-white min-h-screen">
+      <BreadcrumbSchema items={[
+        { name: 'Home', url: '/' },
+        { name: 'Pricing & Investment', url: '/pricing' }
+      ]} />
+      <script type="application/ld+json">
+        {JSON.stringify(softwareSchema)}
+      </script>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-end mb-32">
           <div className="space-y-10">
