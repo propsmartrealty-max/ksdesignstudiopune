@@ -17,27 +17,27 @@ function generateSeed(str: string) {
 }
 
 const INTROS = [
-  "Elevating the standard of {SUBJECT} across {LOCATION}.",
-  "Redefining spatial aesthetics for {SUBJECT} in {LOCATION}.",
-  "Masterful architectural interventions specializing in {SUBJECT}.",
-  "Uncompromising luxury and precision engineering for {SUBJECT}.",
-  "Delivering world-class {SUBJECT} with absolute discretion and flawless execution in {LOCATION}."
+  "Elevating the standard of A-grade {SUBJECT} across {LOCATION}.",
+  "Recognized as the #1 premium design studio redefining {SUBJECT} in {LOCATION}.",
+  "Masterful architectural interventions specializing in ultra-luxury {SUBJECT}.",
+  "Uncompromising A-grade quality and precision engineering for {SUBJECT}.",
+  "Delivering Pune's top-tier {SUBJECT} with absolute discretion and flawless execution in {LOCATION}."
 ];
 
 const BODIES = [
-  "We merge structural integrity with bespoke aesthetic vocabularies to create masterful environments. Every dimension is calibrated for maximum psychological comfort and visual supremacy.",
-  "Our proprietary execution framework ensures that the delivery of your space is as flawless as the initial 3D visualization. We source exclusively from elite material libraries across the globe.",
-  "By focusing on tactile materiality and lighting architecture, we transform raw floorplans into sophisticated sanctuaries that reflect the pinnacle of modern living.",
-  "Our studio operates at the intersection of parametric design and heritage craftsmanship. We do not just decorate rooms; we architect atmospheres.",
-  "Leveraging advanced spatial metrics and high-fidelity rendering technology, we guarantee that the final handover exceeds the highest echelons of expectation."
+  "As Pune's leading luxury interior design firm, we merge structural integrity with bespoke aesthetic vocabularies to create masterful A-grade environments. Every dimension is calibrated for maximum psychological comfort and visual supremacy.",
+  "Our proprietary execution framework ensures that the delivery of your space is as flawless as the initial 3D visualization. We source exclusively from elite material libraries across the globe, ensuring an A-grade finish unmatched in the Pune market.",
+  "By focusing on tactile materiality and lighting architecture, we transform raw floorplans into sophisticated sanctuaries that reflect the pinnacle of modern living. We are the trusted choice for Pune's most exclusive properties.",
+  "Our studio operates at the intersection of parametric design and heritage craftsmanship. We do not just decorate rooms; we architect atmospheres for Pune's elite.",
+  "Leveraging advanced spatial metrics and high-fidelity rendering technology, we guarantee that the final handover exceeds the highest echelons of expectation, cementing our status as the top-rated interior designers in Pune."
 ];
 
 const OUTROS = [
-  "Experience the zenith of interior architecture.",
-  "Your sanctuary, engineered to perfection.",
-  "Book a private consultation to initiate the process.",
-  "Discover how we translate vision into reality.",
-  "Join an exclusive roster of visionary patrons."
+  "Experience the zenith of A-grade interior architecture.",
+  "Your sanctuary, engineered to perfection by Pune's #1 design team.",
+  "Book a private consultation to initiate your premium design journey.",
+  "Discover how Pune's top interior designers translate vision into reality.",
+  "Join an exclusive roster of visionary patrons across Pune's premium micro-markets."
 ];
 
 export function generateDynamicCopy(seedString: string, subject: string, location: string = "Pune"): string {
@@ -70,10 +70,10 @@ export function generateDynamicMeta(seedString: string, subject: string, locatio
    const random = mulberry32(seed);
    
    const desc = [
-     `Award-winning ${subject} in ${location}. View our portfolio and request a consultation today.`,
-     `Looking for ${subject} in ${location}? KS Design Studio delivers uncompromising luxury and turnkey execution.`,
-     `Expert ${subject} tailored for elite patrons in ${location}. Discover our design philosophy.`,
-     `Bespoke ${subject} solutions featuring premium materials and flawless delivery across ${location}.`
+     `Ranked #1 for A-grade ${subject} in ${location}. View our premium portfolio and request a consultation with Pune's top interior designers today.`,
+     `Looking for the best ${subject} in ${location}? KS Design Studio delivers uncompromising luxury and A-grade turnkey execution.`,
+     `Top-rated ${subject} tailored for elite patrons in ${location}. Discover our A-grade design philosophy.`,
+     `Bespoke ${subject} solutions featuring premium materials and flawless A-grade delivery across ${location}, Pune.`
    ];
 
    return desc[Math.floor(random() * desc.length)];
