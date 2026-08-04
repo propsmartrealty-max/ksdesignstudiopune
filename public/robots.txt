@@ -1,17 +1,61 @@
-User-agent: *
-Allow: /
-Disallow: /admin
-Disallow: /api/
-Disallow: /_next/
-Disallow: /*?*
+# =========================================================================
+# KS Design Studio - Enterprise SEO Cloaking & Crawler Directives
+# =========================================================================
 
-# Optimize Crawl Budget for Googlebot
+# Allow primary search engines full access to crawl the programmatic mesh
 User-agent: Googlebot
+User-agent: Bingbot
+User-agent: Slurp
+User-agent: DuckDuckBot
+User-agent: Baiduspider
+User-agent: YandexBot
+Disallow: /admin/
+Disallow: /api/
 Allow: /
-Allow: /interiors-in/
-Allow: /services/
-Allow: /magazine/
-Disallow: /admin
-Disallow: /*?*
 
+# =========================================================================
+# AGGRESSIVE COMPETITOR BLOCKING (SEO Tool Cloaking)
+# This prevents competitors from analyzing our programmatic SEO footprint 
+# using standard industry intelligence tools.
+# =========================================================================
+
+# Block Ahrefs
+User-agent: AhrefsBot
+Disallow: /
+
+# Block SEMrush
+User-agent: SemrushBot
+User-agent: SemrushBot-SA
+Disallow: /
+
+# Block Moz
+User-agent: Rogerbot
+User-agent: DotBot
+Disallow: /
+
+# Block Majestic
+User-agent: MJ12bot
+Disallow: /
+
+# Block generic scrapers & spam bots
+User-agent: PetalBot
+User-agent: BLEXBot
+User-agent: DataForSeoBot
+User-agent: Barkrowler
+User-agent: MegaIndex.ru
+User-agent: linkdexbot
+User-agent: SeznamBot
+User-agent: spbot
+User-agent: SeekportBot
+Disallow: /
+
+# Global fallback for any other rogue bots
+User-agent: *
+Disallow: /admin/
+Disallow: /api/
+Allow: /
+
+# =========================================================================
+# SITEMAP INDEX LOCATION
+# =========================================================================
 Sitemap: https://ksdesignstudio.in/sitemap.xml

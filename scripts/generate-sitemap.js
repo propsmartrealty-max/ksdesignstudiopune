@@ -61,12 +61,12 @@ function generateSitemaps() {
   }
   fs.writeFileSync(path.join(publicDir, 'sitemap-locations.xml'), createSitemapXML(locUrls), 'utf8');
 
-  // 3. Services
+  // 3. Services (Aggressive: All Services x All Locations)
   const srvUrls = [];
   for (const service of SERVICES) {
     const srvSlug = formatSlug(service);
     srvUrls.push({ route: `/services/${srvSlug}`, priority: 0.9, changefreq: "monthly" });
-    for (const location of PUNE_MARKETS.slice(0, 15)) {
+    for (const location of PUNE_MARKETS) {
       srvUrls.push({ route: `/service/${formatSlug(location)}/${srvSlug}`, priority: 0.8, changefreq: "monthly" });
     }
   }
