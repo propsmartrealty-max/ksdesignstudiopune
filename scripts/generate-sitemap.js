@@ -43,14 +43,31 @@ const PROPERTY_TYPES = ["1 BHK", "2 BHK", "3 BHK", "4 BHK", "5 BHK", "Villa", "B
 const BASE_URL = 'https://ksdesignstudio.in';
 
 function formatSlug(text) {
-  return text.toLowerCase().replace(/\s+/g, '-');
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-') // Replace non-alphanumeric with dash
+    .replace(/(^-|-$)/g, '');    // Remove leading/trailing dashes
+}
+
+function escapeXml(unsafe) {
+  return unsafe.replace(/[<>&'"]/g, function (c) {
+    switch (c) {
+      case '<': return '&lt;';
+      case '>': return '&gt;';
+      case '&': return '&amp;';
+      case '\'': return '&apos;';
+      case '"': return '&quot;';
+      default: return c;
+    }
+  });
 }
 
 function createSitemapXML(urls) {
   let xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
   const today = new Date().toISOString().split('T')[0];
   urls.forEach(url => {
-    xml += `  <url>\n    <loc>${BASE_URL}${url.route}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${url.changefreq}</changefreq>\n    <priority>${url.priority}</priority>\n  </url>\n`;
+    const safeLoc = escapeXml(`${BASE_URL}${url.route}`);
+    xml += `  <url>\n    <loc>${safeLoc}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${url.changefreq}</changefreq>\n    <priority>${url.priority}</priority>\n  </url>\n`;
   });
   xml += `</urlset>`;
   return xml;
@@ -145,9 +162,12 @@ function generateSitemaps() {
   srvUrls.forEach(u => allRoutes.push(u.route));
   projUrls.forEach(u => allRoutes.push(u.route));
   magUrls.forEach(u => allRoutes.push(u.route));
-  fs.writeFileSync(path.join(publicDir, 'routes.json'), JSON.stringify(allRoutes), 'utf8');
+  
+  // Harden: Deduplicate routes to prevent crawler loops or SSG double-rendering
+  const uniqueRoutes = [...new Set(allRoutes)];
+  fs.writeFileSync(path.join(publicDir, 'routes.json'), JSON.stringify(uniqueRoutes), 'utf8');
 
-  console.log('✅ Enterprise Sitemap Index & Routes JSON Generated');
+  console.log(`✅ Enterprise Sitemap Index & Routes JSON Generated (${uniqueRoutes.length} unique routes)`);
 }
 
 generateSitemaps();
