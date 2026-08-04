@@ -6,7 +6,7 @@ const PUNE_MARKETS = [
   "Baner", "Balewadi", "Mahalunge", "Sus", "Pashan", "Aundh", "Bavdhan", 
   "Hinjewadi Phase 1", "Wakad", "Punawale", "Tathawade", "Ravet", "Pimple Saudagar", "Pimpri", "Chinchwad",
   "Kharadi", "Viman Nagar", "Koregaon Park", "Kalyani Nagar", "Magarpatta", "Hadapsar",
-  "NIBM", "Kondhwa", "Undri", "PCMC", "Moshi"
+  "NIBM", "Kondhwa", "Undri", "PCMC", "Moshi", "Nigdi"
 ];
 
 const BUILDERS = {
@@ -32,64 +32,70 @@ function formatSlug(text) {
   return text.toLowerCase().replace(/\s+/g, '-');
 }
 
-function generateXML() {
-  let xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-`;
-
-  const addUrl = (route, priority = 0.8, changefreq = "monthly") => {
-    xml += `  <url>
-    <loc>${BASE_URL}${route}</loc>
-    <changefreq>${changefreq}</changefreq>
-    <priority>${priority}</priority>
-  </url>\n`;
-  };
-
-  // Core Static Routes
-  const coreRoutes = ['', '/about', '/services', '/portfolio', '/process', '/contact', '/knowledge', '/design-ideas', '/laboratory', '/tectonic-series', '/vault', '/pricing'];
-  for (const route of coreRoutes) {
-    addUrl(route, 1.0, "weekly");
-  }
-
-  // Generate Location Routes (Tier 1 Priority)
-  for (const location of PUNE_MARKETS) {
-    const locSlug = formatSlug(location);
-    addUrl(`/interiors-in/${locSlug}`, 0.9);
-    addUrl(`/cost-guide/${locSlug}`, 0.8);
-    
-    // Cost per property type
-    for (const prop of PROPERTY_TYPES) {
-      addUrl(`/cost/${locSlug}/${formatSlug(prop)}`, 0.7);
-    }
-  }
-
-  // Generate Service & Service+Location Routes
-  for (const service of SERVICES) {
-    const srvSlug = formatSlug(service);
-    addUrl(`/services/${srvSlug}`, 0.9);
-    
-    // Cross multiply top 10 locations with top services to avoid limit overflow
-    for (const location of PUNE_MARKETS.slice(0, 10)) {
-      addUrl(`/service/${formatSlug(location)}/${srvSlug}`, 0.8);
-    }
-  }
-
-  // Generate Builder & Project Routes
-  for (const [builder, projects] of Object.entries(BUILDERS)) {
-    const builderSlug = formatSlug(builder);
-    addUrl(`/builder/${builderSlug}`, 0.9);
-    
-    for (const project of projects) {
-       addUrl(`/builder/${builderSlug}/${formatSlug(project)}`, 0.8);
-       // Legacy fallback
-       addUrl(`/interiors-at/${formatSlug(project)}`, 0.7);
-    }
-  }
-
+function createSitemapXML(urls) {
+  let xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+  urls.forEach(url => {
+    xml += `  <url>\n    <loc>${BASE_URL}${url.route}</loc>\n    <changefreq>${url.changefreq}</changefreq>\n    <priority>${url.priority}</priority>\n  </url>\n`;
+  });
   xml += `</urlset>`;
   return xml;
 }
 
-const sitemapPath = path.join(process.cwd(), 'public', 'sitemap.xml');
-fs.writeFileSync(sitemapPath, generateXML(), 'utf8');
-console.log('✅ Enterprise Sitemap Generated: ' + sitemapPath);
+function generateSitemaps() {
+  const publicDir = path.join(process.cwd(), 'public');
+  
+  // 1. Core Static Routes
+  const coreRoutes = ['', '/about', '/services', '/portfolio', '/process', '/contact', '/knowledge', '/design-ideas', '/laboratory', '/tectonic-series', '/vault', '/pricing'];
+  const coreUrls = coreRoutes.map(route => ({ route, priority: 1.0, changefreq: "weekly" }));
+  fs.writeFileSync(path.join(publicDir, 'sitemap-core.xml'), createSitemapXML(coreUrls), 'utf8');
+
+  // 2. Locations
+  const locUrls = [];
+  for (const location of PUNE_MARKETS) {
+    const locSlug = formatSlug(location);
+    locUrls.push({ route: `/interiors-in/${locSlug}`, priority: 0.9, changefreq: "monthly" });
+    locUrls.push({ route: `/cost-guide/${locSlug}`, priority: 0.8, changefreq: "monthly" });
+    for (const prop of PROPERTY_TYPES) {
+      locUrls.push({ route: `/cost/${locSlug}/${formatSlug(prop)}`, priority: 0.7, changefreq: "monthly" });
+    }
+  }
+  fs.writeFileSync(path.join(publicDir, 'sitemap-locations.xml'), createSitemapXML(locUrls), 'utf8');
+
+  // 3. Services
+  const srvUrls = [];
+  for (const service of SERVICES) {
+    const srvSlug = formatSlug(service);
+    srvUrls.push({ route: `/services/${srvSlug}`, priority: 0.9, changefreq: "monthly" });
+    for (const location of PUNE_MARKETS.slice(0, 15)) {
+      srvUrls.push({ route: `/service/${formatSlug(location)}/${srvSlug}`, priority: 0.8, changefreq: "monthly" });
+    }
+  }
+  fs.writeFileSync(path.join(publicDir, 'sitemap-services.xml'), createSitemapXML(srvUrls), 'utf8');
+
+  // 4. Projects & Builders
+  const projUrls = [];
+  for (const [builder, projects] of Object.entries(BUILDERS)) {
+    const builderSlug = formatSlug(builder);
+    projUrls.push({ route: `/builder/${builderSlug}`, priority: 0.9, changefreq: "monthly" });
+    for (const project of projects) {
+       projUrls.push({ route: `/builder/${builderSlug}/${formatSlug(project)}`, priority: 0.8, changefreq: "monthly" });
+       projUrls.push({ route: `/interiors-at/${formatSlug(project)}`, priority: 0.7, changefreq: "monthly" });
+    }
+  }
+  fs.writeFileSync(path.join(publicDir, 'sitemap-projects.xml'), createSitemapXML(projUrls), 'utf8');
+
+  // 5. Sitemap Index
+  let indexXml = `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+  const sitemaps = ['sitemap-core.xml', 'sitemap-locations.xml', 'sitemap-services.xml', 'sitemap-projects.xml'];
+  
+  sitemaps.forEach(sitemap => {
+    indexXml += `  <sitemap>\n    <loc>${BASE_URL}/${sitemap}</loc>\n  </sitemap>\n`;
+  });
+  
+  indexXml += `</sitemapindex>`;
+  fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), indexXml, 'utf8');
+
+  console.log('✅ Enterprise Sitemap Index Generated');
+}
+
+generateSitemaps();
