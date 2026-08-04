@@ -39,7 +39,7 @@ const AIAssistant: React.FC = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (pos) => setUserLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
-        (err) => console.log("Location access denied", err)
+        (err) => {} // Handle error silently
       );
     }
   }, []);
