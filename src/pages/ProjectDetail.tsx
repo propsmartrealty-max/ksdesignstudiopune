@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { PROJECTS } from '../constants';
@@ -12,6 +13,51 @@ const ProjectDetail: React.FC = () => {
   if (!project) {
     return <NotFound />;
   }
+
+  useEffect(() => {
+    document.title = `${project.title} | Portfolio | KS Design Studio Pune`;
+    
+    // Generate deep-link schema for the project
+    const projectSchema = {
+      "@context": "https://schema.org",
+      "@type": ["Article", "Project"],
+      "headline": project.title,
+      "description": project.description,
+      "image": project.imageUrl,
+      "author": {
+        "@type": "Organization",
+        "name": "KS Design Studio",
+        "url": "https://ksdesignstudio.in"
+      },
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "KS Design Studio",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": project.location.split(',')[0].trim(),
+          "addressRegion": "MH",
+          "addressCountry": "IN"
+        }
+      }
+    };
+
+    // Inject Schema
+    const scriptId = `schema-project-${project.id}`;
+    let script = document.getElementById(scriptId) as HTMLScriptElement;
+    if (!script) {
+      script = document.createElement('script');
+      script.id = scriptId;
+      script.type = 'application/ld+json';
+      document.head.appendChild(script);
+    }
+    script.text = JSON.stringify(projectSchema);
+
+    return () => {
+      if (script) {
+        document.head.removeChild(script);
+      }
+    };
+  }, [project]);
 
   return (
     <div className="pt-24 bg-white min-h-screen">

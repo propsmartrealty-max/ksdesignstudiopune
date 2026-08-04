@@ -34,6 +34,27 @@ const Contact: React.FC = () => {
     const emailBody = `Name: ${formData.name}\nEmail: ${formData.email}\nProject Type: ${formData.projectType}\n\nMessage:\n${formData.message}`;
     const mailtoUrl = `mailto:${contactEmail}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
 
+    // Web3Forms Integration (Placeholder Key)
+    const web3FormsKey = "INSERT_WEB3FORMS_KEY_HERE";
+    
+    if (web3FormsKey !== "INSERT_WEB3FORMS_KEY_HERE") {
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: web3FormsKey,
+          name: formData.name,
+          email: formData.email,
+          subject: emailSubject,
+          projectType: formData.projectType,
+          message: formData.message,
+        }),
+      }).catch(err => console.error("Web3Forms Error:", err));
+    }
+
     // Execute Dual Dispatch
     setTimeout(() => {
       // 1. Open WhatsApp in new tab

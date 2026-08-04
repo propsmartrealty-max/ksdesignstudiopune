@@ -17,6 +17,8 @@ const InvestmentEstimator: React.FC = () => {
   const [type, setType] = useState('monograph');
   const [sqft, setSqft] = useState(1500);
   const [tier, setTier] = useState('luxe');
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
 
   const calculateEstimate = () => {
     const rate = tiers.find(t => t.id === tier)?.rate || 2500;
@@ -26,6 +28,38 @@ const InvestmentEstimator: React.FC = () => {
   };
 
   const currentRange = calculateEstimate();
+
+  const handleQuoteRequest = async () => {
+    if (!email) return;
+    setStatus('submitting');
+    
+    const web3FormsKey = "INSERT_WEB3FORMS_KEY_HERE";
+    if (web3FormsKey !== "INSERT_WEB3FORMS_KEY_HERE") {
+      try {
+        await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            access_key: web3FormsKey,
+            subject: "New Cost Estimate Request",
+            email: email,
+            projectType: type,
+            areaSqFt: sqft,
+            tier: tier,
+            estimatedCost: `${currentRange[0]} - ${currentRange[1]} Lakhs`,
+          }),
+        });
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    
+    // Simulate successful request
+    setTimeout(() => setStatus('success'), 1000);
+  };
 
   return (
     <div className="w-full bg-transparent py-32 px-6 lg:px-12 relative overflow-hidden rounded-[4rem] border border-white/10">
@@ -155,9 +189,41 @@ const InvestmentEstimator: React.FC = () => {
                 </div>
 
                 <div className="grid grid-cols-1 gap-4">
-                  <button className="w-full py-6 bg-brass text-white rounded-2xl font-black uppercase tracking-[0.3em] text-[10px] hover:bg-charcoal transition-all">Get Detailed Quote</button>
+                  <button onClick={() => setStep(4)} className="w-full py-6 bg-brass text-white rounded-2xl font-black uppercase tracking-[0.3em] text-[10px] hover:bg-charcoal transition-all">Get Detailed Quote</button>
                   <button onClick={() => setStep(2)} className="w-full text-[10px] uppercase tracking-widest font-bold text-stone-400">Modify scale</button>
                 </div>
+              </div>
+            )}
+            
+            {step === 4 && (
+              <div className="space-y-8 animate-in fade-in slide-in-from-right-10 duration-700">
+                <p className="text-[10px] uppercase tracking-[0.3em] font-black text-zinc-500">Step 04: Your Detailed Quote</p>
+                
+                {status === 'success' ? (
+                  <div className="bg-emerald-500/10 p-8 rounded-3xl text-center space-y-4 border border-emerald-500/20">
+                    <h4 className="text-2xl text-emerald-600 font-bold">Quote Sent!</h4>
+                    <p className="text-sm text-zinc-600 font-medium">We've sent the detailed breakdown to your email. Our design team will reach out shortly.</p>
+                  </div>
+                ) : (
+                  <div className="space-y-6">
+                    <p className="text-sm text-zinc-600 font-medium">Enter your email address to receive the detailed PDF breakdown of this estimate.</p>
+                    <input 
+                      type="email" 
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Enter your email"
+                      className="w-full bg-white/50 backdrop-blur-md border border-white/40 rounded-2xl p-5 text-sm focus:ring-2 focus:ring-brass/20 focus:border-brass outline-none transition-all placeholder:text-zinc-400 text-zinc-900 font-medium"
+                    />
+                    <button 
+                      onClick={handleQuoteRequest}
+                      disabled={!email || status === 'submitting'}
+                      className="w-full py-6 bg-charcoal text-white rounded-2xl font-black uppercase tracking-[0.3em] text-[10px] hover:bg-brass transition-all disabled:opacity-50"
+                    >
+                      {status === 'submitting' ? 'Sending...' : 'Send My Quote'}
+                    </button>
+                    <button onClick={() => setStep(3)} className="w-full text-[10px] uppercase tracking-widest font-bold text-stone-400 mt-4">Back</button>
+                  </div>
+                )}
               </div>
             )}
           </div>
