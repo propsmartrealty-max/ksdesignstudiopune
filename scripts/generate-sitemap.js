@@ -1,34 +1,30 @@
 import fs from 'fs';
 import path from 'path';
 
-// Manual definitions for Node script
+// Manual definitions for Node script (mirroring seo_registry)
 const PUNE_MARKETS = [
-  "Baner", "Baner Annexe", "Balewadi", "Mahalunge", "Sus", "Pashan", "Aundh", "Bavdhan", "Kothrud", "Warje", "Karve Nagar", "Erandwane", "Prabhat Road", "Shivajinagar", "Model Colony", "SB Road", "University Road", "Law College Road", "Deccan", "FC Road", "JM Road",
-  "Hinjawadi Phase 1", "Hinjawadi Phase 2", "Hinjawadi Phase 3", "Wakad", "Punawale", "Tathawade", "Ravet", "Kiwale", "Pimple Saudagar", "Pimple Nilakh", "Kalewadi", "Thergaon", "Nigdi", "Pimpri", "Chinchwad",
-  "Kharadi", "New Kharadi", "Viman Nagar", "Koregaon Park", "Kalyani Nagar", "Magarpatta", "Mundhwa", "Hadapsar", "Manjari", "Wagholi", "Lohegaon", "Dhanori", "Yerawada", "Keshav Nagar",
-  "NIBM", "Mohammed Wadi", "Undri", "Kondhwa", "Pisoli", "Bibwewadi", "Katraj", "Narhe", "Sinhagad Road", "Ambegaon", "Dhankawadi", "PCMC", "Moshi", "Chikhali", "Charholi", "Akurdi", "Bhosari", "Talawade", "Pradhikaran", "Chakan", "Spine Road"
+  "Baner", "Balewadi", "Mahalunge", "Sus", "Pashan", "Aundh", "Bavdhan", 
+  "Hinjewadi Phase 1", "Wakad", "Punawale", "Tathawade", "Ravet", "Pimple Saudagar", "Pimpri", "Chinchwad",
+  "Kharadi", "Viman Nagar", "Koregaon Park", "Kalyani Nagar", "Magarpatta", "Hadapsar",
+  "NIBM", "Kondhwa", "Undri", "PCMC", "Moshi"
 ];
 
-// High intent micro-markets for cross-multiplication
-const TARGET_MICRO_MARKETS = [
-  "Baner", "Balewadi", "Mahalunge", "Aundh", "Kothrud",
-  "Wakad", "Hinjawadi", "Tathawade", "Punawale", "Ravet", "Pimple Saudagar", "Thergaon",
-  "Kharadi", "Viman Nagar", "Kalyani Nagar", "Koregaon Park", "Magarpatta", "Hadapsar",
-  "NIBM", "Kondhwa", "Undri", "Katraj"
-];
+const BUILDERS = {
+  "Godrej Properties": ["Godrej Hillside", "Godrej Park World"],
+  "VTP Realty": ["VTP Blue Waters", "VTP Bellissimo"],
+  "Kolte-Patil Developers": ["Life Republic", "24K Stargaze"],
+  "Kohinoor Group": ["Kohinoor Central Park", "Kohinoor Westview Reserve"],
+  "Mahindra Lifespaces": ["Mahindra Citadel"],
+  "Lodha": ["Lodha Belmondo"],
+  "Gera Developments": ["Gera World of Joy"]
+};
 
 const SERVICES = [
-  "Luxury Apartments", "Premium Apartments", "Budget Apartments", "2 BHK", "3 BHK", "4 BHK", "5 BHK", "Penthouse", "Duplex", "Villa", "Bungalow", "Farmhouse", "Row House", "Independent House", "Smart Homes", "Minimal Homes", "Modern Homes", "Luxury Homes",
-  "Office Interior", "IT Office", "Corporate Office", "Startup Office", "Restaurant", "Cafe", "Retail", "Showroom", "Hospital", "Clinic", "Salon", "Gym", "Hotel", "Coworking Space", "Educational Institute", "Industrial Office", "Warehouse Office",
-  "Complete Home Interiors", "Interior Execution", "Project Management", "Furniture Manufacturing", "Civil Work", "Electrical", "Plumbing", "Painting", "Automation", "False Ceiling", "Flooring", "Lighting", "Curtains", "Soft Furnishing",
-  "Modular Kitchen", "L Shape Kitchen", "U Shape Kitchen", "Island Kitchen", "Parallel Kitchen", "Straight Kitchen", "Wardrobes", "Sliding Wardrobes", "Walk-in Wardrobes", "TV Units", "Vanity", "Crockery Unit", "Bookshelf", "Study Unit", "Custom Furniture"
+  "Turnkey Interiors", "Modular Kitchen", "Wardrobe Design", 
+  "Home Renovation", "Luxury Apartments", "2 BHK", "3 BHK", "Villa"
 ];
 
-const CONFIGURATIONS = ["2 BHK", "3 BHK", "4 BHK", "5 BHK", "Penthouse", "Duplex", "Villa", "Bungalow"];
-const INTENT_PREFIXES = ["Luxury", "Premium", "Affordable", "Budget", "Best", "Top"];
-const BUILDER_PROJECTS = ["VTP Blue Waters", "Godrej Hillside", "Kolte Patil 24K", "Life Republic", "Panchshil Towers"];
-const COMPARISONS = ["Baner vs Wakad", "Kharadi vs Viman Nagar", "Balewadi vs Mahalunge"];
-const AI_QUERIES = ["Who is the best interior designer in Pune", "How much does home interior cost in Pune"];
+const PROPERTY_TYPES = ["2 BHK", "3 BHK", "Villa"];
 
 const BASE_URL = 'https://ksdesignstudio.in';
 
@@ -41,78 +37,53 @@ function generateXML() {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 `;
 
+  const addUrl = (route, priority = 0.8, changefreq = "monthly") => {
+    xml += `  <url>
+    <loc>${BASE_URL}${route}</loc>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+  </url>\n`;
+  };
+
   // Core Static Routes
   const coreRoutes = ['', '/about', '/services', '/portfolio', '/process', '/contact', '/knowledge', '/design-ideas', '/laboratory', '/tectonic-series', '/vault', '/pricing'];
   for (const route of coreRoutes) {
-    xml += `  <url>
-    <loc>${BASE_URL}${route}</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>\n`;
+    addUrl(route, 1.0, "weekly");
   }
 
-  // Generate Location Routes
+  // Generate Location Routes (Tier 1 Priority)
   for (const location of PUNE_MARKETS) {
-    xml += `  <url>
-    <loc>${BASE_URL}/interiors-in/${formatSlug(location)}</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>\n`;
-    xml += `  <url>
-    <loc>${BASE_URL}/cost-guide/${formatSlug(location)}</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>\n`;
+    const locSlug = formatSlug(location);
+    addUrl(`/interiors-in/${locSlug}`, 0.9);
+    addUrl(`/cost-guide/${locSlug}`, 0.8);
+    
+    // Cost per property type
+    for (const prop of PROPERTY_TYPES) {
+      addUrl(`/cost/${locSlug}/${formatSlug(prop)}`, 0.7);
+    }
   }
 
-  // Generate Service Routes
+  // Generate Service & Service+Location Routes
   for (const service of SERVICES) {
-    xml += `  <url>
-    <loc>${BASE_URL}/services/${formatSlug(service)}</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>\n`;
+    const srvSlug = formatSlug(service);
+    addUrl(`/services/${srvSlug}`, 0.9);
+    
+    // Cross multiply top 10 locations with top services to avoid limit overflow
+    for (const location of PUNE_MARKETS.slice(0, 10)) {
+      addUrl(`/service/${formatSlug(location)}/${srvSlug}`, 0.8);
+    }
   }
 
-  // Hyperlocal Cross-Multiplication (Volume 2 & 3)
-  for (const micro of TARGET_MICRO_MARKETS) {
-     for (const config of CONFIGURATIONS) {
-        xml += `  <url>
-    <loc>${BASE_URL}/services/${formatSlug(config)}-interior-designers-in-${formatSlug(micro)}</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>\n`;
-     }
-     for (const prefix of INTENT_PREFIXES) {
-        xml += `  <url>
-    <loc>${BASE_URL}/services/${formatSlug(prefix)}-interior-designers-in-${formatSlug(micro)}</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>\n`;
-     }
-  }
-
-  // Volume 3: Builders, Comparisons, and AI Voice Search
-  for (const builder of BUILDER_PROJECTS) {
-     xml += `  <url>
-    <loc>${BASE_URL}/interiors-at/${formatSlug(builder)}</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>\n`;
-  }
-  for (const comp of COMPARISONS) {
-     xml += `  <url>
-    <loc>${BASE_URL}/compare/${formatSlug(comp)}</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>\n`;
-  }
-  for (const ai of AI_QUERIES) {
-     xml += `  <url>
-    <loc>${BASE_URL}/services/${formatSlug(ai)}</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>\n`;
+  // Generate Builder & Project Routes
+  for (const [builder, projects] of Object.entries(BUILDERS)) {
+    const builderSlug = formatSlug(builder);
+    addUrl(`/builder/${builderSlug}`, 0.9);
+    
+    for (const project of projects) {
+       addUrl(`/builder/${builderSlug}/${formatSlug(project)}`, 0.8);
+       // Legacy fallback
+       addUrl(`/interiors-at/${formatSlug(project)}`, 0.7);
+    }
   }
 
   xml += `</urlset>`;

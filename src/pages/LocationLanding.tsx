@@ -1,8 +1,9 @@
 import React from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { SEO_LOCATIONS, SEO_LONG_TAIL, SEO_PROPERTY_TYPES, PUNE_NEIGHBORHOOD_USPS } from '../registry/seo_registry';
+import { SEO_LOCATIONS, SEO_PROPERTY_TYPES, PUNE_NEIGHBORHOOD_USPS } from '../registry/seo_registry';
 import { MapPin, CheckCircle, ArrowRight, Star, Map as MapIcon } from 'lucide-react';
 import { generateDynamicCopy } from '../utils/copyEngine';
+import SEOClusterLinks from '../components/SEO/SEOClusterLinks';
 
 const LocationLanding: React.FC = () => {
   const { location } = useParams<{ location: string }>();
@@ -236,6 +237,7 @@ const LocationLanding: React.FC = () => {
           </div>
         </div>
       </div>
+      <SEOClusterLinks currentLocation={formattedLocation} />
     </div>
   );
 };

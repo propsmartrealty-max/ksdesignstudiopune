@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Instagram } from 'lucide-react';
 
-import { SEO_LOCATIONS, SEO_SERVICES, BUYER_INTENT_KEYWORDS, BRAND_TRUST_KEYWORDS, BUILDER_PROJECTS, SEO_COMPARISONS, AI_VOICE_SEARCH } from '../registry/seo_registry';
+import { SEO_LOCATIONS, SEO_SERVICES, BUYER_INTENT_KEYWORDS, BRAND_TRUST_KEYWORDS, SEO_COMPARISONS, AI_VOICE_SEARCH, ALL_PROJECTS } from '../registry/seo_registry';
 
 const Footer: React.FC = () => {
   const regions = [
@@ -149,9 +149,9 @@ const Footer: React.FC = () => {
                  {trust}
                </Link>
              ))}
-             {BUILDER_PROJECTS.slice(0, 5).map(builder => (
-               <Link key={builder} to={`/interiors-at/${builder.toLowerCase().replace(/\s+/g, '-')}`} className="text-[8px] text-charcoal/40 hover:text-brass uppercase tracking-widest font-bold">
-                 Interiors for {builder}
+             {ALL_PROJECTS.slice(0, 5).map((project, i) => (
+               <Link key={i} to={`/interiors-at/${project.toLowerCase().replace(/\s+/g, '-')}`} className="text-[8px] text-charcoal/40 hover:text-brass uppercase tracking-widest font-bold">
+                 Interiors for {project}
                </Link>
              ))}
              {SEO_COMPARISONS.slice(0, 5).map(comp => (

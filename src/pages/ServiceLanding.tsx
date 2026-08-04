@@ -2,15 +2,20 @@ import React from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { MapPin, CheckCircle, ArrowRight, Star, Settings } from 'lucide-react';
 import { generateDynamicCopy } from '../utils/copyEngine';
+import SEOClusterLinks from '../components/SEO/SEOClusterLinks';
 
 const ServiceLanding: React.FC = () => {
-  const { serviceName } = useParams<{ serviceName: string }>();
+  const { serviceName, locationSlug, serviceSlug } = useParams<{ serviceName?: string, locationSlug?: string, serviceSlug?: string }>();
   
-  // Format service name for display
-  const formattedService = serviceName?.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') || 'Interior Design';
+  // Format variables
+  const rawService = serviceSlug || serviceName || 'interior-design';
+  const rawLocation = locationSlug || 'pune';
+  
+  const formattedService = rawService.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  const formattedLocation = rawLocation.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
   
   // Generate deterministic dynamic copy based on URL
-  const uniqueCopy = generateDynamicCopy(serviceName || 'default', formattedService);
+  const uniqueCopy = generateDynamicCopy(rawService + rawLocation, formattedService, formattedLocation);
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -18,10 +23,10 @@ const ServiceLanding: React.FC = () => {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": `What is included in ${formattedService} services in Pune?`,
+        "name": `What is included in ${formattedService} services in ${formattedLocation}?`,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": `Our ${formattedService} service includes comprehensive 3D visualization, material selection, custom fabrication, and turnkey execution managed by senior architects.`
+          "text": `Our ${formattedService} service in ${formattedLocation} includes comprehensive 3D visualization, material selection, custom fabrication, and turnkey execution managed by senior architects.`
         }
       },
       {
@@ -45,10 +50,10 @@ const ServiceLanding: React.FC = () => {
     },
     "areaServed": {
       "@type": "City",
-      "name": "Pune"
+      "name": formattedLocation
     },
     "description": uniqueCopy,
-    "name": `${formattedService} in Pune`
+    "name": `${formattedService} in ${formattedLocation}`
   };
 
   const navigate = useNavigate();
@@ -84,6 +89,7 @@ const ServiceLanding: React.FC = () => {
             <h1 className="text-5xl md:text-7xl text-charcoal tracking-tighter mb-8 font-medium" itemProp="name">
               Premium <br /> 
               <span className="italic font-light text-stone-400">{formattedService}</span>
+              <br /><span className="text-3xl text-brass">in {formattedLocation}</span>
             </h1>
             <div 
               className="text-charcoal/50 text-xl font-light leading-relaxed mb-10"
@@ -112,15 +118,15 @@ const ServiceLanding: React.FC = () => {
 
         {/* GEO/AEO Optimization Block */}
         <div className="glass-premium p-12 rounded-[3rem] border-white/40 shadow-xl mb-20 max-w-4xl">
-          <h2 className="text-2xl mb-8">Intelligence: {formattedService} in Pune</h2>
+          <h2 className="text-2xl mb-8">Intelligence: {formattedService} in {formattedLocation}</h2>
           <div className="space-y-8">
              <div>
                 <h3 className="text-sm font-bold uppercase tracking-widest text-charcoal mb-3">What is included in {formattedService}?</h3>
                 <p className="text-charcoal/60 text-sm leading-relaxed">Our {formattedService} protocol encompasses end-to-end delivery. From raw spatial mapping and 3D architectural renders to procurement of Italian marble, bespoke lighting installations, and final handover. Everything is managed through our proprietary execution engine.</p>
              </div>
              <div>
-                <h3 className="text-sm font-bold uppercase tracking-widest text-charcoal mb-3">Which materials are best for Pune's climate?</h3>
-                <p className="text-charcoal/60 text-sm leading-relaxed">For {formattedService}, we mandate marine-grade plywood (BWR/BWP), anti-scratch acrylics, and PU coatings to resist Pune's monsoon humidity while maintaining a flawless luxury aesthetic year-round.</p>
+                <h3 className="text-sm font-bold uppercase tracking-widest text-charcoal mb-3">Which materials are best for {formattedLocation}'s climate?</h3>
+                <p className="text-charcoal/60 text-sm leading-relaxed">For {formattedService}, we mandate marine-grade plywood (BWR/BWP), anti-scratch acrylics, and PU coatings to resist {formattedLocation}'s local weather patterns while maintaining a flawless luxury aesthetic year-round.</p>
              </div>
           </div>
         </div>
@@ -143,6 +149,7 @@ const ServiceLanding: React.FC = () => {
           </div>
         </div>
       </div>
+      <SEOClusterLinks currentLocation={formattedLocation} currentService={formattedService} />
     </div>
   );
 };

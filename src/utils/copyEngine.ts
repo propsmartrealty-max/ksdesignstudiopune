@@ -17,11 +17,11 @@ function generateSeed(str: string) {
 }
 
 const INTROS = [
-  "Elevating the standard of {SUBJECT} across Pune.",
-  "Redefining spatial aesthetics for {SUBJECT}.",
+  "Elevating the standard of {SUBJECT} across {LOCATION}.",
+  "Redefining spatial aesthetics for {SUBJECT} in {LOCATION}.",
   "Masterful architectural interventions specializing in {SUBJECT}.",
   "Uncompromising luxury and precision engineering for {SUBJECT}.",
-  "Delivering world-class {SUBJECT} with absolute discretion and flawless execution."
+  "Delivering world-class {SUBJECT} with absolute discretion and flawless execution in {LOCATION}."
 ];
 
 const BODIES = [
@@ -40,11 +40,14 @@ const OUTROS = [
   "Join an exclusive roster of visionary patrons."
 ];
 
-export function generateDynamicCopy(seedString: string, subject: string): string {
+export function generateDynamicCopy(seedString: string, subject: string, location: string = "Pune"): string {
   const seed = generateSeed(seedString);
   const random = mulberry32(seed);
 
-  const intro = INTROS[Math.floor(random() * INTROS.length)].replace('{SUBJECT}', subject);
+  const intro = INTROS[Math.floor(random() * INTROS.length)]
+    .replace('{SUBJECT}', subject)
+    .replace('{LOCATION}', location);
+  
   const body = BODIES[Math.floor(random() * BODIES.length)];
   const outro = OUTROS[Math.floor(random() * OUTROS.length)];
 
@@ -62,16 +65,29 @@ export function generateDynamicCopy(seedString: string, subject: string): string
   return fullCopy;
 }
 
-export function generateDynamicMeta(seedString: string, subject: string): string {
+export function generateDynamicMeta(seedString: string, subject: string, location: string = "Pune"): string {
    const seed = generateSeed(seedString + "_meta");
    const random = mulberry32(seed);
    
    const desc = [
-     `Award-winning ${subject}. View our portfolio and request a consultation today.`,
-     `Looking for ${subject}? KS Design Studio delivers uncompromising luxury and turnkey execution.`,
-     `Expert ${subject} tailored for elite patrons. Discover our design philosophy.`,
-     `Bespoke ${subject} solutions featuring premium materials and flawless delivery.`
+     `Award-winning ${subject} in ${location}. View our portfolio and request a consultation today.`,
+     `Looking for ${subject} in ${location}? KS Design Studio delivers uncompromising luxury and turnkey execution.`,
+     `Expert ${subject} tailored for elite patrons in ${location}. Discover our design philosophy.`,
+     `Bespoke ${subject} solutions featuring premium materials and flawless delivery across ${location}.`
    ];
 
    return desc[Math.floor(random() * desc.length)];
+}
+
+export function generateProjectCopy(projectName: string, builderName: string, service: string = "Complete Turnkey Interiors"): string {
+  const seed = generateSeed(projectName + builderName);
+  const random = mulberry32(seed);
+
+  const copyBlocks = [
+    `Transform your new home in ${projectName} by ${builderName} with our bespoke ${service.toLowerCase()}. We understand the unique floorplans and structural nuances of ${builderName} properties, allowing us to deliver seamless, move-in ready interiors.`,
+    `KS Design Studio specializes in crafting premium ${service.toLowerCase()} for residents of ${projectName}. From initial 3D visualization to flawless handover, we ensure your apartment by ${builderName} reflects the pinnacle of modern luxury.`,
+    `Upgrading your space in ${projectName}? Our expert designers provide tailored ${service.toLowerCase()} that maximize space and elevate the aesthetic value of your ${builderName} residence. Ensure your interiors match the premium lifestyle of the community.`
+  ];
+
+  return copyBlocks[Math.floor(random() * copyBlocks.length)];
 }

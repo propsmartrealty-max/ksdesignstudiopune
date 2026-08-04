@@ -4,10 +4,10 @@
  */
 
 export const PUNE_MARKETS = {
-  WEST_PUNE: ["Baner", "Baner Annexe", "Balewadi", "Mahalunge", "Sus", "Pashan", "Aundh", "Bavdhan", "Kothrud", "Warje", "Karve Nagar", "Erandwane", "Prabhat Road", "Shivajinagar", "Model Colony", "SB Road", "University Road", "Law College Road", "Deccan", "FC Road", "JM Road"],
-  IT_CORRIDOR: ["Hinjawadi Phase 1", "Hinjawadi Phase 2", "Hinjawadi Phase 3", "Wakad", "Punawale", "Tathawade", "Ravet", "Kiwale", "Pimple Saudagar", "Pimple Nilakh", "Kalewadi", "Thergaon", "Nigdi", "Pimpri", "Chinchwad"],
-  EAST_PUNE: ["Kharadi", "New Kharadi", "Viman Nagar", "Koregaon Park", "Kalyani Nagar", "Magarpatta", "Mundhwa", "Hadapsar", "Manjari", "Wagholi", "Lohegaon", "Dhanori", "Yerawada", "Keshav Nagar"],
-  SOUTH_PUNE: ["NIBM", "Mohammed Wadi", "Undri", "Kondhwa", "Pisoli", "Bibwewadi", "Katraj", "Narhe", "Sinhagad Road", "Ambegaon", "Dhankawadi", "PCMC", "Moshi", "Chikhali", "Charholi", "Akurdi", "Bhosari", "Talawade", "Pradhikaran", "Chakan", "Spine Road"]
+  WEST_PUNE: ["Baner", "Baner Annexe", "Balewadi", "Mahalunge", "Sus", "Pashan", "Aundh", "Bavdhan", "Kothrud", "Warje", "Karve Nagar", "Erandwane", "Prabhat Road", "Shivajinagar", "Model Colony", "SB Road", "University Road", "Law College Road", "Deccan", "FC Road", "JM Road", "Punawale", "Tathawade", "Ravet", "Kiwale", "Mamurdi"],
+  IT_CORRIDOR: ["Hinjewadi Phase 1", "Hinjewadi Phase 2", "Hinjewadi Phase 3", "Wakad", "Pimple Saudagar", "Pimple Nilakh", "Kalewadi", "Thergaon", "Nigdi", "Pimpri", "Chinchwad", "Akurdi", "Pradhikaran", "Bhosari", "Moshi", "Spine Road", "Chikhali", "Charholi", "Dighi", "Talawade", "Sangvi", "Dapodi", "Kasarwadi"],
+  EAST_PUNE: ["Kharadi", "New Kharadi", "Viman Nagar", "Koregaon Park", "Kalyani Nagar", "Magarpatta", "Mundhwa", "Hadapsar", "Manjari", "Wagholi", "Lohegaon", "Dhanori", "Yerawada", "Keshav Nagar", "Vishrantwadi"],
+  SOUTH_PUNE: ["NIBM", "Mohammed Wadi", "Undri", "Kondhwa", "Pisoli", "Bibwewadi", "Katraj", "Narhe", "Sinhagad Road", "Ambegaon", "Dhankawadi", "Wanowrie", "Amanora"]
 };
 
 // Flattened for easy iteration
@@ -22,24 +22,26 @@ export const SEO_LOCATIONS = {
 export const PUNE_NEIGHBORHOOD_USPS: Record<string, string> = {
   "Baner": "High-altitude luxury residences with panoramic hilltop views.",
   "Wakad": "Tech-luxe functional designs for high-speed IT professionals.",
-  "Hinjawadi Phase 1": "Ergonomic work-from-home sanctuaries for the technology elite.",
+  "Hinjewadi": "Ergonomic work-from-home sanctuaries for the technology elite.",
   "Kharadi": "Modern high-rise silhouettes with expansive eastern light.",
   "Balewadi": "Sophisticated river-facing monographs with quiet luxury vibes.",
   "Bavdhan": "Biophilic bungalow architecture integrated with nature.",
   "Koregaon Park": "Legacy heritage estates with high-fidelity restoration.",
   "Kothrud": "Traditional Maratha Modern aesthetics for cultural heartland homes.",
   "Magarpatta": "Sustainable integrated-city living with futuristic spatial flow.",
-  "Viman Nagar": "Cosmopolitan high-density luxury with aviation-inspired geometry."
+  "Viman Nagar": "Cosmopolitan high-density luxury with aviation-inspired geometry.",
+  "Tathawade": "Modern scalable apartments designed for growing families.",
+  "Punawale": "Emerging premium real estate demanding high-efficiency interiors.",
+  "PCMC": "Industrial-chic designs tailored for fast-paced urban expansion."
 };
 
 export const SEO_PROPERTY_TYPES = [
   "Apartment Interiors", "Luxury Apartment Interiors", "Studio Apartment", 
-  "2 BHK", "2.5 BHK", "3 BHK", "3.5 BHK", "4 BHK", "4.5 BHK", "5 BHK", 
+  "1 BHK", "2 BHK", "2.5 BHK", "3 BHK", "3.5 BHK", "4 BHK", "4.5 BHK", "5 BHK", 
   "Villa", "Bungalow", "Farmhouse", "Row House", "Independent House", 
   "Penthouse", "Duplex", "Builder Floors"
 ];
 
-// VOLUME 1 & 2 SILOS COMBINED
 export const SERVICE_SILOS = {
   RESIDENTIAL: ["Luxury Apartments", "Premium Apartments", "Budget Apartments", "2 BHK", "3 BHK", "4 BHK", "5 BHK", "Penthouse", "Duplex", "Villa", "Bungalow", "Farmhouse", "Row House", "Independent House", "Smart Homes", "Minimal Homes", "Modern Homes", "Luxury Homes", "Complete Home Interior", "Full Home Interior", "House Interior", "Home Decor"],
   COMMERCIAL: ["Office Interior", "IT Office", "Corporate Office", "Startup Office", "Restaurant", "Cafe", "Retail", "Showroom", "Hospital", "Clinic", "Salon", "Gym", "Hotel", "Coworking Space", "Educational Institute", "Industrial Office", "Warehouse Office"],
@@ -52,21 +54,12 @@ export const SERVICE_SILOS = {
 
 export const SEO_SERVICES = [...SERVICE_SILOS.RESIDENTIAL, ...SERVICE_SILOS.COMMERCIAL, ...SERVICE_SILOS.TURNKEY, ...SERVICE_SILOS.MODULAR];
 
-// VOLUME 2 INTENT KEYWORDS
 export const BUYER_INTENT_KEYWORDS = [
-  "Hire Interior Designer Pune", "Book Interior Designer Pune", "Interior Designer Near Me Pune", 
-  "Top Rated Interior Designers Pune", "Interior Design Services Pune", "Interior Design Experts Pune", 
-  "Interior Design Firm Pune", "Interior Design Agency Pune", "Interior Design Consultancy Pune", 
-  "Interior Execution Company Pune", "Best Interior Design Company Pune", "Book Free Interior Consultation Pune",
-  "Interior Design Cost Pune", "Interior Quote Pune", "Interior Estimate Pune", "Interior Cost Calculator Pune",
-  "Interior Design Packages Pune", "Interior EMI Pune"
+  "Hire", "Book", "Near Me", "Top Rated", "Services", "Experts", "Firm", "Agency", "Consultancy", "Execution", "Best", "Free Consultation"
 ];
 
 export const BRAND_TRUST_KEYWORDS = [
-  "Experienced Interior Designers Pune", "Award Winning Interior Designers Pune", "Trusted Interior Designers Pune",
-  "Professional Interior Company Pune", "Licensed Interior Contractors Pune", "Custom Home Interiors Pune",
-  "Interior Design Specialists Pune", "Complete Turnkey Interior Experts Pune", "Reliable Interior Designers Pune",
-  "Top Reviewed Interior Designers Pune"
+  "Experienced", "Award Winning", "Trusted", "Professional", "Licensed", "Custom", "Specialists", "Turnkey Experts", "Reliable", "Top Reviewed"
 ];
 
 export const CONFIGURATION_KEYWORDS = [
@@ -77,54 +70,64 @@ export const CONFIGURATION_KEYWORDS = [
 ];
 
 export const COST_GUIDES = [
-  "Interior Cost Pune", "Interior Cost Baner", "Interior Cost Wakad", "Interior Cost Hinjawadi", "Interior Cost Kharadi",
-  "Luxury Interior Cost", "Budget Interior Cost", "Villa Interior Cost", "Bungalow Interior Cost", "Office Interior Cost", 
-  "Commercial Interior Cost", "Kitchen Cost", "Wardrobe Cost", "Renovation Cost", "False Ceiling Cost", "Painting Cost"
+  "Cost", "Price", "Quotation", "Estimate", "Package", "EMI"
 ];
 
-// VOLUME 3 DATA INJECTIONS
-export const BUILDER_PROJECTS = [
-  "VTP Blue Waters", "VTP Bellissimo", "VTP Sierra", "VTP Leonara", "VTP Earth One",
-  "K Raheja Vistas", "Kolte Patil 24K", "Godrej Hillside", "Godrej Park World", "Life Republic",
-  "Paranjape Blue Ridge", "Megapolis", "Kohinoor Tinsel County", "Krisala Aventis", "GK Signature",
-  "Shapoorji Joyville", "Panchshil Towers", "Marvel Piazza", "Nyati Projects", "Gera Projects"
-];
+// PHASE 3 & 7: BUILDER & PROJECT ECOSYSTEM
+export const BUILDERS: Record<string, string[]> = {
+  "Godrej Properties": ["Godrej Hillside", "Godrej Forest Grove", "Godrej Park World", "Godrej Green Cove", "Godrej Evergreen Square", "Godrej 24"],
+  "VTP Realty": ["VTP Blue Waters", "VTP Sierra", "VTP Bellissimo", "VTP Leonara", "VTP Pegasus", "VTP Alpine", "VTP Earth One", "VTP Dolce Vita", "VTP Cygnus", "VTP Purvanchal"],
+  "Kolte-Patil Developers": ["Life Republic", "24K Stargaze", "24K Opula", "24K Sereno", "24K Altura", "Ivy Estate"],
+  "Kohinoor Group": ["Kohinoor Central Park", "Kohinoor Westview Reserve", "Kohinoor Famville", "Kohinoor Viva City", "Kohinoor Sapphire", "Kohinoor Rainbow", "Kohinoor Grandeur", "Kohinoor Riverdale", "Kohinoor Kaleido"],
+  "Mahindra Lifespaces": ["Mahindra Citadel", "Mahindra Antheia"],
+  "Lodha": ["Lodha Belmondo", "Lodha Massimo"],
+  "Gera Developments": ["Gera World of Joy", "Gera Island of Joy"],
+  "Vilas Javdekar": ["Yashwin Encore", "Palladio", "Songbird", "Yashwin"],
+  "Pharande Spaces": ["Pharande Puneville", "Pharande Kairosa", "Pharande Celestial City", "Pharande L Axis"],
+  "Rama Group": ["Rama Melange", "Rama Metro Life", "Rama Codename Kingdom"],
+  "Pride Group": ["Pride World City", "Pride Purple Park", "Pride Aloma", "Pride Platinum"],
+  "Kumar Properties": ["Kumar Megapolis", "Kumar Padmalaya", "Kumar Sophronia", "Kumar Princeville", "Kumar Prospera", "Kumar Parc Residences"],
+  "Nyati Group": ["Nyati Elysia", "Nyati Emerald", "Nyati Equinox", "Nyati Windchimes", "Nyati Chesterfield", "Nyati Elan"],
+  "Kasturi Housing": ["Kasturi The Balmoral Hillside", "Kasturi Epitome"],
+  "Shapoorji Pallonji": ["Shapoorji Sensorium", "Shapoorji Joyville", "Shapoorji Vanaha"],
+  "Rohan Builders": ["Rohan Ekam", "Rohan Seher", "Rohan Mithila"],
+  "Kalpataru": ["Kalpataru Jade Skyline"],
+  "Supreme Universal": ["Supreme Estia", "Supreme Pallacio"]
+};
+
+// Flatten builders for quick access
+export const ALL_PROJECTS = Object.values(BUILDERS).flat();
+export const ALL_BUILDERS = Object.keys(BUILDERS);
 
 export const SEO_COMPARISONS = [
-  "Best Interior Designers Baner vs Wakad",
-  "Baner Interior Designers vs Aundh",
-  "Wakad vs Hinjawadi Interior Designers",
-  "Kharadi vs Viman Nagar Interior Designers",
-  "Bavdhan vs Kothrud Interior Designers",
-  "Balewadi vs Mahalunge Interior Designers",
-  "Baner vs Balewadi Home Interiors",
-  "Luxury Interior Designers Baner vs Kalyani Nagar",
-  "Budget Interior Designers Wakad vs Tathawade",
-  "Premium Interior Designers Kharadi vs Koregaon Park"
+  "Livspace vs Local Interior Designer",
+  "HomeLane vs KS Design Studio",
+  "Turnkey Interior Designer vs Carpenter",
+  "Acrylic vs Laminate Kitchen",
+  "HDHMR vs Plywood Wardrobes",
+  "PU vs Laminate Finish",
+  "Quartz vs Granite Countertop"
 ];
 
 export const AI_VOICE_SEARCH = [
   "Who is the best interior designer in Pune",
-  "Which interior designer is best in Baner",
-  "Which interior designer is affordable in Wakad",
+  "Which interior designer works in Wakad",
   "How much does home interior cost in Pune",
   "How much does a 3 BHK interior cost",
-  "What is included in turnkey interiors",
-  "How long does home interior work take",
-  "Which modular kitchen is best",
-  "What is the average interior design budget",
-  "Best luxury interior design company in Pune",
-  "Best turnkey home interior company in Pune",
-  "Sustainable interior design company in Pune"
+  "Who provides turnkey interiors near me",
+  "Which interior designer offers modular kitchens in Baner",
+  "Best interior designer for Godrej Park World",
+  "Budget interior ideas for a new flat in Hinjewadi",
+  "Recommend a luxury interior designer in Baner"
 ];
 
-export const SEO_LONG_TAIL = [
-  "best interior designer for 2 bhk in Pune", "turnkey interior designer in Baner Pune", "affordable interior designer in Wakad Pune",
-  "luxury villa interior designer in Kharadi Pune", "modular kitchen designer in Hadapsar Pune", "office interior designer in Hinjewadi Pune",
-  "home interior packages Pune price", "interior designer Pune with execution", "Luxury Interior Designers for Apartments in Baner",
-  "Premium Turnkey Interior Designers in Balewadi", "Affordable Interior Designers for 3 BHK in Wakad", "Best Interior Designers for Villas in Mahalunge",
-  "Interior Design Company for Luxury Homes in Aundh", "Modern Apartment Interior Designers in Baner Annexe", "Complete Home Interior Solutions in Bavdhan",
-  "Turnkey Interior Designers for Premium Apartments in Sus", "Modular Kitchen Designers for Luxury Homes in Pashan", "Interior Renovation Company in Kothrud",
-  "Home Interior Designers for New Apartments in Baner", "Interior Designers for Ready Possession Flats in Mahalunge", "Luxury Office Interior Designers in Aundh",
-  "Commercial Interior Design Company in Baner", "Interior Designers for Independent Houses in Balewadi"
+export const POSSESSION_KEYWORDS = [
+  "interior designer after possession",
+  "home interiors after registration",
+  "flat interior after possession",
+  "apartment interior after handover",
+  "new home furnishing",
+  "complete interiors before shifting",
+  "move in ready interiors",
+  "possession interior package"
 ];

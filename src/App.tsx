@@ -35,6 +35,7 @@ const CostGuideLanding = React.lazy(() => import('./pages/CostGuideLanding'));
 const MagazineLanding = React.lazy(() => import('./pages/MagazineLanding'));
 const MagazineArticle = React.lazy(() => import('./pages/MagazineArticle'));
 const NotFound = React.lazy(() => import('./pages/NotFound'));
+const BuilderLanding = React.lazy(() => import('./pages/BuilderLanding'));
 import { AppProvider } from './context/AppContext';
 import { Mic } from 'lucide-react';
 import CommandPalette from './components/CommandPalette';
@@ -107,8 +108,12 @@ const AppContent: React.FC = () => {
               <Route path="/luxury-design/:location" element={<LocationLanding />} />
               <Route path="/cities/:cityName" element={<LocationLanding />} />
               <Route path="/interiors-at/:projectName" element={<ProjectLanding />} />
+              <Route path="/builder/:builderName" element={<BuilderLanding />} />
+              <Route path="/builder/:builderName/:projectName" element={<ProjectLanding />} />
               <Route path="/services/:serviceName" element={<ServiceLanding />} />
+              <Route path="/service/:locationSlug/:serviceSlug" element={<ServiceLanding />} />
               <Route path="/cost-guide/:location" element={<CostGuideLanding />} />
+              <Route path="/cost/:locationSlug/:propertyType" element={<CostGuideLanding />} />
               <Route path="/tectonic-series" element={<TectonicSeries />} />
               <Route path="/modular" element={<Services />} />
               <Route path="/turnkey" element={<Services />} />

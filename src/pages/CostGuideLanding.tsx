@@ -2,15 +2,18 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { IndianRupee, CheckCircle, ArrowRight, TrendingUp } from 'lucide-react';
 import { generateDynamicCopy } from '../utils/copyEngine';
+import SEOClusterLinks from '../components/SEO/SEOClusterLinks';
 
 const CostGuideLanding: React.FC = () => {
-  const { locationName } = useParams<{ locationName: string }>();
+  const { locationName, locationSlug, propertyType } = useParams<{ locationName?: string, locationSlug?: string, propertyType?: string }>();
   
-  // Format location name for display
-  const formattedLocation = locationName?.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') || 'Pune';
+  // Format variables for display
+  const rawLocation = locationSlug || locationName || 'Pune';
+  const formattedLocation = rawLocation.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  const formattedProperty = propertyType ? propertyType.split('-').map(word => word.toUpperCase()).join(' ') : 'Interior Design';
 
   // Generate deterministic dynamic copy based on URL
-  const uniqueCopy = generateDynamicCopy(locationName || 'default', `Interior Cost Guide in ${formattedLocation}`);
+  const uniqueCopy = generateDynamicCopy(rawLocation + (propertyType || ''), `${formattedProperty} Cost Guide in ${formattedLocation}`);
 
   const faqSchema = {
     "@context": "https://schema.org",
@@ -18,10 +21,10 @@ const CostGuideLanding: React.FC = () => {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": `What is the per square foot cost for interior design in ${formattedLocation}?`,
+        "name": `What is the per square foot cost for ${formattedProperty.toLowerCase()} in ${formattedLocation}?`,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": `In ${formattedLocation}, premium interior design typically starts at ₹1,500 to ₹2,500 per sq.ft., while ultra-luxury finishes can range from ₹3,000 to ₹5,000+ per sq.ft.`
+          "text": `In ${formattedLocation}, premium ${formattedProperty.toLowerCase()} typically starts at ₹1,500 to ₹2,500 per sq.ft., while ultra-luxury finishes can range from ₹3,000 to ₹5,000+ per sq.ft.`
         }
       },
       {
@@ -50,7 +53,7 @@ const CostGuideLanding: React.FC = () => {
               <span className="text-[10px] uppercase font-black tracking-[0.4em]">Investment Guide</span>
             </div>
             <h1 className="text-5xl md:text-7xl text-charcoal leading-tight mb-8">
-              Interior Cost Guide <br /> 
+              {formattedProperty} Cost Guide <br /> 
               <span className="italic">for {formattedLocation}</span>
             </h1>
             <p className="text-charcoal/50 text-xl font-light leading-relaxed mb-10">
@@ -82,7 +85,7 @@ const CostGuideLanding: React.FC = () => {
           <h2 className="text-2xl mb-8">Intelligence: Budgeting in {formattedLocation}</h2>
           <div className="space-y-8">
              <div>
-                <h3 className="text-sm font-bold uppercase tracking-widest text-charcoal mb-3">How much does interior design cost per sq ft in {formattedLocation}?</h3>
+                <h3 className="text-sm font-bold uppercase tracking-widest text-charcoal mb-3">How much does {formattedProperty.toLowerCase()} cost per sq ft in {formattedLocation}?</h3>
                 <p className="text-charcoal/60 text-sm leading-relaxed">For premium to luxury finishes in {formattedLocation}, turnkey interiors typically range from ₹1,500 to ₹3,500+ per square foot. This includes all civil modifications, modular units, lighting, and loose furniture.</p>
              </div>
              <div>
@@ -92,6 +95,7 @@ const CostGuideLanding: React.FC = () => {
           </div>
         </div>
       </div>
+      <SEOClusterLinks currentLocation={formattedLocation} />
     </div>
   );
 };

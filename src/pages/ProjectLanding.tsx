@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { MapPin, CheckCircle, ArrowRight, Building, ShieldCheck, Trophy } from 'lucide-react';
 import { PROJECTS } from '../constants';
+import SEOClusterLinks from '../components/SEO/SEOClusterLinks';
 
 const ProjectLanding: React.FC = () => {
   const { projectName } = useParams<{ projectName: string }>();
@@ -99,6 +100,7 @@ const ProjectLanding: React.FC = () => {
           </div>
         </div>
       </div>
+      <SEOClusterLinks />
     </div>
   );
 };
