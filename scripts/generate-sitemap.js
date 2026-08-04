@@ -84,9 +84,26 @@ function generateSitemaps() {
   }
   fs.writeFileSync(path.join(publicDir, 'sitemap-projects.xml'), createSitemapXML(projUrls), 'utf8');
 
-  // 5. Sitemap Index
+  // 5. Magazine & Knowledge Hub
+  const magSlugs = [
+    'rise-of-japandi-in-pune',
+    'sourcing-tuscan-marble',
+    'architecture-of-light',
+    'panchshil-towers-monograph',
+    'pune-luxury-hub',
+    'mumbai-minimalism',
+    'wakad-design-evolution',
+    'bandra-bohemian',
+    'ravet-punawale-trends',
+    'lighting-architecture-2024'
+  ];
+  const magUrls = magSlugs.map(slug => ({ route: `/magazine/${slug}`, priority: 0.8, changefreq: "monthly" }));
+  magUrls.push({ route: '/magazine', priority: 0.9, changefreq: "weekly" });
+  fs.writeFileSync(path.join(publicDir, 'sitemap-magazine.xml'), createSitemapXML(magUrls), 'utf8');
+
+  // 6. Sitemap Index
   let indexXml = `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
-  const sitemaps = ['sitemap-core.xml', 'sitemap-locations.xml', 'sitemap-services.xml', 'sitemap-projects.xml'];
+  const sitemaps = ['sitemap-core.xml', 'sitemap-locations.xml', 'sitemap-services.xml', 'sitemap-projects.xml', 'sitemap-magazine.xml'];
   
   sitemaps.forEach(sitemap => {
     indexXml += `  <sitemap>\n    <loc>${BASE_URL}/${sitemap}</loc>\n  </sitemap>\n`;

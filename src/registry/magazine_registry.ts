@@ -85,5 +85,113 @@ export const MAGAZINE_ARTICLES: MagazineArticle[] = [
     ],
     pullQuote: "We approached the volume not by adding walls, but by introducing monolithic spatial dividers.",
     tags: ["Case Study", "Panchshil Towers", "Sky Mansion", "Monochrome"]
+  },
+  {
+    id: 'pune-luxury-hub',
+    slug: 'pune-luxury-hub',
+    title: 'Pune: The New Centre for Premium Interiors',
+    subtitle: 'Analyzing why micro-markets like Baner and Wakad are attracting elite residential design investments.',
+    category: 'Market Trends',
+    author: 'KS Design Studio',
+    date: 'April 15, 2024',
+    readTime: "7 min read",
+    coverImage: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200",
+    content: [
+      "Pune is no longer just the Oxford of the East or an IT hub; it is rapidly emerging as a center for ultra-luxury real estate and premium interior design.",
+      "The influx of high-net-worth individuals into micro-markets like Baner, Balewadi, and Wakad has created a demand for sophisticated, internationally inspired living spaces.",
+      "At KS Design Studio, we are witnessing a paradigm shift. Clients are moving away from generic builder finishes and demanding bespoke, highly personalized interior narratives."
+    ],
+    pullQuote: "Clients are moving away from generic builder finishes and demanding bespoke, highly personalized interior narratives.",
+    tags: ["Market Trends", "Pune Real Estate", "Luxury Interiors"]
+  },
+  {
+    id: 'mumbai-minimalism',
+    slug: 'mumbai-minimalism',
+    title: 'Contemporary Minimalism in South Mumbai High-Rises',
+    subtitle: 'How we adapt "Quiet Luxury" for the vertical silhouettes of Worli and Lower Parel.',
+    category: 'Regional Design',
+    author: 'KS Design Studio',
+    date: 'April 12, 2024',
+    readTime: "6 min read",
+    coverImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200",
+    content: [
+      "Designing for South Mumbai presents a unique set of challenges: maximizing perceived volume within strict square footage constraints while maintaining an aura of uncompromising luxury.",
+      "Our approach relies on 'Quiet Luxury'—a philosophy that eschews loud branding and excessive ornamentation in favor of material quality and impeccable craftsmanship.",
+      "By utilizing seamless wall paneling, concealed storage, and a monochromatic palette, we create a sense of expansive calm amidst the vertical density."
+    ],
+    pullQuote: "Quiet Luxury eschews loud branding in favor of material quality and impeccable craftsmanship.",
+    tags: ["Mumbai", "Minimalism", "Quiet Luxury"]
+  },
+  {
+    id: 'wakad-design-evolution',
+    slug: 'wakad-design-evolution',
+    title: 'The Design Evolution of Wakad: From IT Hub to Tech-Luxe',
+    subtitle: 'A deep-dive into the unique spatial requirements of Hinjewadi-based patrons.',
+    category: 'Market Intelligence',
+    author: 'KS Design Studio',
+    date: 'April 10, 2024',
+    readTime: "8 min read",
+    coverImage: "https://images.unsplash.com/photo-1600566753086-00f18efc2295?auto=format&fit=crop&q=80&w=1200",
+    content: [
+      "Wakad's proximity to Hinjewadi has transformed it into a residential haven for tech professionals. This demographic demands interiors that are not only beautiful but highly functional and technologically integrated.",
+      "The 'Tech-Luxe' aesthetic is defined by smart home automation seamlessly blended with warm, organic materials. It's about hiding the technology behind beautiful timber and stone.",
+      "Our recent projects in Wakad feature voice-controlled circadian lighting, automated shading, and integrated acoustic solutions for the ultimate work-from-home environment."
+    ],
+    pullQuote: "The Tech-Luxe aesthetic is defined by smart home automation seamlessly blended with warm, organic materials.",
+    tags: ["Wakad", "Tech-Luxe", "Smart Home"]
+  },
+  {
+    id: 'bandra-bohemian',
+    slug: 'bandra-bohemian',
+    title: 'Bandra Bohemian: Fusing Heritage with Modern Interior Design',
+    subtitle: 'Exploring our latest interior commissions in Mumbai’s cultural heart.',
+    category: 'Regional Design',
+    author: 'KS Design Studio',
+    date: 'April 08, 2024',
+    readTime: "5 min read",
+    coverImage: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=1200",
+    content: [
+      "Bandra possesses a unique architectural heritage, a blend of Portuguese colonial charm and modern vibrancy. Designing here requires a delicate touch.",
+      "Our 'Bandra Bohemian' style fuses heritage elements like patterned cement tiles and arched doorways with contemporary, clean-lined furniture.",
+      "The result is a space that feels deeply rooted in its location yet entirely modern in its execution."
+    ],
+    pullQuote: "The result is a space that feels deeply rooted in its location yet entirely modern in its execution.",
+    tags: ["Bandra", "Bohemian", "Heritage Design"]
+  },
+  {
+    id: 'ravet-punawale-trends',
+    slug: 'ravet-punawale-trends',
+    title: 'Design Horizons: PCMC’s Northbound Expansion',
+    subtitle: 'Spatial strategies for the emerging luxury clusters of Ravet and Punawale.',
+    category: 'PCMC Trends',
+    author: 'KS Design Studio',
+    date: 'April 05, 2024',
+    readTime: "6 min read",
+    coverImage: "https://images.unsplash.com/photo-1595514535313-5a022f4621c9?auto=format&fit=crop&q=80&w=1200",
+    content: [
+      "As Pune expands northwards, Ravet and Punawale are emerging as new frontiers for premium residential developments.",
+      "The spacious layouts in these areas allow for ambitious interior planning, including expansive open-plan living areas and dedicated leisure zones.",
+      "Our design strategies for this region focus on maximizing natural light and creating seamless transitions between indoor and outdoor spaces."
+    ],
+    pullQuote: "The spacious layouts allow for ambitious interior planning and dedicated leisure zones.",
+    tags: ["Ravet", "Punawale", "PCMC", "Open Plan"]
+  },
+  {
+    id: 'lighting-architecture-2024',
+    slug: 'lighting-architecture-2024',
+    title: 'Lighting Architecture: The Silent Sculptor of Volume',
+    subtitle: 'A technical guide to lux levels and color temperatures for premium residences.',
+    category: 'Technical Guide',
+    author: 'KS Design Studio',
+    date: 'April 02, 2024',
+    readTime: "9 min read",
+    coverImage: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200",
+    content: [
+      "Lighting is arguably the most crucial element in interior design, capable of transforming the perceived volume and mood of a space instantly.",
+      "We employ a layered approach: ambient lighting for general illumination, task lighting for specific activities, and accent lighting to highlight architectural features or artwork.",
+      "Understanding lux levels and color temperatures (measured in Kelvin) is essential for creating a comfortable and sophisticated environment."
+    ],
+    pullQuote: "Lighting is arguably the most crucial element in interior design.",
+    tags: ["Lighting", "Technical Guide", "Lux Levels"]
   }
 ];

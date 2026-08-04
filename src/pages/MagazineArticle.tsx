@@ -159,6 +159,23 @@ const MagazineArticle: React.FC = () => {
              </div>
            </div>
          </div>
+         
+         {/* Dynamic CTA Engine */}
+         <div className="mt-20 p-12 bg-slate-50 border border-charcoal/5 rounded-3xl text-center">
+            <span className="text-brass font-bold uppercase tracking-[0.4em] text-[10px] mb-4 block">Next Steps</span>
+            <h3 className="text-3xl text-charcoal mb-4">Inspired by this narrative?</h3>
+            <p className="text-charcoal/60 mb-8 max-w-lg mx-auto">
+              Our principal designers are available to discuss how we can adapt these exact principles into your space.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+               <Link to="/contact" className="bg-charcoal text-white px-8 py-4 text-xs uppercase tracking-widest font-black rounded-full hover:bg-brass transition-colors w-full sm:w-auto">
+                 Book a Consultation
+               </Link>
+               <Link to="/pricing" className="bg-white border border-charcoal/10 text-charcoal px-8 py-4 text-xs uppercase tracking-widest font-black rounded-full hover:border-brass transition-colors w-full sm:w-auto">
+                 View Cost Guide
+               </Link>
+            </div>
+         </div>
       </div>
     </article>
   );
