@@ -19,6 +19,27 @@ export const SEO_LOCATIONS = {
   north: PUNE_MARKETS.IT_CORRIDOR,
 };
 
+export const GEO_COORDINATES: Record<string, { lat: number, lng: number }> = {
+  "Baner": { lat: 18.5590, lng: 73.7868 },
+  "Wakad": { lat: 18.5996, lng: 73.7486 },
+  "Hinjewadi Phase 1": { lat: 18.5913, lng: 73.7389 },
+  "Hinjewadi": { lat: 18.5913, lng: 73.7389 },
+  "Balewadi": { lat: 18.5759, lng: 73.7788 },
+  "Aundh": { lat: 18.5573, lng: 73.8058 },
+  "Kothrud": { lat: 18.5074, lng: 73.8077 },
+  "Kharadi": { lat: 18.5515, lng: 73.9348 },
+  "Viman Nagar": { lat: 18.5679, lng: 73.9143 },
+  "Koregaon Park": { lat: 18.5362, lng: 73.8939 },
+  "Magarpatta": { lat: 18.5126, lng: 73.9255 },
+  "Hadapsar": { lat: 18.4967, lng: 73.9417 },
+  "Pimple Saudagar": { lat: 18.5927, lng: 73.7944 },
+  "Tathawade": { lat: 18.6186, lng: 73.7461 },
+  "Punawale": { lat: 18.6337, lng: 73.7371 },
+  "Ravet": { lat: 18.6439, lng: 73.7441 },
+  // Default to Pune center for unspecified micro-markets
+  "Default": { lat: 18.5204, lng: 73.8567 }
+};
+
 export const PUNE_NEIGHBORHOOD_USPS: Record<string, string> = {
   "Baner": "High-altitude luxury residences with panoramic hilltop views.",
   "Wakad": "Tech-luxe functional designs for high-speed IT professionals.",

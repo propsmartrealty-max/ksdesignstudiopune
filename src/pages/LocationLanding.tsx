@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { SEO_LOCATIONS, SEO_PROPERTY_TYPES, PUNE_NEIGHBORHOOD_USPS } from '../registry/seo_registry';
+import { SEO_LOCATIONS, SEO_PROPERTY_TYPES, PUNE_NEIGHBORHOOD_USPS, GEO_COORDINATES } from '../registry/seo_registry';
 import { MapPin, CheckCircle, ArrowRight, Star, Map as MapIcon } from 'lucide-react';
 import { generateDynamicCopy } from '../utils/copyEngine';
 import SEOClusterLinks from '../components/SEO/SEOClusterLinks';
@@ -13,7 +13,9 @@ const LocationLanding: React.FC = () => {
   const formattedLocation = location?.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') || 'Pune';
   
   const neighborhoodUSP = PUNE_NEIGHBORHOOD_USPS[formattedLocation];
-  const uniqueCopy = generateDynamicCopy(location || 'pune', `Interior Design in ${formattedLocation}`);
+  const uniqueCopy = generateDynamicCopy(location || 'pune', `Interior Design in ${formattedLocation}`, formattedLocation);
+  
+  const geo = GEO_COORDINATES[formattedLocation] || GEO_COORDINATES["Default"];
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -154,10 +156,24 @@ const LocationLanding: React.FC = () => {
             <div className="absolute top-0 right-0 p-8 opacity-10">
                <MapIcon size={80} />
             </div>
-            <div className="relative z-10">
+            <div className="relative z-10 h-full flex flex-col">
               <h3 className="text-xl  mb-6 text-brass italic">Local Intelligence</h3>
-              <p className="text-white/40 text-xs mb-8 italic">Designing sanctuaries in {formattedLocation}’s fastest growing residential hubs with biophilic flow and high-fidelity textures.</p>
-              <Link to="/contact" className="flex items-center space-x-3 group">
+              <p className="text-white/40 text-xs mb-8 italic flex-grow">Designing sanctuaries in {formattedLocation}’s fastest growing residential hubs with biophilic flow and high-fidelity textures.</p>
+              
+              <div className="w-full h-32 rounded-xl overflow-hidden mb-6 opacity-80 hover:opacity-100 transition-opacity">
+                <iframe 
+                  src={`https://www.google.com/maps?q=${geo.lat},${geo.lng}&hl=en&z=14&output=embed`}
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen={false} 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title={`KS Design Studio Serving ${formattedLocation}`}
+                />
+              </div>
+
+              <Link to="/contact" className="flex items-center space-x-3 group mt-auto">
                  <span className="text-[10px] uppercase font-black tracking-[0.5em] group-hover:text-brass transition-colors">Book Consult</span>
                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
               </Link>

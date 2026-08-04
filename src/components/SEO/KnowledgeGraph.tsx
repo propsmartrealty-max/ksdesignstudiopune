@@ -1,4 +1,5 @@
 import React from 'react';
+import { GEO_COORDINATES } from '../../registry/seo_registry';
 
 interface KnowledgeGraphProps {
   location?: string;
@@ -97,12 +98,22 @@ export const KnowledgeGraph: React.FC<KnowledgeGraphProps> = ({ location, servic
   // Specific Service or Property Schema for AI Engine Optimization
   if (service || propertyType) {
     const targetName = service || propertyType;
+    const geo = location && GEO_COORDINATES[location] ? GEO_COORDINATES[location] : GEO_COORDINATES["Default"];
+    
     schemas.push({
       "@context": "https://schema.org",
-      "@type": "Service",
+      "@type": ["Service", "ServiceAreaBusiness"],
       "serviceType": targetName,
       "provider": { "@id": `${SITE_URL}/#organization` },
-      "areaServed": location ? { "@type": "City", "name": location } : { "@type": "City", "name": "Pune" },
+      "areaServed": location ? { 
+        "@type": "City", 
+        "name": location,
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": geo.lat,
+          "longitude": geo.lng
+        }
+      } : { "@type": "City", "name": "Pune" },
       "offers": costEstimate ? {
         "@type": "Offer",
         "priceSpecification": {

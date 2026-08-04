@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { MapPin, CheckCircle, ArrowRight, Star, Settings } from 'lucide-react';
 import { generateDynamicCopy } from '../utils/copyEngine';
+import { GEO_COORDINATES } from '../registry/seo_registry';
 import SEOClusterLinks from '../components/SEO/SEOClusterLinks';
 import KnowledgeGraph from '../components/SEO/KnowledgeGraph';
 
@@ -14,6 +15,8 @@ const ServiceLanding: React.FC = () => {
   
   const formattedService = rawService.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
   const formattedLocation = rawLocation.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  
+  const geo = GEO_COORDINATES[formattedLocation] || GEO_COORDINATES["Default"];
   
   // Generate deterministic dynamic copy based on URL
   const uniqueCopy = generateDynamicCopy(rawService + rawLocation, formattedService, formattedLocation);
