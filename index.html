@@ -21,7 +21,7 @@
   <link rel="dns-prefetch" href="https://images.unsplash.com" />
 
   <!-- Google Search Console Verification -->
-  <meta name="google-site-verification" content="INSERT_GSC_CODE_HERE" />
+  <meta name="google-site-verification" content="%VITE_GSC_VERIFICATION%" />
 
   <!-- SEO: Canonical URL handled dynamically by React -->
 
@@ -35,13 +35,25 @@
   <!-- Neural Acceleration: LCP Preload -->
   <link rel="preload" href="/assets/webp/hero_foyer-Dmv-Yoj7.webp" as="image" type="image/webp" fetchpriority="high" />
 
-  <!-- Google tag (gtag.js) - Placeholder for Measurement ID -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <!-- Google Consent Mode v2 Default State -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    
+    // Default to denied until user accepts CookieConsent banner
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'analytics_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied'
+    });
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=%VITE_GA_ID%"></script>
+  <script>
     gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
+    gtag('config', '%VITE_GA_ID%');
   </script>
 
   <!-- PWA Service Worker Registration -->

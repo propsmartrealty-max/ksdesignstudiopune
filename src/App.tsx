@@ -40,6 +40,10 @@ import { AppProvider } from './context/AppContext';
 import { Mic } from 'lucide-react';
 import CommandPalette from './components/CommandPalette';
 import ErrorBoundary from './components/ErrorBoundary';
+import CookieConsent from './components/CookieConsent';
+
+const PrivacyPolicy = React.lazy(() => import('./pages/PrivacyPolicy'));
+const TermsOfService = React.lazy(() => import('./pages/TermsOfService'));
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -123,6 +127,8 @@ const AppContent: React.FC = () => {
               <Route path="/admin" element={<Admin />} />
               <Route path="/magazine" element={<MagazineLanding />} />
               <Route path="/magazine/:slug" element={<MagazineArticle />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-of-service" element={<TermsOfService />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </React.Suspense>
@@ -150,6 +156,7 @@ const AppContent: React.FC = () => {
           <WhatsAppButton />
           <FloatingContactCTA />
           <DesignLiveWorkshop isOpen={isWorkshopOpen} onClose={() => setIsWorkshopOpen(false)} />
+          <CookieConsent />
           <Footer />
         </>
       )}

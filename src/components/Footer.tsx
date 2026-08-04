@@ -174,9 +174,9 @@ const Footer: React.FC = () => {
               © {new Date().getFullYear()} KS DESIGN STUDIO GLOBAL
             </p>
             <div className="flex space-x-10 text-charcoal/60 text-[9px] uppercase tracking-[0.3em] font-black">
-              <a href="#" className="hover:text-brass transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-brass transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-brass transition-colors">Sitemap</a>
+              <Link to="/privacy-policy" className="hover:text-brass transition-colors">Privacy Policy</Link>
+              <Link to="/terms-of-service" className="hover:text-brass transition-colors">Terms of Service</Link>
+              <a href="/sitemap.xml" className="hover:text-brass transition-colors">Sitemap</a>
             </div>
           </div>
           <p className="text-[9px] uppercase tracking-[0.6em] font-black text-brass/30">DECCAN_TECTONICS_V_5.2</p>
