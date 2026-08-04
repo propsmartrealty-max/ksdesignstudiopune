@@ -47,13 +47,13 @@ async function initiateIndexing() {
 
   const urlsToIndex = [
     'https://ksdesignstudio.in/',
-    'https://ksdesignstudio.in/#/portfolio',
-    'https://ksdesignstudio.in/#/laboratory',
-    'https://ksdesignstudio.in/#/knowledge',
-    'https://ksdesignstudio.in/#/contact',
-    ...locations.map(loc => `https://ksdesignstudio.in/#/interiors-in/${loc}`),
-    ...locations.map(loc => `https://ksdesignstudio.in/#/luxury-design/${loc}`),
-    ...projectSlugs.map(slug => `https://ksdesignstudio.in/#/interiors-at/${slug}`)
+    'https://ksdesignstudio.in/portfolio',
+    'https://ksdesignstudio.in/laboratory',
+    'https://ksdesignstudio.in/knowledge',
+    'https://ksdesignstudio.in/contact',
+    ...locations.map(loc => `https://ksdesignstudio.in/interiors-in/${loc}`),
+    ...locations.map(loc => `https://ksdesignstudio.in/luxury-design/${loc}`),
+    ...projectSlugs.map(slug => `https://ksdesignstudio.in/interiors-at/${slug}`)
   ];
 
   console.log(`Initiating Google Indexing for ${urlsToIndex.length} high-fidelity routes...`);

@@ -158,6 +158,65 @@ const LocationLanding: React.FC = () => {
           </div>
         </div>
 
+        {/* FAQ & People Also Ask Section for SEO Dominance */}
+        <div className="mb-32">
+          <h2 className="text-3xl text-charcoal mb-10">Frequently Asked Questions about Interiors in {formattedLocation}</h2>
+          <div className="space-y-6">
+            {[
+              {
+                q: `How much does interior design cost in ${formattedLocation}?`,
+                a: `The cost of interior design in ${formattedLocation} typically ranges from ₹800 to ₹2500 per sq.ft depending on the scope of work, material finishes, and luxury elements chosen. A standard 3BHK premium transformation starts around ₹15 Lakhs.`
+              },
+              {
+                q: `Do you provide turnkey interior solutions in ${formattedLocation}?`,
+                a: `Yes, we are end-to-end turnkey interior contractors. From civil modifications, plumbing, and false ceiling to custom modular furniture and styling, our ${formattedLocation} team manages the entire project lifecycle.`
+              },
+              {
+                q: `How long does an interior project take in ${formattedLocation}?`,
+                a: `For a standard apartment in ${formattedLocation}, our timeline is strictly 45 to 90 days from the design sign-off, facilitated by our automated in-house manufacturing units.`
+              }
+            ].map((faq, i) => (
+              <div key={i} className="glass-premium p-8 rounded-2xl">
+                <h3 className="text-lg font-bold text-charcoal mb-3">{faq.q}</h3>
+                <p className="text-sm text-zinc-600 leading-relaxed">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+          {/* Dynamic FAQ Schema Injection */}
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": `How much does interior design cost in ${formattedLocation}?`,
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": `The cost of interior design in ${formattedLocation} typically ranges from ₹800 to ₹2500 per sq.ft depending on the scope of work, material finishes, and luxury elements chosen.`
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": `Do you provide turnkey interior solutions in ${formattedLocation}?`,
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": `Yes, we are end-to-end turnkey interior contractors. From civil modifications, plumbing, and false ceiling to custom modular furniture and styling, our ${formattedLocation} team manages the entire project lifecycle.`
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": `How long does an interior project take in ${formattedLocation}?`,
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": `For a standard apartment in ${formattedLocation}, our timeline is strictly 45 to 90 days from the design sign-off, facilitated by our automated in-house manufacturing units.`
+                  }
+                }
+              ]
+            })}
+          </script>
+        </div>
+
         {/* Long-Tail Dominance Section */}
         <div className="pt-20 border-t border-charcoal/5">
           <span className="text-annotation block mb-12">Programmatic SEO Clusters // {formattedLocation}</span>
