@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { IndianRupee, CheckCircle, ArrowRight, TrendingUp } from 'lucide-react';
 import { generateDynamicCopy } from '../utils/copyEngine';
 import SEOClusterLinks from '../components/SEO/SEOClusterLinks';
+import KnowledgeGraph from '../components/SEO/KnowledgeGraph';
 
 const CostGuideLanding: React.FC = () => {
   const { locationName, locationSlug, propertyType } = useParams<{ locationName?: string, locationSlug?: string, propertyType?: string }>();
@@ -43,6 +44,7 @@ const CostGuideLanding: React.FC = () => {
       <script type="application/ld+json">
         {JSON.stringify(faqSchema)}
       </script>
+      <KnowledgeGraph location={formattedLocation} propertyType={formattedProperty} costEstimate="1500000" />
       <div className="absolute inset-0 architect-grid opacity-5 pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">

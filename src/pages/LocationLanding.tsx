@@ -4,6 +4,7 @@ import { SEO_LOCATIONS, SEO_PROPERTY_TYPES, PUNE_NEIGHBORHOOD_USPS } from '../re
 import { MapPin, CheckCircle, ArrowRight, Star, Map as MapIcon } from 'lucide-react';
 import { generateDynamicCopy } from '../utils/copyEngine';
 import SEOClusterLinks from '../components/SEO/SEOClusterLinks';
+import KnowledgeGraph from '../components/SEO/KnowledgeGraph';
 
 const LocationLanding: React.FC = () => {
   const { location } = useParams<{ location: string }>();
@@ -76,6 +77,7 @@ const LocationLanding: React.FC = () => {
       <script type="application/ld+json">
         {JSON.stringify(localServiceSchema)}
       </script>
+      <KnowledgeGraph location={formattedLocation} />
       <div className="absolute inset-0 architect-grid opacity-5 pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -106,9 +108,13 @@ const LocationLanding: React.FC = () => {
           
           <div className="hidden lg:block w-[400px] h-[500px] rounded-[3rem] overflow-hidden relative glass-premium shadow-2xl skew-y-1">
              <img 
-               src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1200" 
+               src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200" 
                alt={`${formattedLocation} Interiors`} 
                className="w-full h-full object-cover opacity-80"
+               loading="lazy"
+               decoding="async"
+               width="1200"
+               height="800"
              />
              <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent" />
              <div className="absolute bottom-10 left-10">

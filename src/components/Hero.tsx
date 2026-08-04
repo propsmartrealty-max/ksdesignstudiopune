@@ -8,8 +8,8 @@ export default function Hero() {
         className="absolute inset-0 bg-cover bg-center animate-slow-zoom z-0 opacity-40" 
         style={{ backgroundImage: `url(${heroFoyer})` }} 
       />
-      {/* SEO Alt Tag Hardening */}
-      <img src={heroFoyer} alt="KS Design Studio Pune | Premium Residential Interiors & Bungalows" className="sr-only" />
+      {/* SEO Alt Tag Hardening & Core Web Vitals LCP optimization */}
+      <img fetchPriority="high" decoding="sync" src={heroFoyer} alt="KS Design Studio Pune | Premium Residential Interiors & Bungalows" className="sr-only" />
       <div className="absolute inset-0 architect-grid opacity-[0.05] z-10" />
       <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white/90 z-10" />
       

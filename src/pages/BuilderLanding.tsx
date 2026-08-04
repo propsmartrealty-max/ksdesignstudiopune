@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { MapPin, CheckCircle, ArrowRight, Building2, ShieldCheck, Grid } from 'lucide-react';
 import { BUILDERS } from '../registry/seo_registry';
 import SEOClusterLinks from '../components/SEO/SEOClusterLinks';
+import KnowledgeGraph from '../components/SEO/KnowledgeGraph';
 
 const BuilderLanding: React.FC = () => {
   const { builderName } = useParams<{ builderName: string }>();
@@ -16,6 +17,7 @@ const BuilderLanding: React.FC = () => {
 
   return (
     <div className="pt-32 pb-20 bg-white relative overflow-hidden">
+      <KnowledgeGraph builder={formattedBuilder} />
       <div className="absolute inset-0 architect-grid opacity-5 pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -47,6 +49,10 @@ const BuilderLanding: React.FC = () => {
                src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=1200" 
                alt={`${formattedBuilder} Interiors`} 
                className="w-full h-full object-cover opacity-80"
+               loading="lazy"
+               decoding="async"
+               width="1200"
+               height="800"
              />
              <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-transparent" />
              <div className="absolute bottom-10 left-10">
