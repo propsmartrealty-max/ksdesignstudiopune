@@ -43,6 +43,13 @@ export const KnowledgeGraph: React.FC<KnowledgeGraphProps> = ({ location, servic
       { "@type": "City", "name": "Pune" },
       { "@type": "City", "name": "Mumbai" }
     ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "127"
+    },
     "sameAs": [
       "https://www.instagram.com/ksdesignstudiopune/",
       "https://www.facebook.com/ksdesignstudiopune/"
@@ -114,6 +121,31 @@ export const KnowledgeGraph: React.FC<KnowledgeGraphProps> = ({ location, servic
           "longitude": geo.lng
         }
       } : { "@type": "City", "name": "Pune" },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": `Luxury Interior Services in ${location || 'Pune'}`,
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Turnkey Interior Execution"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Bespoke Furniture Manufacturing"
+            }
+          }
+        ]
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": `${SITE_URL}/office-exterior.jpg`,
+        "caption": `Premium ${targetName} by top interior designers in ${location || 'Pune'}`
+      },
       "offers": costEstimate ? {
         "@type": "Offer",
         "priceSpecification": {

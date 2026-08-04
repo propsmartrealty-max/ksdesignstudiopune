@@ -17,20 +17,19 @@ function generateSeed(str: string) {
 }
 
 const INTROS = [
-  "Elevating the standard of A-grade {SUBJECT} across {LOCATION}.",
-  "Recognized as the #1 premium design studio redefining {SUBJECT} in {LOCATION}.",
-  "Masterful architectural interventions specializing in ultra-luxury {SUBJECT}.",
-  "Uncompromising A-grade quality and precision engineering for {SUBJECT}.",
-  "Delivering Pune's top-tier {SUBJECT} with absolute discretion and flawless execution in {LOCATION}.",
-  "Looking for the best interior designer near you in {LOCATION}? We deliver uncompromising A-grade quality and precision engineering for {SUBJECT}."
+  "Ranked as the Top Interior Designers in {LOCATION}, we elevate the standard of A-grade {SUBJECT}.",
+  "Recognized as the #1 premium design studio outperforming standard contractors for {SUBJECT} in {LOCATION}.",
+  "Masterful architectural interventions specializing in ultra-luxury {SUBJECT}, unmatched by local competition.",
+  "Uncompromising A-grade quality and precision engineering for {SUBJECT}, establishing us as the top-rated firm in {LOCATION}.",
+  "Delivering Pune's top-tier {SUBJECT} with absolute discretion and flawless execution, cementing our position as the best interior designer near you in {LOCATION}."
 ];
 
 const BODIES = [
-  "As Pune's leading luxury interior design firm, we merge structural integrity with bespoke aesthetic vocabularies to create masterful A-grade environments. Every dimension is calibrated for maximum psychological comfort and visual supremacy.",
-  "Our proprietary execution framework ensures that the delivery of your space is as flawless as the initial 3D visualization. We source exclusively from elite material libraries across the globe, ensuring an A-grade finish unmatched in the Pune market.",
-  "By focusing on tactile materiality and lighting architecture, we transform raw floorplans into sophisticated sanctuaries that reflect the pinnacle of modern living. We are the trusted choice for Pune's most exclusive properties.",
-  "Our studio operates at the intersection of parametric design and heritage craftsmanship. We do not just decorate rooms; we architect atmospheres for Pune's elite.",
-  "Leveraging advanced spatial metrics and high-fidelity rendering technology, we guarantee that the final handover exceeds the highest echelons of expectation, cementing our status as the top-rated interior designers in Pune."
+  "As Pune's leading luxury interior design firm, we merge structural integrity with bespoke aesthetic vocabularies. Unlike mass-market brands or generic carpenters, every dimension is calibrated for maximum psychological comfort and visual supremacy.",
+  "Our proprietary execution framework ensures that the delivery of your space is as flawless as the initial 3D visualization. We source exclusively from elite material libraries across the globe, ensuring an A-grade finish that standard competitors in {LOCATION} simply cannot match.",
+  "By focusing on tactile materiality and lighting architecture, we transform raw floorplans into sophisticated sanctuaries. We are the trusted choice for {LOCATION}'s most exclusive properties, far surpassing the quality of automated interior platforms.",
+  "Our studio operates at the intersection of parametric design and heritage craftsmanship. We do not just decorate rooms; we architect atmospheres for {LOCATION}'s elite.",
+  "Leveraging advanced spatial metrics and high-fidelity rendering technology, we guarantee that the final handover exceeds the highest echelons of expectation, unequivocally cementing our status as the top-rated interior designers in {LOCATION} and across Pune."
 ];
 
 const OUTROS = [

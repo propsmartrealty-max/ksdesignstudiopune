@@ -36,6 +36,13 @@ export const GEO_COORDINATES: Record<string, { lat: number, lng: number }> = {
   "Tathawade": { lat: 18.6186, lng: 73.7461 },
   "Punawale": { lat: 18.6337, lng: 73.7371 },
   "Ravet": { lat: 18.6439, lng: 73.7441 },
+  "Mahalunge": { lat: 18.5721, lng: 73.7431 },
+  "Chinchwad": { lat: 18.6279, lng: 73.7834 },
+  "Pimpri": { lat: 18.6298, lng: 73.7997 },
+  "Kalyani Nagar": { lat: 18.5471, lng: 73.9033 },
+  "Pashan": { lat: 18.5398, lng: 73.7977 },
+  "Nigdi": { lat: 18.6508, lng: 73.7656 },
+  "Bavdhan": { lat: 18.5133, lng: 73.7758 },
   // Default to Pune center for unspecified micro-markets
   "Default": { lat: 18.5204, lng: 73.8567 }
 };
