@@ -90,7 +90,8 @@ const Schema: React.FC = () => {
     ],
     "sameAs": [
       "https://www.instagram.com/ksdesignstudiopune/",
-      "https://www.facebook.com/ksdesignstudiopune/"
+      "https://www.facebook.com/ksdesignstudiopune/",
+      "https://www.google.com/maps?sca_esv=f2a7ccf26385c224&hl=en&biw=1440&bih=778&output=search&q=ks+design+studio&source=lnms&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8cQAAwka5J92rwZWDkn1wAD32kXDVSBwjf6cTOeLVB2-qkztBwHLa5-dxplkZyiGjBBZR3WsDzeKSmW1ZOavIYwnr36x9SORw1EP5ROMtPycGXb5gs4R6ea18NoB6OHpK3CIKm67zX0ez8DGyCUY8LM2TOSq1a9Feck7GqHw7OvGRiIvM6fBJaKNmqayC3Vc937C7VuA&entry=mc&ved=1t:200715&ictx=111"
     ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
