@@ -1,0 +1,10 @@
+name = "ks-design-studio-pune"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-10-01"
+
+[build]
+command = "npm run build"
+watch_dir = "src"
+
+[observability]
+enabled = true
