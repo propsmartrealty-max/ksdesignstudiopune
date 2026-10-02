@@ -51,13 +51,13 @@ const About: React.FC = () => {
           
           <div className="space-y-12 max-w-2xl mx-auto">
             <p className="text-zinc-600 leading-relaxed text-3xl font-light italic text-center px-4">
-              "Interior design is the art of creating beautiful, functional spaces. We define homes through a relentless pursuit of <span className="text-charcoal font-bold not-italic">design excellence</span> and cultural resonance."
+              "We architect more than just homes; we curate luxurious living environments. Through a relentless pursuit of <span className="text-charcoal font-bold not-italic">design excellence</span>, we elevate Pune's premium real estate into bespoke personal sanctuaries."
             </p>
             
             <div className="h-px w-24 bg-brass/20 mx-auto" />
             
             <p className="text-zinc-500 leading-relaxed text-lg font-medium">
-              We operate across <span className="text-charcoal font-bold">Pune, Mumbai, Indore, and Goa</span> as a premium interior design studio. Our work is characterized by clean spaces, optimized natural light, and a deep respect for the quality of materials—from fine stone to bespoke woodwork.
+              As a leading turnkey interior design studio, we orchestrate end-to-end residential and commercial transformations across <span className="text-charcoal font-bold">Pune, Mumbai, Indore, and Goa</span>. Our signature methodology guarantees precise spatial planning, highly functional modular kitchen integrations, and uncompromising luxury execution—from sourcing elite marble to sophisticated smart-home automation.
             </p>
           </div>
 

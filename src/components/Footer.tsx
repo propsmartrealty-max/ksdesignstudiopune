@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
               KS <span className="text-brass italic">STUDIO.</span>
             </h3>
             <p className="text-zinc-600 text-base leading-relaxed mb-10 font-medium max-w-sm">
-              The premier destination for luxury interior design across <span className="text-charcoal font-bold">Pune, Mumbai, Indore, and Goa</span>. Designing beautiful sanctuaries for elite residential patrons.
+              As Pune's top-rated luxury interior designers, we deliver highly bespoke, turnkey architectural solutions. Specializing in 2 BHK, 3 BHK, and Villa interior design across <span className="text-charcoal font-bold">Pune, Mumbai, Indore, and Goa</span>, we combine Vastu compliance with state-of-the-art modular execution.
             </p>
             <div className="flex space-x-8 mb-12">
                {['Instagram', 'Facebook', 'LinkedIn'].map(social => (

@@ -33,7 +33,7 @@ export default function Hero() {
         </h1>
         
         <p className="text-zinc-600 max-w-4xl mx-auto mb-20 text-lg md:text-2xl font-medium leading-relaxed animate-fade-in" style={{ animationDelay: '0.5s' }}>
-          Crafting bespoke home narratives across <span className="text-zinc-900 font-bold tracking-wide">Pune, Mumbai, Indore & Goa</span>. We turn architectural volumes into personal sanctuaries for the city's finest residents.
+          As Pune's top-rated <span className="text-zinc-900 font-bold tracking-wide">luxury interior designers</span>, we execute end-to-end turnkey architecture for premium 2 BHK, 3 BHK, and Villa residences. Crafting bespoke home narratives across <span className="text-zinc-900 font-bold tracking-wide">Pune, Mumbai, Indore & Goa</span>. We transform architectural volumes into personal sanctuaries through bespoke material sourcing, modular integration, and Vastu-compliant spatial planning.
         </p>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-10 animate-fade-in" style={{ animationDelay: '0.7s' }}>

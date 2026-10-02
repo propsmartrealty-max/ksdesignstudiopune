@@ -6,7 +6,19 @@ const Schema: React.FC = () => {
     "@context": "https://schema.org",
     "@type": ["LocalBusiness", "InteriorDesign"],
     "name": "KS Design Studio",
-    "description": "Pune's premier interior architects specializing in premium residential and commercial spaces.",
+    "description": "KS Design Studio is Pune's premier interior designing company, specializing in luxury turnkey residential and commercial architecture. We deliver bespoke 2 BHK, 3 BHK, and Villa interior solutions across Baner, Wakad, Kharadi, and Koregaon Park, combining modern aesthetics, Vastu-compliance, and unparalleled spatial planning.",
+    "slogan": "Designing the Soul of Your Premium Homes in Pune",
+    "knowsAbout": [
+      "Interior Designing in Pune",
+      "Luxury Turnkey Interiors",
+      "Modular Kitchen Designers",
+      "2 BHK and 3 BHK Interior Design Packages",
+      "Villa Renovation and Architecture",
+      "Commercial Interior Decorators",
+      "Vastu-Compliant Interior Planning",
+      "Bespoke Furniture and Material Sourcing",
+      "Smart Home Automation Integration"
+    ],
     "url": "https://ksdesignstudio.in",
     "logo": "https://ksdesignstudio.in/icon-512.png",
     "image": [
