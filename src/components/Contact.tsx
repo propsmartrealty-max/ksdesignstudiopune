@@ -107,6 +107,16 @@ const Contact: React.FC = () => {
               </div>
             </a>
 
+            <a href="https://www.google.com/maps?sca_esv=f2a7ccf26385c224&hl=en&biw=1440&bih=778&output=search&q=ks+design+studio&source=lnms&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8cQAAwka5J92rwZWDkn1wAD32kXDVSBwjf6cTOeLVB2-qkztBwHLa5-dxplkZyiGjBBZR3WsDzeKSmW1ZOavIYwnr36x9SORw1EP5ROMtPycGXb5gs4R6ea18NoB6OHpK3CIKm67zX0ez8DGyCUY8LM2TOSq1a9Feck7GqHw7OvGRiIvM6fBJaKNmqayC3Vc937C7VuA&entry=mc&ved=1t:200715&ictx=111" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-8 group cursor-pointer">
+              <div className="w-14 h-14 rounded-2xl border border-stone-200 flex items-center justify-center group-hover:bg-brass group-hover:border-brass group-hover:text-white transition-all shadow-sm">
+                <MapPin size={20} />
+              </div>
+              <div>
+                <p className="text-[9px] uppercase tracking-[0.4em] text-zinc-400 font-bold mb-1">Studio Headquarters</p>
+                <p className="text-charcoal text-xl font-bold group-hover:text-brass transition-colors leading-tight max-w-[280px]">{studioAddress}</p>
+              </div>
+            </a>
+
             <div className="flex items-center space-x-8 group">
               <div className="w-14 h-14 rounded-2xl border border-slate-200 flex items-center justify-center group-hover:bg-brass group-hover:border-brass group-hover:text-white transition-all shadow-sm">
                 <CheckCircle2 size={20} className="text-brass group-hover:text-white" />
