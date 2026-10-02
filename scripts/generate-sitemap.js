@@ -1,10 +1,12 @@
 import fs from 'fs';
 import path from 'path';
 
-// Purged from 100+ low-quality markets down to the Elite High-Value Pune markets
-const PUNE_MARKETS = [
-  "Baner", "Koregaon Park", "Kalyani Nagar", "Viman Nagar", 
-  "Hinjewadi", "Wakad", "Kharadi", "Aundh", "Magarpatta", "Balewadi"
+// Purged from 100+ low-quality markets down to the Elite High-Value Pune & Mumbai markets
+const TARGET_MARKETS = [
+  // Pune Elite
+  "Baner", "Koregaon Park", "Kalyani Nagar", "Viman Nagar", "Hinjewadi", "Wakad", "Kharadi", "Aundh", "Magarpatta", "Balewadi",
+  // Mumbai Elite
+  "Bandra", "Juhu", "Worli", "Powai", "Andheri", "South Mumbai", "Malabar Hill", "Navi Mumbai", "Thane"
 ];
 
 const BUILDERS = {
@@ -76,7 +78,7 @@ function generateSitemaps() {
 
   // 2. Locations
   const locUrls = [];
-  for (const location of PUNE_MARKETS) {
+  for (const location of TARGET_MARKETS) {
     const locSlug = formatSlug(location);
     locUrls.push({ route: `/interiors-in/${locSlug}`, priority: 0.9, changefreq: "monthly" });
     // Cost guides are highly valuable. Keep them.
@@ -93,7 +95,7 @@ function generateSitemaps() {
   for (const service of CORE_SERVICES) {
     const srvSlug = formatSlug(service);
     srvUrls.push({ route: `/services/${srvSlug}`, priority: 0.9, changefreq: "monthly" });
-    for (const location of PUNE_MARKETS) {
+    for (const location of TARGET_MARKETS) {
       srvUrls.push({ route: `/service/${formatSlug(location)}/${srvSlug}`, priority: 0.8, changefreq: "monthly" });
     }
   }

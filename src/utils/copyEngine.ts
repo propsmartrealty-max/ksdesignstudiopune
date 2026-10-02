@@ -67,6 +67,51 @@ const LOCATION_CONTEXT: Record<string, { intro: string, body: string, outro: str
     intro: "The high-street luxury and sporting culture of Balewadi drive a dynamic, active, and highly contemporary design aesthetic.",
     body: "Our Balewadi interiors are bold and structural. We frequently utilize industrial-luxe elements—exposed concrete textures, raw steel accents, and statement lighting fixtures. We design for patrons who want their home to be as dynamic and energetic as their lifestyle.",
     outro: "Command the finest contemporary design in Balewadi."
+  },
+  "Bandra": {
+    intro: "Bandra's unique blend of colonial heritage and contemporary celebrity culture demands an interior narrative that is fiercely original and effortlessly chic.",
+    body: "We engineer Bandra residences to be architectural statements. Merging Bohemian luxury with hyper-modern smart home automation, our spaces feature imported Italian marble, bespoke artisanal furniture, and bold color blocking that reflects the vibrant pulse of Mumbai's most sought-after zip code.",
+    outro: "Elevate your Bandra property to true celebrity status."
+  },
+  "Juhu": {
+    intro: "Synonymous with sprawling coastal estates and elite privacy, Juhu requires a design vocabulary that maximizes ocean views and natural light while maintaining absolute exclusivity.",
+    body: "Our Juhu interior projects are masterclasses in coastal luxury. We utilize expansive floor-to-ceiling glass systems, weather-resistant premium alloys, and organic textures like bleached oak and travertine. Every detail is curated to create a seamless indoor-outdoor sanctuary for Mumbai's elite.",
+    outro: "Experience unparalleled coastal luxury in Juhu."
+  },
+  "Worli": {
+    intro: "The towering super-luxury high-rises of Worli Sea Face dictate an interior style that matches the grandeur of the Arabian Sea skyline.",
+    body: "We specialize in Worli's ultra-luxury penthouses. Our design approach emphasizes monumental scale—using grand monolithic slabs, automated ambient lighting that mimics the sunset, and reflective metallic accents that pull the skyline into your living room.",
+    outro: "Command the Mumbai skyline from your Worli residence."
+  },
+  "Powai": {
+    intro: "Powai's sophisticated lakeside township architecture and high-powered executive demographic inspire interiors that are impeccably structured and highly functional.",
+    body: "We design for Powai's corporate elite. Our turnkey solutions feature intelligent spatial planning, integrated home offices with acoustic treatments, and sleek, minimalist aesthetics utilizing premium European hardware and ultra-matte laminates.",
+    outro: "Discover structured executive luxury in Powai."
+  },
+  "Andheri": {
+    intro: "The cinematic and commercial epicenter of Mumbai, Andheri requires highly versatile, dynamic, and visually striking interior design.",
+    body: "Our Andheri projects fuse cinematic drama with residential comfort. We incorporate statement feature walls, sophisticated mood lighting control systems, and rich, layered textiles to create spaces that are as dramatic as they are welcoming.",
+    outro: "Bring cinematic brilliance to your Andheri home."
+  },
+  "South Mumbai": {
+    intro: "South Mumbai represents the absolute pinnacle of Indian legacy wealth. Designing here requires profound respect for heritage architecture combined with invisible modern luxury.",
+    body: "We undertake South Mumbai projects with surgical precision. We restore high ceilings and intricate cornices while silently weaving in state-of-the-art climate control and smart home tech. Expect French herringbone floors, classic wainscoting, and curated gallery walls for fine art.",
+    outro: "Preserve legacy while embracing the future in South Mumbai."
+  },
+  "Malabar Hill": {
+    intro: "The most exclusive enclave in India, Malabar Hill demands an uncompromising standard of hyper-luxury and complete discretion.",
+    body: "Our Malabar Hill executions represent our most elite tier of service. We source rare exotic woods, commission bespoke sculptural furniture, and deploy military-grade soundproofing. The result is a completely bespoke, palatial environment isolated from the chaos of the city.",
+    outro: "Ascend to the absolute pinnacle of luxury in Malabar Hill."
+  },
+  "Navi Mumbai": {
+    intro: "The meticulously planned infrastructure of Navi Mumbai provides the perfect canvas for ultra-modern, highly organized interior architecture.",
+    body: "We capitalize on Navi Mumbai's spacious floorplans to create expansive, open-concept living. Our designs feature clean geometric lines, integrated smart-storage solutions, and expansive use of natural light to create an atmosphere of pure, uncluttered luxury.",
+    outro: "Embrace the future of organized luxury in Navi Mumbai."
+  },
+  "Thane": {
+    intro: "Thane's rapid evolution into a premium luxury destination requires interiors that reflect upward mobility and sophisticated modern tastes.",
+    body: "We bring South-Bombay aesthetics to Thane's newest luxury towers. Our turnkey execution delivers A-grade finishes—from flawless PU-coated modular kitchens to premium velvet upholstery—ensuring your Thane residence stands shoulder-to-shoulder with the finest in Mumbai.",
+    outro: "Upgrade to premium, A-grade living in Thane."
   }
 };
 

@@ -7,12 +7,13 @@ export const PUNE_MARKETS = {
   WEST_PUNE: ["Baner", "Baner Annexe", "Balewadi", "Mahalunge", "Sus", "Pashan", "Aundh", "Bavdhan", "Kothrud", "Warje", "Karve Nagar", "Erandwane", "Prabhat Road", "Shivajinagar", "Model Colony", "SB Road", "University Road", "Law College Road", "Deccan", "FC Road", "JM Road", "Punawale", "Tathawade", "Ravet", "Kiwale", "Mamurdi"],
   IT_CORRIDOR: ["Hinjewadi Phase 1", "Hinjewadi Phase 2", "Hinjewadi Phase 3", "Wakad", "Pimple Saudagar", "Pimple Nilakh", "Kalewadi", "Thergaon", "Nigdi", "Pimpri", "Chinchwad", "Akurdi", "Pradhikaran", "Bhosari", "Moshi", "Spine Road", "Chikhali", "Charholi", "Dighi", "Talawade", "Sangvi", "Dapodi", "Kasarwadi"],
   EAST_PUNE: ["Kharadi", "New Kharadi", "Viman Nagar", "Koregaon Park", "Kalyani Nagar", "Magarpatta", "Mundhwa", "Hadapsar", "Manjari", "Wagholi", "Lohegaon", "Dhanori", "Yerawada", "Keshav Nagar", "Vishrantwadi"],
-  SOUTH_PUNE: ["NIBM", "Mohammed Wadi", "Undri", "Kondhwa", "Pisoli", "Bibwewadi", "Katraj", "Narhe", "Sinhagad Road", "Ambegaon", "Dhankawadi", "Wanowrie", "Amanora"]
+  SOUTH_PUNE: ["NIBM", "Mohammed Wadi", "Undri", "Kondhwa", "Pisoli", "Bibwewadi", "Katraj", "Narhe", "Sinhagad Road", "Ambegaon", "Dhankawadi", "Wanowrie", "Amanora"],
+  MUMBAI_ELITE: ["Bandra", "Juhu", "Worli", "Powai", "Andheri", "South Mumbai", "Malabar Hill", "Navi Mumbai", "Thane"]
 };
 
 // Flattened for easy iteration
 export const SEO_LOCATIONS = {
-  west: PUNE_MARKETS.WEST_PUNE,
+  west: [...PUNE_MARKETS.WEST_PUNE, ...PUNE_MARKETS.MUMBAI_ELITE],
   central: ["Shivajinagar", "Deccan", "Model Colony", "Erandwane"],
   east: PUNE_MARKETS.EAST_PUNE,
   south: PUNE_MARKETS.SOUTH_PUNE,
