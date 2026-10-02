@@ -52,7 +52,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
             ))}
           </div>
           <div className="flex items-center space-x-6">
-             <a href="tel:+912067000000" aria-label="Call for enquiry" className="text-[9px] uppercase tracking-[0.3em] font-black text-white/90 hover:text-white transition-colors">Enquiry: +91 20 6700 0000</a>
+             <a href="tel:+917020377693" aria-label="Call for enquiry" className="text-[9px] uppercase tracking-[0.3em] font-black text-white/90 hover:text-white transition-colors">Enquiry: +91 70203 77693</a>
              <div className="h-2 w-[1px] bg-white/10" />
              <div className="flex space-x-4">
                <a href="https://www.instagram.com/ksdesignstudiopune/" aria-label="Visit Instagram Profile" target="_blank" rel="noopener noreferrer">
