@@ -8,11 +8,7 @@ export const onRequest: PagesFunction = async (context) => {
     return Response.redirect(url.toString(), 301);
   }
 
-  // 2. Trailing Slash Normalization (SEO Cannibalization Fix at Edge)
-  if (url.pathname.endsWith('/') && url.pathname.length > 1) {
-    url.pathname = url.pathname.slice(0, -1);
-    return Response.redirect(url.toString(), 301);
-  }
+  // 2. Trailing Slash Normalization removed to prevent infinite loop with Cloudflare Pages directory routing
 
   const response = await next();
 
