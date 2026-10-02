@@ -3,8 +3,9 @@ import path from 'path';
 
 // Purged from 100+ low-quality markets down to the Elite High-Value Pune & Mumbai markets
 const TARGET_MARKETS = [
-  // Pune Elite
+  // Pune Elite & Emerging Tech Corridors
   "Baner", "Koregaon Park", "Kalyani Nagar", "Viman Nagar", "Hinjewadi", "Wakad", "Kharadi", "Aundh", "Magarpatta", "Balewadi",
+  "Pashan", "Kothrud", "Bavdhan", "Punawale", "Tathawade", "Ravet", "Pimple Saudagar", "Hadapsar", "NIBM", "Undri",
   // Mumbai Elite
   "Bandra", "Juhu", "Worli", "Powai", "Andheri", "South Mumbai", "Malabar Hill", "Navi Mumbai", "Thane"
 ];
@@ -86,11 +87,21 @@ function generateSitemaps() {
   }
   fs.writeFileSync(path.join(publicDir, 'sitemap-locations.xml'), createSitemapXML(locUrls), 'utf8');
 
-  // 3. Services (Elite Cluster only: Top 3 Services x Top 10 Locations = 30 Pages)
+  // 3. Services (Elite Cluster only: Hardened Top Services x Top Locations)
   const srvUrls = [];
   
-  // Strict list of highest converting services
-  const CORE_SERVICES = ["Luxury Interior Designers", "Turnkey Interiors", "Modular Kitchen"];
+  // Hardened strict list of highest converting interior design search queries
+  const CORE_SERVICES = [
+    "Luxury Interior Designers", 
+    "Turnkey Interiors", 
+    "Modular Kitchen", 
+    "2 BHK Interior Designers", 
+    "3 BHK Interior Designers", 
+    "Villa Interior Designers", 
+    "Office Interior Designers", 
+    "Home Renovation",
+    "Best Interior Designers"
+  ];
   
   for (const service of CORE_SERVICES) {
     const srvSlug = formatSlug(service);

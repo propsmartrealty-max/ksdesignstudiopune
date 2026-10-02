@@ -49,19 +49,38 @@ export const GEO_COORDINATES: Record<string, { lat: number, lng: number }> = {
 };
 
 export const PUNE_NEIGHBORHOOD_USPS: Record<string, string> = {
+  // Pune Elite & Emerging Tech Corridors
   "Baner": "High-altitude luxury residences with panoramic hilltop views.",
-  "Wakad": "Tech-luxe functional designs for high-speed IT professionals.",
-  "Hinjewadi": "Ergonomic work-from-home sanctuaries for the technology elite.",
-  "Kharadi": "Modern high-rise silhouettes with expansive eastern light.",
-  "Balewadi": "Sophisticated river-facing monographs with quiet luxury vibes.",
-  "Bavdhan": "Biophilic bungalow architecture integrated with nature.",
   "Koregaon Park": "Legacy heritage estates with high-fidelity restoration.",
-  "Kothrud": "Traditional Maratha Modern aesthetics for cultural heartland homes.",
-  "Magarpatta": "Sustainable integrated-city living with futuristic spatial flow.",
+  "Kalyani Nagar": "Opulent riverside penthouses with cosmopolitan flair.",
   "Viman Nagar": "Cosmopolitan high-density luxury with aviation-inspired geometry.",
-  "Tathawade": "Modern scalable apartments designed for growing families.",
+  "Hinjewadi": "Ergonomic work-from-home sanctuaries for the technology elite.",
+  "Wakad": "Tech-luxe functional designs for high-speed IT professionals.",
+  "Kharadi": "Modern high-rise silhouettes with expansive eastern light.",
+  "Aundh": "Refined classical interiors tailored for established luxury estates.",
+  "Magarpatta": "Sustainable integrated-city living with futuristic spatial flow.",
+  "Balewadi": "Sophisticated river-facing monographs with quiet luxury vibes.",
+  "Pashan": "Tranquil, nature-integrated designs emphasizing biophilic elements.",
+  "Kothrud": "Traditional Maratha Modern aesthetics for cultural heartland homes.",
+  "Bavdhan": "Biophilic bungalow architecture seamlessly integrated with nature.",
   "Punawale": "Emerging premium real estate demanding high-efficiency interiors.",
-  "PCMC": "Industrial-chic designs tailored for fast-paced urban expansion."
+  "Tathawade": "Modern scalable apartments designed for growing families.",
+  "Ravet": "Sleek, minimalist architectural flow for the modern urbanite.",
+  "Pimple Saudagar": "Vibrant, family-first luxury interiors with maximal utility.",
+  "Hadapsar": "Expansive contemporary spaces bridging industrial chic and luxury.",
+  "NIBM": "Elite, high-society residential designs with bespoke international styling.",
+  "Undri": "Spacious villa and row-house interiors optimized for slow living.",
+
+  // Mumbai Elite
+  "Bandra": "Bohemian luxury and sea-facing penthouses with artistic architectural flow.",
+  "Juhu": "A-list celebrity-grade estates demanding peak material sophistication.",
+  "Worli": "Ultra-luxury high-rise monographs with sweeping Arabian Sea views.",
+  "Powai": "Lakeside corporate luxury with high-tech, smart-home integrations.",
+  "Andheri": "Dynamic, high-energy spatial layouts for fast-paced modern lifestyles.",
+  "South Mumbai": "Art Deco heritage restorations and ultra-premium classical interiors.",
+  "Malabar Hill": "Billionaire-tier legacy estates requiring uncompromising craftsmanship.",
+  "Navi Mumbai": "Expansive, master-planned contemporary villas and modern apartments.",
+  "Thane": "Lakeside premium residences bridging nature with high-density luxury."
 };
 
 export const SEO_PROPERTY_TYPES = [
