@@ -7,8 +7,9 @@
     "dev": "vite",
     "build": "node scripts/generate-sitemap.js && tsc && vite build && cp dist/index.html dist/404.html && node scripts/seo-injector.js",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "seo:index": "node scripts/google-index.js"
+    "preview": "npm run build && wrangler dev",
+    "seo:index": "node scripts/google-index.js",
+    "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
     "@google/genai": "^1.37.0",
@@ -20,6 +21,7 @@
     "react-router-dom": "^7.1.0"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.62.4",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "^4.3.4",
@@ -32,6 +34,7 @@
     "terser": "^5.36.0",
     "typescript": "^5.9.3",
     "vite": "^6.0.1",
-    "vite-plugin-image-optimizer": "^2.0.3"
+    "vite-plugin-image-optimizer": "^2.0.3",
+    "wrangler": "^4.146.0"
   }
 }

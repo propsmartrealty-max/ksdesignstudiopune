@@ -35,7 +35,7 @@ export default function Home() {
             </h2>
             <p className="text-zinc-500 max-w-2xl mx-auto font-medium leading-relaxed text-lg">
               End-to-end interior design solutions, from precision modular kitchens to complete bungalow makeovers. 
-              Delivering high-quality residential aesthetics across all elite micro-markets.
+              Delivering high-quality residential aesthetics across <span id="edge-visitor-city" className="font-bold text-brass">Maharashtra</span>.
             </p>
           </div>
           <ServicesGrid />

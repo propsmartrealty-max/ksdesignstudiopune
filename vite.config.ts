@@ -2,16 +2,15 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  plugins: [
-    react(),
-    ViteImageOptimizer({
-      png: { quality: 80 },
-      jpeg: { quality: 80 },
-      jpg: { quality: 80 },
-    }),
-  ],
+  plugins: [react(), ViteImageOptimizer({
+    png: { quality: 80 },
+    jpeg: { quality: 80 },
+    jpg: { quality: 80 },
+  }), cloudflare()],
   // Use root base unconditionally for Vercel / Custom Domain
   base: '/',
   build: {

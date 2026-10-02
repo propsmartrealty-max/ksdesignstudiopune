@@ -20,65 +20,50 @@ const Contact: React.FC = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
 
     const formattedMessage = `*NEW DESIGN ENQUIRY* %0A%0A*Name:* ${formData.name}%0A*Email:* ${formData.email}%0A*Project:* ${formData.projectType}%0A*Message:* ${formData.message}`;
-    
-    // Construct WhatsApp Link
     const whatsappUrl = `https://wa.me/${contactPhone}?text=${formattedMessage}`;
-    
-    // Construct Email Link
-    const emailSubject = `Design Enquiry: ${formData.projectType} - ${formData.name}`;
-    const emailBody = `Name: ${formData.name}\nEmail: ${formData.email}\nProject Type: ${formData.projectType}\n\nMessage:\n${formData.message}`;
-    const mailtoUrl = `mailto:${contactEmail}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
 
-    // Web3Forms Integration (Placeholder Key)
-    const web3FormsKey = "INSERT_WEB3FORMS_KEY_HERE";
-    
-    if (web3FormsKey !== "INSERT_WEB3FORMS_KEY_HERE") {
-      fetch("https://api.web3forms.com/submit", {
+    try {
+      // 1. Send securely to Cloudflare Edge API
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: web3FormsKey,
           name: formData.name,
           email: formData.email,
-          subject: emailSubject,
           projectType: formData.projectType,
-          message: formData.message,
+          message: formData.message
         }),
-      }).catch(err => console.error("Web3Forms Error:", err));
+      });
+
+      if (!response.ok) throw new Error("API failed");
+      
+    } catch (err) {
+      // 2. Graceful Fallback: Open WhatsApp if Serverless API is unconfigured/fails
+      window.open(whatsappUrl, '_blank');
     }
 
-    // Execute Dual Dispatch
-    setTimeout(() => {
-      // 1. Open WhatsApp in new tab
-      window.open(whatsappUrl, '_blank');
-      
-      // 2. Trigger Email Client (slight delay to prevent browser block)
-      window.location.href = mailtoUrl;
-      
-      // 3. Save to Sovereign Vault (localStorage)
-      const newLead = { 
-        ...formData, 
-        id: Date.now(), 
-        timestamp: new Date().toLocaleString(),
-        status: 'Unread'
-      };
-      const existingLeads = JSON.parse(localStorage.getItem('ks_leads') || '[]');
-      localStorage.setItem('ks_leads', JSON.stringify([newLead, ...existingLeads]));
-      
-      setStatus('success');
-      setFormData({ name: '', email: '', projectType: 'Residential Interior', message: '' });
-      
-      // Reset status after a few seconds
-      setTimeout(() => setStatus('idle'), 5000);
-    }, 1200);
+    // 3. Save to Sovereign Vault (localStorage)
+    const newLead = { 
+      ...formData, 
+      id: Date.now(), 
+      timestamp: new Date().toLocaleString(),
+      status: 'Unread'
+    };
+    const existingLeads = JSON.parse(localStorage.getItem('ks_leads') || '[]');
+    localStorage.setItem('ks_leads', JSON.stringify([newLead, ...existingLeads]));
+    
+    setStatus('success');
+    setFormData({ name: '', email: '', projectType: 'Residential Interior', message: '' });
+    
+    setTimeout(() => setStatus('idle'), 5000);
   };
 
   return (
