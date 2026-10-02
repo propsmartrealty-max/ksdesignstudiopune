@@ -16,45 +16,97 @@ function generateSeed(str: string) {
   return (h ^ h >>> 16) >>> 0;
 }
 
-const INTROS = [
-  "Ranked as the Top Interior Designers in {LOCATION}, we elevate the standard of A-grade {SUBJECT}.",
-  "Recognized as the #1 premium design studio outperforming standard contractors for {SUBJECT} in {LOCATION}.",
-  "Masterful architectural interventions specializing in ultra-luxury {SUBJECT}, unmatched by local competition.",
-  "Uncompromising A-grade quality and precision engineering for {SUBJECT}, establishing us as the top-rated firm in {LOCATION}.",
-  "Delivering Pune's top-tier {SUBJECT} with absolute discretion and flawless execution, cementing our position as the best interior designer near you in {LOCATION}."
-];
+// Elite Hyper-Local Architectural Lexicon
+const LOCATION_CONTEXT: Record<string, { intro: string, body: string, outro: string }> = {
+  "Baner": {
+    intro: "Situated at the nexus of Pune's IT corridor, Baner demands a design language that balances high-speed modernism with serene domesticity.",
+    body: "Our studio approaches Baner's premium high-rises with a distinct architectural methodology. We integrate smart-home automation infrastructures seamlessly into bespoke woodwork, utilizing acoustic dampening and biophilic elements to counteract the urban density. Unlike standard contractors, we understand the specific load-bearing constraints and spatial flows of premium Baner developments.",
+    outro: "Elevate your Baner residence from a standard apartment to an intelligent sanctuary."
+  },
+  "Koregaon Park": {
+    intro: "Koregaon Park's heritage bungalows and ultra-luxury low-rises require a design vocabulary rooted in organic luxury and timeless grace.",
+    body: "Working within Pune's most affluent zip code, our design philosophy honors the lush, green canopy of KP. We source rare, imported Italian marbles and specify custom brass joinery to create atmospheric depth. We specialize in transforming vast floorplans into intimate, high-fidelity luxury spaces that reflect the sophisticated heritage of the neighborhood.",
+    outro: "Discover uncompromised architectural luxury in the heart of Koregaon Park."
+  },
+  "Kalyani Nagar": {
+    intro: "Bridging corporate energy with residential prestige, Kalyani Nagar properties are canvases for contemporary, high-contrast interiors.",
+    body: "We engineer spaces in Kalyani Nagar that act as premium social hubs. By knocking down restrictive developer floorplans, we create expansive open-concept living zones tailored for entertaining. Our use of monolithic stone islands and concealed architectural lighting provides a museum-quality finish to your home.",
+    outro: "Redefine modern luxury living in Kalyani Nagar."
+  },
+  "Viman Nagar": {
+    intro: "Proximity to the airport and luxury retail defines Viman Nagar, inspiring interiors that are globally minded and flawlessly executed.",
+    body: "Our Viman Nagar projects are characterized by international design sensibilities. We utilize imported veneer finishes, fluted glass partitions, and minimalist luxury aesthetics to create spaces that feel like 5-star boutique hotels. Every millimeter is precision-engineered in our factory for zero-tolerance installation.",
+    outro: "Bring global design standards to your Viman Nagar property."
+  },
+  "Hinjewadi": {
+    intro: "The beating heart of Pune's tech ecosystem, Hinjewadi requires interiors optimized for dual-functionality: hyper-productivity and total relaxation.",
+    body: "We design for the modern executive. Our Hinjewadi turnkey solutions feature ergonomic spatial planning, dedicated focus zones, and advanced ambient lighting systems. We prioritize speed of execution without sacrificing A-grade materials, delivering move-in-ready luxury for IT professionals.",
+    outro: "Experience intelligent interior engineering in Hinjewadi."
+  },
+  "Wakad": {
+    intro: "As Pune's fastest-growing premium residential hub, Wakad demands interiors that stand out from the generic builder-grade finishes.",
+    body: "We elevate Wakad apartments into bespoke designer homes. By stripping away standard fittings, we inject personality through custom upholstery, geometric ceiling topographies, and durable, high-end laminates that resist wear while looking spectacular.",
+    outro: "Transform your Wakad property into a signature landmark."
+  },
+  "Kharadi": {
+    intro: "Kharadi's massive IT parks and sprawling residential townships inspire a design approach that is both grand in scale and intimate in detail.",
+    body: "Our studio specializes in the sprawling floorplans of Kharadi's luxury towers. We employ large-format vitrified slabs and seamless monolithic aesthetics to enhance the feeling of space. Our turnkey execution means you never have to deal with multiple vendors—we handle everything from civil changes to the final curated artifacts.",
+    outro: "Step into seamless, A-grade luxury in Kharadi."
+  },
+  "Aundh": {
+    intro: "Aundh is characterized by established wealth and understated elegance, requiring a highly refined and mature design palette.",
+    body: "We avoid flashy, transient trends in our Aundh projects. Instead, we focus on 'Quiet Luxury'—tactile fabrics, matte finishes, warm walnuts, and perfectly calibrated indirect lighting. Our work here is designed to age beautifully, utilizing structural integrity and classic proportions.",
+    outro: "Invest in timeless architectural elegance in Aundh."
+  },
+  "Magarpatta": {
+    intro: "The self-contained ecosystem of Magarpatta City necessitates interiors that provide a total escape from the outside world.",
+    body: "We design Magarpatta residences as restorative retreats. Utilizing the principles of neuro-architecture, we select color palettes and material textures scientifically proven to reduce stress. Expect curved edges, natural timbers, and flawlessly integrated hidden storage.",
+    outro: "Create your ultimate personal retreat in Magarpatta."
+  },
+  "Balewadi": {
+    intro: "The high-street luxury and sporting culture of Balewadi drive a dynamic, active, and highly contemporary design aesthetic.",
+    body: "Our Balewadi interiors are bold and structural. We frequently utilize industrial-luxe elements—exposed concrete textures, raw steel accents, and statement lighting fixtures. We design for patrons who want their home to be as dynamic and energetic as their lifestyle.",
+    outro: "Command the finest contemporary design in Balewadi."
+  }
+};
 
-const BODIES = [
-  "As Pune's leading luxury interior design firm, we merge structural integrity with bespoke aesthetic vocabularies. Unlike mass-market brands or generic carpenters, every dimension is calibrated for maximum psychological comfort and visual supremacy.",
-  "Our proprietary execution framework ensures that the delivery of your space is as flawless as the initial 3D visualization. We source exclusively from elite material libraries across the globe, ensuring an A-grade finish that standard competitors in {LOCATION} simply cannot match.",
-  "By focusing on tactile materiality and lighting architecture, we transform raw floorplans into sophisticated sanctuaries. We are the trusted choice for {LOCATION}'s most exclusive properties, far surpassing the quality of automated interior platforms.",
-  "Our studio operates at the intersection of parametric design and heritage craftsmanship. We do not just decorate rooms; we architect atmospheres for {LOCATION}'s elite.",
-  "Leveraging advanced spatial metrics and high-fidelity rendering technology, we guarantee that the final handover exceeds the highest echelons of expectation, unequivocally cementing our status as the top-rated interior designers in {LOCATION} and across Pune."
+const GENERIC_INTROS = [
+  "Ranked as the Top Interior Designers, we elevate the standard of A-grade {SUBJECT}.",
+  "Recognized as the #1 premium design studio outperforming standard contractors for {SUBJECT}."
 ];
-
-const OUTROS = [
+const GENERIC_BODIES = [
+  "As Pune's leading luxury interior design firm, we merge structural integrity with bespoke aesthetic vocabularies.",
+  "Our proprietary execution framework ensures that the delivery of your space is as flawless as the initial 3D visualization."
+];
+const GENERIC_OUTROS = [
   "Experience the zenith of A-grade interior architecture.",
-  "Your sanctuary, engineered to perfection by Pune's #1 design team.",
-  "Book a private consultation to initiate your premium design journey.",
-  "Discover how Pune's top interior designers translate vision into reality.",
-  "Join an exclusive roster of visionary patrons across Pune's premium micro-markets."
+  "Your sanctuary, engineered to perfection by Pune's #1 design team."
 ];
 
 export function generateDynamicCopy(seedString: string, subject: string, location: string = "Pune"): string {
   const seed = generateSeed(seedString);
   const random = mulberry32(seed);
-
-  const intro = INTROS[Math.floor(random() * INTROS.length)]
-    .replace('{SUBJECT}', subject)
-    .replace('{LOCATION}', location);
   
-  const body = BODIES[Math.floor(random() * BODIES.length)];
-  const outro = OUTROS[Math.floor(random() * OUTROS.length)];
+  // Format location string to match object keys (e.g. "koregaon-park" -> "Koregaon Park")
+  const formattedLocation = location.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 
-  let fullCopy = `${intro} ${body} ${outro}`;
+  let intro = "";
+  let body = "";
+  let outro = "";
+
+  if (LOCATION_CONTEXT[formattedLocation]) {
+    intro = `<span class="font-bold text-brass uppercase tracking-widest text-[10px] mb-2 block">Site Intelligence: ${formattedLocation}</span>` + LOCATION_CONTEXT[formattedLocation].intro;
+    body = LOCATION_CONTEXT[formattedLocation].body;
+    outro = LOCATION_CONTEXT[formattedLocation].outro;
+  } else {
+    intro = GENERIC_INTROS[Math.floor(random() * GENERIC_INTROS.length)].replace('{SUBJECT}', subject);
+    body = GENERIC_BODIES[Math.floor(random() * GENERIC_BODIES.length)];
+    outro = GENERIC_OUTROS[Math.floor(random() * GENERIC_OUTROS.length)];
+  }
+
+  let fullCopy = `<p class="mb-4">${intro}</p><p class="mb-4">${body}</p><p class="italic text-brass font-serif">${outro}</p>`;
 
   // Contextual Inline Backlink Injection
-  // We randomly decide if we should inject a link based on the seed
   if (random() > 0.3) {
     fullCopy = fullCopy.replace(/Pune/g, '<a href="/interiors-in/pune" class="font-medium hover:text-brass transition-colors decoration-brass/30 underline underline-offset-4">Pune</a>');
   }

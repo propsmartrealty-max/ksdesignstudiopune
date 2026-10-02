@@ -1,18 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 
-// Manual definitions for Node script (mirroring seo_registry)
+// Purged from 100+ low-quality markets down to the Elite High-Value Pune markets
 const PUNE_MARKETS = [
-  // West Pune
-  "Baner", "Balewadi", "Mahalunge", "Sus", "Pashan", "Aundh", "Bavdhan", "Kothrud", "Karve Nagar", "Warje", "Shivajinagar", "Erandwane", "Deccan Gymkhana", "Senapati Bapat Road", "Model Colony", "Bhugaon", "Pirangut", "Lavale", "Dhayari", "Vadgaon", "Narhe", "Ambegaon", "Sinhagad Road", "Anand Nagar",
-  // Pimpri-Chinchwad (PCMC) & IT Corridors
-  "Hinjewadi", "Hinjewadi Phase 1", "Hinjewadi Phase 2", "Hinjewadi Phase 3", "Wakad", "Punawale", "Tathawade", "Ravet", "Pimple Saudagar", "Pimple Nilakh", "Pimple Gurav", "Sangvi", "Pimpri", "Chinchwad", "Nigdi", "Akurdi", "Pradhikaran", "Moshi", "Bhosari", "Talawade", "Chikhali", "Dehu Road", "Talegaon", "Somatne", "Thergaon", "Kalewadi",
-  // East Pune & IT Hubs
-  "Kharadi", "Viman Nagar", "Koregaon Park", "Kalyani Nagar", "Magarpatta", "Hadapsar", "Wagholi", "Chandan Nagar", "Mundhwa", "Keshav Nagar", "Manjari", "Phursungi", "Lohegaon", "Dhanori", "Vishrantwadi", "Yerwada", "Khadki", "Bopodi", "Dapodi",
-  // South & Central Pune
-  "NIBM", "Kondhwa", "Undri", "Pisoli", "Wanowrie", "Fatima Nagar", "Camp", "Swargate", "Katraj", "Dhankawadi", "Bibwewadi", "Sahakar Nagar", "Market Yard", "Padmavati", "Gultekdi", "Salisbury Park", "Handewadi", "Saswad",
-  // Core City Peths
-  "Kasba Peth", "Shaniwar Peth", "Narayan Peth", "Sadashiv Peth", "Navi Peth", "Somwar Peth", "Mangalwar Peth", "Rasta Peth", "Bhavani Peth", "Nana Peth"
+  "Baner", "Koregaon Park", "Kalyani Nagar", "Viman Nagar", 
+  "Hinjewadi", "Wakad", "Kharadi", "Aundh", "Magarpatta", "Balewadi"
 ];
 
 const BUILDERS = {
@@ -87,27 +79,18 @@ function generateSitemaps() {
   for (const location of PUNE_MARKETS) {
     const locSlug = formatSlug(location);
     locUrls.push({ route: `/interiors-in/${locSlug}`, priority: 0.9, changefreq: "monthly" });
+    // Cost guides are highly valuable. Keep them.
     locUrls.push({ route: `/cost-guide/${locSlug}`, priority: 0.8, changefreq: "monthly" });
-    for (const prop of PROPERTY_TYPES) {
-      locUrls.push({ route: `/cost/${locSlug}/${formatSlug(prop)}`, priority: 0.7, changefreq: "monthly" });
-    }
   }
   fs.writeFileSync(path.join(publicDir, 'sitemap-locations.xml'), createSitemapXML(locUrls), 'utf8');
 
-  // 3. Services (Aggressive: All Services x All Locations)
+  // 3. Services (Elite Cluster only: Top 3 Services x Top 10 Locations = 30 Pages)
   const srvUrls = [];
   
-  // Combine core services with property types for ultra long-tail (e.g. "3 BHK Modular Kitchen")
-  const CORE_SERVICES = ["Interior Designers", "Turnkey Interiors", "Modular Kitchen", "Home Renovation", "Luxury Interiors"];
-  const ALL_SERVICES = [...SERVICES];
+  // Strict list of highest converting services
+  const CORE_SERVICES = ["Luxury Interior Designers", "Turnkey Interiors", "Modular Kitchen"];
   
-  for (const prop of PROPERTY_TYPES) {
-    for (const core of CORE_SERVICES) {
-      ALL_SERVICES.push(`${prop} ${core}`);
-    }
-  }
-
-  for (const service of ALL_SERVICES) {
+  for (const service of CORE_SERVICES) {
     const srvSlug = formatSlug(service);
     srvUrls.push({ route: `/services/${srvSlug}`, priority: 0.9, changefreq: "monthly" });
     for (const location of PUNE_MARKETS) {
