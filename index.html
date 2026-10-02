@@ -20,8 +20,7 @@
   <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
   <link rel="dns-prefetch" href="https://images.unsplash.com" />
 
-  <!-- Google Search Console Verification -->
-  <meta name="google-site-verification" content="%VITE_GSC_VERIFICATION%" />
+  <!-- Google Search Console Verification handled via Cloudflare DNS TXT record -->
 
   <!-- SEO: Canonical URL handled dynamically by React -->
 
@@ -49,12 +48,7 @@
     });
   </script>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=%VITE_GA_ID%"></script>
-  <script>
-    gtag('js', new Date());
-    gtag('config', '%VITE_GA_ID%');
-  </script>
+  <!-- Google tag (gtag.js) injected via Cloudflare Zaraz or env vars in the future -->
 
   <!-- PWA Service Worker Registration -->
   <script>
