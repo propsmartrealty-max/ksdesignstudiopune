@@ -85,7 +85,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
           </Link>
 
           {/* Apple Style Glassmorphic Navigation (Center) */}
-          <div className="hidden xl:flex absolute left-1/2 -translate-x-1/2 items-center">
+          <div className="hidden xl:flex items-center justify-center flex-1 px-8">
             <div className="relative group p-[1px] rounded-full overflow-hidden shadow-2xl transition-transform duration-500 hover:scale-[1.02]">
               {/* Animated glowing border across lines */}
               <div className={`absolute inset-0 rounded-full transition-opacity duration-1000 ${scrolled ? 'opacity-100' : 'opacity-60'}`}>
