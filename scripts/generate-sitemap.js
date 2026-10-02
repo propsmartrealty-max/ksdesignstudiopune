@@ -75,7 +75,7 @@ function generateSitemaps() {
   // 1. Core Static Routes
   const coreRoutes = ['', '/about', '/services', '/portfolio', '/process', '/contact', '/knowledge', '/design-ideas', '/laboratory', '/tectonic-series', '/vault', '/pricing'];
   const coreUrls = coreRoutes.map(route => ({ route, priority: 1.0, changefreq: "weekly" }));
-  fs.writeFileSync(path.join(publicDir, 'sitemap-core.xml'), createSitemapXML(coreUrls), 'utf8');
+  
 
   // 2. Locations
   const locUrls = [];
@@ -85,7 +85,7 @@ function generateSitemaps() {
     // Cost guides are highly valuable. Keep them.
     locUrls.push({ route: `/cost-guide/${locSlug}`, priority: 0.8, changefreq: "monthly" });
   }
-  fs.writeFileSync(path.join(publicDir, 'sitemap-locations.xml'), createSitemapXML(locUrls), 'utf8');
+  
 
   // 3. Services (Elite Cluster only: Hardened Top Services x Top Locations)
   const srvUrls = [];
@@ -110,7 +110,7 @@ function generateSitemaps() {
       srvUrls.push({ route: `/service/${formatSlug(location)}/${srvSlug}`, priority: 0.8, changefreq: "monthly" });
     }
   }
-  fs.writeFileSync(path.join(publicDir, 'sitemap-services.xml'), createSitemapXML(srvUrls), 'utf8');
+  
 
   // 4. Projects & Builders
   const projUrls = [];
@@ -122,7 +122,7 @@ function generateSitemaps() {
        projUrls.push({ route: `/interiors-at/${formatSlug(project)}`, priority: 0.7, changefreq: "monthly" });
     }
   }
-  fs.writeFileSync(path.join(publicDir, 'sitemap-projects.xml'), createSitemapXML(projUrls), 'utf8');
+  
 
   // 5. Magazine & Knowledge Hub
   const magSlugs = [
@@ -139,25 +139,16 @@ function generateSitemaps() {
   ];
   const magUrls = magSlugs.map(slug => ({ route: `/magazine/${slug}`, priority: 0.8, changefreq: "monthly" }));
   magUrls.push({ route: '/magazine', priority: 0.9, changefreq: "weekly" });
-  fs.writeFileSync(path.join(publicDir, 'sitemap-magazine.xml'), createSitemapXML(magUrls), 'utf8');
+  
 
-  // 6. Sitemap Index
-  let indexXml = `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
-  const sitemaps = ['sitemap-core.xml', 'sitemap-locations.xml', 'sitemap-services.xml', 'sitemap-projects.xml', 'sitemap-magazine.xml'];
+  // Aggregate all URLs for a flat sitemap
+  const allSitemapUrls = [...coreUrls, ...locUrls, ...srvUrls, ...projUrls, ...magUrls];
   
-  sitemaps.forEach(sitemap => {
-    indexXml += `  <sitemap>\n    <loc>${BASE_URL}/${sitemap}</loc>\n  </sitemap>\n`;
-  });
-  
-  indexXml += `</sitemapindex>`;
-  fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), indexXml, 'utf8');
+  // 6. Generate single flat Global Sitemap
+  fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), createSitemapXML(allSitemapUrls), 'utf8');
 
   // Also output a flat JSON array of routes for the prerender script
-  coreUrls.forEach(u => allRoutes.push(u.route));
-  locUrls.forEach(u => allRoutes.push(u.route));
-  srvUrls.forEach(u => allRoutes.push(u.route));
-  projUrls.forEach(u => allRoutes.push(u.route));
-  magUrls.forEach(u => allRoutes.push(u.route));
+  allSitemapUrls.forEach(u => allRoutes.push(u.route));
   
   // Harden: Deduplicate routes to prevent crawler loops or SSG double-rendering
   const uniqueRoutes = [...new Set(allRoutes)];
