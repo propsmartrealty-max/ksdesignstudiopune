@@ -7,8 +7,8 @@ const SEOMeta: React.FC = () => {
   useEffect(() => {
     // Determine the base path and convert it into a readable title
     const path = location.pathname;
-    let title = "KS Design Studio | Premium Interior Architects in Pune";
-    let description = "Pune's premier interior architects specializing in premium residential and commercial spaces.";
+    let title = "Top Luxury Interior Designers in Pune | KS Design Studio";
+    let description = "KS Design Studio is Pune's premier interior designing firm specializing in 2 BHK, 3 BHK, and Villa turnkey architecture across all micro-markets.";
     let image = "https://ksdesignstudio.in/assets/webp/hero_foyer-Dmv-Yoj7.webp";
 
     if (path.startsWith('/magazine/')) {

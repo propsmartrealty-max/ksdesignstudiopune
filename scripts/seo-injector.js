@@ -43,7 +43,7 @@ const baseHtml = fs.readFileSync(indexPath, 'utf8');
 
 function formatTitle(route) {
   const parts = route.split('/').filter(Boolean);
-  if (parts.length === 0) return 'KS Design Studio | #1 A-Grade Luxury Interior Designer in Pune';
+  if (parts.length === 0) return 'Top Luxury Interior Designers in Pune | KS Design Studio';
   
   if ((parts[0] === 'interiors-in' || parts[0] === 'cost-guide') && parts[1]) {
     const loc = parts[1].replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
