@@ -4,7 +4,7 @@ import { Phone, Mail, MapPin, Send, CheckCircle2, Loader2 } from 'lucide-react';
 const Contact: React.FC = () => {
   const contactPhone = "917020377693";
   const displayPhone = "+91 70203 77693";
-  const contactEmail = "info@ksdesignstudio.in";
+  const contactEmail = "ksdesignstudiopune@gmail.com";
   const studioAddress = "623, Vision One Mall, Bhumkar Chowk, Wakad-411057, Pune";
 
   const [formData, setFormData] = useState({

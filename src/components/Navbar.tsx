@@ -59,7 +59,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
                <a href="https://www.instagram.com/ksdesignstudiopune/" aria-label="Visit Instagram Profile" target="_blank" rel="noopener noreferrer">
                  <Instagram size={12} className="text-white/20 hover:text-white transition-colors cursor-pointer" />
                </a>
-               <a href="mailto:hello@ksdesignstudio.in" aria-label="Send Email">
+               <a href="mailto:ksdesignstudiopune@gmail.com" aria-label="Send Email">
                  <Mail size={12} className="text-white/20 hover:text-white transition-colors cursor-pointer" />
                </a>
              </div>

@@ -46,7 +46,7 @@ const Footer: React.FC = () => {
             </div>
             <div className="p-8 border border-charcoal/5 bg-slate-50/50 rounded-2xl">
                <span className="text-brass tracking-[0.5em] uppercase text-[9px] font-black block mb-4">Official Enquiry Host</span>
-               <a href="mailto:info@ksdesignstudio.in" className="text-lg font-medium hover:text-brass transition-colors">info@ksdesignstudio.in</a>
+               <a href="mailto:ksdesignstudiopune@gmail.com" className="text-lg font-medium hover:text-brass transition-colors">ksdesignstudiopune@gmail.com</a>
                <p className="mt-4 text-charcoal/60 text-[11px]">+91 20 6700 0000 / +91 70203 77693</p>
             </div>
           </div>
