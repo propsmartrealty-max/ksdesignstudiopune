@@ -20,6 +20,7 @@ export default {
         'slow-zoom': 'slow-zoom 20s infinite alternate cubic-bezier(0.45, 0.05, 0.55, 0.95)',
         'fade-in': 'fade-in 1.5s ease-out forwards',
         'fade-in-up': 'fade-in-up 1.2s ease-out forwards',
+        'spin-slow': 'spin-slow 8s linear infinite',
       },
       keyframes: {
         'slow-zoom': {
@@ -33,6 +34,10 @@ export default {
         'fade-in-up': {
           'from': { opacity: '0', transform: 'translateY(20px)' },
           'to': { opacity: '1', transform: 'translateY(0)' },
+        },
+        'spin-slow': {
+          'from': { transform: 'rotate(0deg)' },
+          'to': { transform: 'rotate(360deg)' },
         },
       },
     },

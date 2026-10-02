@@ -17,8 +17,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
     { name: 'Our Projects', href: '/portfolio' },
     { name: 'Pricing', href: '/pricing' },
     { name: 'Laboratory', href: '/laboratory' },
-    { name: 'Tectonic Series', href: '/tectonic-series' },
-    { name: 'Sovereign Vault', href: '/vault' },
+    { name: 'Tectonic Series', href: '/tectonic-series' }
   ];
 
   const utilityLinks = [
@@ -85,67 +84,76 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
             </div>
           </Link>
 
-          {/* Floating Pill Navigation */}
-          <div className={`hidden lg:flex items-center transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)] px-10 py-4 rounded-full border transition-luxury ${
-            scrolled 
-              ? 'bg-white/70 backdrop-blur-3xl shadow-[0_20px_40px_rgba(0,0,0,0.08)] border-white/50' 
-              : 'bg-white/10 border-white/20 backdrop-blur-xl shadow-lg'
-          }`}>
-            <div className="flex items-center space-x-12" role="menubar">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.href}
-                  role="menuitem"
-                  aria-label={`Go to ${link.name}`}
-                  className={`text-[10px] uppercase tracking-[0.4em] font-black transition-all duration-500 relative group/link py-1 whitespace-nowrap ${
-                    isActive(link.href) 
-                      ? 'text-brass drop-shadow-[0_0_10px_rgba(212,175,55,0.3)] font-black' 
-                      : (scrolled ? 'text-brass/90 hover:text-[#1A1A1A]' : 'text-brass hover:text-white')
-                  }`}
-                >
-                  {link.name}
-                  <span className={`absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-0 h-[2px] bg-brass transition-all duration-500 group-hover/link:w-2 ${isActive(link.href) ? 'w-2' : ''}`} />
-                </Link>
-              ))}
+          {/* Apple Style Glassmorphic Navigation (Center) */}
+          <div className="hidden xl:flex absolute left-1/2 -translate-x-1/2 items-center">
+            <div className="relative group p-[1px] rounded-full overflow-hidden shadow-2xl transition-transform duration-500 hover:scale-[1.02]">
+              {/* Animated glowing border across lines */}
+              <div className={`absolute inset-0 rounded-full transition-opacity duration-1000 ${scrolled ? 'opacity-100' : 'opacity-60'}`}>
+                <div className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0_340deg,#D4AF37_360deg)] animate-spin-slow"></div>
+              </div>
+              
+              {/* Glassmorphic Core */}
+              <div className={`relative flex items-center px-8 py-3.5 rounded-full transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)] ${
+                scrolled 
+                  ? 'bg-white/80 backdrop-blur-3xl border border-white/60' 
+                  : 'bg-white/10 backdrop-blur-2xl border border-white/20'
+              }`}>
+                <div className="flex items-center space-x-8" role="menubar">
+                  {navLinks.map((link) => (
+                    <Link
+                      key={link.name}
+                      to={link.href}
+                      role="menuitem"
+                      aria-label={`Go to ${link.name}`}
+                      className={`text-[10px] uppercase tracking-[0.4em] font-black transition-all duration-500 relative group/link py-1 whitespace-nowrap ${
+                        isActive(link.href) 
+                          ? 'text-brass drop-shadow-[0_0_10px_rgba(212,175,55,0.3)]' 
+                          : (scrolled ? 'text-zinc-600 hover:text-[#1A1A1A]' : 'text-zinc-300 hover:text-white')
+                      }`}
+                    >
+                      {link.name}
+                      <span className={`absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-0 h-[2px] bg-brass transition-all duration-500 group-hover/link:w-2 ${isActive(link.href) ? 'w-2' : ''}`} />
+                    </Link>
+                  ))}
+                </div>
+              </div>
             </div>
+          </div>
 
-            <div className={`flex items-center ml-12 pl-12 border-l transition-colors duration-700 h-6 ${
-              scrolled ? 'border-zinc-900/10' : 'border-white/20'
-            }`}>
-              <Link 
-                to="/contact" 
-                aria-label="Book a free consultation session"
-                className={`text-[10px] uppercase tracking-[0.4em] font-black transition-all duration-500 px-10 py-4 rounded-full whitespace-nowrap shadow-xl ${
-                  scrolled ? 'bg-[#1A1A1A] text-white hover:bg-brass' : 'bg-brass text-white hover:bg-white hover:text-[#1A1A1A]'
-                }`}
-              >
-                Book Session
-              </Link>
+          {/* Action Hub (Right) */}
+          <div className="hidden lg:flex items-center space-x-3 shrink-0 z-10">
+            <Link 
+              to="/contact" 
+              aria-label="Book a free consultation session"
+              className={`text-[9px] uppercase tracking-[0.4em] font-black transition-all duration-500 px-8 py-3.5 rounded-full whitespace-nowrap shadow-xl border ${
+                scrolled ? 'bg-[#1A1A1A] text-white hover:bg-brass border-transparent' : 'bg-white/10 backdrop-blur-md text-white border-white/20 hover:bg-white hover:text-[#1A1A1A]'
+              }`}
+            >
+              Book Session
+            </Link>
 
-              {/* Vault Trigger */}
-              <Link
-                to="/vault"
-                aria-label="Access Sovereign Vault"
-                className={`ml-6 p-3 rounded-full transition-all duration-500 flex items-center space-x-3 group ${
-                  scrolled ? 'text-zinc-400 hover:text-brass' : 'text-white/40 hover:text-white'
-                }`}
-              >
-                <FolderHeart size={18} className="group-hover:scale-110 transition-transform" />
-              </Link>
+            {/* Vault Trigger */}
+            <Link
+              to="/vault"
+              aria-label="Access Sovereign Vault"
+              className={`p-3 rounded-full transition-all duration-500 flex items-center group border ${
+                scrolled ? 'text-zinc-500 hover:text-brass bg-zinc-100 border-transparent hover:bg-zinc-200' : 'text-white/70 hover:text-white bg-white/10 border-white/20 backdrop-blur-md'
+              }`}
+            >
+              <FolderHeart size={16} className="group-hover:scale-110 transition-transform" />
+            </Link>
 
-              {/* Search Trigger */}
-              <button 
-                onClick={() => window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }))}
-                aria-label="Open global search (Cmd+K)"
-                className={`ml-6 p-3 rounded-full transition-all duration-500 flex items-center space-x-3 group ${
-                  scrolled ? 'text-zinc-400 hover:text-[#1A1A1A]' : 'text-white/40 hover:text-white'
-                }`}
-              >
-                <Search size={18} className="group-hover:scale-110 transition-transform" />
-                <span className="hidden xl:block text-[9px] font-black uppercase tracking-widest bg-white/10 px-2 py-1 rounded">⌘K</span>
-              </button>
-            </div>
+            {/* Search Trigger */}
+            <button 
+              onClick={() => window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }))}
+              aria-label="Open global search (Cmd+K)"
+              className={`p-3 rounded-full transition-all duration-500 flex items-center space-x-2 group border ${
+                scrolled ? 'text-zinc-500 hover:text-[#1A1A1A] bg-zinc-100 border-transparent hover:bg-zinc-200' : 'text-white/70 hover:text-white bg-white/10 border-white/20 backdrop-blur-md'
+              }`}
+            >
+              <Search size={16} className="group-hover:scale-110 transition-transform" />
+              <span className={`hidden xl:block text-[8px] font-black uppercase tracking-widest px-1.5 py-0.5 rounded ${scrolled ? 'bg-zinc-200/50' : 'bg-white/10'}`}>⌘K</span>
+            </button>
           </div>
 
           {/* Mobile Toggle Button */}
