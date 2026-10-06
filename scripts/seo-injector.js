@@ -43,22 +43,22 @@ const baseHtml = fs.readFileSync(indexPath, 'utf8');
 
 function formatTitle(route) {
   const parts = route.split('/').filter(Boolean);
-  if (parts.length === 0) return 'Top Luxury Interior Designers in Pune | KS Design Studio';
+  if (parts.length === 0) return { title: 'Top Luxury Interior Designers in Pune | KS Design Studio', subject: 'Interior Design', loc: 'Pune' };
   
   if ((parts[0] === 'interiors-in' || parts[0] === 'cost-guide') && parts[1]) {
     const loc = parts[1].replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-    return `Interior Designers in ${loc} | KS Design Studio`;
+    return { title: `Interior Designers in ${loc} | KS Design Studio`, subject: 'Interior Design', loc };
   }
   if (parts[0] === 'services' && parts[1]) {
     const srv = parts[1].replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-    return `${srv} | KS Design Studio Pune`;
+    return { title: `${srv} | KS Design Studio Pune`, subject: srv, loc: 'Pune' };
   }
   if (parts[0] === 'service' && parts[1] && parts[2]) {
     const loc = parts[1].replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
     const srv = parts[2].replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-    return `${srv} in ${loc} | KS Design Studio`;
+    return { title: `${srv} in ${loc} | KS Design Studio`, subject: srv, loc };
   }
-  return parts.join(' ').replace(/-/g, ' ') + ' | KS Design Studio';
+  return { title: parts.join(' ').replace(/-/g, ' ') + ' | KS Design Studio', subject: 'Interior Design', loc: 'Pune' };
 }
 
 routes.forEach(route => {
@@ -67,9 +67,11 @@ routes.forEach(route => {
   const targetDir = path.join(publicDir, route);
   fs.mkdirSync(targetDir, { recursive: true });
 
-  const title = formatTitle(route);
-  const desc = generateDynamicMeta(route, "Interior Design", "Pune");
+  const { title, subject, loc } = formatTitle(route);
+  const desc = generateDynamicMeta(route, subject, loc);
+  const fullUrl = `https://ksdesignstudio.in${route}`;
   
+  // 1. Core Meta
   let newHtml = baseHtml.replace(
     /<title>.*?<\/title>/,
     `<title>${title}</title>`
@@ -80,11 +82,40 @@ routes.forEach(route => {
     `<meta name="description" content="${desc}" />`
   );
 
-  // Inject Canonical Tag
-  const canonicalTag = `<link rel="canonical" href="https://ksdesignstudio.in${route}" />`;
+  // 2. OpenGraph Meta
+  newHtml = newHtml.replace(
+    /<meta property="og:title" content=".*?"\s*\/>/,
+    `<meta property="og:title" content="${title}" />`
+  );
+  newHtml = newHtml.replace(
+    /<meta property="og:description" content=".*?"\s*\/>/,
+    `<meta property="og:description" content="${desc}" />`
+  );
+  if (!newHtml.includes('<meta property="og:url"')) {
+    newHtml = newHtml.replace('</head>', `  <meta property="og:url" content="${fullUrl}" />\n</head>`);
+  }
+
+  // 3. Breadcrumb Schema Injection
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ksdesignstudio.in" },
+      { "@type": "ListItem", "position": 2, "name": loc, "item": `https://ksdesignstudio.in/interiors-in/${loc.toLowerCase().replace(/ /g, '-')}` },
+      { "@type": "ListItem", "position": 3, "name": subject, "item": fullUrl }
+    ]
+  };
+  newHtml = newHtml.replace('</head>', `  <script type="application/ld+json">\n${JSON.stringify(breadcrumbSchema)}\n</script>\n</head>`);
+
+  // 4. Canonical Tag
+  const canonicalTag = `<link rel="canonical" href="${fullUrl}" />`;
   newHtml = newHtml.replace('</title>', `</title>\n  ${canonicalTag}`);
+  
+  // 5. Structural H1 Cloaking for Googlebot (Visible to screen readers/crawlers, visually hidden)
+  const structuralH1 = `<h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">${title}</h1>`;
+  newHtml = newHtml.replace('<body>', `<body>\n  ${structuralH1}`);
 
   fs.writeFileSync(path.join(targetDir, 'index.html'), newHtml, 'utf8');
 });
 
-console.log(`✅ Injected SEO Metadata into ${routes.length} physical routes for Cloudflare.`);
+console.log(`✅ Injected SEO Metadata, OpenGraph, Breadcrumbs, and Structural H1s into ${routes.length} physical routes.`);
