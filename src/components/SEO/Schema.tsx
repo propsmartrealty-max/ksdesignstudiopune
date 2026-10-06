@@ -33,11 +33,6 @@ const Schema: React.FC = () => {
       "availableLanguage": ["English", "Hindi", "Marathi"]
     },
     "priceRange": "₹₹₹₹",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "128"
-    },
     "founder": {
       "@type": "Person",
       "name": "Komal Sharma",
