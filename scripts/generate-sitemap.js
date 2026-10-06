@@ -3,21 +3,32 @@ import path from 'path';
 
 // Purged from 100+ low-quality markets down to the Elite High-Value Pune & Mumbai markets
 const TARGET_MARKETS = [
-  // Pune Elite & Emerging Tech Corridors
+  // Pune Complete Micro-Markets
   "Baner", "Koregaon Park", "Kalyani Nagar", "Viman Nagar", "Hinjewadi", "Wakad", "Kharadi", "Aundh", "Magarpatta", "Balewadi",
   "Pashan", "Kothrud", "Bavdhan", "Punawale", "Tathawade", "Ravet", "Pimple Saudagar", "Hadapsar", "NIBM", "Undri",
+  "Pimple Gurav", "Pimple Nilakh", "Sangvi", "Bhosari", "Chinchwad", "Nigdi", "Akurdi", "Thergaon", "Kalewadi",
+  "Karve Nagar", "Warje", "Sinhagad Road", "Dhankawadi", "Katraj", "Bibwewadi", "Swargate", "Camp", "Wanowrie",
+  "Pisoli", "Kondhwa", "Wagholi", "Vishrantwadi", "Dhanori", "Lohegaon", "Dighi", "Yerawada", "Shivaji Nagar",
+  "Deccan", "FC Road", "SB Road", "Model Colony", "Erandwane", "Sadashiv Peth", "Narayan Peth", "Shukrawar Peth",
   // Mumbai Elite
   "Bandra", "Juhu", "Worli", "Powai", "Andheri", "South Mumbai", "Malabar Hill", "Navi Mumbai", "Thane"
 ];
 
 const BUILDERS = {
-  "Godrej Properties": ["Godrej Hillside", "Godrej Park World"],
-  "VTP Realty": ["VTP Blue Waters", "VTP Bellissimo"],
-  "Kolte-Patil Developers": ["Life Republic", "24K Stargaze"],
-  "Kohinoor Group": ["Kohinoor Central Park", "Kohinoor Westview Reserve"],
-  "Mahindra Lifespaces": ["Mahindra Citadel"],
-  "Lodha": ["Lodha Belmondo"],
-  "Gera Developments": ["Gera World of Joy"]
+  "Godrej Properties": ["Godrej Hillside", "Godrej Park World", "Godrej Elements", "Godrej 24", "Godrej Rejuve"],
+  "VTP Realty": ["VTP Blue Waters", "VTP Bellissimo", "VTP Leonara", "VTP Belair", "VTP Pegasus", "VTP Altair"],
+  "Kolte-Patil Developers": ["Life Republic", "24K Stargaze", "24K Atria", "Ivy Estate", "Centria"],
+  "Kohinoor Group": ["Kohinoor Central Park", "Kohinoor Westview Reserve", "Kohinoor Sapphire", "Kohinoor Coral", "Kohinoor Grandeur"],
+  "Mahindra Lifespaces": ["Mahindra Citadel", "Mahindra Happinest", "Mahindra Antheia"],
+  "Lodha": ["Lodha Belmondo", "Lodha Giardino", "Lodha Panache"],
+  "Gera Developments": ["Gera World of Joy", "Gera Planet of Joy", "Gera Island of Joy", "Gera Admeasuring"],
+  "Panchshil Realty": ["Panchshil Towers", "Trump Towers Pune", "Yoo Pune", "One North"],
+  "Rohan Builders": ["Rohan Abhilasha", "Rohan Leher", "Rohan Nidita", "Rohan Tarang"],
+  "Pride Group": ["Pride World City", "Pride Platinum", "Pride Ashiyana"],
+  "Paranjape Schemes": ["Blue Ridge", "Forest Trails", "Athashri"],
+  "Kalpataru": ["Kalpataru Jade Residences", "Kalpataru Serenity", "Kalpataru Splendour"],
+  "Kasturi Housing": ["The Balmoral Riverside", "Apostrophe", "Legacy"],
+  "Nyati Group": ["Nyati Elysia", "Nyati Equinox", "Nyati Exuberance"]
 };
 
 const SERVICES = [
@@ -97,10 +108,15 @@ function generateSitemaps() {
     "Modular Kitchen", 
     "2 BHK Interior Designers", 
     "3 BHK Interior Designers", 
+    "4 BHK Interior Designers",
     "Villa Interior Designers", 
+    "Bungalow Interior Designers",
     "Office Interior Designers", 
     "Home Renovation",
-    "Best Interior Designers"
+    "Best Interior Designers",
+    "Interior Designers Near Me",
+    "Interior Decorators Near Me",
+    "Modular Kitchen Designers Near Me"
   ];
   
   for (const service of CORE_SERVICES) {
