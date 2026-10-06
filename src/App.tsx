@@ -156,6 +156,7 @@ const AppContent: React.FC = () => {
           <WhatsAppButton />
           <FloatingContactCTA />
           <DesignLiveWorkshop isOpen={isWorkshopOpen} onClose={() => setIsWorkshopOpen(false)} />
+          <SocialProofToast />
           <CookieConsent />
           <Footer />
         </>
