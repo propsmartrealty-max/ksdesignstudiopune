@@ -197,6 +197,45 @@ const Schema: React.FC = () => {
     "url": "https://ksdesignstudio.in"
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does a 2 BHK interior design cost in Pune?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The cost of interior design for a 2 BHK in Pune at KS Design Studio typically ranges from ₹4 Lakhs to ₹12 Lakhs depending on the materials, custom furniture (sofas, beds, modular kitchen), and scope of civil modifications."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is included in Turnkey Interior Design?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Turnkey interior design is an end-to-end service where KS Design Studio handles everything from 3D conceptualization, civil work, electrical plumbing, false ceiling, custom modular furniture manufacturing, painting, and final handover."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which are the best interior designers in Wakad and Baner?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "KS Design Studio is ranked among the top interior designers in Wakad, Baner, and Hinjewadi, known for premium aesthetics, transparent pricing, and timely delivery of bespoke luxury apartments."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer Vastu-compliant interior design?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, our Principal Architect and design team specialize in Vastu-compliant space planning to ensure positive energy flow in your living room, kitchen, and master bedrooms."
+        }
+      }
+    ]
+  };
+
   return (
     <>
       <script type="application/ld+json">
@@ -204,6 +243,9 @@ const Schema: React.FC = () => {
       </script>
       <script type="application/ld+json">
         {JSON.stringify(ldJson)}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(faqSchema)}
       </script>
     </>
   );
