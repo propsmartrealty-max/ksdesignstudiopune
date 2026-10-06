@@ -93,6 +93,29 @@ const Schema: React.FC = () => {
       "https://www.facebook.com/ksdesignstudiopune/",
       "https://www.google.com/maps?sca_esv=f2a7ccf26385c224&hl=en&biw=1440&bih=778&output=search&q=ks+design+studio&source=lnms&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8cQAAwka5J92rwZWDkn1wAD32kXDVSBwjf6cTOeLVB2-qkztBwHLa5-dxplkZyiGjBBZR3WsDzeKSmW1ZOavIYwnr36x9SORw1EP5ROMtPycGXb5gs4R6ea18NoB6OHpK3CIKm67zX0ez8DGyCUY8LM2TOSq1a9Feck7GqHw7OvGRiIvM6fBJaKNmqayC3Vc937C7VuA&entry=mc&ved=1t:200715&ictx=111"
     ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "184",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Priyanka Desai" },
+        "datePublished": "2024-03-12",
+        "reviewBody": "KS Design Studio provided the most luxurious modular kitchen and turnkey interior design for our 3 BHK in Wakad. Highly recommended!",
+        "reviewRating": { "@type": "Rating", "bestRating": "5", "ratingValue": "5", "worstRating": "1" }
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Rahul Sharma" },
+        "datePublished": "2024-01-22",
+        "reviewBody": "Best interior designers in Pune! They customized our master bedroom and living room with premium furniture and false ceiling exactly as we wanted.",
+        "reviewRating": { "@type": "Rating", "bestRating": "5", "ratingValue": "5", "worstRating": "1" }
+      }
+    ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Interior Design Services",
@@ -108,6 +131,49 @@ const Schema: React.FC = () => {
         }))
       }))
     },
+    "makesOffer": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "Luxury Modular Kitchen",
+          "description": "Customized premium modular kitchen with Hettich/Blum hardware, acrylic finish, and built-in appliances.",
+          "category": "Furniture > Kitchen Furniture",
+          "brand": { "@type": "Brand", "name": "KS Design Studio" }
+        },
+        "priceSpecification": { "@type": "PriceSpecification", "priceCurrency": "INR", "minPrice": "200000" }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "Bespoke L-Shape Sofa Set",
+          "description": "Custom upholstered luxury L-Shape sofa set crafted for modern living rooms.",
+          "category": "Furniture > Sofas",
+          "brand": { "@type": "Brand", "name": "KS Design Studio" }
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "Sliding Glass Wardrobe",
+          "description": "Premium floor-to-ceiling sliding wardrobe with tinted glass and sensor LED lighting.",
+          "category": "Furniture > Bedroom Furniture > Wardrobes",
+          "brand": { "@type": "Brand", "name": "KS Design Studio" }
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "Marble Dining Table Set",
+          "description": "Luxurious 6-seater Italian marble dining table with upholstered seating.",
+          "category": "Furniture > Dining Room Furniture",
+          "brand": { "@type": "Brand", "name": "KS Design Studio" }
+        }
+      }
+    ],
     "hasPart": PROJECTS.map(project => ({
       "@type": "CreativeWork",
       "name": project.title,

@@ -103,20 +103,47 @@ function generateSitemaps() {
   
   // Hardened strict list of highest converting interior design search queries
   const CORE_SERVICES = [
-    "Luxury Interior Designers", 
-    "Turnkey Interiors", 
-    "Modular Kitchen", 
-    "2 BHK Interior Designers", 
-    "3 BHK Interior Designers", 
-    "4 BHK Interior Designers",
-    "Villa Interior Designers", 
-    "Bungalow Interior Designers",
-    "Office Interior Designers", 
-    "Home Renovation",
-    "Best Interior Designers",
-    "Interior Designers Near Me",
-    "Interior Decorators Near Me",
-    "Modular Kitchen Designers Near Me"
+    // Core Services
+    "Luxury Interior Designers", "Turnkey Interiors", "Modular Kitchen Designers", "2 BHK Interior Designers", 
+    "3 BHK Interior Designers", "4 BHK Interior Designers", "Villa Interior Designers", "Bungalow Interior Designers",
+    "Office Interior Designers", "Home Renovation", "Best Interior Designers", "Interior Designers Near Me",
+    "Interior Decorators Near Me", "Modular Kitchen Designers Near Me", "Top Interior Designers",
+    "Budget Interior Designers", "Affordable Interior Designers", "Premium Interior Designers",
+    
+    // Room-specific
+    "Living Room Interior Design", "Master Bedroom Interior Design", "Kids Room Interior Design",
+    "Guest Room Interior Design", "Pooja Room Interior Design", "Bathroom Interior Design",
+    "Balcony Interior Design", "Dining Room Interior Design", "Foyer Interior Design",
+    
+    // Furniture & Products (Google Shopping / Snippets Strategy)
+    "Custom Sofa Design", "L-Shape Sofa Set", "Luxury Sofa Set", "Modern Sofa Set",
+    "Custom Wardrobe Design", "Sliding Wardrobe Design", "Walk-in Wardrobe Design", "Acrylic Wardrobe Design",
+    "Custom Dining Table", "Marble Dining Table", "Wooden Dining Table", "Luxury Dining Table",
+    "Modular Kitchen Pricing", "L-Shape Modular Kitchen", "Parallel Modular Kitchen", "Island Modular Kitchen",
+    "Acrylic Modular Kitchen", "PVC Modular Kitchen", "Wooden Modular Kitchen", "Stainless Steel Modular Kitchen",
+    "TV Unit Design", "Modern TV Unit", "Floating TV Unit", "Luxury TV Unit",
+    "False Ceiling Design", "POP False Ceiling", "Gypsum False Ceiling", "Wooden False Ceiling",
+    "Shoe Rack Design", "Crockery Unit Design", "Study Table Design", "Bookshelf Design",
+    "Custom Bed Design", "Hydraulic Bed", "Upholstered Bed", "Luxury Bed",
+    
+    // Pricing & Intent (High Conversion)
+    "Interior Design Cost Calculator", "2 BHK Interior Design Cost", "3 BHK Interior Design Cost",
+    "Modular Kitchen Cost", "Turnkey Interior Cost", "Wardrobe Cost Calculator",
+    
+    // Styles
+    "Modern Interior Design", "Minimalist Interior Design", "Contemporary Interior Design",
+    "Traditional Interior Design", "Scandinavian Interior Design", "Bohemian Interior Design",
+    "Industrial Interior Design", "Japandi Interior Design", "Wabi-Sabi Interior Design",
+    
+    // Commercial
+    "Commercial Interior Designers", "Retail Shop Interior Designers", "Restaurant Interior Designers",
+    "Cafe Interior Designers", "Clinic Interior Designers", "Salon Interior Designers",
+    "Gym Interior Designers", "Hotel Interior Designers", "Showroom Interior Designers",
+    
+    // Niche Services
+    "Vastu Compliant Interior Design", "Smart Home Automation", "Acoustic Soundproofing",
+    "Lighting Design Consultancy", "Custom Furniture Sourcing", "Italian Marble Flooring",
+    "Wallpaper Installation", "Wall Paneling Design", "Custom Painting Services"
   ];
   
   for (const service of CORE_SERVICES) {
