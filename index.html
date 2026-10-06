@@ -76,5 +76,31 @@
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
+
+  <!-- Predictive ML Prefetching -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const link = entry.target.href;
+            if (link && link.startsWith(window.location.origin) && !window.prefetchedUrls?.has(link)) {
+              const prefetchTag = document.createElement('link');
+              prefetchTag.rel = 'prefetch';
+              prefetchTag.href = link;
+              document.head.appendChild(prefetchTag);
+              window.prefetchedUrls = window.prefetchedUrls || new Set();
+              window.prefetchedUrls.add(link);
+            }
+          }
+        });
+      }, { rootMargin: '50px' });
+      
+      setTimeout(() => {
+        document.querySelectorAll('a').forEach(a => observer.observe(a));
+      }, 2000);
+    });
+  </script>
+
 </body>
 </html>

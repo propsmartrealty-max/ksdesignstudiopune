@@ -8,14 +8,10 @@ export const onRequest: PagesFunction = async (context) => {
     return Response.redirect(url.toString(), 301);
   }
 
-  // 2. Trailing Slash Normalization removed to prevent infinite loop with Cloudflare Pages directory routing
-
   const response = await next();
-
-  // 3. Clone response to mutate headers
   const modifiedResponse = new Response(response.body, response);
 
-  // 4. Advanced Serverless Security Posture
+  // 2. Advanced Serverless Security Posture
   modifiedResponse.headers.set('X-XSS-Protection', '1; mode=block');
   modifiedResponse.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
   modifiedResponse.headers.set('X-Content-Type-Options', 'nosniff');
@@ -26,17 +22,40 @@ export const onRequest: PagesFunction = async (context) => {
     modifiedResponse.headers.set('Cache-Control', 'public, max-age=31536000, immutable');
   }
 
-  // 5. Cloudflare HTMLRewriter: Peak Detailing Edge Personalization
-  // If this is an HTML request, we can inject edge data
+  // 3. Cloudflare HTMLRewriter: Peak Detailing Edge Personalization & Wealth Indexing
   const contentType = response.headers.get("content-type");
   if (contentType && contentType.includes("text/html")) {
-    const city = request.cf?.city || "Maharashtra";
+    const city = (request.cf?.city || "Pune") as string;
     
-    // Using Cloudflare's C++ based HTMLRewriter to inject the visitor's city into the DOM natively at the edge
+    // Hyper-Personalized Wealth-Index Logic
+    const ultraLuxuryMarkets = ["Koregaon Park", "Kalyani Nagar", "Viman Nagar", "Baner", "Aundh", "Magarpatta", "Boat Club Road"];
+    const premiumMarkets = ["Wakad", "Hinjewadi", "Kharadi", "Pimple Saudagar", "Balewadi", "Kothrud", "Bavdhan"];
+    
+    let wealthIntentString = "bespoke, A-grade home narratives";
+    let subIntentString = "We turn architectural volumes into personal sanctuaries for the elite.";
+    
+    if (ultraLuxuryMarkets.includes(city)) {
+        wealthIntentString = "ultra-luxury penthouses & imported Italian marble aesthetics";
+        subIntentString = "Exclusive architectural masterpieces crafted for high-net-worth patrons.";
+    } else if (premiumMarkets.includes(city)) {
+        wealthIntentString = "premium 2BHK/3BHK turnkey solutions & smart modular kitchens";
+        subIntentString = "Optimized spatial layouts with uncompromising premium finishings.";
+    }
+    
     return new HTMLRewriter()
       .on('span#edge-visitor-city', {
         element(element) {
-          element.setInnerContent(city as string);
+          element.setInnerContent(city);
+        }
+      })
+      .on('span#edge-wealth-intent', {
+        element(element) {
+          element.setInnerContent(wealthIntentString);
+        }
+      })
+      .on('span#edge-sub-intent', {
+        element(element) {
+          element.setInnerContent(subIntentString);
         }
       })
       .transform(modifiedResponse);

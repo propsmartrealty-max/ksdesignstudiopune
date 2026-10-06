@@ -194,7 +194,14 @@ const Schema: React.FC = () => {
     "@type": "WebSite",
     "name": "KS Design Studio",
     "alternateName": ["KS Design Studio Pune", "KS Design Studio Global"],
-    "url": "https://ksdesignstudio.in"
+    "url": "https://ksdesignstudio.in",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "xpath": [
+        "/html/head/title",
+        "/html/head/meta[@name='description']/@content"
+      ]
+    }
   };
 
   const faqSchema = {

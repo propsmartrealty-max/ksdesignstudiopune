@@ -33,7 +33,7 @@ export default function Hero() {
         </h1>
         
         <p className="text-zinc-600 max-w-4xl mx-auto mb-20 text-lg md:text-2xl font-medium leading-relaxed animate-fade-in" style={{ animationDelay: '0.5s' }}>
-          As Pune's top-rated <span className="text-zinc-900 font-bold tracking-wide">luxury interior designers</span>, we execute end-to-end turnkey architecture for premium 2 BHK, 3 BHK, and Villa residences. Crafting bespoke home narratives across <span className="text-zinc-900 font-bold tracking-wide">Pune, Mumbai, Indore & Goa</span>. We transform architectural volumes into personal sanctuaries through bespoke material sourcing, modular integration, and Vastu-compliant spatial planning.
+          As <span id="edge-visitor-city">Pune</span>'s top-rated <span className="text-zinc-900 font-bold tracking-wide">luxury interior designers</span>, we execute end-to-end turnkey architecture. Crafting <span id="edge-wealth-intent" className="text-zinc-900 font-bold tracking-wide">bespoke, A-grade home narratives</span> across Maharashtra. <span id="edge-sub-intent">We transform architectural volumes into personal sanctuaries through bespoke material sourcing, modular integration, and Vastu-compliant spatial planning.</span>
         </p>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-10 animate-fade-in" style={{ animationDelay: '0.7s' }}>
