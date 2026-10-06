@@ -2,6 +2,7 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "ks-design-studio-pune",
   "compatibility_date": "2026-10-01",
+  "pages_build_output_dir": "dist",
   "observability": {
     "enabled": true
   },
