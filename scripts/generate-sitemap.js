@@ -190,25 +190,39 @@ function generateSitemaps() {
   // 6. Generate single flat Global Sitemap
   fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), createSitemapXML(allSitemapUrls), 'utf8');
 
-  // 7. Generate a static HTML Sitemap (The Internal Linking Mesh) to prevent Orphan Page penalty
-  let htmlSitemap = `<!DOCTYPE html>
+  // 7. Generate a static HTML Sitemap (The Internal Linking Mesh) - Paginated to prevent Link Farm Penalty
+  const LINKS_PER_PAGE = 1000;
+  const totalPages = Math.ceil(allSitemapUrls.length / LINKS_PER_PAGE);
+
+  for (let i = 0; i < totalPages; i++) {
+    const chunk = allSitemapUrls.slice(i * LINKS_PER_PAGE, (i + 1) * LINKS_PER_PAGE);
+    const isFirstPage = i === 0;
+    const fileName = isFirstPage ? 'locations.html' : `locations-${i + 1}.html`;
+
+    let htmlSitemap = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>KS Design Studio - Areas We Serve (Sitemap)</title>
-  <meta name="description" content="Complete directory of interior design services across Pune and Mumbai.">
+  <title>KS Design Studio - Areas We Serve (Page ${i + 1})</title>
+  <meta name="description" content="Directory of interior design services across Pune (Page ${i + 1}).">
   <meta name="robots" content="index, follow">
 </head>
 <body style="font-family: system-ui, sans-serif; padding: 2rem; max-width: 1200px; mx-auto;">
-  <h1>KS Design Studio - Coverage Areas</h1>
+  <h1>KS Design Studio - Coverage Areas (Page ${i + 1} of ${totalPages})</h1>
+  <div style="margin-bottom: 20px;">
+    ${Array.from({ length: totalPages }).map((_, idx) => 
+      `<a href="${idx === 0 ? 'locations.html' : `locations-${idx + 1}.html`}" style="margin-right: 10px; font-weight: ${idx === i ? 'bold' : 'normal'};">Page ${idx + 1}</a>`
+    ).join('')}
+  </div>
   <ul style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px;">`;
-  
-  allSitemapUrls.forEach(u => {
-    htmlSitemap += `\n    <li><a href="${u.route}">${u.route.replace(/-/g, ' ').replace(/\//g, ' ').trim()}</a></li>`;
-  });
-  
-  htmlSitemap += `\n  </ul>\n</body>\n</html>`;
-  fs.writeFileSync(path.join(publicDir, 'locations.html'), htmlSitemap, 'utf8');
+    
+    chunk.forEach(u => {
+      htmlSitemap += `\n    <li><a href="${u.route}">${u.route.replace(/-/g, ' ').replace(/\//g, ' ').trim()}</a></li>`;
+    });
+    
+    htmlSitemap += `\n  </ul>\n</body>\n</html>`;
+    fs.writeFileSync(path.join(publicDir, fileName), htmlSitemap, 'utf8');
+  }
 
   // Also output a flat JSON array of routes for the prerender script
   allSitemapUrls.forEach(u => allRoutes.push(u.route));

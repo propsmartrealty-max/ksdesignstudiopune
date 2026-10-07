@@ -36,7 +36,7 @@ const InvestmentEstimator: React.FC = () => {
     const web3FormsKey = "INSERT_WEB3FORMS_KEY_HERE";
     if (true) {
       try {
-        await fetch("/api/leads", {
+        await fetch("https://formsubmit.co/ajax/ksdesignstudiopune@gmail.com", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
