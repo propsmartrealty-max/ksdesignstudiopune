@@ -1,3 +1,5 @@
+import InteractiveQuiz from "../components/InteractiveQuiz";
+
 import React from 'react';
 import Hero from '../components/Hero';
 import ServicesGrid from '../components/ServicesGrid';
@@ -52,6 +54,13 @@ export default function Home() {
         <TrustRegistry />
         <GuaranteeProtocol />
       </div>
+
+      {/* Interactive Conversion: Design DNA Quiz */}
+      <section className="py-20 px-6 lg:px-12 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <InteractiveQuiz />
+        </div>
+      </section>
 
       {/* Interactive Conversion: Investment Estimator */}
       <div id="estimator">
