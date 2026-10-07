@@ -43,6 +43,8 @@ const InvestmentEstimator: React.FC = () => {
             Accept: "application/json",
           },
           body: JSON.stringify({
+        _honey: "",
+        _captcha: "false",
             access_key: web3FormsKey,
             subject: "New Cost Estimate Request",
             email: email,
