@@ -1,4 +1,4 @@
-const spintax = require("./spin-tax.js");
+import { getSpin } from "./spin-tax.js";
 
 import fs from 'fs';
 import path from 'path';
