@@ -17,8 +17,19 @@ export default defineConfig(({ mode }) => ({
     outDir: 'dist',
     assetsDir: 'assets',
     cssCodeSplit: true,
-    sourcemap: mode === 'development',
-    minify: mode === 'production' ? 'terser' : false,
+    sourcemap: false,
+    target: ['es2020', 'chrome87', 'firefox78', 'safari14'],
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+        pure_funcs: ['console.log', 'console.info'],
+      },
+      mangle: true,
+      format: { comments: false }
+    },
+    cssMinify: true,
     rollupOptions: {
       output: {
         manualChunks: {

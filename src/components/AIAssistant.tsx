@@ -137,7 +137,7 @@ const AIAssistant: React.FC = () => {
                 </div>
               </div>
             </div>
-            <button onClick={() => setIsOpen(false)} className="p-4 hover:bg-zinc-50 rounded-full transition-all text-zinc-400">
+            <button onClick={() => setIsOpen(false)} aria-label="Close AI Design Assistant" className="p-4 hover:bg-zinc-50 rounded-full transition-all text-zinc-400">
                <X size={24} />
             </button>
           </div>

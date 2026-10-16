@@ -13,99 +13,64 @@
   <meta name="ICBM" content="18.5996, 73.7486" />
 
   <!-- DNS Prefetch & Preconnect for Core Web Vitals (TTFB Optimization) -->
-  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
-  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
   <link rel="preconnect" href="https://formsubmit.co" crossorigin />
   <link rel="dns-prefetch" href="https://formsubmit.co" />
-  <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
-  <link rel="dns-prefetch" href="https://images.unsplash.com" />
-  
-  <!-- LCP Hardening: Preload critical Hero Image -->
-  <link rel="preload" as="image" href="/assets/webp/hero_foyer-Dmv-Yoj7.webp" type="image/webp" />
 
-  <!-- Google Search Console Verification handled via Cloudflare DNS TXT record -->
-
-  <!-- SEO: Canonical URL handled dynamically by React -->
+  <!-- LCP Hardening: Preload critical Hero Image - MUST match the exact hashed filename after build -->
+  <link rel="preload" as="image" href="/assets/webp/hero_foyer-Dmv-Yoj7.webp" type="image/webp" fetchpriority="high" />
 
   <!-- Open Graph / Social Media Meta Tags -->
   <meta property="og:title" content="Top Luxury Interior Designers in Pune | KS Design Studio" />
   <meta property="og:description" content="Crafting bespoke, A-grade home narratives across Pune's premium micro-markets. We turn architectural volumes into personal sanctuaries for the elite." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ksdesignstudio.in" />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1200" />
+  <meta property="og:image" content="https://ksdesignstudio.in/assets/webp/hero_foyer-Dmv-Yoj7.webp" />
 
-  <!-- Neural Acceleration: LCP Preload -->
-  <link rel="preload" href="/assets/webp/hero_foyer-Dmv-Yoj7.webp" as="image" type="image/webp" fetchpriority="high" />
-
-  <!-- Google Consent Mode v2 Default State -->
-  <script>
-    
-    // Default to denied until user accepts CookieConsent banner
-      'ad_storage': 'denied',
-      'analytics_storage': 'denied',
-      'ad_user_data': 'denied',
-      'ad_personalization': 'denied'
-    });
-  </script>
-
-  <!-- Google tag (gtag.js) injected via Cloudflare Zaraz or env vars in the future -->
-
-  <!-- PWA Service Worker Registration -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').then(registration => {
-          console.log('SW registered: ', registration);
-        }).catch(registrationError => {
-          console.log('SW registration failed: ', registrationError);
-        });
-      });
-    }
-  </script>
-
-  <link rel="manifest" href="./manifest.json" />
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json" />
   <meta name="theme-color" content="#1A1A1A" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <link rel="apple-touch-icon" href="/icon-512.png" />
-  <link rel="stylesheet" href="/src/index.css">
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+  <!-- Cloudflare Turnstile - async defer so it never blocks render -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 
-  <!-- Predictive ML Prefetching -->
+  <!-- PWA Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js');
+      });
+    }
+  </script>
+
+  <!-- Predictive ML Prefetching (viewport-based) -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+      const prefetched = new Set();
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             const link = entry.target.href;
-            if (link && link.startsWith(window.location.origin) && !window.prefetchedUrls?.has(link)) {
-              const prefetchTag = document.createElement('link');
-              prefetchTag.rel = 'prefetch';
-              prefetchTag.href = link;
-              document.head.appendChild(prefetchTag);
-              window.prefetchedUrls = window.prefetchedUrls || new Set();
-              window.prefetchedUrls.add(link);
+            if (link && link.startsWith(window.location.origin) && !prefetched.has(link)) {
+              const tag = document.createElement('link');
+              tag.rel = 'prefetch';
+              tag.href = link;
+              document.head.appendChild(tag);
+              prefetched.add(link);
             }
           }
         });
       }, { rootMargin: '50px' });
-      
       setTimeout(() => {
-        document.querySelectorAll('a').forEach(a => observer.observe(a));
-      }, 2000);
+        document.querySelectorAll('a[href]').forEach(a => observer.observe(a));
+      }, 3000);
     });
-  </script>
-
-<script>
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker.register("/sw.js");
-      });
-    }
   </script>
 </body>
 </html>

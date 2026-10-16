@@ -176,11 +176,13 @@ const Contact: React.FC = () => {
             </div>
             
             <div className="space-y-3">
-              <label className="text-[10px] uppercase tracking-[0.4em] font-black text-zinc-500">Project Type</label>
+              <label htmlFor="projectType" className="text-[10px] uppercase tracking-[0.4em] font-black text-zinc-500">Project Type</label>
                 <select 
+                  id="projectType"
                   name="projectType"
                   value={formData.projectType}
                   onChange={handleChange}
+                  aria-label="Select your project type"
                   className="w-full bg-white/50 backdrop-blur-md border border-white/40 rounded-2xl p-5 text-sm focus:ring-2 focus:ring-brass/20 focus:border-brass outline-none appearance-none cursor-pointer transition-all text-zinc-900 font-medium"
                 >
                 <option>2BHK Apartment Interior</option>
