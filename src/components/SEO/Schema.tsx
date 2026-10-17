@@ -129,43 +129,266 @@ const Schema: React.FC = () => {
     "makesOffer": [
       {
         "@type": "Offer",
+        "url": "https://ksdesignstudio.in/#services",
+        "price": "250000",
+        "priceCurrency": "INR",
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
         "itemOffered": {
           "@type": "Product",
           "name": "Luxury Modular Kitchen",
+          "image": "https://ksdesignstudio.in/assets/webp/ks_tectonic_kitchen-YGXuzWPL.webp",
           "description": "Customized premium modular kitchen with Hettich/Blum hardware, acrylic finish, and built-in appliances.",
           "category": "Furniture > Kitchen Furniture",
-          "brand": { "@type": "Brand", "name": "KS Design Studio" }
-        },
-        "priceSpecification": { "@type": "PriceSpecification", "priceCurrency": "INR", "minPrice": "200000" }
+          "sku": "KSDS-MOD-KITCHEN-01",
+          "brand": { "@type": "Brand", "name": "KS Design Studio" },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "184",
+            "bestRating": "5",
+            "worstRating": "1"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://ksdesignstudio.in/#services",
+            "price": "250000",
+            "priceCurrency": "INR",
+            "priceValidUntil": "2027-12-31",
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition",
+            "seller": { "@type": "Organization", "name": "KS Design Studio" },
+            "hasMerchantReturnPolicy": {
+              "@type": "MerchantReturnPolicy",
+              "applicableCountry": "IN",
+              "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            },
+            "shippingDetails": {
+              "@type": "OfferShippingDetails",
+              "shippingRate": {
+                "@type": "MonetaryAmount",
+                "value": "0",
+                "currency": "INR"
+              },
+              "shippingDestination": {
+                "@type": "DefinedRegion",
+                "addressCountry": "IN"
+              },
+              "deliveryTime": {
+                "@type": "ShippingDeliveryTime",
+                "handlingTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": 0,
+                  "maxValue": 3,
+                  "unitCode": "DAY"
+                },
+                "transitTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": 3,
+                  "maxValue": 14,
+                  "unitCode": "DAY"
+                }
+              }
+            }
+          }
+        }
       },
       {
         "@type": "Offer",
+        "url": "https://ksdesignstudio.in/#services",
+        "price": "85000",
+        "priceCurrency": "INR",
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
         "itemOffered": {
           "@type": "Product",
           "name": "Bespoke L-Shape Sofa Set",
-          "description": "Custom upholstered luxury L-Shape sofa set crafted for modern living rooms.",
+          "image": "https://ksdesignstudio.in/assets/webp/ks_jade_living-Bf0OkyN5.webp",
+          "description": "Custom upholstered luxury L-Shape sofa set crafted with high-density foam and stain-resistant fabric for modern living rooms.",
           "category": "Furniture > Sofas",
-          "brand": { "@type": "Brand", "name": "KS Design Studio" }
+          "sku": "KSDS-SOFA-LSHAPE-02",
+          "brand": { "@type": "Brand", "name": "KS Design Studio" },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "184",
+            "bestRating": "5",
+            "worstRating": "1"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://ksdesignstudio.in/#services",
+            "price": "85000",
+            "priceCurrency": "INR",
+            "priceValidUntil": "2027-12-31",
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition",
+            "seller": { "@type": "Organization", "name": "KS Design Studio" },
+            "hasMerchantReturnPolicy": {
+              "@type": "MerchantReturnPolicy",
+              "applicableCountry": "IN",
+              "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            },
+            "shippingDetails": {
+              "@type": "OfferShippingDetails",
+              "shippingRate": {
+                "@type": "MonetaryAmount",
+                "value": "0",
+                "currency": "INR"
+              },
+              "shippingDestination": {
+                "@type": "DefinedRegion",
+                "addressCountry": "IN"
+              },
+              "deliveryTime": {
+                "@type": "ShippingDeliveryTime",
+                "handlingTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": 0,
+                  "maxValue": 3,
+                  "unitCode": "DAY"
+                },
+                "transitTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": 3,
+                  "maxValue": 14,
+                  "unitCode": "DAY"
+                }
+              }
+            }
+          }
         }
       },
       {
         "@type": "Offer",
+        "url": "https://ksdesignstudio.in/#services",
+        "price": "120000",
+        "priceCurrency": "INR",
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
         "itemOffered": {
           "@type": "Product",
           "name": "Sliding Glass Wardrobe",
-          "description": "Premium floor-to-ceiling sliding wardrobe with tinted glass and sensor LED lighting.",
+          "image": "https://ksdesignstudio.in/assets/webp/ks_monograph_bedroom-vtKt_Cbj.webp",
+          "description": "Premium floor-to-ceiling sliding wardrobe with tinted fluted glass, soft-close hardware, and sensor LED profile lighting.",
           "category": "Furniture > Bedroom Furniture > Wardrobes",
-          "brand": { "@type": "Brand", "name": "KS Design Studio" }
+          "sku": "KSDS-WARDROBE-SLIDE-03",
+          "brand": { "@type": "Brand", "name": "KS Design Studio" },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "184",
+            "bestRating": "5",
+            "worstRating": "1"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://ksdesignstudio.in/#services",
+            "price": "120000",
+            "priceCurrency": "INR",
+            "priceValidUntil": "2027-12-31",
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition",
+            "seller": { "@type": "Organization", "name": "KS Design Studio" },
+            "hasMerchantReturnPolicy": {
+              "@type": "MerchantReturnPolicy",
+              "applicableCountry": "IN",
+              "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            },
+            "shippingDetails": {
+              "@type": "OfferShippingDetails",
+              "shippingRate": {
+                "@type": "MonetaryAmount",
+                "value": "0",
+                "currency": "INR"
+              },
+              "shippingDestination": {
+                "@type": "DefinedRegion",
+                "addressCountry": "IN"
+              },
+              "deliveryTime": {
+                "@type": "ShippingDeliveryTime",
+                "handlingTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": 0,
+                  "maxValue": 3,
+                  "unitCode": "DAY"
+                },
+                "transitTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": 3,
+                  "maxValue": 14,
+                  "unitCode": "DAY"
+                }
+              }
+            }
+          }
         }
       },
       {
         "@type": "Offer",
+        "url": "https://ksdesignstudio.in/#services",
+        "price": "95000",
+        "priceCurrency": "INR",
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
         "itemOffered": {
           "@type": "Product",
           "name": "Marble Dining Table Set",
-          "description": "Luxurious 6-seater Italian marble dining table with upholstered seating.",
+          "image": "https://ksdesignstudio.in/assets/webp/hero_foyer-Dmv-Yoj7.webp",
+          "description": "Luxurious 6-seater Italian Statuario marble dining table with solid brass accents and bespoke upholstered ergonomic chairs.",
           "category": "Furniture > Dining Room Furniture",
-          "brand": { "@type": "Brand", "name": "KS Design Studio" }
+          "sku": "KSDS-DINING-MARBLE-04",
+          "brand": { "@type": "Brand", "name": "KS Design Studio" },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "184",
+            "bestRating": "5",
+            "worstRating": "1"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://ksdesignstudio.in/#services",
+            "price": "95000",
+            "priceCurrency": "INR",
+            "priceValidUntil": "2027-12-31",
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition",
+            "seller": { "@type": "Organization", "name": "KS Design Studio" },
+            "hasMerchantReturnPolicy": {
+              "@type": "MerchantReturnPolicy",
+              "applicableCountry": "IN",
+              "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+            },
+            "shippingDetails": {
+              "@type": "OfferShippingDetails",
+              "shippingRate": {
+                "@type": "MonetaryAmount",
+                "value": "0",
+                "currency": "INR"
+              },
+              "shippingDestination": {
+                "@type": "DefinedRegion",
+                "addressCountry": "IN"
+              },
+              "deliveryTime": {
+                "@type": "ShippingDeliveryTime",
+                "handlingTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": 0,
+                  "maxValue": 3,
+                  "unitCode": "DAY"
+                },
+                "transitTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": 3,
+                  "maxValue": 14,
+                  "unitCode": "DAY"
+                }
+              }
+            }
+          }
         }
       }
     ],

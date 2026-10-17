@@ -30,10 +30,11 @@ const MasonryGallery: React.FC = () => {
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
+                aria-label={`Filter design gallery by ${cat}`}
                 className={`px-8 py-3 rounded-full text-[10px] uppercase tracking-[0.3em] font-black transition-all duration-500 border ${
                   filter === cat 
                     ? 'bg-charcoal text-white border-charcoal' 
-                    : 'bg-transparent text-charcoal/60 border-charcoal/10 hover:border-brass/30'
+                    : 'bg-transparent text-zinc-700 border-zinc-200 hover:border-brass/50'
                 }`}
               >
                 {cat}
@@ -58,6 +59,10 @@ const MasonryGallery: React.FC = () => {
                   <img 
                     src={project.imageUrl} 
                     alt={project.alt}
+                    loading="lazy"
+                    decoding="async"
+                    width="400"
+                    height="500"
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-charcoal/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex items-center justify-center">
@@ -65,8 +70,8 @@ const MasonryGallery: React.FC = () => {
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-xl text-charcoal group-hover:text-brass transition-colors mb-2">{project.title}</h4>
-                  <p className="text-charcoal/60 text-[10px] uppercase tracking-[0.4em] font-black">{project.location}</p>
+                  <h4 className="text-xl text-charcoal group-hover:text-brass transition-colors mb-2 font-bold">{project.title}</h4>
+                  <p className="text-zinc-600 text-[10px] uppercase tracking-[0.4em] font-black">{project.location}</p>
                 </div>
               </motion.div>
             ))}

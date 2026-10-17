@@ -56,22 +56,25 @@ const AIDesignStudio: React.FC = () => {
 
           <div className="space-y-8 bg-white/5 p-10 rounded-3xl border border-white/10 backdrop-blur-xl shadow-2xl">
             <div className="space-y-3">
-              <label className="text-[9px] uppercase tracking-[0.3em] text-brass font-black">Visual Intent</label>
+              <label htmlFor="visualIntentInput" className="text-[9px] uppercase tracking-[0.3em] text-brass font-black">Visual Intent</label>
               <textarea
+                id="visualIntentInput"
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
+                aria-label="Visual intent prompt for interior visualization"
                 placeholder="Describe a space... (e.g., A sun-drenched minimalist library with white oak shelves and floating brass lighting)"
                 className="w-full bg-charcoal/50 border border-white/10 rounded-2xl p-6 text-white text-sm focus:border-brass outline-none h-40 transition-all resize-none placeholder:text-white/20"
               />
             </div>
 
             <div className="space-y-3">
-              <label className="text-[9px] uppercase tracking-[0.3em] text-brass font-black">Frame Aspect</label>
+              <span className="text-[9px] uppercase tracking-[0.3em] text-brass font-black block">Frame Aspect</span>
               <div className="grid grid-cols-4 gap-3">
                 {ratios.map(r => (
                   <button
                     key={r}
                     onClick={() => setRatio(r)}
+                    aria-label={`Aspect ratio ${r}`}
                     className={`py-3 rounded-xl text-[10px] font-bold border transition-all ${
                       ratio === r ? 'bg-brass border-brass text-white' : 'border-white/10 text-white/40 hover:border-white/20'
                     }`}
@@ -85,6 +88,7 @@ const AIDesignStudio: React.FC = () => {
             <button
               onClick={handleGenerate}
               disabled={isGenerating || !prompt.trim()}
+              aria-label="Synthesize and render design concept"
               className="w-full py-6 bg-white text-charcoal font-black uppercase tracking-[0.3em] text-[10px] rounded-2xl hover:bg-brass hover:text-white transition-all duration-700 disabled:opacity-50 flex items-center justify-center space-x-4 shadow-xl"
             >
               {isGenerating ? (
@@ -114,6 +118,7 @@ const AIDesignStudio: React.FC = () => {
                 <div className="flex space-x-4">
                   <button 
                     onClick={() => setGeneratedImage(null)}
+                    aria-label="Discard render and reset canvas"
                     className="p-5 bg-white text-charcoal rounded-full hover:bg-brass hover:text-white transition-all scale-90 group-hover:scale-100 duration-500"
                   >
                     <RefreshCcw size={24} />
@@ -121,6 +126,7 @@ const AIDesignStudio: React.FC = () => {
                   <a 
                     href={generatedImage} 
                     download="ks-design-render.png"
+                    aria-label="Download rendered concept image"
                     className="p-5 bg-brass text-white rounded-full hover:bg-white hover:text-charcoal transition-all scale-90 group-hover:scale-100 duration-500"
                   >
                     <Download size={24} />

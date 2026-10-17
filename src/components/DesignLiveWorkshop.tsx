@@ -126,7 +126,7 @@ export default function DesignLiveWorkshop({ isOpen, onClose }: { isOpen: boolea
             <div className={`p-4 rounded-xl ${isActive ? 'bg-brass animate-pulse' : 'bg-slate-50'}`}><Sparkles size={24} className={isActive ? 'text-white' : 'text-brass'} /></div>
             <div><h3 className="text-2xl font-bold">Design Live <span className="text-brass">Workshop</span></h3><p className="text-[10px] uppercase tracking-[0.3em] text-charcoal/30 font-black">Architectural Native AI v2.5</p></div>
           </div>
-          <button onClick={onClose} className="p-3 text-charcoal/20 hover:text-charcoal transition-colors"><X size={28} /></button>
+          <button onClick={onClose} aria-label="Close Design Live Workshop" className="p-3 text-charcoal/40 hover:text-charcoal transition-colors"><X size={28} /></button>
         </div>
         <div className="flex-grow flex flex-col items-center justify-center p-12 text-center">
           {isActive ? (

@@ -36,8 +36,9 @@ const RoomSynthesis: React.FC = () => {
                 <button
                   key={room}
                   onClick={() => setSelectedRoom(room)}
+                  aria-label={`Select ${room} space`}
                   className={`px-8 py-4 rounded-full text-[10px] uppercase font-black tracking-widest transition-all ${
-                    selectedRoom === room ? 'bg-zinc-900 text-white shadow-xl' : 'bg-zinc-50 text-zinc-400 hover:bg-zinc-100'
+                    selectedRoom === room ? 'bg-zinc-900 text-white shadow-xl' : 'bg-zinc-100 text-zinc-700 hover:bg-zinc-200'
                   }`}
                 >
                   {room}
@@ -48,6 +49,7 @@ const RoomSynthesis: React.FC = () => {
            <button 
              onClick={generateScript}
              disabled={isGenerating}
+             aria-label="Orchestrate atmospheric design script"
              className="w-full py-10 bg-[#1A1A1A] text-white rounded-[2.5rem] font-black uppercase tracking-[0.5em] text-[11px] hover:bg-brass transition-all shadow-2xl disabled:opacity-30 flex items-center justify-center space-x-4"
            >
              {isGenerating ? (
@@ -86,8 +88,11 @@ const RoomSynthesis: React.FC = () => {
                    </div>
 
                    <div className="pt-10 border-t border-zinc-100 flex justify-between items-center">
-                       <span className="text-[9px] font-black uppercase tracking-widest text-zinc-300">Draft_ID: {Math.random().toString(36).substring(7).toUpperCase()}</span>
-                       <button className="text-[10px] font-black uppercase tracking-widest text-brass hover:translate-x-2 transition-all flex items-center space-x-3">
+                       <span className="text-[9px] font-black uppercase tracking-widest text-zinc-400">Draft_ID: {Math.random().toString(36).substring(7).toUpperCase()}</span>
+                       <button 
+                         aria-label="Lock design draft to sovereign vault"
+                         className="text-[10px] font-black uppercase tracking-widest text-brass hover:translate-x-2 transition-all flex items-center space-x-3"
+                       >
                           <span>Lock to Vault</span>
                           <ArrowRight size={14} />
                        </button>

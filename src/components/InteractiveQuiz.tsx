@@ -90,17 +90,19 @@ const InteractiveQuiz: React.FC = () => {
           </div>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="space-y-6 animate-fade-in">
-          <h4 className="text-xl font-medium text-charcoal">Your profile is ready. Where should we send the moodboard?</h4>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <label htmlFor="quizEmail" className="block text-xl font-medium text-charcoal">Your profile is ready. Where should we send the moodboard?</label>
           <input
+            id="quizEmail"
             type="email"
             required
+            aria-label="Enter your email address to receive your Design DNA moodboard"
             placeholder="Enter your email address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="w-full p-6 bg-white border border-stone-200 rounded-2xl outline-none focus:border-brass"
           />
-          <button type="submit" className="w-full p-6 bg-charcoal text-white rounded-2xl font-bold uppercase tracking-widest hover:bg-brass transition-colors">
+          <button type="submit" aria-label="Reveal My Design DNA" className="w-full p-6 bg-charcoal text-white rounded-2xl font-bold uppercase tracking-widest hover:bg-brass transition-colors">
             Reveal My Design DNA
           </button>
         </form>

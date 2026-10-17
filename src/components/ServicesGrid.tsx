@@ -10,6 +10,7 @@ const ServicesGrid: React.FC = () => {
         <Link 
           to={svc.path} 
           key={svc.id} 
+          aria-label={`Explore our ${svc.title} services`}
           className="group glass-premium p-4 rounded-[3rem] border-white/40 hover:border-brass transition-all duration-700 hover:shadow-2xl hover:translate-y-[-8px] flex flex-col items-center text-center"
         >
           {/* Image Container with Livspace-inspired rounded topology */}
@@ -17,6 +18,10 @@ const ServicesGrid: React.FC = () => {
             <img 
               src={svc.imageUrl} 
               alt={svc.alt} 
+              loading="lazy"
+              decoding="async"
+              width="400"
+              height="500"
               className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-charcoal/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
@@ -24,10 +29,10 @@ const ServicesGrid: React.FC = () => {
           
           {/* Typography Hardening */}
           <div className="px-4 pb-4 flex flex-col items-center">
-            <h3 className="text-xl md:text-2xl  text-charcoal mb-4 group-hover:text-brass transition-colors duration-500">
+            <h3 className="text-xl md:text-2xl text-charcoal mb-4 group-hover:text-brass transition-colors duration-500 font-bold">
               {svc.title}
             </h3>
-            <p className="text-stone-500 text-xs font-light leading-relaxed mb-8 max-w-[200px]">
+            <p className="text-zinc-600 text-xs font-normal leading-relaxed mb-8 max-w-[200px]">
               {svc.description}
             </p>
             

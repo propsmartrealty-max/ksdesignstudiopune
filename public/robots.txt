@@ -50,15 +50,29 @@ User-agent: spbot
 User-agent: SeekportBot
 Disallow: /
 
-# Global fallback for any other rogue bots
+# =========================================================================
+# AI & AGENTIC BROWSING DIRECTIVES (LLMs & Web Agents)
+# =========================================================================
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: Google-Extended
+User-agent: ClaudeBot
+User-agent: PerplexityBot
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /vault/
+
+# Global fallback
 User-agent: *
 Disallow: /admin/
 Disallow: /api/
 Disallow: /vault/
 Allow: /
-Crawl-delay: 1
 
 # =========================================================================
-# SITEMAP INDEX LOCATION
+# SITEMAP & AGENTIC INDEX LOCATION
 # =========================================================================
 Sitemap: https://ksdesignstudio.in/sitemap.xml
+# LLMs documentation: https://ksdesignstudio.in/llms.txt

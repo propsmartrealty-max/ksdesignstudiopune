@@ -52,8 +52,8 @@ const BlogDetail: React.FC = () => {
 
         <div className="mt-20 pt-12 border-t border-stone-100 flex items-center justify-between">
            <div className="flex items-center space-x-4">
-              <span className="text-[10px] uppercase tracking-widest font-black text-stone-400">Share Insight:</span>
-              <button className="p-2 hover:text-brass transition-colors"><Share2 size={16} /></button>
+              <span className="text-[10px] uppercase tracking-widest font-black text-stone-500">Share Insight:</span>
+              <button aria-label="Share this architectural insight" className="p-2 hover:text-brass transition-colors"><Share2 size={16} /></button>
            </div>
            <Link to="/contact" className="text-[10px] uppercase tracking-widest font-black text-charcoal hover:text-brass transition-colors border-b border-charcoal hover:border-brass pb-1">
               Start Workspace Transformation

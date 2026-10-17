@@ -1,5 +1,6 @@
 import React from 'react';
 import { ShieldCheck, Calendar, CheckSquare, Clock } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const guarantees = [
   {
@@ -35,7 +36,7 @@ const GuaranteeProtocol: React.FC = () => {
       
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
         <div className="text-center mb-24">
-          <span className="text-brass tracking-[0.8em] uppercase text-[10px] font-black block mb-4">The KS Promise</span>
+          <span className="text-[#85660D] tracking-[0.8em] uppercase text-[10px] font-black block mb-4">The KS Promise</span>
           <h2 className="text-5xl md:text-7xl text-charcoal tracking-tighter leading-none">
             Unmatched <span className="italic font-light text-brass/70">Quality.</span>
           </h2>
@@ -50,12 +51,12 @@ const GuaranteeProtocol: React.FC = () => {
               <div className="w-16 h-16 rounded-3xl bg-brass/5 flex items-center justify-center text-brass mb-8 group-hover:bg-brass group-hover:text-white transition-all duration-700">
                 <item.icon size={28} strokeWidth={1.5} />
               </div>
-              <h3 className="text-[10px] uppercase tracking-[0.4em] font-black text-charcoal/60 mb-2">{item.title}</h3>
+              <h3 className="text-[10px] uppercase tracking-[0.4em] font-black text-zinc-600 mb-2">{item.title}</h3>
               <div className="text-4xl font-black text-charcoal mb-6 flex items-baseline">
                 {item.value} 
                 <span className="h-1.5 w-1.5 bg-brass rounded-full ml-2" />
               </div>
-              <p className="text-charcoal/70 font-light text-sm leading-relaxed">
+              <p className="text-zinc-600 font-normal text-sm leading-relaxed">
                 {item.description}
               </p>
             </div>
@@ -63,10 +64,10 @@ const GuaranteeProtocol: React.FC = () => {
         </div>
 
         <div className="mt-20 text-center">
-           <div className="inline-flex items-center space-x-6 px-10 py-4 bg-charcoal rounded-full text-white text-[10px] uppercase tracking-[0.5em] font-black cursor-pointer hover:bg-brass transition-all duration-500">
+           <Link to="/services" aria-label="View Full Warranty Details" className="inline-flex items-center space-x-6 px-10 py-4 bg-charcoal rounded-full text-white text-[10px] uppercase tracking-[0.5em] font-black hover:bg-brass transition-all duration-500 shadow-xl">
              <span>View Full Warranty</span>
              <ShieldCheck size={14} className="text-brass" />
-           </div>
+           </Link>
         </div>
       </div>
     </section>

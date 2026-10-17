@@ -8,7 +8,8 @@ export default {
     extend: {
       colors: {
         charcoal: '#1A1A1A',
-        brass: '#D4AF37',
+        brass: '#85660D',
+        'brass-bright': '#D4AF37',
         sand: '#F7F3F0',
         mocha: '#3D2B1F'
       },

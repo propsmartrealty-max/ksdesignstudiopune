@@ -79,14 +79,14 @@ const MagazineArticle: React.FC = () => {
 
         {/* Floating Nav */}
         <div className="absolute top-0 left-0 w-full z-10 p-6 lg:p-12 flex justify-between items-center pointer-events-auto">
-          <Link to="/magazine" className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-full text-white hover:bg-white hover:text-charcoal transition-colors">
+          <Link to="/magazine" aria-label="Return to magazine index" className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-full text-white hover:bg-white hover:text-charcoal transition-colors">
             <ArrowLeft size={20} />
           </Link>
           <div className="flex space-x-4">
-            <button className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-full text-white hover:bg-white hover:text-charcoal transition-colors">
+            <button aria-label="Share this magazine article" className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-full text-white hover:bg-white hover:text-charcoal transition-colors">
               <Share2 size={20} />
             </button>
-            <button className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-full text-white hover:bg-white hover:text-charcoal transition-colors">
+            <button aria-label="Bookmark this magazine article" className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-full text-white hover:bg-white hover:text-charcoal transition-colors">
               <BookmarkPlus size={20} />
             </button>
           </div>

@@ -25,22 +25,40 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
-  // Network first, falling back to cache (Stale-while-revalidate for fast loads)
+  if (!event.request.url.startsWith('http://') && !event.request.url.startsWith('https://')) return;
+  
+  // Never intercept or cache external AI / API calls
+  const url = new URL(event.request.url);
+  if (url.hostname.includes('googleapis.com') || url.hostname.includes('formsubmit.co')) {
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
-      const fetchPromise = fetch(event.request).then((networkResponse) => {
-        if (networkResponse.ok && event.request.url.startsWith('http')) {
-          const responseClone = networkResponse.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, responseClone);
-          });
-        }
-        return networkResponse;
-      }).catch(() => {
-        // If network fails and nothing in cache, just let it fail or return offline page
+      if (cachedResponse) {
+        // Fetch in background to revalidate cache
+        fetch(event.request)
+          .then((networkResponse) => {
+            if (networkResponse && networkResponse.ok) {
+              const responseClone = networkResponse.clone();
+              caches.open(CACHE_NAME).then((cache) => cache.put(event.request, responseClone));
+            }
+          })
+          .catch(() => {});
         return cachedResponse;
-      });
-      return cachedResponse || fetchPromise;
+      }
+
+      return fetch(event.request)
+        .then((networkResponse) => {
+          if (networkResponse && networkResponse.ok) {
+            const responseClone = networkResponse.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, responseClone));
+          }
+          return networkResponse;
+        })
+        .catch(() => {
+          return new Response('Network offline', { status: 503, statusText: 'Service Unavailable' });
+        });
     })
   );
 });

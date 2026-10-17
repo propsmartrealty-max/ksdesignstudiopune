@@ -36,7 +36,10 @@ const LiveWalkthrough: React.FC = () => {
                 <p className="text-[10px] uppercase tracking-widest font-black text-charcoal/30">Current Perspective</p>
                 <p className="text-brass font-bold text-xl">{scenes[currentScene].title}</p>
              </div>
-             <button className="p-4 rounded-full border border-slate-100 hover:border-brass transition-colors">
+             <button 
+                aria-label="Expand 3D walkthrough to fullscreen"
+                className="p-4 rounded-full border border-slate-100 hover:border-brass transition-colors"
+             >
                 <Maximize2 size={18} />
              </button>
           </div>
@@ -65,7 +68,10 @@ const LiveWalkthrough: React.FC = () => {
               onMouseEnter={() => setActiveHotspot(spot.id)}
               onMouseLeave={() => setActiveHotspot(null)}
             >
-              <button className="relative flex items-center justify-center">
+              <button 
+                aria-label={`View details for ${spot.title}`}
+                className="relative flex items-center justify-center"
+              >
                 <div className="absolute inset-0 bg-brass rounded-full animate-ping opacity-40" />
                 <div className="w-4 h-4 bg-brass rounded-full border-2 border-white relative z-10" />
               </button>
@@ -82,6 +88,7 @@ const LiveWalkthrough: React.FC = () => {
           {/* Controls */}
           <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-40 flex items-center space-x-8 bg-white/90 backdrop-blur-xl px-12 py-5 rounded-full border border-slate-100 shadow-2xl">
             <button 
+              aria-label="Previous scene"
               onClick={() => setCurrentScene((prev) => (prev > 0 ? prev - 1 : scenes.length - 1))}
               className="hover:text-brass transition-colors"
             >
@@ -96,6 +103,7 @@ const LiveWalkthrough: React.FC = () => {
               ))}
             </div>
             <button 
+              aria-label="Next scene"
               onClick={() => setCurrentScene((prev) => (prev < scenes.length - 1 ? prev + 1 : 0))}
               className="hover:text-brass transition-colors text-charcoal/40"
             >

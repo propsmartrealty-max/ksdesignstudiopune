@@ -36,13 +36,13 @@ const AIAssistant: React.FC = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (navigator.geolocation) {
+    if (isOpen && navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (pos) => setUserLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
-        (err) => {} // Handle error silently
+        () => {} // Handle error silently
       );
     }
-  }, []);
+  }, [isOpen]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -215,6 +215,7 @@ const AIAssistant: React.FC = () => {
                 <img src={selectedImage} alt="Reference" className="h-28 w-28 object-cover rounded-2xl border-4 border-white shadow-2xl relative z-10" />
                 <button 
                   onClick={() => setSelectedImage(null)}
+                  aria-label="Remove attached image"
                   className="absolute -top-3 -right-3 bg-red-500 text-white rounded-full p-2 shadow-xl hover:scale-110 transition-all z-20"
                 >
                   <X size={14} />
@@ -226,15 +227,18 @@ const AIAssistant: React.FC = () => {
                 <button 
                   type="button"
                   onClick={() => fileInputRef.current?.click()}
+                  aria-label="Attach reference image"
                   className="p-4 text-zinc-400 hover:text-brass transition-all"
                 >
                   <Paperclip size={20} />
                 </button>
                 <input
+                  id="assistantChatInput"
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask about materials, cost, or style..."
+                  aria-label="Ask about materials, cost, or style"
                   className="flex-grow bg-transparent p-6 text-sm outline-none placeholder:text-zinc-400 font-medium"
                 />
                 <input 

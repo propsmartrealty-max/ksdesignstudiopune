@@ -88,6 +88,7 @@ const SpatialAudit: React.FC = () => {
                 <div className="absolute inset-0 bg-zinc-900/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                    <button 
                      onClick={(e) => { e.stopPropagation(); setSelectedPlan(null); setResult(null); }}
+                     aria-label="Remove uploaded floor plan"
                      className="bg-red-500 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all"
                    >
                      <X size={24} />
@@ -96,11 +97,11 @@ const SpatialAudit: React.FC = () => {
               </>
             ) : (
               <div className="text-center p-12">
-                <div className="w-20 h-20 bg-zinc-100 rounded-full flex items-center justify-center mx-auto mb-6 text-zinc-300 group-hover:text-brass group-hover:bg-brass/5 transition-all">
+                <div className="w-20 h-20 bg-zinc-100 rounded-full flex items-center justify-center mx-auto mb-6 text-zinc-400 group-hover:text-brass group-hover:bg-brass/5 transition-all">
                   <Layout size={32} />
                 </div>
                 <h4 className="text-lg font-black tracking-tighter text-[#1A1A1A] mb-2">Upload 2D Floor Plan</h4>
-                <p className="text-zinc-400 text-xs font-bold uppercase tracking-widest">Supports JPG, PNG, PDF Sketches</p>
+                <p className="text-zinc-500 text-xs font-bold uppercase tracking-widest">Supports JPG, PNG, PDF Sketches</p>
               </div>
             )}
           </div>
@@ -108,6 +109,7 @@ const SpatialAudit: React.FC = () => {
           <button 
             onClick={startAudit}
             disabled={!selectedPlan || isAnalyzing}
+            aria-label="Initiate spatial AI layout audit"
             className="w-full py-8 bg-[#1A1A1A] text-white rounded-[2rem] font-black uppercase tracking-[0.5em] text-[11px] hover:bg-brass transition-all shadow-2xl disabled:opacity-30 flex items-center justify-center space-x-4"
           >
             {isAnalyzing ? (

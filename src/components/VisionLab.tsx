@@ -64,6 +64,8 @@ const VisionLab: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
           <div className="lg:col-span-4 space-y-8">
             <textarea 
+              id="visionPrompt"
+              aria-label="Describe your design intent"
               className="w-full bg-white/40 backdrop-blur-md border border-white/60 rounded-[2.5rem] p-8 text-[#1A1A1A] placeholder:text-zinc-400 focus:outline-none focus:border-brass/50 transition-all resize-none h-48 text-lg font-medium leading-relaxed shadow-lg"
               placeholder="Describe your design intent..."
               value={prompt}
@@ -74,11 +76,11 @@ const VisionLab: React.FC = () => {
               onClick={() => !selectedImage && fileInputRef.current?.click()}
               className={`border-2 border-dashed rounded-[2.5rem] p-10 transition-all cursor-pointer flex flex-col items-center justify-center gap-4 ${selectedImage ? 'border-brass/30 bg-white/40' : 'border-zinc-200 hover:border-brass/30 hover:bg-white/40'}`}
             >
-              <input type="file" ref={fileInputRef} className="hidden" accept="image/*" onChange={handleImageUpload} />
+              <input type="file" ref={fileInputRef} className="hidden" accept="image/*" aria-label="Upload reference design image" onChange={handleImageUpload} />
               {selectedImage ? (
                 <div className="relative w-full aspect-square">
                   <img src={selectedImage} alt="User Uploaded Vision Reference" className="w-full h-full object-cover rounded-2xl shadow-2xl" />
-                  <button onClick={(e) => { e.stopPropagation(); setSelectedImage(null); }} className="absolute top-4 right-4 bg-black/80 p-2 rounded-full hover:bg-red-500 transition-all shadow-xl"><X size={18} /></button>
+                  <button onClick={(e) => { e.stopPropagation(); setSelectedImage(null); }} aria-label="Remove uploaded image" className="absolute top-4 right-4 bg-black/80 p-2 rounded-full hover:bg-red-500 transition-all shadow-xl"><X size={18} /></button>
                 </div>
               ) : (
                 <>

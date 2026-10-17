@@ -128,16 +128,18 @@ const InvestmentEstimator: React.FC = () => {
                 <p className="text-[10px] uppercase tracking-[0.3em] font-black text-zinc-500">Step 02: Enter Home Size</p>
                 <div className="space-y-6">
                   <div className="flex justify-between items-end">
-                    <label className="text-sm font-bold uppercase tracking-widest text-charcoal">Area (Square Feet)</label>
+                    <label htmlFor="sqftRange" className="text-sm font-bold uppercase tracking-widest text-charcoal">Area (Square Feet)</label>
                     <span className="text-3xl text-charcoal">{sqft} <span className="text-xs uppercase">sq.ft.</span></span>
                   </div>
                   <input 
+                    id="sqftRange"
                     type="range" 
                     min="500" 
                     max="10000" 
                     step="100"
                     value={sqft}
                     onChange={(e) => setSqft(parseInt(e.target.value))}
+                    aria-label="Area in Square Feet"
                     className="w-full h-1 bg-stone-100 rounded-full appearance-none cursor-pointer accent-brass"
                   />
                   <div className="grid grid-cols-3 gap-4">
@@ -208,12 +210,14 @@ const InvestmentEstimator: React.FC = () => {
                   </div>
                 ) : (
                   <div className="space-y-6">
-                    <p className="text-sm text-zinc-600 font-medium">Enter your email address to receive the detailed PDF breakdown of this estimate.</p>
+                    <label htmlFor="estimatorEmail" className="block text-sm text-zinc-600 font-medium">Enter your email address to receive the detailed PDF breakdown of this estimate.</label>
                     <input 
+                      id="estimatorEmail"
                       type="email" 
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Enter your email"
+                      aria-label="Email address for quote breakdown"
                       className="w-full bg-white/50 backdrop-blur-md border border-white/40 rounded-2xl p-5 text-sm focus:ring-2 focus:ring-brass/20 focus:border-brass outline-none transition-all placeholder:text-zinc-400 text-zinc-900 font-medium"
                     />
                     <button 

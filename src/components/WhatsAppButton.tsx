@@ -10,6 +10,7 @@ const WhatsAppButton: React.FC = () => {
       href={`https://wa.me/${phoneNumber}?text=${message}`}
       target="_blank" 
       rel="noopener noreferrer"
+      aria-label="Chat with KS Design Studio on WhatsApp"
       className="fixed bottom-24 right-8 z-[55] bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all flex items-center justify-center group"
       title="Chat with us on WhatsApp"
     >

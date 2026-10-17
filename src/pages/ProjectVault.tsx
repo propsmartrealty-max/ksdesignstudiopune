@@ -110,8 +110,9 @@ const ProjectVault: React.FC = () => {
              <button
                key={type}
                onClick={() => setSelectedType(type as any)}
+               aria-label={`Filter vault items by ${type}`}
                className={`text-[10px] uppercase tracking-[0.3em] font-black transition-all ${
-                 selectedType === type ? 'text-brass border-b-2 border-brass pb-8' : 'text-zinc-300 hover:text-zinc-900'
+                 selectedType === type ? 'text-brass border-b-2 border-brass pb-8' : 'text-zinc-600 hover:text-zinc-900'
                }`}
              >
                {type}
@@ -158,7 +159,10 @@ const ProjectVault: React.FC = () => {
                     >
                        View Raw
                     </Link>
-                    <button className="p-4 bg-zinc-50 text-zinc-400 rounded-2xl hover:text-brass transition-all">
+                    <button 
+                       aria-label={`Download finding for ${item.title}`}
+                       className="p-4 bg-zinc-100 text-zinc-700 rounded-2xl hover:text-brass transition-all"
+                    >
                        <Download size={18} />
                     </button>
                  </div>

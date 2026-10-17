@@ -86,15 +86,17 @@ const PricingEstimator: React.FC = () => {
             <div className="space-y-10">
               <div>
                 <div className="flex justify-between mb-6">
-                  <label className="text-[10px] uppercase tracking-widest font-black text-zinc-500">Approximate Area (Sq.Ft.)</label>
+                  <label htmlFor="areaRange" className="text-[10px] uppercase tracking-widest font-black text-zinc-600">Approximate Area (Sq.Ft.)</label>
                   <span className="text-brass font-bold">{area} sq.ft.</span>
                 </div>
                 <input 
+                  id="areaRange"
                   type="range" 
                   min="50" 
                   max="10000" 
                   value={area} 
                   onChange={(e) => setArea(parseInt(e.target.value))}
+                  aria-label="Approximate Area in square feet"
                   className="w-full h-1.5 bg-zinc-200 rounded-lg appearance-none cursor-pointer accent-brass"
                 />
               </div>

@@ -1,17 +1,18 @@
-import SocialProofToast from "./components/SocialProofToast";
-
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import AIAssistant from './components/AIAssistant';
 import WhatsAppButton from './components/WhatsAppButton';
-import DesignLiveWorkshop from './components/DesignLiveWorkshop';
 import FloatingContactCTA from './components/FloatingContactCTA';
 import Schema from './components/SEO/Schema';
 import CanonicalTag from './components/SEO/CanonicalTag';
 import SEOMeta from './components/SEO/SEOMeta';
 import CinematicLab from './components/CinematicLab';
+
+// Lazy load heavy interactive widgets & modals
+const AIAssistant = React.lazy(() => import('./components/AIAssistant'));
+const DesignLiveWorkshop = React.lazy(() => import('./components/DesignLiveWorkshop'));
+const SocialProofToast = React.lazy(() => import('./components/SocialProofToast'));
 
 // Lazy load pages for Code Splitting
 const Home = React.lazy(() => import('./pages/Home'));
@@ -40,9 +41,10 @@ const NotFound = React.lazy(() => import('./pages/NotFound'));
 const BuilderLanding = React.lazy(() => import('./pages/BuilderLanding'));
 import { AppProvider } from './context/AppContext';
 import { Mic } from 'lucide-react';
-import CommandPalette from './components/CommandPalette';
 import ErrorBoundary from './components/ErrorBoundary';
-import CookieConsent from './components/CookieConsent';
+
+const CommandPalette = React.lazy(() => import('./components/CommandPalette'));
+const CookieConsent = React.lazy(() => import('./components/CookieConsent'));
 
 const PrivacyPolicy = React.lazy(() => import('./pages/PrivacyPolicy'));
 const TermsOfService = React.lazy(() => import('./pages/TermsOfService'));
@@ -142,6 +144,7 @@ const AppContent: React.FC = () => {
           <div className="fixed bottom-48 right-8 z-[100] flex flex-col space-y-4">
             <button 
               onClick={() => setIsWorkshopOpen(true)}
+              aria-label="Open Live Design Workshop"
               className="bg-brass text-white p-5 rounded-full shadow-2xl hover:scale-110 transition-all flex items-center justify-center group relative overflow-hidden"
               title="Live Design Workshop"
             >
@@ -153,13 +156,16 @@ const AppContent: React.FC = () => {
             </button>
           </div>
 
-          <AIAssistant />
-          <CommandPalette />
+          <React.Suspense fallback={null}>
+            <AIAssistant />
+            <CommandPalette />
+            {isWorkshopOpen && <DesignLiveWorkshop isOpen={isWorkshopOpen} onClose={() => setIsWorkshopOpen(false)} />}
+            <SocialProofToast />
+            <CookieConsent />
+          </React.Suspense>
+
           <WhatsAppButton />
           <FloatingContactCTA />
-          <DesignLiveWorkshop isOpen={isWorkshopOpen} onClose={() => setIsWorkshopOpen(false)} />
-          <SocialProofToast />
-          <CookieConsent />
           <Footer />
         </>
       )}

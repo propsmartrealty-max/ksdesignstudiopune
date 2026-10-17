@@ -177,8 +177,9 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
       >
         <div className="absolute inset-0 architect-grid opacity-5 pointer-events-none" />
         <button 
-          className="absolute top-8 right-8 text-white/20 p-4 hover:text-brass transition-all duration-500" 
+          className="absolute top-8 right-8 text-white/40 p-4 hover:text-brass transition-all duration-500" 
           onClick={() => setIsOpen(false)}
+          aria-label="Close mobile navigation menu"
         >
           <X size={32} strokeWidth={1} />
         </button>

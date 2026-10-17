@@ -93,7 +93,8 @@ const AIPaletteGenerator: React.FC = () => {
                   <button 
                     key={m}
                     onClick={() => setMood(m)}
-                    className={`px-4 py-2 text-[10px] uppercase tracking-widest font-bold border transition-all ${mood === m ? 'bg-charcoal text-white border-charcoal' : 'border-stone-300 text-stone-500 hover:border-stone-500'}`}
+                    aria-label={`Select ${m} design mood`}
+                    className={`px-4 py-2 text-[10px] uppercase tracking-widest font-bold border transition-all ${mood === m ? 'bg-charcoal text-white border-charcoal' : 'border-stone-400 text-stone-700 hover:border-stone-700 hover:text-charcoal'}`}
                   >
                     {m}
                   </button>
@@ -101,16 +102,19 @@ const AIPaletteGenerator: React.FC = () => {
               </div>
               <div className="relative">
                 <input 
+                  id="moodInput"
                   type="text"
                   value={mood}
                   onChange={(e) => setMood(e.target.value)}
                   placeholder="Or describe your own vibe..."
+                  aria-label="Describe your design aesthetic or color vibe"
                   className="w-full bg-white/20 backdrop-blur-md border border-white/40 rounded-2xl p-6 text-[#1A1A1A] focus:outline-none focus:border-brass/50 transition-all font-medium"
                 />
               </div>
               <button 
                 onClick={generatePalette}
                 disabled={isLoading || !mood.trim()}
+                aria-label="Generate AI color palette"
                 className="w-full bg-[#1A1A1A] text-white py-6 rounded-2xl font-black uppercase tracking-[0.4em] text-[11px] hover:bg-brass transition-all flex items-center justify-center space-x-3 disabled:opacity-50 shadow-xl"
               >
                 {isLoading ? (
@@ -183,12 +187,13 @@ const AIPaletteGenerator: React.FC = () => {
 
                 <div className="glass-premium p-8 border-white/40 rounded-3xl shadow-xl flex items-center justify-between">
                   <div>
-                    <h4 className="text-[10px] uppercase tracking-widest font-black text-zinc-400 mb-2">Key Material Recommendation</h4>
+                    <h4 className="text-[10px] uppercase tracking-widest font-black text-stone-600 mb-2">Key Material Recommendation</h4>
                     <p className="text-[#1A1A1A] font-bold text-lg">{palette.materialSuggestion}</p>
                   </div>
                   <button 
                     onClick={generatePalette}
-                    className="p-4 text-zinc-400 hover:text-[#1A1A1A] hover:bg-white/40 rounded-full transition-all"
+                    aria-label="Regenerate color palette"
+                    className="p-4 text-stone-600 hover:text-[#1A1A1A] hover:bg-white/40 rounded-full transition-all"
                   >
                     <RefreshCcw size={20} />
                   </button>
@@ -196,10 +201,10 @@ const AIPaletteGenerator: React.FC = () => {
               </div>
             ) : (
               <div className="text-center p-12 bg-white/50 border border-dashed border-stone-300 rounded-3xl w-full">
-                <div className="w-20 h-20 bg-stone-100 rounded-full flex items-center justify-center mx-auto mb-6 text-stone-300">
+                <div className="w-20 h-20 bg-stone-100 rounded-full flex items-center justify-center mx-auto mb-6 text-stone-400">
                   <Palette size={40} />
                 </div>
-                <p className="text-stone-400 uppercase tracking-[0.2em] text-xs font-bold">Enter a mood to generate a color story</p>
+                <p className="text-stone-600 uppercase tracking-[0.2em] text-xs font-bold">Enter a mood to generate a color story</p>
               </div>
             )}
           </div>

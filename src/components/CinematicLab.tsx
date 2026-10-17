@@ -4,6 +4,10 @@ const CinematicLab: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    if (typeof window !== 'undefined' && (window.innerWidth < 768 || window.matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+      return;
+    }
+
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -52,37 +56,40 @@ const CinematicLab: React.FC = () => {
       particles.push(new Particle());
     }
 
+    let animId: number;
     const animate = () => {
-      ctx.clearRect(0, 0, width, height);
-      
-      // Draw gridLines
-      ctx.strokeStyle = 'rgba(181, 166, 66, 0.03)';
-      ctx.lineWidth = 0.5;
-      const gridSize = 100;
-      
-      for (let x = 0; x < width; x += gridSize) {
-        ctx.beginPath();
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, height);
-        ctx.stroke();
-      }
-      
-      for (let y = 0; y < height; y += gridSize) {
-        ctx.beginPath();
-        ctx.moveTo(0, y);
-        ctx.lineTo(width, y);
-        ctx.stroke();
+      if (!document.hidden) {
+        ctx.clearRect(0, 0, width, height);
+        
+        // Draw gridLines
+        ctx.strokeStyle = 'rgba(181, 166, 66, 0.03)';
+        ctx.lineWidth = 0.5;
+        const gridSize = 100;
+        
+        for (let x = 0; x < width; x += gridSize) {
+          ctx.beginPath();
+          ctx.moveTo(x, 0);
+          ctx.lineTo(x, height);
+          ctx.stroke();
+        }
+        
+        for (let y = 0; y < height; y += gridSize) {
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(width, y);
+          ctx.stroke();
+        }
+
+        particles.forEach(p => {
+          p.update(width, height);
+          p.draw(ctx);
+        });
       }
 
-      particles.forEach(p => {
-        p.update(width, height);
-        p.draw(ctx);
-      });
-
-      requestAnimationFrame(animate);
+      animId = requestAnimationFrame(animate);
     };
 
-    animate();
+    animId = requestAnimationFrame(animate);
 
     const handleResize = () => {
       width = canvas.width = window.innerWidth;
@@ -90,11 +97,14 @@ const CinematicLab: React.FC = () => {
     };
 
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    return () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   return (
-    <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden bg-white">
+    <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden bg-white hidden md:block">
       <canvas ref={canvasRef} className="opacity-40" />
       <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-white/20" />
     </div>

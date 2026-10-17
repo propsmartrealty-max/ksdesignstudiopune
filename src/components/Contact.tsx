@@ -150,25 +150,29 @@ const Contact: React.FC = () => {
           <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-3">
-                <label className="text-[10px] uppercase tracking-[0.4em] font-black text-zinc-500">Your Full Name</label>
+                <label htmlFor="contactName" className="text-[10px] uppercase tracking-[0.4em] font-black text-zinc-600">Your Full Name</label>
                   <input 
+                    id="contactName"
                     required
                     type="text" 
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
+                    aria-label="Your Full Name"
                     className="w-full bg-white/50 backdrop-blur-md border border-white/40 rounded-2xl p-5 text-sm focus:ring-2 focus:ring-brass/20 focus:border-brass outline-none transition-all placeholder:text-zinc-400 text-zinc-900 font-medium" 
                     placeholder="Enter your name" 
                   />
               </div>
               <div className="space-y-3">
-                <label className="text-[10px] uppercase tracking-[0.4em] font-black text-zinc-500">Email Address</label>
+                <label htmlFor="contactEmail" className="text-[10px] uppercase tracking-[0.4em] font-black text-zinc-600">Email Address</label>
                   <input 
+                    id="contactEmail"
                     required
                     type="email" 
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
+                    aria-label="Email Address"
                     className="w-full bg-white/50 backdrop-blur-md border border-white/40 rounded-2xl p-5 text-sm focus:ring-2 focus:ring-brass/20 focus:border-brass outline-none transition-all placeholder:text-zinc-400 text-zinc-900 font-medium" 
                     placeholder="Enter your email" 
                   />
@@ -176,7 +180,7 @@ const Contact: React.FC = () => {
             </div>
             
             <div className="space-y-3">
-              <label htmlFor="projectType" className="text-[10px] uppercase tracking-[0.4em] font-black text-zinc-500">Project Type</label>
+              <label htmlFor="projectType" className="text-[10px] uppercase tracking-[0.4em] font-black text-zinc-600">Project Type</label>
                 <select 
                   id="projectType"
                   name="projectType"
@@ -194,20 +198,24 @@ const Contact: React.FC = () => {
             </div>
 
             <div className="space-y-3">
-              <label className="text-[10px] uppercase tracking-[0.4em] font-black text-zinc-500">Project Requirements</label>
+              <label htmlFor="contactMessage" className="text-[10px] uppercase tracking-[0.4em] font-black text-zinc-600">Project Requirements</label>
                 <textarea 
+                  id="contactMessage"
                   required
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   rows={5} 
+                  aria-label="Project Requirements"
                   className="w-full bg-white/50 backdrop-blur-md border border-white/40 rounded-3xl p-6 text-sm focus:ring-2 focus:ring-brass/20 focus:border-brass outline-none transition-all resize-none placeholder:text-zinc-400 text-zinc-900 font-medium" 
                   placeholder="Tell us about your home design requirements..."
                 ></textarea>
             </div>
 
             <button 
+              type="submit"
               disabled={status !== 'idle'}
+              aria-label="Send Interior Design Consultation Enquiry"
               className={`w-full py-8 rounded-2xl text-[11px] uppercase tracking-[0.5em] font-black transition-all duration-700 flex items-center justify-center space-x-4 shadow-xl ${
                 status === 'success' 
                   ? 'bg-emerald-600 text-white' 

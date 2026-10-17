@@ -18,13 +18,15 @@ export default defineConfig(({ mode }) => ({
     assetsDir: 'assets',
     cssCodeSplit: true,
     sourcemap: false,
-    target: ['es2020', 'chrome87', 'firefox78', 'safari14'],
+    target: ['es2022', 'chrome109', 'edge109', 'firefox102', 'safari16'],
     minify: 'terser',
     terserOptions: {
+      ecma: 2020,
       compress: {
         drop_console: true,
         drop_debugger: true,
         pure_funcs: ['console.log', 'console.info'],
+        passes: 2,
       },
       mangle: true,
       format: { comments: false }
@@ -32,10 +34,19 @@ export default defineConfig(({ mode }) => ({
     cssMinify: true,
     rollupOptions: {
       output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'genai-vendor': ['@google/genai'],
-          'ui-vendor': ['lucide-react']
+        manualChunks(id) {
+          if (id.includes('node_modules/react/') || id.includes('node_modules/react-dom/') || id.includes('node_modules/react-router-dom/') || id.includes('node_modules/scheduler/')) {
+            return 'react-vendor';
+          }
+          if (id.includes('node_modules/@google/genai/')) {
+            return 'genai-vendor';
+          }
+          if (id.includes('node_modules/framer-motion/')) {
+            return 'motion-vendor';
+          }
+          if (id.includes('node_modules/lucide-react/')) {
+            return 'ui-vendor';
+          }
         },
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',

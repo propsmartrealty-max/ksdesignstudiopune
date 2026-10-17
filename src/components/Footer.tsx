@@ -120,47 +120,47 @@ const Footer: React.FC = () => {
            </div>
         </div>
 
-        {/* Enterprise SEO Internal Link Directory (Low Visual Priority) */}
-        <div className="pt-20 pb-10 border-t border-charcoal/5 mb-10">
-           <h4 className="text-[8px] uppercase tracking-[0.5em] font-black text-charcoal/20 mb-8">Service Areas Directory</h4>
-           <div className="flex flex-wrap gap-4 opacity-40 hover:opacity-100 transition-opacity duration-700">
+        {/* Enterprise SEO Internal Link Directory */}
+        <div className="pt-20 pb-10 border-t border-charcoal/10 mb-10">
+           <h4 className="text-[9px] uppercase tracking-[0.5em] font-black text-stone-600 mb-8">Service Areas Directory</h4>
+           <div className="flex flex-wrap gap-4">
              {SEO_LOCATIONS.west.slice(0, 15).map(loc => (
-               <Link key={loc} to={`/cost-guide/${loc.toLowerCase().replace(/\s+/g, '-')}`} className="text-[8px] text-charcoal/40 hover:text-brass uppercase tracking-widest font-bold">
+               <Link key={loc} to={`/cost-guide/${loc.toLowerCase().replace(/\s+/g, '-')}`} className="text-[9px] text-stone-600 hover:text-brass uppercase tracking-widest font-bold">
                  Interior Cost in {loc}
                </Link>
              ))}
              {SEO_SERVICES.slice(0, 20).map(service => (
-               <Link key={service} to={`/services/${service.toLowerCase().replace(/\s+/g, '-')}`} className="text-[8px] text-charcoal/40 hover:text-brass uppercase tracking-widest font-bold">
+               <Link key={service} to={`/services/${service.toLowerCase().replace(/\s+/g, '-')}`} className="text-[9px] text-stone-600 hover:text-brass uppercase tracking-widest font-bold">
                  {service} Designer Pune
                </Link>
              ))}
              {SEO_LOCATIONS.east.slice(0, 10).map(loc => (
-               <Link key={loc} to={`/interiors-in/${loc.toLowerCase().replace(/\s+/g, '-')}`} className="text-[8px] text-charcoal/40 hover:text-brass uppercase tracking-widest font-bold">
+               <Link key={loc} to={`/interiors-in/${loc.toLowerCase().replace(/\s+/g, '-')}`} className="text-[9px] text-stone-600 hover:text-brass uppercase tracking-widest font-bold">
                  Best Interior Designer in {loc}
                </Link>
              ))}
              {BUYER_INTENT_KEYWORDS.slice(0, 15).map(intent => (
-               <Link key={intent} to={`/services/${intent.toLowerCase().replace(/\s+/g, '-')}`} className="text-[8px] text-charcoal/40 hover:text-brass uppercase tracking-widest font-bold">
+               <Link key={intent} to={`/services/${intent.toLowerCase().replace(/\s+/g, '-')}`} className="text-[9px] text-stone-600 hover:text-brass uppercase tracking-widest font-bold">
                  {intent}
                </Link>
              ))}
              {BRAND_TRUST_KEYWORDS.slice(0, 10).map(trust => (
-               <Link key={trust} to={`/services/${trust.toLowerCase().replace(/\s+/g, '-')}`} className="text-[8px] text-charcoal/40 hover:text-brass uppercase tracking-widest font-bold">
+               <Link key={trust} to={`/services/${trust.toLowerCase().replace(/\s+/g, '-')}`} className="text-[9px] text-stone-600 hover:text-brass uppercase tracking-widest font-bold">
                  {trust}
                </Link>
              ))}
              {ALL_PROJECTS.slice(0, 5).map((project, i) => (
-               <Link key={i} to={`/interiors-at/${project.toLowerCase().replace(/\s+/g, '-')}`} className="text-[8px] text-charcoal/40 hover:text-brass uppercase tracking-widest font-bold">
+               <Link key={i} to={`/interiors-at/${project.toLowerCase().replace(/\s+/g, '-')}`} className="text-[9px] text-stone-600 hover:text-brass uppercase tracking-widest font-bold">
                  Interiors for {project}
                </Link>
              ))}
              {SEO_COMPARISONS.slice(0, 5).map(comp => (
-               <Link key={comp} to={`/compare/${comp.toLowerCase().replace(/\s+/g, '-')}`} className="text-[8px] text-charcoal/40 hover:text-brass uppercase tracking-widest font-bold">
+               <Link key={comp} to={`/compare/${comp.toLowerCase().replace(/\s+/g, '-')}`} className="text-[9px] text-stone-600 hover:text-brass uppercase tracking-widest font-bold">
                  {comp}
                </Link>
              ))}
              {AI_VOICE_SEARCH.slice(0, 5).map(ai => (
-               <Link key={ai} to={`/services/${ai.toLowerCase().replace(/\s+/g, '-')}`} className="text-[8px] text-charcoal/40 hover:text-brass uppercase tracking-widest font-bold">
+               <Link key={ai} to={`/services/${ai.toLowerCase().replace(/\s+/g, '-')}`} className="text-[9px] text-stone-600 hover:text-brass uppercase tracking-widest font-bold">
                  {ai}
                </Link>
              ))}
@@ -168,18 +168,18 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Global Bottom Bar */}
-        <div className="pt-12 border-t border-charcoal/5 flex flex-col md:flex-row justify-between items-center gap-10">
+        <div className="pt-12 border-t border-charcoal/10 flex flex-col md:flex-row justify-between items-center gap-10">
           <div className="flex flex-col md:flex-row items-center gap-10">
-            <p className="text-zinc-500 text-[10px] uppercase tracking-[0.4em] font-bold">
+            <p className="text-stone-600 text-[10px] uppercase tracking-[0.4em] font-bold">
               © {new Date().getFullYear()} KS DESIGN STUDIO GLOBAL
             </p>
-            <div className="flex space-x-10 text-charcoal/60 text-[9px] uppercase tracking-[0.3em] font-black">
+            <div className="flex space-x-10 text-stone-700 text-[9px] uppercase tracking-[0.3em] font-black">
               <Link to="/privacy-policy" className="hover:text-brass transition-colors">Privacy Policy</Link>
               <Link to="/terms-of-service" className="hover:text-brass transition-colors">Terms of Service</Link>
               <a href="/sitemap.xml" className="hover:text-brass transition-colors">Sitemap</a>
             </div>
           </div>
-          <p className="text-[9px] uppercase tracking-[0.6em] font-black text-brass/30">DECCAN_TECTONICS_V_5.2</p>
+          <p className="text-[9px] uppercase tracking-[0.6em] font-black text-stone-500">DECCAN_TECTONICS_V_5.2</p>
         </div>
       </div>
     </footer>

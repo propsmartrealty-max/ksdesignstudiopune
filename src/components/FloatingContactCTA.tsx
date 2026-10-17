@@ -52,6 +52,7 @@ const FloatingContactCTA: React.FC = () => {
       <div className="flex items-center space-x-4">
         <button 
           onClick={scrollToTop}
+          aria-label="Scroll to top of page"
           className="bg-white/90 backdrop-blur-md text-charcoal w-14 h-14 rounded-full shadow-xl flex items-center justify-center border border-white/20 hover:bg-brass hover:text-white transition-all transform hover:scale-110"
         >
           <ArrowUp size={20} />
@@ -59,6 +60,7 @@ const FloatingContactCTA: React.FC = () => {
 
         <button 
           onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? "Close contact options" : "Open quick contact options"}
           className={`w-20 h-20 rounded-full shadow-2xl flex items-center justify-center transition-all transform hover:scale-105 relative overflow-hidden group ${
             isOpen ? 'bg-charcoal text-white rotate-90' : 'bg-brass text-white'
           }`}

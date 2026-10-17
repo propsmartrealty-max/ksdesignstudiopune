@@ -86,11 +86,17 @@ const TectonicSeries: React.FC = () => {
                    </div>
 
                    <div className="pt-12 flex space-x-6">
-                      <button className="flex-grow py-6 bg-brass text-white rounded-3xl text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white hover:text-black transition-all shadow-2xl flex items-center justify-center space-x-4 group">
+                      <button 
+                         aria-label={`Download brief for ${module.title}`}
+                         className="flex-grow py-6 bg-brass text-white rounded-3xl text-[10px] font-black uppercase tracking-[0.4em] hover:bg-white hover:text-black transition-all shadow-2xl flex items-center justify-center space-x-4 group"
+                      >
                          <span>Download Brief</span>
                          <Download size={16} className="group-hover:translate-y-1 transition-transform" />
                       </button>
-                      <button className="p-6 bg-zinc-900 text-white rounded-3xl hover:bg-zinc-800 transition-all border border-zinc-800">
+                      <button 
+                         aria-label={`View module details for ${module.title}`}
+                         className="p-6 bg-zinc-900 text-white rounded-3xl hover:bg-zinc-800 transition-all border border-zinc-800"
+                      >
                          <ArrowRight size={20} />
                       </button>
                    </div>
