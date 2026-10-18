@@ -36,7 +36,7 @@ const GuaranteeProtocol: React.FC = () => {
       
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
         <div className="text-center mb-24">
-          <span className="text-[#85660D] tracking-[0.8em] uppercase text-[10px] font-black block mb-4">The KS Promise</span>
+          <span className="text-brass tracking-[0.8em] uppercase text-[10px] font-black block mb-4">The KS Promise</span>
           <h2 className="text-5xl md:text-7xl text-charcoal tracking-tighter leading-none">
             Unmatched <span className="italic font-light text-brass/70">Quality.</span>
           </h2>

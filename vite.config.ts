@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => ({
     jpeg: { quality: 80 },
     jpg: { quality: 80 },
   }), cloudflare()],
-  // Use root base unconditionally for Vercel / Custom Domain
+  // Use root base unconditionally for Cloudflare Pages / Custom Domain
   base: '/',
   build: {
     outDir: 'dist',

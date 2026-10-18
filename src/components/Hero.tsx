@@ -4,43 +4,48 @@ import { Link } from 'react-router-dom';
 export default function Hero() {
   return (
     <div className="relative min-h-[100dvh] h-[100dvh] w-full overflow-hidden flex items-center justify-center bg-white pt-24 lg:pt-32">
-      {/* LCP Element: High-priority, stable, eager-loaded image for instant Core Web Vitals LCP */}
+      {/* High-fidelity LCP background image with smooth slow zoom animation */}
       <img
         src={heroFoyer}
-        alt="KS Design Studio Pune - Premium Luxury Interior Designers"
+        alt="KS Design Studio Pune | Premium Residential Interiors & Bungalows"
         fetchPriority="high"
         loading="eager"
         decoding="async"
         width="1920"
         height="1080"
-        className="absolute inset-0 w-full h-full object-cover z-0 opacity-50"
+        className="absolute inset-0 w-full h-full object-cover animate-slow-zoom z-0 opacity-40"
       />
       <div className="absolute inset-0 architect-grid opacity-[0.05] z-10" />
       <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white/90 z-10" />
       
       <div className="relative z-30 text-center px-6 max-w-7xl">
-        <div className="mb-10 inline-flex items-center space-x-4">
-          <div className="h-[1px] w-8 bg-[#85660D]/40" />
-          <span className="text-[#85660D] tracking-[0.6em] uppercase text-[10px] font-black">KS Design Studio — Premium Interior Designers</span>
-          <div className="h-[1px] w-8 bg-[#85660D]/40" />
+        <div className="mb-3 text-center">
+          <span className="text-[10px] uppercase tracking-[0.5em] text-zinc-400 font-bold block">LUXE INTERIOR DESIGN</span>
+        </div>
+        
+        <div className="mb-10 inline-flex items-center space-x-4 animate-fade-in-up">
+          <div className="h-[1px] w-8 bg-brass/40" />
+          <span className="text-brass tracking-[0.6em] uppercase text-[10px] font-black">KS Design Studio — Premium Interior Designers</span>
+          <div className="h-[1px] w-8 bg-brass/40" />
         </div>
         
         <h1 
-          className="text-zinc-900 mb-10 leading-[1.1] tracking-tighter drop-shadow-sm font-black" 
+          className="text-zinc-900 mb-10 leading-[1.1] tracking-tighter drop-shadow-sm font-black animate-fade-in" 
           style={{ 
+            animationDelay: '0.3s',
             fontSize: 'clamp(2rem, 5.5vw, 4.5rem)' 
           }}
         >
-          Designing the <span className="italic font-light text-zinc-600">Soul</span> <br /> 
+          Designing the <span className="italic font-light text-zinc-400">Soul</span> <br /> 
           <span className="text-zinc-900">of Your </span> 
-          <span className="italic font-light text-[#85660D]">Premium Homes.</span>
+          <span className="italic font-light text-brass">Premium Homes.</span>
         </h1>
         
-        <p className="text-zinc-700 max-w-4xl mx-auto mb-20 text-lg md:text-2xl font-medium leading-relaxed">
-          As <span id="edge-visitor-city">Pune</span>'s top-rated <span className="text-zinc-900 font-bold tracking-wide">luxury interior designers</span>, we execute end-to-end turnkey architecture. Crafting <span id="edge-wealth-intent" className="text-zinc-900 font-bold tracking-wide">bespoke, A-grade home narratives</span> across Maharashtra. <span id="edge-sub-intent">We transform architectural volumes into personal sanctuaries through bespoke material sourcing, modular integration, and Vastu-compliant spatial planning.</span>
+        <p className="text-zinc-600 max-w-4xl mx-auto mb-20 text-lg md:text-2xl font-medium leading-relaxed animate-fade-in" style={{ animationDelay: '0.5s' }}>
+          Crafting bespoke home narratives across <span className="text-zinc-900 font-bold tracking-wide">Pune, Mumbai, Indore & Goa</span>. We turn architectural volumes into personal sanctuaries for the city's finest residents.
         </p>
         
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-10">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-10 animate-fade-in" style={{ animationDelay: '0.7s' }}>
           <Link to="/portfolio" aria-label="View Our Projects" className="group relative px-20 py-7 overflow-hidden glass-dark shadow-2xl rounded-2xl hover:bg-brass transition-all duration-700">
             <span className="relative z-10 text-white uppercase tracking-[0.4em] text-[10px] font-black group-hover:text-white">View Our Projects</span>
           </Link>
@@ -50,7 +55,7 @@ export default function Hero() {
       
       <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-30">
         <div className="flex flex-col items-center space-y-4">
-          <span className="text-[8px] uppercase tracking-[0.5em] text-stone-600 font-black rotate-90 mb-8 translate-y-4">Scroll Down</span>
+          <span className="text-[8px] uppercase tracking-[0.5em] text-charcoal/50 font-black rotate-90 mb-8 translate-y-4">Scroll Down</span>
           <div className="w-px h-24 bg-gradient-to-b from-brass/0 via-brass/40 to-brass/0 relative">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 border border-brass/20 rounded-full animate-bounce" />
           </div>

@@ -174,7 +174,7 @@ function buildPreRenderedHTML(details, fullUrl, dynamicCopy) {
     <details style="border: 1px solid #e5e5e5; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 0.75rem; background: #fff;" ${idx === 0 ? 'open' : ''}>
       <summary style="font-weight: 700; color: #1a1a1a; cursor: pointer; font-size: 1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
         <span>${faq.q}</span>
-        <span style="color: #85660D; font-size: 1.25rem;">+</span>
+        <span style="color: #D4AF37; font-size: 1.25rem;">+</span>
       </summary>
       <p style="margin-top: 0.75rem; color: #4a4a4a; font-size: 0.9375rem; line-height: 1.7;">${faq.a}</p>
     </details>
@@ -196,25 +196,25 @@ function buildPreRenderedHTML(details, fullUrl, dynamicCopy) {
           <a href="/portfolio" style="color: #4a4a4a; text-decoration: none;">Portfolio</a>
           <a href="/pricing" style="color: #4a4a4a; text-decoration: none;">Cost Estimator</a>
           <a href="/knowledge" style="color: #4a4a4a; text-decoration: none;">Design Insights</a>
-          <a href="/contact" style="color: #85660D; text-decoration: none; font-weight: 700;">Book Consultation</a>
+          <a href="/contact" style="color: #D4AF37; text-decoration: none; font-weight: 700;">Book Consultation</a>
         </nav>
       </header>
 
       <main>
-        <nav aria-label="breadcrumb" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #85660D; margin-bottom: 1rem;">
-          <a href="/" style="color: #85660D; text-decoration: none;">Home</a> &gt; 
-          <a href="/interiors-in/${loc.toLowerCase().replace(/\s+/g, '-')}" style="color: #85660D; text-decoration: none;">${loc}</a> &gt; 
+        <nav aria-label="breadcrumb" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #D4AF37; margin-bottom: 1rem;">
+          <a href="/" style="color: #D4AF37; text-decoration: none;">Home</a> &gt; 
+          <a href="/interiors-in/${loc.toLowerCase().replace(/\s+/g, '-')}" style="color: #D4AF37; text-decoration: none;">${loc}</a> &gt; 
           <span style="color: #1a1a1a;">${subject}</span>
         </nav>
 
         <section style="margin-bottom: 3rem;">
-          <span style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.2em; color: #85660D; margin-bottom: 0.5rem; display: block;">Ranked #1 Architecture &amp; Interior Design Studio</span>
+          <span style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.2em; color: #D4AF37; margin-bottom: 0.5rem; display: block;">Ranked #1 Architecture &amp; Interior Design Studio</span>
           <h1 style="font-size: 2.25rem; font-weight: 900; color: #1a1a1a; line-height: 1.2; margin-bottom: 1rem;">${h1}</h1>
           <p style="font-size: 1.125rem; color: #4a4a4a; margin-bottom: 1.5rem; max-width: 900px;">
             Delivering bespoke luxury turnkey residential and commercial architecture across ${loc}, Pune. Experience uncompromised craftsmanship, Vastu-compliant planning, and 45-day handover.
           </p>
           <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
-            <a href="/contact" style="background: #85660D; color: #ffffff; padding: 0.875rem 1.75rem; border-radius: 9999px; text-decoration: none; font-weight: 700; font-size: 0.875rem; display: inline-block;">Get Free 3D Design &amp; Quote</a>
+            <a href="/contact" style="background: #D4AF37; color: #ffffff; padding: 0.875rem 1.75rem; border-radius: 9999px; text-decoration: none; font-weight: 700; font-size: 0.875rem; display: inline-block;">Get Free 3D Design &amp; Quote</a>
             <a href="tel:+917020377693" style="border: 1px solid #1a1a1a; color: #1a1a1a; padding: 0.875rem 1.75rem; border-radius: 9999px; text-decoration: none; font-weight: 700; font-size: 0.875rem; display: inline-block;">Direct Call: +91 70203 77693</a>
           </div>
           <div style="display: flex; gap: 2rem; flex-wrap: wrap; padding: 1rem 0; border-top: 1px solid #f0f0f0; border-bottom: 1px solid #f0f0f0; font-size: 0.875rem; color: #666;">
@@ -251,21 +251,21 @@ function buildPreRenderedHTML(details, fullUrl, dynamicCopy) {
                   <td style="padding: 0.75rem 1rem; font-weight: 700;">2 BHK Interior</td>
                   <td style="padding: 0.75rem 1rem;">Living, Modular Kitchen, Master Bedroom, Guest Bedroom, False Ceiling</td>
                   <td style="padding: 0.75rem 1rem;">BWP Marine Ply + High Gloss Laminates + Hettich</td>
-                  <td style="padding: 0.75rem 1rem; font-weight: 700; color: #85660D;">₹4.50 L – ₹8.50 L</td>
+                  <td style="padding: 0.75rem 1rem; font-weight: 700; color: #D4AF37;">₹4.50 L – ₹8.50 L</td>
                   <td style="padding: 0.75rem 1rem;">35–45 Days</td>
                 </tr>
                 <tr style="border-bottom: 1px solid #eee;">
                   <td style="padding: 0.75rem 1rem; font-weight: 700;">3 BHK Interior</td>
                   <td style="padding: 0.75rem 1rem;">Complete Turnkey, Acrylic Kitchen, 3 Bedrooms, TV Unit, Profile Lighting</td>
                   <td style="padding: 0.75rem 1rem;">HDHMR + Acrylic / PU Finish + Blum Soft-Close</td>
-                  <td style="padding: 0.75rem 1rem; font-weight: 700; color: #85660D;">₹8.50 L – ₹17.50 L</td>
+                  <td style="padding: 0.75rem 1rem; font-weight: 700; color: #D4AF37;">₹8.50 L – ₹17.50 L</td>
                   <td style="padding: 0.75rem 1rem;">45–55 Days</td>
                 </tr>
                 <tr>
                   <td style="padding: 0.75rem 1rem; font-weight: 700;">4 BHK / Villa Penthouse</td>
                   <td style="padding: 0.75rem 1rem;">Luxury Monograph, Italian Marble, Smart Automation, Walk-in Closets</td>
                   <td style="padding: 0.75rem 1rem;">Italian Statuario Marble + Natural Veneer + Automation</td>
-                  <td style="padding: 0.75rem 1rem; font-weight: 700; color: #85660D;">₹18.00 L – ₹45.00 L+</td>
+                  <td style="padding: 0.75rem 1rem; font-weight: 700; color: #D4AF37;">₹18.00 L – ₹45.00 L+</td>
                   <td style="padding: 0.75rem 1rem;">60–75 Days</td>
                 </tr>
               </tbody>
@@ -282,8 +282,8 @@ function buildPreRenderedHTML(details, fullUrl, dynamicCopy) {
           <h2 style="font-size: 1.25rem; font-weight: 800; color: #1a1a1a; margin-bottom: 0.5rem;">Visit KS Design Studio Experience Center</h2>
           <p style="font-size: 0.875rem; color: #444; line-height: 1.8;">
             <strong>Studio Address:</strong> Office 623, Vision One Mall, Bhumkar Chowk, Wakad, Pune, Maharashtra 411057<br />
-            <strong>Direct Phone:</strong> <a href="tel:+917020377693" style="color: #85660D; text-decoration: none; font-weight: 700;">+91 70203 77693</a> | 
-            <strong>Email:</strong> <a href="mailto:contact@ksdesignstudio.in" style="color: #85660D; text-decoration: none;">contact@ksdesignstudio.in</a><br />
+            <strong>Direct Phone:</strong> <a href="tel:+917020377693" style="color: #D4AF37; text-decoration: none; font-weight: 700;">+91 70203 77693</a> | 
+            <strong>Email:</strong> <a href="mailto:contact@ksdesignstudio.in" style="color: #D4AF37; text-decoration: none;">contact@ksdesignstudio.in</a><br />
             <strong>Serving:</strong> ${loc}, Baner, Wakad, Hinjewadi, Kharadi, Koregaon Park, Aundh, Balewadi, and all prime Pune markets.
           </p>
         </section>
@@ -448,11 +448,11 @@ ${JSON.stringify(faqSchema)}
     newHtml = newHtml.replace('</title>', `</title>\n  ${canonicalTag}`);
   }
 
-  // 5. Pre-Rendered Semantic Body Injection into div#root
+  // 5. Pre-Rendered Semantic Body Injection into noscript (keeps div#root clean for React)
   const preRenderedBody = buildPreRenderedHTML(details, fullUrl, dynamicCopy);
   newHtml = newHtml.replace(
-    /<div id="root">[\s\S]*?<\/div>/,
-    `<div id="root">${preRenderedBody}</div>`
+    /<div id="root">[\s\S]*?<\/div>(\s*<noscript>[\s\S]*?<\/noscript>)?/,
+    `<div id="root"></div>\n  <noscript>${preRenderedBody}</noscript>`
   );
 
   fs.writeFileSync(path.join(targetDir, 'index.html'), newHtml, 'utf8');

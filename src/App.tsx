@@ -88,6 +88,7 @@ const AppContent: React.FC = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-white selection:bg-brass selection:text-white">
+      <div className="grain" />
       <Schema />
       <CanonicalTag />
       <SEOMeta />
