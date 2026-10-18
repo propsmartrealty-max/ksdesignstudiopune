@@ -42,7 +42,7 @@ function formatRouteDetails(route) {
   const parts = route.split('/').filter(Boolean);
   if (parts.length === 0) {
     return {
-      title: 'Top Luxury Interior Designers in Pune | KS Design Studio',
+      title: 'KS Design Studio | Top Luxury Interior Designers in Pune',
       h1: 'Top Luxury Interior Designers in Pune',
       subject: 'Interior Design',
       loc: 'Pune',
@@ -344,6 +344,16 @@ routes.forEach(route => {
   newHtml = newHtml.replace(
     /<meta property="og:url" content=".*?"\s*\/>/,
     `<meta property="og:url" content="${fullUrl}" />`
+  );
+
+  // Twitter Cards Replacement
+  newHtml = newHtml.replace(
+    /<meta name="twitter:title" content=".*?"\s*\/>/,
+    `<meta name="twitter:title" content="${title}" />`
+  );
+  newHtml = newHtml.replace(
+    /<meta name="twitter:description" content=".*?"\s*\/>/,
+    `<meta name="twitter:description" content="${desc}" />`
   );
 
   // 3. Structured Data Injections

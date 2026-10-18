@@ -7,7 +7,7 @@ const SEOMeta: React.FC = () => {
   useEffect(() => {
     // Determine the base path and convert it into a readable title
     const path = location.pathname;
-    let title = "Top Luxury Interior Designers in Pune | KS Design Studio";
+    let title = "KS Design Studio | Top Luxury Interior Designers in Pune";
     let description = "KS Design Studio is Pune's premier interior designing firm specializing in 2 BHK, 3 BHK, and Villa turnkey architecture across all micro-markets.";
     let image = "https://ksdesignstudio.in/assets/webp/hero_foyer-Dmv-Yoj7.webp";
 
@@ -47,6 +47,11 @@ const SEOMeta: React.FC = () => {
 
     setMetaTag('description', description);
     
+    // Google Site Name & App Identification
+    setMetaTag('og:site_name', 'KS Design Studio', true);
+    setMetaTag('application-name', 'KS Design Studio');
+    setMetaTag('apple-mobile-web-app-title', 'KS Design Studio');
+
     // Open Graph
     setMetaTag('og:title', title, true);
     setMetaTag('og:description', description, true);
