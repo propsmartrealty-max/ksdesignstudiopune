@@ -279,12 +279,13 @@ function buildPreRenderedHTML(details, fullUrl, dynamicCopy) {
         </section>
 
         <section style="background: #fafafa; padding: 2rem; border-radius: 8px; margin-bottom: 3rem;">
-          <h2 style="font-size: 1.25rem; font-weight: 800; color: #1a1a1a; margin-bottom: 0.5rem;">Visit KS Design Studio Experience Center</h2>
+          <h2 style="font-size: 1.25rem; font-weight: 800; color: #1a1a1a; margin-bottom: 0.5rem;">Visit KS Design Studio | Interior Designers in Wakad &amp; Nearby</h2>
           <p style="font-size: 0.875rem; color: #444; line-height: 1.8;">
-            <strong>Studio Address:</strong> Office 623, Vision One Mall, Bhumkar Chowk, Wakad, Pune, Maharashtra 411057<br />
+            Looking for top-rated <strong>interior design nearby me</strong> or experienced <strong>interior designers in Wakad</strong>? Visit our experiential design studio.<br />
+            <strong>Studio Address:</strong> 623, Vision One Mall, Bhumkar Chowk, Wakad, Pune- 411057<br />
             <strong>Direct Phone:</strong> <a href="tel:+917020377693" style="color: #D4AF37; text-decoration: none; font-weight: 700;">+91 70203 77693</a> | 
             <strong>Email:</strong> <a href="mailto:contact@ksdesignstudio.in" style="color: #D4AF37; text-decoration: none;">contact@ksdesignstudio.in</a><br />
-            <strong>Serving:</strong> ${loc}, Baner, Wakad, Hinjewadi, Kharadi, Koregaon Park, Aundh, Balewadi, and all prime Pune markets.
+            <strong>Serving:</strong> ${loc}, Wakad, Baner, Hinjewadi, Kharadi, Koregaon Park, Aundh, Balewadi, and all prime Pune markets.
           </p>
         </section>
 
@@ -377,7 +378,7 @@ routes.forEach(route => {
     "priceRange": "₹₹₹₹",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "623, Vision One Mall, Bhumkar Chowk",
+      "streetAddress": "623, Vision One Mall, Bhumkar Chowk, Wakad, Pune- 411057",
       "addressLocality": "Wakad, Pune",
       "addressRegion": "Maharashtra",
       "postalCode": "411057",

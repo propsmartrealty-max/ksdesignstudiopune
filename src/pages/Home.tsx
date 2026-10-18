@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import Hero from '../components/Hero';
 import ServicesGrid from '../components/ServicesGrid';
 import MasonryGallery from '../components/MasonryGallery';
 import GuaranteeProtocol from '../components/GuaranteeProtocol';
-import InvestmentEstimator from '../components/InvestmentEstimator';
 import EliteCustomers from '../components/EliteCustomers';
 import VisionLab from '../components/VisionLab';
-import AIPaletteGenerator from '../components/AIPaletteGenerator';
 import NeighborhoodIntel from '../components/NeighborhoodIntel';
 import ContactComp from '../components/Contact';
-import DesignLaboratory from '../components/DesignLaboratory';
 import TrustRegistry from '../components/TrustRegistry';
 import MarketDominance from '../components/SEO/MarketDominance';
-import InteractiveQuiz from '../components/InteractiveQuiz';
+
+// Lazy load below-the-fold interactive widgets to reduce unused JavaScript
+const InvestmentEstimator = lazy(() => import('../components/InvestmentEstimator'));
+const InteractiveQuiz = lazy(() => import('../components/InteractiveQuiz'));
+const AIPaletteGenerator = lazy(() => import('../components/AIPaletteGenerator'));
+const DesignLaboratory = lazy(() => import('../components/DesignLaboratory'));
 
 export default function Home() {
   return (
@@ -55,13 +57,17 @@ export default function Home() {
       {/* Interactive Conversion: Design DNA Quiz */}
       <section className="py-20 px-6 lg:px-12 bg-white">
         <div className="max-w-4xl mx-auto">
-          <InteractiveQuiz />
+          <Suspense fallback={<div className="h-64 rounded-3xl bg-slate-50/50 animate-pulse border border-slate-100" />}>
+            <InteractiveQuiz />
+          </Suspense>
         </div>
       </section>
 
       {/* Interactive Conversion: Investment Estimator */}
       <div id="estimator">
-        <InvestmentEstimator />
+        <Suspense fallback={<div className="h-96 rounded-3xl bg-slate-50/50 animate-pulse border border-slate-100" />}>
+          <InvestmentEstimator />
+        </Suspense>
       </div>
 
       {/* Intelligence at Scale: The Studio Differentiation */}
@@ -77,7 +83,9 @@ export default function Home() {
                 <VisionLab />
               </div>
               <div className="space-y-12">
-                 <AIPaletteGenerator />
+                 <Suspense fallback={<div className="h-64 rounded-3xl bg-white/50 animate-pulse border border-slate-100" />}>
+                   <AIPaletteGenerator />
+                 </Suspense>
                  <NeighborhoodIntel />
                  <p className="text-zinc-400 font-medium text-lg leading-relaxed border-l-2 border-brass/20 pl-10 italic">
                    "We leverage professional spatial intelligence and curated local artisan networks to deliver premium living experiences in homes across the country."
@@ -89,7 +97,9 @@ export default function Home() {
 
       {/* Design Intelligence Hub */}
       <section id="laboratory">
-        <DesignLaboratory />
+        <Suspense fallback={<div className="h-96 rounded-3xl bg-slate-50/50 animate-pulse border border-slate-100" />}>
+          <DesignLaboratory />
+        </Suspense>
       </section>
 
       <MarketDominance />

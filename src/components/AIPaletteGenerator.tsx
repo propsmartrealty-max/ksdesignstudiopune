@@ -1,6 +1,4 @@
-
 import React, { useState } from 'react';
-import { GoogleGenAI, Type } from '@google/genai';
 import { Palette, Sparkles, Copy, Check, RefreshCcw } from 'lucide-react';
 
 interface ColorCombination {
@@ -24,6 +22,7 @@ const AIPaletteGenerator: React.FC = () => {
     setIsLoading(true);
     setPalette(null);
     try {
+      const { GoogleGenAI, Type } = await import('@google/genai');
       const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
       const response = await ai.models.generateContent({
         model: "gemini-3-flash-preview",

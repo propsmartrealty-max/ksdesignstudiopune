@@ -5,7 +5,7 @@ const Contact: React.FC = () => {
   const contactPhone = "917020377693";
   const displayPhone = "+91 70203 77693";
   const contactEmail = "ksdesignstudiopune@gmail.com";
-  const studioAddress = "623, Vision One Mall, Bhumkar Chowk, Wakad-411057, Pune";
+  const studioAddress = "623, Vision One Mall, Bhumkar Chowk, Wakad, Pune- 411057";
 
   const [formData, setFormData] = useState({
     name: '',
@@ -114,6 +114,7 @@ const Contact: React.FC = () => {
               <div>
                 <p className="text-[9px] uppercase tracking-[0.4em] text-zinc-400 font-bold mb-1">Studio Headquarters</p>
                 <p className="text-charcoal text-xl font-bold group-hover:text-brass transition-colors leading-tight max-w-[280px]">{studioAddress}</p>
+                <p className="text-zinc-500 text-xs font-semibold mt-1">Premier Interior Design Studio Nearby Wakad, Baner & Hinjawadi</p>
               </div>
             </a>
 

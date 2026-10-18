@@ -8,7 +8,7 @@ const SEOMeta: React.FC = () => {
     // Determine the base path and convert it into a readable title
     const path = location.pathname;
     let title = "KS Design Studio | Top Luxury Interior Designers in Pune";
-    let description = "KS Design Studio is Pune's premier interior designing firm specializing in 2 BHK, 3 BHK, and Villa turnkey architecture across all micro-markets.";
+    let description = "KS Design Studio: Premier interior designers in Wakad, Pune (Vision One Mall). Specializing in luxury 2 BHK, 3 BHK, and Villa turnkey architecture nearby you.";
     let image = "https://ksdesignstudio.in/assets/webp/hero_foyer-Dmv-Yoj7.webp";
 
     if (path.startsWith('/magazine/')) {
@@ -46,6 +46,7 @@ const SEOMeta: React.FC = () => {
     };
 
     setMetaTag('description', description);
+    setMetaTag('keywords', 'interior design nearby me, interior designers in wakad, interior designer near me, best interior designer wakad pune, luxury home interior designers pune, 2 BHK interior design wakad');
     
     // Google Site Name & App Identification
     setMetaTag('og:site_name', 'KS Design Studio', true);

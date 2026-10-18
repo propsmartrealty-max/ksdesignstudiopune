@@ -1,15 +1,10 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 
 const TermsOfService = () => {
   return (
     <div className="pt-32 pb-24 bg-white min-h-screen">
       <div className="max-w-4xl mx-auto px-6 md:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="prose prose-lg max-w-none"
-        >
+        <div className="prose prose-lg max-w-none transition-opacity duration-700">
           <h1 className="text-4xl md:text-5xl font-serif text-black mb-8">Terms of Service</h1>
           <p className="text-gray-500 mb-12">Last Updated: August 2026</p>
           
@@ -51,7 +46,7 @@ const TermsOfService = () => {
               <p>These terms and conditions are governed by and construed in accordance with the laws of Maharashtra, India and you irrevocably submit to the exclusive jurisdiction of the courts in that State or location.</p>
             </section>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

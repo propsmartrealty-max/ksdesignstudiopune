@@ -11,13 +11,13 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
   const location = useLocation();
 
   const navLinks = [
-    { name: 'About Us', href: '/about' },
+    { name: 'About', href: '/about' },
     { name: 'Services', href: '/services' },
-    { name: 'Design Ideas', href: '/design-ideas' },
-    { name: 'Our Projects', href: '/portfolio' },
+    { name: 'Ideas', href: '/design-ideas' },
+    { name: 'Projects', href: '/portfolio' },
     { name: 'Pricing', href: '/pricing' },
-    { name: 'Laboratory', href: '/laboratory' },
-    { name: 'Tectonic Series', href: '/tectonic-series' }
+    { name: 'Lab', href: '/laboratory', hideBelow2xl: true },
+    { name: 'Tectonic', href: '/tectonic-series', hideBelow2xl: true }
   ];
 
   const utilityLinks = [
@@ -97,15 +97,17 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
               <div className="absolute inset-0 rounded-full border border-stone-200/90 group-hover:border-brass/40 transition-colors duration-500" />
               
               {/* High-Contrast Crisp Core */}
-              <div className="relative flex items-center px-8 py-3 rounded-full bg-white/95 backdrop-blur-xl border border-stone-200 shadow-sm">
-                <div className="flex items-center space-x-7" role="menubar">
+              <div className="relative flex items-center px-5 2xl:px-7 py-2.5 rounded-full bg-white/95 backdrop-blur-xl border border-stone-200 shadow-sm">
+                <div className="flex items-center space-x-5 2xl:space-x-7" role="menubar">
                   {navLinks.map((link) => (
                     <Link
                       key={link.name}
                       to={link.href}
                       role="menuitem"
                       aria-label={`Go to ${link.name}`}
-                      className={`text-[10px] uppercase tracking-[0.25em] font-black transition-all duration-300 relative group/link py-1 whitespace-nowrap ${
+                      className={`text-[10px] uppercase tracking-[0.2em] font-black transition-all duration-300 relative group/link py-1 whitespace-nowrap ${
+                        link.hideBelow2xl ? 'hidden 2xl:block' : ''
+                      } ${
                         isActive(link.href) 
                           ? 'text-brass drop-shadow-[0_0_6px_rgba(212,175,55,0.3)]' 
                           : 'text-stone-700 hover:text-stone-950'
@@ -121,11 +123,11 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
           </div>
 
           {/* Action Hub (Right) */}
-          <div className="hidden lg:flex items-center space-x-3 shrink-0 z-20">
+          <div className="hidden lg:flex items-center space-x-2.5 shrink-0 z-20">
             <Link 
               to="/contact" 
               aria-label="Book Session"
-              className="text-[10px] uppercase tracking-[0.3em] font-black transition-all duration-300 px-7 py-3 rounded-full whitespace-nowrap shadow-md bg-[#18181B] text-white hover:bg-brass hover:text-white border border-stone-900"
+              className="text-[10px] uppercase tracking-[0.25em] font-black transition-all duration-300 px-5 py-2.5 rounded-full whitespace-nowrap shadow-md bg-[#18181B] text-white hover:bg-brass hover:text-white border border-stone-900"
             >
               Book Session
             </Link>
@@ -134,18 +136,18 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
             <Link
               to="/vault"
               aria-label="Access Sovereign Vault"
-              className="p-3 rounded-full transition-all duration-300 flex items-center group bg-white border border-stone-200 text-stone-700 hover:text-brass hover:border-brass/50 shadow-sm"
+              className="p-2.5 rounded-full transition-all duration-300 flex items-center group bg-white border border-stone-200 text-stone-700 hover:text-brass hover:border-brass/50 shadow-sm"
             >
-              <FolderHeart size={16} className="group-hover:scale-110 transition-transform" />
+              <FolderHeart size={15} className="group-hover:scale-110 transition-transform" />
             </Link>
 
             {/* Search Trigger */}
             <button 
               onClick={() => window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }))}
               aria-label="Open global search (Cmd+K)"
-              className="p-3 rounded-full transition-all duration-300 flex items-center space-x-2 group bg-white border border-stone-200 text-stone-700 hover:text-stone-950 hover:border-brass/50 shadow-sm"
+              className="p-2.5 rounded-full transition-all duration-300 flex items-center space-x-1.5 group bg-white border border-stone-200 text-stone-700 hover:text-stone-950 hover:border-brass/50 shadow-sm"
             >
-              <Search size={16} className="group-hover:scale-110 transition-transform text-stone-600 group-hover:text-stone-900" />
+              <Search size={15} className="group-hover:scale-110 transition-transform text-stone-600 group-hover:text-stone-900" />
               <span className="hidden xl:block text-[8px] font-black uppercase tracking-widest px-1.5 py-0.5 rounded bg-stone-100 text-stone-600">⌘K</span>
             </button>
           </div>

@@ -45,9 +45,11 @@ const Footer: React.FC = () => {
                ))}
             </div>
             <div className="p-8 border border-charcoal/5 bg-slate-50/50 rounded-2xl">
-               <span className="text-brass tracking-[0.5em] uppercase text-[9px] font-black block mb-4">Official Enquiry Host</span>
-               <a href="mailto:ksdesignstudiopune@gmail.com" className="text-lg font-medium hover:text-brass transition-colors">ksdesignstudiopune@gmail.com</a>
-               <p className="mt-4 text-charcoal/60 text-[11px]">+91 70203 77693</p>
+               <span className="text-brass tracking-[0.5em] uppercase text-[9px] font-black block mb-3">Studio Headquarters & Design Lounge</span>
+               <p className="text-charcoal text-sm font-bold leading-snug mb-1">623, Vision One Mall, Bhumkar Chowk, Wakad, Pune- 411057</p>
+               <p className="text-zinc-500 text-[11px] font-medium mb-4">Top-Rated Interior Design Studio Nearby Wakad, Baner, Hinjawadi & West Pune</p>
+               <a href="mailto:ksdesignstudiopune@gmail.com" className="text-sm font-medium hover:text-brass transition-colors block">ksdesignstudiopune@gmail.com</a>
+               <a href="tel:+917020377693" className="mt-2 text-charcoal font-bold text-sm block hover:text-brass transition-colors">+91 70203 77693</a>
             </div>
           </div>
           
@@ -122,8 +124,20 @@ const Footer: React.FC = () => {
 
         {/* Enterprise SEO Internal Link Directory */}
         <div className="pt-20 pb-10 border-t border-charcoal/10 mb-10">
-           <h4 className="text-[9px] uppercase tracking-[0.5em] font-black text-stone-600 mb-8">Service Areas Directory</h4>
+           <h4 className="text-[9px] uppercase tracking-[0.5em] font-black text-stone-600 mb-8">Service Areas & Micro-Market Directory</h4>
            <div className="flex flex-wrap gap-4">
+             <Link to="/interiors-in/wakad" className="text-[9px] text-brass hover:text-charcoal uppercase tracking-widest font-black">
+               Interior Designers in Wakad Pune
+             </Link>
+             <Link to="/services/interior-design-near-me" className="text-[9px] text-brass hover:text-charcoal uppercase tracking-widest font-black">
+               Interior Design Nearby Me
+             </Link>
+             <Link to="/services/best-interior-designer-wakad" className="text-[9px] text-brass hover:text-charcoal uppercase tracking-widest font-black">
+               Best Interior Designer in Wakad
+             </Link>
+             <Link to="/cost-guide/wakad" className="text-[9px] text-stone-700 hover:text-brass uppercase tracking-widest font-bold">
+               Interior Cost in Wakad
+             </Link>
              {SEO_LOCATIONS.west.slice(0, 15).map(loc => (
                <Link key={loc} to={`/cost-guide/${loc.toLowerCase().replace(/\s+/g, '-')}`} className="text-[9px] text-stone-600 hover:text-brass uppercase tracking-widest font-bold">
                  Interior Cost in {loc}

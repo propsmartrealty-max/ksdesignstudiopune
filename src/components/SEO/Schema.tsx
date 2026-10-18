@@ -49,7 +49,7 @@ const Schema: React.FC = () => {
     "telephone": "+91 70203 77693",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "623, Vision One Mall, Bhumkar Chowk",
+      "streetAddress": "623, Vision One Mall, Bhumkar Chowk, Wakad, Pune- 411057",
       "addressLocality": "Wakad, Pune",
       "addressRegion": "Maharashtra",
       "postalCode": "411057",
