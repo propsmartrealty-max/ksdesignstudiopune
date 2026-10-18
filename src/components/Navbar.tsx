@@ -33,10 +33,10 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
   };
 
   return (
-    <nav className="fixed w-full z-[150] transition-all duration-700 pointer-events-none" aria-label="Main Navigation">
+    <nav className="fixed w-full z-[150] transition-all duration-500 pointer-events-none" aria-label="Main Navigation">
       {/* Layer 1: Top Utility Bar (Hides on scroll for focus) */}
-      <div className={`hidden md:block w-full border-b transition-all duration-700 ${
-        scrolled ? 'h-0 opacity-0 overflow-hidden border-transparent' : 'h-10 opacity-100 border-white/10 bg-white/5'
+      <div className={`hidden md:block w-full border-b transition-all duration-500 ${
+        scrolled ? 'h-0 opacity-0 overflow-hidden border-transparent' : 'h-10 opacity-100 border-stone-200/80 bg-white/95 backdrop-blur-sm'
       }`}>
         <div className="max-w-[1440px] mx-auto h-full flex justify-between items-center px-6 lg:px-12 pointer-events-auto">
           <div className="flex items-center space-x-8">
@@ -45,21 +45,23 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
                 key={link.name} 
                 to={link.href} 
                 aria-label={`Go to ${link.name}`}
-                className="text-[9px] uppercase tracking-[0.3em] font-black text-white/80 hover:text-brass transition-colors"
+                className="text-[9px] uppercase tracking-[0.25em] font-black text-stone-600 hover:text-brass transition-colors"
               >
                 {link.name}
               </Link>
             ))}
           </div>
           <div className="flex items-center space-x-6">
-             <a href="tel:+917020377693" aria-label="Call for enquiry" className="text-[9px] uppercase tracking-[0.3em] font-black text-white/90 hover:text-white transition-colors">Enquiry: +91 70203 77693</a>
-             <div className="h-2 w-[1px] bg-white/10" />
+             <a href="tel:+917020377693" aria-label="Call for enquiry" className="text-[9px] uppercase tracking-[0.25em] font-black text-stone-800 hover:text-brass transition-colors">
+               Enquiry: <span className="text-brass font-black">+91 70203 77693</span>
+             </a>
+             <div className="h-3 w-[1px] bg-stone-300" />
              <div className="flex space-x-4">
                <a href="https://www.instagram.com/ksdesignstudiopune/" aria-label="Visit Instagram Profile" target="_blank" rel="noopener noreferrer">
-                 <Instagram size={12} className="text-white/20 hover:text-white transition-colors cursor-pointer" />
+                 <Instagram size={13} className="text-stone-500 hover:text-brass transition-colors cursor-pointer" />
                </a>
                <a href="mailto:ksdesignstudiopune@gmail.com" aria-label="Send Email">
-                 <Mail size={12} className="text-white/20 hover:text-white transition-colors cursor-pointer" />
+                 <Mail size={13} className="text-stone-500 hover:text-brass transition-colors cursor-pointer" />
                </a>
              </div>
           </div>
@@ -67,52 +69,50 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
       </div>
 
       {/* Layer 2: Primary Branding & Action Bar */}
-      <div className={`w-full py-6 lg:py-8 transition-all duration-700 ${scrolled ? 'pt-4' : ''}`}>
-        <div className="max-w-[1440px] mx-auto flex justify-between items-center px-6 lg:px-12 pointer-events-auto">
+      <div className={`w-full transition-all duration-500 ${
+        scrolled 
+          ? 'py-3.5 bg-white/95 backdrop-blur-md shadow-md border-b border-stone-200/70' 
+          : 'py-5 lg:py-6 bg-white/80 backdrop-blur-sm'
+      }`}>
+        <div className="max-w-[1440px] mx-auto flex justify-between items-center px-6 lg:px-12 pointer-events-auto relative">
           {/* Brand Identity */}
-          <Link to="/" className="flex items-center group relative whitespace-nowrap shrink-0">
-            <div className={`flex flex-col border-l-[3px] border-brass pl-5 transition-all duration-500 group-hover:pl-7 ${scrolled ? 'drop-shadow-sm' : 'drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]'}`}>
-              <span className={`text-3xl font-black tracking-tighter leading-none transition-all duration-700 ${scrolled ? 'text-[#1A1A1A]' : 'text-white'}`}>
+          <Link to="/" className="flex items-center group relative whitespace-nowrap shrink-0 z-20">
+            <div className="flex flex-col border-l-[3px] border-brass pl-4 transition-all duration-300 group-hover:pl-5">
+              <span className="text-2xl sm:text-3xl font-black tracking-tighter leading-none text-[#18181B]">
                 KS <span className="text-brass drop-shadow-[0_0_8px_rgba(212,175,55,0.4)]">DESIGN</span>
               </span>
-              <div className="flex items-center space-x-2 mt-1.5">
-                <span className={`text-[10px] tracking-[0.9em] uppercase font-bold transition-all duration-700 ${scrolled ? 'text-zinc-500' : 'text-zinc-200'}`}>
+              <div className="flex items-center space-x-2 mt-1">
+                <span className="text-[9px] tracking-[0.85em] uppercase font-extrabold text-stone-500">
                   STUDIO
                 </span>
-                <span className="w-1.5 h-1.5 bg-brass rounded-full animate-pulse shadow-[0_0_10px_#D4AF37]" />
+                <span className="w-1.5 h-1.5 bg-brass rounded-full animate-pulse shadow-[0_0_8px_#D4AF37]" />
               </div>
             </div>
           </Link>
 
-          {/* Apple Style Glassmorphic Navigation (Center) */}
-          <div className="hidden xl:flex items-center justify-center flex-1 px-8">
-            <div className="relative group p-[1px] rounded-full overflow-hidden shadow-2xl transition-transform duration-500 hover:scale-[1.02]">
-              {/* Animated glowing border across lines */}
-              <div className={`absolute inset-0 rounded-full transition-opacity duration-1000 ${scrolled ? 'opacity-100' : 'opacity-60'}`}>
-                <div className="absolute inset-[-100%] bg-[conic-gradient(from_0deg,transparent_0_340deg,#D4AF37_360deg)] animate-spin-slow"></div>
-              </div>
+          {/* Symmetrically Centered Navigation Pill */}
+          <div className="hidden xl:flex items-center justify-center absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-10 pointer-events-auto">
+            <div className="relative group p-[1px] rounded-full shadow-lg shadow-stone-900/5 transition-transform duration-300 hover:scale-[1.01]">
+              {/* Subtle Luxury Outer Ring */}
+              <div className="absolute inset-0 rounded-full border border-stone-200/90 group-hover:border-brass/40 transition-colors duration-500" />
               
-              {/* Glassmorphic Core */}
-              <div className={`relative flex items-center px-8 py-3.5 rounded-full transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)] ${
-                scrolled 
-                  ? 'bg-white/80 backdrop-blur-3xl border border-white/60' 
-                  : 'bg-white/10 backdrop-blur-2xl border border-white/20'
-              }`}>
-                <div className="flex items-center space-x-8" role="menubar">
+              {/* High-Contrast Crisp Core */}
+              <div className="relative flex items-center px-8 py-3 rounded-full bg-white/95 backdrop-blur-xl border border-stone-200 shadow-sm">
+                <div className="flex items-center space-x-7" role="menubar">
                   {navLinks.map((link) => (
                     <Link
                       key={link.name}
                       to={link.href}
                       role="menuitem"
                       aria-label={`Go to ${link.name}`}
-                      className={`text-[10px] uppercase tracking-[0.4em] font-black transition-all duration-500 relative group/link py-1 whitespace-nowrap ${
+                      className={`text-[10px] uppercase tracking-[0.25em] font-black transition-all duration-300 relative group/link py-1 whitespace-nowrap ${
                         isActive(link.href) 
-                          ? 'text-brass drop-shadow-[0_0_10px_rgba(212,175,55,0.3)]' 
-                          : (scrolled ? 'text-zinc-600 hover:text-[#1A1A1A]' : 'text-zinc-300 hover:text-white')
+                          ? 'text-brass drop-shadow-[0_0_6px_rgba(212,175,55,0.3)]' 
+                          : 'text-stone-700 hover:text-stone-950'
                       }`}
                     >
                       {link.name}
-                      <span className={`absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-0 h-[2px] bg-brass transition-all duration-500 group-hover/link:w-2 ${isActive(link.href) ? 'w-2' : ''}`} />
+                      <span className={`absolute bottom-[-3px] left-1/2 -translate-x-1/2 w-0 h-[2px] bg-brass rounded-full transition-all duration-300 group-hover/link:w-3 ${isActive(link.href) ? 'w-3' : ''}`} />
                     </Link>
                   ))}
                 </div>
@@ -121,13 +121,11 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
           </div>
 
           {/* Action Hub (Right) */}
-          <div className="hidden lg:flex items-center space-x-3 shrink-0 z-10">
+          <div className="hidden lg:flex items-center space-x-3 shrink-0 z-20">
             <Link 
               to="/contact" 
               aria-label="Book Session"
-              className={`text-[9px] uppercase tracking-[0.4em] font-black transition-all duration-500 px-8 py-3.5 rounded-full whitespace-nowrap shadow-xl border ${
-                scrolled ? 'bg-[#1A1A1A] text-white hover:bg-brass border-transparent' : 'bg-white/10 backdrop-blur-md text-white border-white/20 hover:bg-white hover:text-[#1A1A1A]'
-              }`}
+              className="text-[10px] uppercase tracking-[0.3em] font-black transition-all duration-300 px-7 py-3 rounded-full whitespace-nowrap shadow-md bg-[#18181B] text-white hover:bg-brass hover:text-white border border-stone-900"
             >
               Book Session
             </Link>
@@ -136,9 +134,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
             <Link
               to="/vault"
               aria-label="Access Sovereign Vault"
-              className={`p-3 rounded-full transition-all duration-500 flex items-center group border ${
-                scrolled ? 'text-zinc-500 hover:text-brass bg-zinc-100 border-transparent hover:bg-zinc-200' : 'text-white/70 hover:text-white bg-white/10 border-white/20 backdrop-blur-md'
-              }`}
+              className="p-3 rounded-full transition-all duration-300 flex items-center group bg-white border border-stone-200 text-stone-700 hover:text-brass hover:border-brass/50 shadow-sm"
             >
               <FolderHeart size={16} className="group-hover:scale-110 transition-transform" />
             </Link>
@@ -147,20 +143,16 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
             <button 
               onClick={() => window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }))}
               aria-label="Open global search (Cmd+K)"
-              className={`p-3 rounded-full transition-all duration-500 flex items-center space-x-2 group border ${
-                scrolled ? 'text-zinc-500 hover:text-[#1A1A1A] bg-zinc-100 border-transparent hover:bg-zinc-200' : 'text-white/70 hover:text-white bg-white/10 border-white/20 backdrop-blur-md'
-              }`}
+              className="p-3 rounded-full transition-all duration-300 flex items-center space-x-2 group bg-white border border-stone-200 text-stone-700 hover:text-stone-950 hover:border-brass/50 shadow-sm"
             >
-              <Search size={16} className="group-hover:scale-110 transition-transform" />
-              <span className={`hidden xl:block text-[8px] font-black uppercase tracking-widest px-1.5 py-0.5 rounded ${scrolled ? 'bg-zinc-200/50' : 'bg-white/10'}`}>⌘K</span>
+              <Search size={16} className="group-hover:scale-110 transition-transform text-stone-600 group-hover:text-stone-900" />
+              <span className="hidden xl:block text-[8px] font-black uppercase tracking-widest px-1.5 py-0.5 rounded bg-stone-100 text-stone-600">⌘K</span>
             </button>
           </div>
 
           {/* Mobile Toggle Button */}
           <button 
-            className={`lg:hidden p-3 rounded-2xl transition-all duration-500 border ${
-              scrolled ? 'bg-charcoal text-white border-charcoal shadow-lg' : 'bg-white/10 text-white border-white/20 backdrop-blur-md'
-            }`}
+            className="lg:hidden p-3 rounded-2xl transition-all duration-300 bg-[#18181B] text-white hover:bg-brass shadow-md border border-stone-800 z-20"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle Navigation"
           >
