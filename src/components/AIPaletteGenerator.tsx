@@ -114,7 +114,7 @@ const AIPaletteGenerator: React.FC = () => {
               <button 
                 onClick={generatePalette}
                 disabled={isLoading || !mood.trim()}
-                aria-label="Generate AI color palette"
+                aria-label="Generate Palette"
                 className="w-full bg-[#1A1A1A] text-white py-6 rounded-2xl font-black uppercase tracking-[0.4em] text-[11px] hover:bg-brass transition-all flex items-center justify-center space-x-3 disabled:opacity-50 shadow-xl"
               >
                 {isLoading ? (

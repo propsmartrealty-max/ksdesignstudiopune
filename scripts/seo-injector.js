@@ -448,7 +448,7 @@ ${JSON.stringify(faqSchema)}
     newHtml = newHtml.replace('</title>', `</title>\n  ${canonicalTag}`);
   }
 
-  // 5. Pre-Rendered Semantic Body Injection into noscript (keeps div#root clean for React)
+  // 5. Pre-Rendered Semantic Body Injection into noscript (div#root remains clean for React 19 createRoot mount)
   const preRenderedBody = buildPreRenderedHTML(details, fullUrl, dynamicCopy);
   newHtml = newHtml.replace(
     /<div id="root">[\s\S]*?<\/div>(\s*<noscript>[\s\S]*?<\/noscript>)?/,

@@ -18,10 +18,10 @@ export default defineConfig(({ mode }) => ({
     assetsDir: 'assets',
     cssCodeSplit: true,
     sourcemap: false,
-    target: ['es2022', 'chrome109', 'edge109', 'firefox102', 'safari16'],
+    target: 'esnext',
     minify: 'terser',
     terserOptions: {
-      ecma: 2020,
+      ecma: 2022,
       compress: {
         drop_console: true,
         drop_debugger: true,

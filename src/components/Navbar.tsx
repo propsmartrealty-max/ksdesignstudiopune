@@ -70,7 +70,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
       <div className={`w-full py-6 lg:py-8 transition-all duration-700 ${scrolled ? 'pt-4' : ''}`}>
         <div className="max-w-[1440px] mx-auto flex justify-between items-center px-6 lg:px-12 pointer-events-auto">
           {/* Brand Identity */}
-          <Link to="/" aria-label="KS Design Studio Home" className="flex items-center group relative whitespace-nowrap shrink-0">
+          <Link to="/" className="flex items-center group relative whitespace-nowrap shrink-0">
             <div className={`flex flex-col border-l-[3px] border-brass pl-5 transition-all duration-500 group-hover:pl-7 ${scrolled ? 'drop-shadow-sm' : 'drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]'}`}>
               <span className={`text-3xl font-black tracking-tighter leading-none transition-all duration-700 ${scrolled ? 'text-[#1A1A1A]' : 'text-white'}`}>
                 KS <span className="text-brass drop-shadow-[0_0_8px_rgba(212,175,55,0.4)]">DESIGN</span>
@@ -124,7 +124,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
           <div className="hidden lg:flex items-center space-x-3 shrink-0 z-10">
             <Link 
               to="/contact" 
-              aria-label="Book a free consultation session"
+              aria-label="Book Session"
               className={`text-[9px] uppercase tracking-[0.4em] font-black transition-all duration-500 px-8 py-3.5 rounded-full whitespace-nowrap shadow-xl border ${
                 scrolled ? 'bg-[#1A1A1A] text-white hover:bg-brass border-transparent' : 'bg-white/10 backdrop-blur-md text-white border-white/20 hover:bg-white hover:text-[#1A1A1A]'
               }`}

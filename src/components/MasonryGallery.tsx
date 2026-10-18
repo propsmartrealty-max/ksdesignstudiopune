@@ -70,7 +70,7 @@ const MasonryGallery: React.FC = () => {
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-xl text-charcoal group-hover:text-brass transition-colors mb-2 font-bold">{project.title}</h4>
+                  <h3 className="text-xl text-charcoal group-hover:text-brass transition-colors mb-2 font-bold">{project.title}</h3>
                   <p className="text-zinc-600 text-[10px] uppercase tracking-[0.4em] font-black">{project.location}</p>
                 </div>
               </motion.div>

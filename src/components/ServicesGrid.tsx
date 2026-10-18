@@ -10,7 +10,6 @@ const ServicesGrid: React.FC = () => {
         <Link 
           to={svc.path} 
           key={svc.id} 
-          aria-label={`Explore our ${svc.title} services`}
           className="group glass-premium p-4 rounded-[3rem] border-white/40 hover:border-brass transition-all duration-700 hover:shadow-2xl hover:translate-y-[-8px] flex flex-col items-center text-center"
         >
           {/* Image Container with Livspace-inspired rounded topology */}

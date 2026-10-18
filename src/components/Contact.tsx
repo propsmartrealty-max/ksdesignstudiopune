@@ -215,7 +215,7 @@ const Contact: React.FC = () => {
             <button 
               type="submit"
               disabled={status !== 'idle'}
-              aria-label="Send Interior Design Consultation Enquiry"
+              aria-label="Send Enquiry"
               className={`w-full py-8 rounded-2xl text-[11px] uppercase tracking-[0.5em] font-black transition-all duration-700 flex items-center justify-center space-x-4 shadow-xl ${
                 status === 'success' 
                   ? 'bg-emerald-600 text-white' 

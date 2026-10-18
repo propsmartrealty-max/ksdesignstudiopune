@@ -80,10 +80,10 @@ const DesignLaboratory: React.FC = () => {
 
             <div className="grid grid-cols-1 gap-12">
                <div className="space-y-6">
-                 <h4 className="text-[10px] uppercase tracking-[0.6em] font-black text-zinc-900 flex items-center space-x-3">
+                 <h3 className="text-[10px] uppercase tracking-[0.6em] font-black text-zinc-900 flex items-center space-x-3">
                    <span className="w-8 h-px bg-zinc-900/20" />
                    <span>The Affirmations (Dos)</span>
-                 </h4>
+                 </h3>
                  <div className="space-y-6">
                     {DESIGN_CODE.dos.map((item) => (
                       <div key={item.title} className="flex space-x-6 group">
@@ -106,10 +106,10 @@ const DesignLaboratory: React.FC = () => {
                <X size={120} className="text-zinc-900" />
             </div>
             <div className="relative z-10 space-y-12">
-               <h4 className="text-[10px] uppercase tracking-[0.6em] font-black text-zinc-400 flex items-center space-x-3">
+               <h3 className="text-[10px] uppercase tracking-[0.6em] font-black text-zinc-400 flex items-center space-x-3">
                  <span className="w-8 h-px bg-zinc-400/20" />
                  <span>The Restraints (Donts)</span>
-               </h4>
+               </h3>
                <div className="space-y-12">
                   {DESIGN_CODE.donts.map((item) => (
                     <div key={item.title} className="flex space-x-6">

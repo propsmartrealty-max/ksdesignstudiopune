@@ -1,16 +1,22 @@
-import { GoogleGenAI } from "@google/genai";
-
-const API_KEY = import.meta.env.VITE_GEMINI_API_KEY || 'missing_key_for_local_dev';
-const genAI = new GoogleGenAI({ apiKey: API_KEY });
+let genAIInstance: any = null;
+async function getGenAI() {
+  if (!genAIInstance) {
+    const { GoogleGenAI } = await import("@google/genai");
+    const API_KEY = import.meta.env.VITE_GEMINI_API_KEY || 'missing_key_for_local_dev';
+    genAIInstance = new GoogleGenAI({ apiKey: API_KEY });
+  }
+  return genAIInstance;
+}
 
 export async function executeTectonicAI(
   prompt: string,
   imageData?: string,
   systemInstruction?: string
 ) {
-  const modelName = imageData ? 'gemini-2.0-flash' : 'gemini-2.0-flash'; // Optimized for speed/fidelity mix
+  const modelName = 'gemini-2.0-flash';
 
   try {
+    const genAI = await getGenAI();
     const parts: any[] = [{ text: prompt }];
     if (imageData) {
       parts.push({
@@ -71,6 +77,7 @@ export async function synthesizeRoom(roomType: string, styleDNA: any, paletteDNA
       4. Do not use generic advice; create a visionary narrative.
     `;
 
+    const genAI = await getGenAI();
     const response = await genAI.models.generateContent({
       model: "gemini-2.0-flash",
       contents: [{ role: 'user', parts: [{ text: prompt }] }]
