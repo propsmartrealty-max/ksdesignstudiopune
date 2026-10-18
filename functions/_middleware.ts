@@ -15,8 +15,9 @@ export const onRequest: PagesFunction = async (context) => {
   }
 
 
-  // 4. Lowercase URL Normalization (except query parameters)
-  if (/[A-Z]/.test(url.pathname)) {
+  // 4. Lowercase URL Normalization (for HTML/page routes only, never static assets)
+  const isStaticAssetPath = /\.(js|css|webp|png|jpe?g|gif|svg|ico|woff2?|ttf|eot|otf|json|xml|txt|pdf|mp4|webm)$/i.test(url.pathname) || url.pathname.startsWith('/assets/');
+  if (!isStaticAssetPath && /[A-Z]/.test(url.pathname)) {
     url.pathname = url.pathname.toLowerCase();
     return Response.redirect(url.toString(), 301);
   }
