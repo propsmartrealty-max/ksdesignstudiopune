@@ -75,4 +75,6 @@ Allow: /
 # SITEMAP & AGENTIC INDEX LOCATION
 # =========================================================================
 Sitemap: https://ksdesignstudio.in/sitemap.xml
+Sitemap: https://ksdesignstudio.in/sitemap-index.xml
+Sitemap: https://ksdesignstudio.in/sitemap-images.xml
 # LLMs documentation: https://ksdesignstudio.in/llms.txt
