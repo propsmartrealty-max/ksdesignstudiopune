@@ -29,7 +29,7 @@ const LocationLanding: React.FC = () => {
       "@type": "City",
       "name": formattedLocation
     },
-    "telephone": "+91-9876543210",
+    "telephone": "+91 70203 77693",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": formattedLocation,

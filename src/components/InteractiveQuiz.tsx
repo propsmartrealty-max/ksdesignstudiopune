@@ -39,7 +39,9 @@ const InteractiveQuiz: React.FC = () => {
       body: JSON.stringify({
         _honey: "",
         _captcha: "false",
-        _subject: "New Interactive Quiz Lead",
+        _subject: "[ksdesignstudio.in] New Design DNA Quiz Lead",
+        "Source Domain": "ksdesignstudio.in",
+        "Website URL": "https://ksdesignstudio.in",
         email,
         function: answers[0],
         aesthetic: answers[1],

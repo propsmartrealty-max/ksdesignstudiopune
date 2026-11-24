@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Send, CheckCircle2, Loader2 } from 'lucide-react';
+import { Phone, Mail, MapPin, Send, CheckCircle2, Loader2, MessageCircle } from 'lucide-react';
 
 const Contact: React.FC = () => {
   const contactPhone = "917020377693";
@@ -24,7 +24,15 @@ const Contact: React.FC = () => {
     e.preventDefault();
     setStatus('submitting');
 
-    const formattedMessage = `*NEW DESIGN ENQUIRY* %0A%0A*Name:* ${formData.name}%0A*Email:* ${formData.email}%0A*Project:* ${formData.projectType}%0A*Message:* ${formData.message}`;
+    const formattedMessage = encodeURIComponent(
+      `*NEW DESIGN ENQUIRY (ksdesignstudio.in)*\n\n` +
+      `*Source Domain:* ksdesignstudio.in\n` +
+      `*Name:* ${formData.name}\n` +
+      `*Email:* ${formData.email}\n` +
+      `*Project Type:* ${formData.projectType}\n` +
+      `*Message:* ${formData.message}\n` +
+      `*Website:* https://ksdesignstudio.in`
+    );
     const whatsappUrl = `https://wa.me/${contactPhone}?text=${formattedMessage}`;
 
     try {
@@ -94,6 +102,27 @@ const Contact: React.FC = () => {
               <div>
                 <p className="text-[9px] uppercase tracking-[0.4em] text-zinc-400 font-bold mb-1">Direct Line</p>
                 <p className="text-charcoal text-xl font-bold group-hover:text-brass transition-colors">{displayPhone}</p>
+              </div>
+            </a>
+
+            <a 
+              href={`https://wa.me/${contactPhone}?text=${encodeURIComponent(
+                `*NEW ENQUIRY (ksdesignstudio.in)*\n\n` +
+                `Hello KS Design Studio! I am enquiring via ksdesignstudio.in about your interior design services.\n\n` +
+                `*Source Domain:* ksdesignstudio.in\n` +
+                `*Website:* https://ksdesignstudio.in`
+              )}`}
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center space-x-8 group transition-all"
+            >
+              <div className="w-14 h-14 rounded-2xl border border-stone-200 flex items-center justify-center group-hover:bg-[#25D366] group-hover:border-[#25D366] group-hover:text-white transition-all shadow-sm text-emerald-600">
+                <MessageCircle size={20} />
+              </div>
+              <div>
+                <p className="text-[9px] uppercase tracking-[0.4em] text-zinc-400 font-bold mb-1">WhatsApp Chat</p>
+                <p className="text-charcoal text-xl font-bold group-hover:text-[#25D366] transition-colors">{displayPhone}</p>
+                <p className="text-zinc-500 text-xs font-semibold mt-1">Instant direct enquiry via ksdesignstudio.in</p>
               </div>
             </a>
 

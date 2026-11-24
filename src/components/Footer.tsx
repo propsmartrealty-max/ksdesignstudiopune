@@ -50,6 +50,19 @@ const Footer: React.FC = () => {
                <p className="text-zinc-500 text-[11px] font-medium mb-4">Top-Rated Interior Design Studio Nearby Wakad, Baner, Hinjawadi & West Pune</p>
                <a href="mailto:ksdesignstudiopune@gmail.com" className="text-sm font-medium hover:text-brass transition-colors block">ksdesignstudiopune@gmail.com</a>
                <a href="tel:+917020377693" className="mt-2 text-charcoal font-bold text-sm block hover:text-brass transition-colors">+91 70203 77693</a>
+               <a 
+                 href={`https://wa.me/917020377693?text=${encodeURIComponent(
+                   "*NEW ENQUIRY (ksdesignstudio.in)*\n\n" +
+                   "Hello KS Design Studio! I am enquiring via ksdesignstudio.in about your interior design services.\n\n" +
+                   "*Source Domain:* ksdesignstudio.in\n" +
+                   "*Website:* https://ksdesignstudio.in"
+                 )}`} 
+                 target="_blank" 
+                 rel="noopener noreferrer" 
+                 className="mt-3 inline-flex items-center space-x-1.5 text-emerald-600 font-bold text-xs hover:text-emerald-700 transition-colors"
+               >
+                 <span>💬 WhatsApp: +91 70203 77693</span>
+               </a>
             </div>
           </div>
           

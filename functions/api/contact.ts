@@ -21,7 +21,9 @@ export const onRequestPost: PagesFunction = async (context) => {
       body: JSON.stringify({
         name,
         email,
-        _subject: `New Design Enquiry: ${projectType} - ${name}`,
+        _subject: `[ksdesignstudio.in] New Design Enquiry: ${projectType} - ${name}`,
+        "Source Domain": "ksdesignstudio.in",
+        "Website URL": "https://ksdesignstudio.in",
         "Project Type": projectType,
         "Message": message,
         _template: "table" // Formats the email nicely

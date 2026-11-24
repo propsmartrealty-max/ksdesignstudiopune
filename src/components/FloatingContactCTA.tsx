@@ -5,6 +5,20 @@ import { Link } from 'react-router-dom';
 const FloatingContactCTA: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [currentUrl, setCurrentUrl] = useState('https://ksdesignstudio.in');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setCurrentUrl(window.location.href);
+    }
+  }, []);
+
+  const whatsappMessage = encodeURIComponent(
+    `*NEW ENQUIRY (ksdesignstudio.in)*\n\n` +
+    `Hello KS Design Studio! I am interested in your interior design services.\n\n` +
+    `*Source Domain:* ksdesignstudio.in\n` +
+    `*Page:* ${currentUrl}`
+  );
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,7 +49,7 @@ const FloatingContactCTA: React.FC = () => {
             </div>
           </Link>
           <a 
-            href="https://wa.me/917020377693?text=Hello KS Design Studio! I'm interested in your interior design services."
+            href={`https://wa.me/917020377693?text=${whatsappMessage}`}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-white text-charcoal px-6 py-4 rounded-full shadow-2xl flex items-center space-x-4 border border-stone-100 hover:border-emerald-500 transition-all group"

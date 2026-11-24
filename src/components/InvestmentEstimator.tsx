@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calculator, ArrowRight, ChevronRight, Home, Building2, Palette } from 'lucide-react';
+import { Calculator, ArrowRight, ChevronRight, Home, Building2, Palette, MessageCircle } from 'lucide-react';
 
 const tiers = [
   { id: 'luxe', label: 'Classic Design', rate: 1200, desc: 'Quality finishes and professional color palettes.' },
@@ -28,6 +28,17 @@ const InvestmentEstimator: React.FC = () => {
   };
 
   const currentRange = calculateEstimate();
+
+  const whatsappEstimateUrl = `https://wa.me/917020377693?text=${encodeURIComponent(
+    `*INTERIOR ESTIMATE ENQUIRY (ksdesignstudio.in)*\n\n` +
+    `Hello KS Design Studio! I calculated an estimate on your website:\n\n` +
+    `*Source Domain:* ksdesignstudio.in\n` +
+    `*Project Type:* ${projectTypes.find(p => p.id === type)?.label || type}\n` +
+    `*Area:* ${sqft} sq.ft.\n` +
+    `*Design Tier:* ${tiers.find(t => t.id === tier)?.label || tier}\n` +
+    `*Estimated Budget:* ₹${currentRange[0]} - ${currentRange[1]} Lakhs\n\n` +
+    `*Website:* https://ksdesignstudio.in/pricing`
+  )}`;
 
   const handleQuoteRequest = async () => {
     if (!email) return;
@@ -207,6 +218,15 @@ const InvestmentEstimator: React.FC = () => {
                   <div className="bg-emerald-500/10 p-8 rounded-3xl text-center space-y-4 border border-emerald-500/20">
                     <h4 className="text-2xl text-emerald-600 font-bold">Quote Sent!</h4>
                     <p className="text-sm text-zinc-600 font-medium">We've sent the detailed breakdown to your email. Our design team will reach out shortly.</p>
+                    <a 
+                      href={whatsappEstimateUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center space-x-2 py-4 px-8 bg-[#25D366] text-white rounded-full font-bold uppercase tracking-widest text-[10px] hover:bg-[#1EBE5D] transition-all shadow-md mt-2"
+                    >
+                      <MessageCircle size={16} />
+                      <span>Chat on WhatsApp (ksdesignstudio.in)</span>
+                    </a>
                   </div>
                 ) : (
                   <div className="space-y-6">
@@ -227,6 +247,22 @@ const InvestmentEstimator: React.FC = () => {
                     >
                       {status === 'submitting' ? 'Sending...' : 'Send My Quote'}
                     </button>
+
+                    <div className="relative flex items-center justify-center my-2">
+                      <div className="border-t border-stone-200 w-full" />
+                      <span className="bg-stone-50 px-3 text-[10px] uppercase font-bold text-stone-400 absolute">or</span>
+                    </div>
+
+                    <a 
+                      href={whatsappEstimateUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-5 bg-[#25D366] text-white rounded-2xl font-black uppercase tracking-[0.25em] text-[10px] hover:bg-[#1EBE5D] transition-all flex items-center justify-center space-x-2 shadow-lg"
+                    >
+                      <MessageCircle size={16} />
+                      <span>Discuss on WhatsApp (ksdesignstudio.in)</span>
+                    </a>
+
                     <button onClick={() => setStep(3)} className="w-full text-[10px] uppercase tracking-widest font-bold text-stone-400 mt-4">Back</button>
                   </div>
                 )}
