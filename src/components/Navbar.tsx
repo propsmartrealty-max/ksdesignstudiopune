@@ -93,20 +93,20 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
 
           {/* Symmetrically Centered Navigation Pill */}
           <div className="hidden xl:flex items-center justify-center absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-10 pointer-events-auto">
-            <div className="relative group p-[1.5px] rounded-full shadow-lg shadow-stone-900/5 transition-transform duration-300 hover:scale-[1.01]">
+            <div className="relative group p-[2px] rounded-full shadow-xl shadow-stone-900/8 transition-transform duration-300 hover:scale-[1.01]">
               {/* Subtle Luxury Outer Ring */}
               <div className="absolute inset-0 rounded-full border border-stone-200/90 group-hover:border-brass/40 transition-colors duration-500" />
               
               {/* High-Contrast Crisp Core */}
-              <div className="relative flex items-center px-7 2xl:px-9 py-3 rounded-full bg-white/95 backdrop-blur-xl border border-stone-200 shadow-sm">
-                <div className="flex items-center space-x-6 2xl:space-x-8" role="menubar">
+              <div className="relative flex items-center px-10 2xl:px-14 py-4 2xl:py-5 rounded-full bg-white backdrop-blur-xl border border-stone-200 shadow-md">
+                <div className="flex items-center space-x-8 2xl:space-x-11" role="menubar">
                   {navLinks.map((link) => (
                     <Link
                       key={link.name}
                       to={link.href}
                       role="menuitem"
                       aria-label={`Go to ${link.name}`}
-                      className={`text-[12px] 2xl:text-[13px] uppercase tracking-[0.16em] font-black transition-all duration-300 relative group/link py-1 whitespace-nowrap ${
+                      className={`text-[14px] 2xl:text-[15px] uppercase tracking-[0.14em] font-black transition-all duration-300 relative group/link py-2 whitespace-nowrap ${
                         link.hideBelow2xl ? 'hidden 2xl:block' : ''
                       } ${
                         isActive(link.href) 
@@ -115,7 +115,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
                       }`}
                     >
                       {link.name}
-                      <span className={`absolute bottom-[-3px] left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-brass rounded-full transition-all duration-300 group-hover/link:w-3.5 ${isActive(link.href) ? 'w-3.5' : ''}`} />
+                      <span className={`absolute bottom-[-4px] left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-brass rounded-full transition-all duration-300 group-hover/link:w-5 ${isActive(link.href) ? 'w-5' : ''}`} />
                     </Link>
                   ))}
                 </div>
