@@ -112,6 +112,86 @@ const LOCATION_CONTEXT: Record<string, { intro: string, body: string, outro: str
     intro: "Thane's rapid evolution into a premium luxury destination requires interiors that reflect upward mobility and sophisticated modern tastes.",
     body: "We bring South-Bombay aesthetics to Thane's newest luxury towers. Our turnkey execution delivers A-grade finishes—from flawless PU-coated modular kitchens to premium velvet upholstery—ensuring your Thane residence stands shoulder-to-shoulder with the finest in Mumbai.",
     outro: "Upgrade to premium, A-grade living in Thane."
+  },
+  "Kothrud": {
+    intro: "Kothrud's cultural stature demands an interior philosophy of Maratha Modernism—seamlessly blending heritage woodcraft with contemporary architectural minimalism.",
+    body: "Our Kothrud commissions celebrate teakwood joinery, bespoke brass hardware, and Vastu-compliant layout orientations. We eliminate archaic wall compartmentalizations to introduce spacious living zones illuminated with layered cove lighting and finished with European matte laminates.",
+    outro: "Embrace timeless Maratha Modern architecture in the heart of Kothrud."
+  },
+  "Bavdhan": {
+    intro: "Nestled alongside the verdant NDA hills, Bavdhan residences demand biophilic architectural interiors that invite panoramic nature into the home.",
+    body: "We engineer Bavdhan villas and premium high-rises with organic textures—natural river-washed stone cladding, live-edge dining tables, automated indoor planter systems, and expansive balcony deck joinery. Every space breathes in harmony with Pune's western hills.",
+    outro: "Experience restorative biophilic luxury in Bavdhan."
+  },
+  "Pashan": {
+    intro: "Characterized by tranquil residential enclaves and green hillscapes, Pashan homes are crafted for calm, unhurried, and mindful living.",
+    body: "Our Pashan designs focus on subtle earth tones, acoustic dampening, and seamless timber wall paneling. We convert standard builder-grade apartments into sophisticated, light-filled sanctuaries featuring custom German-engineered modular kitchens and bespoke master suites.",
+    outro: "Discover serene architectural stillness in Pashan."
+  },
+  "Ravet": {
+    intro: "Ravet stands as the dynamic northern gateway of Pune and PCMC, home to upwardly mobile tech leaders seeking bold, contemporary urban chic.",
+    body: "We design Ravet apartments with sleek industrial-luxe accents, integrated home entertainment lounges, and space-maximizing modular systems. From CNC-fabricated acrylic kitchens to concealed acoustic study niches, every square foot is optimized for peak modern utility.",
+    outro: "Command the vanguard of contemporary urban design in Ravet."
+  },
+  "Punawale": {
+    intro: "Punawale's booming residential horizon demands high-efficiency, multi-functional turnkey interiors tailored for young, progressive homeowners.",
+    body: "Our studio brings precision factory-engineered modular systems to Punawale. We specialize in transforming 2 BHK and 3 BHK layouts with concealed Murphy beds, seamless sliding wardrobes, and ergonomic workstation modules that easily adapt from day to night.",
+    outro: "Unlock high-efficiency designer living in Punawale."
+  },
+  "Tathawade": {
+    intro: "Positioned directly between Wakad and the IT corridor, Tathawade calls for tech-forward, high-durability luxury interiors.",
+    body: "We equip Tathawade homes with stain-resistant quartz countertops, Blum-fitted soft-close modular cabinetry, and automated circadian lighting that adjusts color temperature throughout the day to support deep rejuvenation after demanding work hours.",
+    outro: "Experience intelligent, durable luxury in Tathawade."
+  },
+  "Pimple Saudagar": {
+    intro: "As one of PCMC's premier family hubs, Pimple Saudagar requires warm, highly utilitarian luxury interiors that cater to all generations.",
+    body: "We craft family-centric spaces in Pimple Saudagar featuring child-safe rounded furniture edges, stain-proof performance upholstery, spacious modular storage systems, and dedicated prayer mandir units designed in accordance with classical Vastu principles.",
+    outro: "Elevate your family sanctuary in Pimple Saudagar."
+  },
+  "Pimple Nilakh": {
+    intro: "Bordering Aundh and Baner, Pimple Nilakh offers exclusive riverside real estate demanding understated luxury and architectural flow.",
+    body: "Our Pimple Nilakh projects feature open-concept great rooms, Italian marble flooring, and bespoke fluted glass partition screens that delineate formal entertainment zones from intimate private family quarters.",
+    outro: "Savor refined riverside living in Pimple Nilakh."
+  },
+  "NIBM": {
+    intro: "South Pune's elite residential enclave of NIBM demands cosmopolitan luxury, soaring ceiling heights, and international material palettes.",
+    body: "We design for NIBM's global patrons with bespoke imported veneers, brass inlay detailing, statement chandeliers, and walk-in dressing suites that evoke the elegance of 5-star European boutique hotels.",
+    outro: "Indulge in world-class cosmopolitan luxury in NIBM."
+  },
+  "Undri": {
+    intro: "Surrounded by rolling green vistas, Undri's expansive row houses and villas provide the ideal canvas for sprawling open-plan interiors.",
+    body: "We specialize in Undri villa architecture, delivering double-height living room paneling, floating architectural staircases, outdoor patio lounges, and complete turnkey civil redesigns that redefine suburban luxury living.",
+    outro: "Create your private countryside estate in Undri."
+  },
+  "Hadapsar": {
+    intro: "Connecting central Pune with eastern IT townships, Hadapsar apartments demand clean, contemporary lines and high-performance durability.",
+    body: "Our Hadapsar turnkey solutions eliminate builder monotony with bespoke POP ceiling topographies, ambient LED profile lighting grids, and factory-fabricated anti-scratch acrylic modular kitchens backed by a 10-year warranty.",
+    outro: "Experience high-performance modern design in Hadapsar."
+  },
+  "Lower Parel": {
+    intro: "Lower Parel's skyline of super-tall towers calls for monumental spatial scale, industrial-luxe textures, and high-altitude sophistication.",
+    body: "We transform Lower Parel duplexes and sky villas using grand monolithic sintered stone feature walls, motorized acoustic blinds, and integrated wine and entertaining lounges designed for Mumbai's financial leadership.",
+    outro: "Command the heights of Mumbai luxury in Lower Parel."
+  },
+  "Prabhadevi": {
+    intro: "Overlooking the Arabian Sea and the iconic Sea Link, Prabhadevi demands interiors of quiet majesty and bespoke craftsmanship.",
+    body: "Our Prabhadevi commissions balance traditional sacred energy with modern minimalism. We integrate serene Vastu-aligned temple sanctuaries seamlessly into contemporary Italian-marbled living salons.",
+    outro: "Bask in ocean-facing serenity in Prabhadevi."
+  },
+  "Bandra West": {
+    intro: "Pali Hill and Carter Road represent the cultural heart of Mumbai's creative elite, demanding interior statements that are fiercely original.",
+    body: "We curate Bandra West residences with bespoke artisanal furniture, hand-troweled lime plaster surfaces, vintage brass accents, and museum-grade acoustic installations tailored for Mumbai's artistic icons.",
+    outro: "Live the pinnacle of artistic architectural luxury in Bandra West."
+  },
+  "BKC": {
+    intro: "As India's preeminent financial district, BKC demands corporate executive suites and luxury residences engineered with zero acoustic compromise.",
+    body: "Our BKC turnkey designs incorporate certified STC-rated acoustic paneling, hidden executive study zones, automated climate and lighting presets, and Swiss minimalist hardware for effortless precision.",
+    outro: "Command executive excellence in BKC."
+  },
+  "Palm Beach Road": {
+    intro: "Navi Mumbai's iconic marine drive calls for expansive waterfront monographs that celebrate panoramic sea breezes and horizon views.",
+    body: "We engineer Palm Beach Road penthouses with weather-resistant marine-grade alloys, seamless microtopping floors, and glass-encased master bathrooms designed as private wellness spas.",
+    outro: "Experience unmatched waterfront grandeur on Palm Beach Road."
   }
 };
 

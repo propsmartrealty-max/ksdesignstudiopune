@@ -16,6 +16,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
     { name: 'Ideas', href: '/design-ideas' },
     { name: 'Projects', href: '/portfolio' },
     { name: 'Pricing', href: '/pricing' },
+    { name: 'Journal', href: '/magazine', hideBelow2xl: true },
     { name: 'Lab', href: '/laboratory', hideBelow2xl: true },
     { name: 'Tectonic', href: '/tectonic-series', hideBelow2xl: true }
   ];
@@ -36,32 +37,32 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
     <nav className="fixed w-full z-[150] transition-all duration-500 pointer-events-none" aria-label="Main Navigation">
       {/* Layer 1: Top Utility Bar (Hides on scroll for focus) */}
       <div className={`hidden md:block w-full border-b transition-all duration-500 ${
-        scrolled ? 'h-0 opacity-0 overflow-hidden border-transparent' : 'h-10 opacity-100 border-stone-200/80 bg-white/95 backdrop-blur-sm'
+        scrolled ? 'h-0 opacity-0 overflow-hidden border-transparent' : 'h-11 opacity-100 border-stone-200/80 bg-white/95 backdrop-blur-sm'
       }`}>
-        <div className="max-w-[1440px] mx-auto h-full flex justify-between items-center px-6 lg:px-12 pointer-events-auto">
+        <div className="max-w-[1536px] mx-auto h-full flex justify-between items-center px-6 lg:px-12 pointer-events-auto">
           <div className="flex items-center space-x-8">
             {utilityLinks.map((link) => (
               <Link 
                 key={link.name} 
                 to={link.href} 
                 aria-label={`Go to ${link.name}`}
-                className="text-[9px] uppercase tracking-[0.25em] font-black text-stone-600 hover:text-brass transition-colors"
+                className="text-[11px] uppercase tracking-[0.2em] font-extrabold text-stone-600 hover:text-brass transition-colors"
               >
                 {link.name}
               </Link>
             ))}
           </div>
           <div className="flex items-center space-x-6">
-             <a href="tel:+917020377693" aria-label="Call for enquiry" className="text-[9px] uppercase tracking-[0.25em] font-black text-stone-800 hover:text-brass transition-colors">
-               Enquiry: <span className="text-brass font-black">+91 70203 77693</span>
+             <a href="tel:+917020377693" aria-label="Call for enquiry" className="text-[11px] uppercase tracking-[0.18em] font-extrabold text-stone-800 hover:text-brass transition-colors">
+               Direct Enquiry: <span className="text-brass font-black">+91 70203 77693</span>
              </a>
-             <div className="h-3 w-[1px] bg-stone-300" />
+             <div className="h-3.5 w-[1px] bg-stone-300" />
              <div className="flex space-x-4">
                <a href="https://www.instagram.com/ksdesignstudiopune/" aria-label="Visit Instagram Profile" target="_blank" rel="noopener noreferrer">
-                 <Instagram size={13} className="text-stone-500 hover:text-brass transition-colors cursor-pointer" />
+                 <Instagram size={15} className="text-stone-500 hover:text-brass transition-colors cursor-pointer" />
                </a>
                <a href="mailto:ksdesignstudiopune@gmail.com" aria-label="Send Email">
-                 <Mail size={13} className="text-stone-500 hover:text-brass transition-colors cursor-pointer" />
+                 <Mail size={15} className="text-stone-500 hover:text-brass transition-colors cursor-pointer" />
                </a>
              </div>
           </div>
@@ -71,41 +72,41 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
       {/* Layer 2: Primary Branding & Action Bar */}
       <div className={`w-full transition-all duration-500 ${
         scrolled 
-          ? 'py-3.5 bg-white/95 backdrop-blur-md shadow-md border-b border-stone-200/70' 
-          : 'py-5 lg:py-6 bg-white/80 backdrop-blur-sm'
+          ? 'py-3.5 2xl:py-4 bg-white/98 backdrop-blur-md shadow-md border-b border-stone-200/80' 
+          : 'py-5 lg:py-6 bg-white/90 backdrop-blur-md border-b border-stone-100/60'
       }`}>
-        <div className="max-w-[1440px] mx-auto flex justify-between items-center px-6 lg:px-12 pointer-events-auto relative">
+        <div className="max-w-[1536px] mx-auto flex justify-between items-center px-6 lg:px-12 pointer-events-auto relative">
           {/* Brand Identity */}
           <Link to="/" className="flex items-center group relative whitespace-nowrap shrink-0 z-20">
-            <div className="flex flex-col border-l-[3px] border-brass pl-4 transition-all duration-300 group-hover:pl-5">
-              <span className="text-2xl sm:text-3xl font-black tracking-tighter leading-none text-[#18181B]">
+            <div className="flex flex-col border-l-4 border-brass pl-4 sm:pl-5 transition-all duration-300 group-hover:pl-6">
+              <span className="text-2xl sm:text-3xl 2xl:text-[34px] font-black tracking-tight leading-none text-[#18181B]">
                 KS <span className="text-brass drop-shadow-[0_0_8px_rgba(212,175,55,0.4)]">DESIGN</span>
               </span>
-              <div className="flex items-center space-x-2 mt-1">
-                <span className="text-[9px] tracking-[0.85em] uppercase font-extrabold text-stone-500">
+              <div className="flex items-center space-x-2 mt-1.5">
+                <span className="text-[10px] sm:text-[11px] tracking-[0.7em] uppercase font-black text-stone-500">
                   STUDIO
                 </span>
-                <span className="w-1.5 h-1.5 bg-brass rounded-full animate-pulse shadow-[0_0_8px_#D4AF37]" />
+                <span className="w-2 h-2 bg-brass rounded-full animate-pulse shadow-[0_0_10px_#D4AF37]" />
               </div>
             </div>
           </Link>
 
           {/* Symmetrically Centered Navigation Pill */}
           <div className="hidden xl:flex items-center justify-center absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-10 pointer-events-auto">
-            <div className="relative group p-[1px] rounded-full shadow-lg shadow-stone-900/5 transition-transform duration-300 hover:scale-[1.01]">
+            <div className="relative group p-[1.5px] rounded-full shadow-lg shadow-stone-900/5 transition-transform duration-300 hover:scale-[1.01]">
               {/* Subtle Luxury Outer Ring */}
               <div className="absolute inset-0 rounded-full border border-stone-200/90 group-hover:border-brass/40 transition-colors duration-500" />
               
               {/* High-Contrast Crisp Core */}
-              <div className="relative flex items-center px-5 2xl:px-7 py-2.5 rounded-full bg-white/95 backdrop-blur-xl border border-stone-200 shadow-sm">
-                <div className="flex items-center space-x-5 2xl:space-x-7" role="menubar">
+              <div className="relative flex items-center px-7 2xl:px-9 py-3 rounded-full bg-white/95 backdrop-blur-xl border border-stone-200 shadow-sm">
+                <div className="flex items-center space-x-6 2xl:space-x-8" role="menubar">
                   {navLinks.map((link) => (
                     <Link
                       key={link.name}
                       to={link.href}
                       role="menuitem"
                       aria-label={`Go to ${link.name}`}
-                      className={`text-[10px] uppercase tracking-[0.2em] font-black transition-all duration-300 relative group/link py-1 whitespace-nowrap ${
+                      className={`text-[12px] 2xl:text-[13px] uppercase tracking-[0.16em] font-black transition-all duration-300 relative group/link py-1 whitespace-nowrap ${
                         link.hideBelow2xl ? 'hidden 2xl:block' : ''
                       } ${
                         isActive(link.href) 
@@ -114,7 +115,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
                       }`}
                     >
                       {link.name}
-                      <span className={`absolute bottom-[-3px] left-1/2 -translate-x-1/2 w-0 h-[2px] bg-brass rounded-full transition-all duration-300 group-hover/link:w-3 ${isActive(link.href) ? 'w-3' : ''}`} />
+                      <span className={`absolute bottom-[-3px] left-1/2 -translate-x-1/2 w-0 h-[2.5px] bg-brass rounded-full transition-all duration-300 group-hover/link:w-3.5 ${isActive(link.href) ? 'w-3.5' : ''}`} />
                     </Link>
                   ))}
                 </div>
@@ -123,11 +124,11 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
           </div>
 
           {/* Action Hub (Right) */}
-          <div className="hidden lg:flex items-center space-x-2.5 shrink-0 z-20">
+          <div className="hidden lg:flex items-center space-x-3 shrink-0 z-20">
             <Link 
               to="/contact" 
-              aria-label="Book Session"
-              className="text-[10px] uppercase tracking-[0.25em] font-black transition-all duration-300 px-5 py-2.5 rounded-full whitespace-nowrap shadow-md bg-[#18181B] text-white hover:bg-brass hover:text-white border border-stone-900"
+              aria-label="Book Consultation Session"
+              className="text-[11px] 2xl:text-xs uppercase tracking-[0.2em] font-black transition-all duration-300 px-6 2xl:px-7 py-3 rounded-full whitespace-nowrap shadow-md bg-[#18181B] text-white hover:bg-brass hover:text-white border border-stone-900 transform hover:-translate-y-0.5"
             >
               Book Session
             </Link>
@@ -136,29 +137,29 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
             <Link
               to="/vault"
               aria-label="Access Sovereign Vault"
-              className="p-2.5 rounded-full transition-all duration-300 flex items-center group bg-white border border-stone-200 text-stone-700 hover:text-brass hover:border-brass/50 shadow-sm"
+              className="p-3 rounded-full transition-all duration-300 flex items-center group bg-white border border-stone-200 text-stone-700 hover:text-brass hover:border-brass/50 shadow-sm"
             >
-              <FolderHeart size={15} className="group-hover:scale-110 transition-transform" />
+              <FolderHeart size={17} className="group-hover:scale-110 transition-transform" />
             </Link>
 
             {/* Search Trigger */}
             <button 
               onClick={() => window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }))}
               aria-label="Open global search (Cmd+K)"
-              className="p-2.5 rounded-full transition-all duration-300 flex items-center space-x-1.5 group bg-white border border-stone-200 text-stone-700 hover:text-stone-950 hover:border-brass/50 shadow-sm"
+              className="p-3 rounded-full transition-all duration-300 flex items-center space-x-2 group bg-white border border-stone-200 text-stone-700 hover:text-stone-950 hover:border-brass/50 shadow-sm"
             >
-              <Search size={15} className="group-hover:scale-110 transition-transform text-stone-600 group-hover:text-stone-900" />
-              <span className="hidden xl:block text-[8px] font-black uppercase tracking-widest px-1.5 py-0.5 rounded bg-stone-100 text-stone-600">⌘K</span>
+              <Search size={17} className="group-hover:scale-110 transition-transform text-stone-600 group-hover:text-stone-900" />
+              <span className="hidden xl:block text-[9px] font-black uppercase tracking-widest px-2 py-0.5 rounded bg-stone-100 text-stone-600">⌘K</span>
             </button>
           </div>
 
           {/* Mobile Toggle Button */}
           <button 
-            className="lg:hidden p-3 rounded-2xl transition-all duration-300 bg-[#18181B] text-white hover:bg-brass shadow-md border border-stone-800 z-20"
+            className="lg:hidden p-3.5 rounded-2xl transition-all duration-300 bg-[#18181B] text-white hover:bg-brass shadow-md border border-stone-800 z-20"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle Navigation"
           >
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
+            {isOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>

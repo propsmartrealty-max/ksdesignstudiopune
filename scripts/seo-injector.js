@@ -21,11 +21,29 @@ function capitalize(str) {
   return str.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
 }
 
+// Mumbai locations detection
+const MUMBAI_LOCATIONS = new Set([
+  'Bandra', 'Bandra West', 'Bandra East', 'Juhu', 'Juhu Scheme', 'Worli', 'Worli Sea Face',
+  'Lower Parel', 'Prabhadevi', 'Dadar', 'Mahalaxmi', 'Peddar Road', 'Breach Candy', 'Colaba',
+  'Marine Drive', 'South Mumbai', 'Malabar Hill', 'Khar', 'Santacruz', 'Vile Parle', 'Andheri',
+  'Andheri West', 'Andheri East', 'Lokhandwala', 'Versova', 'Goregaon', 'Malad', 'Kandivali',
+  'Borivali', 'Powai', 'BKC', 'Chembur', 'Ghatkopar', 'Mulund', 'Thane', 'Majiwada',
+  'Ghodbunder Road', 'Hiranandani Estate', 'Navi Mumbai', 'Vashi', 'Nerul', 'Belapur',
+  'Kharghar', 'Palm Beach Road', 'Seawoods'
+]);
+
+function getCityForLocation(loc) {
+  if (!loc) return 'Pune & Mumbai';
+  const isMumbai = Array.from(MUMBAI_LOCATIONS).some(m => m.toLowerCase() === loc.toLowerCase());
+  return isMumbai ? 'Mumbai' : 'Pune';
+}
+
 // Popular locations for cross-linking
 const POPULAR_LOCATIONS = [
   'Baner', 'Wakad', 'Hinjewadi', 'Kharadi', 'Koregaon Park',
   'Aundh', 'Balewadi', 'Kothrud', 'Viman Nagar', 'Magarpatta',
-  'Bavdhan', 'Ravet', 'Pimple Saudagar', 'Tathawade'
+  'Bavdhan', 'Ravet', 'Pimple Saudagar', 'Tathawade',
+  'Bandra', 'Worli', 'Juhu', 'Powai', 'Lower Parel', 'Thane', 'Navi Mumbai'
 ];
 
 // Popular services for cross-linking
@@ -42,10 +60,11 @@ function formatRouteDetails(route) {
   const parts = route.split('/').filter(Boolean);
   if (parts.length === 0) {
     return {
-      title: 'KS Design Studio | Top Luxury Interior Designers in Pune',
-      h1: 'Top Luxury Interior Designers in Pune',
+      title: 'KS Design Studio | Top Luxury Interior Designers in Pune & Mumbai',
+      h1: 'Top Luxury Interior Designers in Pune & Mumbai',
       subject: 'Interior Design',
       loc: 'Pune',
+      city: 'Pune',
       type: 'home'
     };
   }
@@ -53,11 +72,13 @@ function formatRouteDetails(route) {
   // 1. Location landing (/interiors-in/:location)
   if (parts[0] === 'interiors-in' && parts[1]) {
     const loc = capitalize(parts[1]);
+    const city = getCityForLocation(loc);
     return {
-      title: `Top #1 Luxury Interior Designers in ${loc}, Pune | KS Design Studio`,
-      h1: `Top Luxury Interior Designers in ${loc}, Pune`,
+      title: `Top #1 Luxury Interior Designers in ${loc}, ${city} | KS Design Studio`,
+      h1: `Top Luxury Interior Designers in ${loc}, ${city}`,
       subject: 'Interior Design',
       loc,
+      city,
       type: 'location'
     };
   }
@@ -65,11 +86,13 @@ function formatRouteDetails(route) {
   // 2. Cost Guide (/cost-guide/:location)
   if (parts[0] === 'cost-guide' && parts[1]) {
     const loc = capitalize(parts[1]);
+    const city = getCityForLocation(loc);
     return {
-      title: `2026 Interior Design Cost in ${loc}, Pune | 2 & 3 BHK Pricing Guide`,
-      h1: `2026 Interior Design Cost Guide in ${loc}, Pune`,
+      title: `2026 Interior Design Cost in ${loc}, ${city} | 2 & 3 BHK Pricing Guide`,
+      h1: `2026 Interior Design Cost Guide in ${loc}, ${city}`,
       subject: 'Interior Design Cost',
       loc,
+      city,
       type: 'cost'
     };
   }
@@ -78,10 +101,11 @@ function formatRouteDetails(route) {
   if (parts[0] === 'services' && parts[1]) {
     const srv = capitalize(parts[1]);
     return {
-      title: `Best ${srv} in Pune | #1 Ranked Architecture Firm | KS Design Studio`,
-      h1: `Best ${srv} in Pune`,
+      title: `Best ${srv} in Pune & Mumbai | #1 Ranked Architecture Firm | KS Design Studio`,
+      h1: `Best ${srv} in Pune & Mumbai`,
       subject: srv,
       loc: 'Pune',
+      city: 'Pune',
       type: 'service'
     };
   }
@@ -89,12 +113,14 @@ function formatRouteDetails(route) {
   // 4. Location + Service (/service/:locationSlug/:serviceSlug)
   if (parts[0] === 'service' && parts[1] && parts[2]) {
     const loc = capitalize(parts[1]);
+    const city = getCityForLocation(loc);
     const srv = capitalize(parts[2]);
     return {
-      title: `${srv} in ${loc}, Pune | Top Rated Turnkey Experts | KS Design Studio`,
-      h1: `${srv} in ${loc}, Pune`,
+      title: `${srv} in ${loc}, ${city} | Top Rated Turnkey Experts | KS Design Studio`,
+      h1: `${srv} in ${loc}, ${city}`,
       subject: srv,
       loc,
+      city,
       type: 'service-location'
     };
   }
@@ -103,10 +129,11 @@ function formatRouteDetails(route) {
   if (parts[0] === 'builder' && parts[1] && !parts[2]) {
     const builder = capitalize(parts[1]);
     return {
-      title: `Interior Designers for ${builder} Projects in Pune | KS Design Studio`,
-      h1: `Interior Designers for ${builder} Projects in Pune`,
+      title: `Interior Designers for ${builder} Projects in Pune & Mumbai | KS Design Studio`,
+      h1: `Interior Designers for ${builder} Projects`,
       subject: `${builder} Interiors`,
       loc: 'Pune',
+      city: 'Pune',
       type: 'builder'
     };
   }
@@ -114,12 +141,13 @@ function formatRouteDetails(route) {
   // 6. Builder + Project (/builder/:builderName/:projectName) or (/interiors-at/:projectName)
   if ((parts[0] === 'builder' && parts[1] && parts[2]) || (parts[0] === 'interiors-at' && parts[1])) {
     const proj = capitalize(parts[2] || parts[1]);
-    const builder = parts[0] === 'builder' ? capitalize(parts[1]) : 'Premier Pune Developers';
+    const builder = parts[0] === 'builder' ? capitalize(parts[1]) : 'Premier Developers';
     return {
-      title: `Bespoke Interior Design for ${proj} Pune | KS Design Studio`,
-      h1: `Bespoke Interior Design for ${proj} Pune`,
+      title: `Bespoke Interior Design for ${proj} | KS Design Studio`,
+      h1: `Bespoke Interior Design for ${proj}`,
       subject: `${proj} Interiors`,
       loc: 'Pune',
+      city: 'Pune',
       type: 'project'
     };
   }
@@ -128,36 +156,39 @@ function formatRouteDetails(route) {
   if (parts[0] === 'magazine' && parts[1]) {
     const article = capitalize(parts[1]);
     return {
-      title: `${article} | KS Design Studio Architectural Magazine`,
+      title: `${article} | KS Design Studio Architectural Journal`,
       h1: article,
-      subject: 'Architectural Design',
+      subject: 'Architectural Journal',
       loc: 'Pune',
+      city: 'Pune',
       type: 'magazine'
     };
   }
 
   const generic = capitalize(parts.join(' '));
   return {
-    title: `${generic} | KS Design Studio Pune`,
-    h1: `${generic} in Pune`,
+    title: `${generic} | KS Design Studio Pune & Mumbai`,
+    h1: `${generic}`,
     subject: 'Interior Design',
     loc: 'Pune',
+    city: 'Pune',
     type: 'generic'
   };
 }
 
 function buildPreRenderedHTML(details, fullUrl, dynamicCopy) {
   const { h1, subject, loc, type } = details;
+  const city = details.city || getCityForLocation(loc);
 
   // Generate localized FAQs
   const faqs = [
     {
-      q: `Who are the best interior designers in ${loc}?`,
-      a: `KS Design Studio is ranked among the top interior designers in ${loc}, Pune. Led by Principal Architect Komal Sharma, our studio delivers luxury turnkey residential and commercial architecture with in-house CNC factory manufacturing, 45-day guaranteed handover, and a 10-year comprehensive warranty.`
+      q: `Who are the best interior designers in ${loc}, ${city}?`,
+      a: `KS Design Studio is ranked among the top interior designers in ${loc}, ${city}. Led by Principal Architect Komal Sharma, our studio delivers luxury turnkey residential and commercial architecture with in-house CNC factory manufacturing, 45-day guaranteed handover, and a 10-year comprehensive warranty.`
     },
     {
       q: `What is the estimated cost of interior design in ${loc} for a 2 BHK and 3 BHK?`,
-      a: `In ${loc}, turnkey interior design for a 2 BHK flat ranges from ₹4.50 Lakhs to ₹8.50 Lakhs. For a 3 BHK apartment, packages range from ₹8.50 Lakhs to ₹17.50 Lakhs. Ultra-luxury villas and penthouses range from ₹18 Lakhs to ₹45 Lakhs+. All packages include modular kitchen, false ceiling, wardrobes, electricals, and civil alterations.`
+      a: `In ${loc}, ${city}, turnkey interior design for a 2 BHK flat ranges from ₹4.50 Lakhs to ₹8.50 Lakhs. For a 3 BHK apartment, packages range from ₹8.50 Lakhs to ₹17.50 Lakhs. Ultra-luxury villas and penthouses range from ₹18 Lakhs to ₹45 Lakhs+. All packages include modular kitchen, false ceiling, wardrobes, electricals, and civil alterations.`
     },
     {
       q: `What is included in KS Design Studio's turnkey interior service?`,
@@ -181,11 +212,18 @@ function buildPreRenderedHTML(details, fullUrl, dynamicCopy) {
   `).join('');
 
   // Cross links HTML
-  const otherLocations = POPULAR_LOCATIONS.filter(l => l.toLowerCase() !== loc.toLowerCase()).slice(0, 8);
+  const otherLocations = POPULAR_LOCATIONS.filter(l => l.toLowerCase() !== loc.toLowerCase()).slice(0, 10);
   const crossLinksHtml = [
     ...otherLocations.map(l => `<a href="/interiors-in/${l.toLowerCase().replace(/\s+/g, '-')}" style="color: #4a4a4a; text-decoration: none; padding: 0.35rem 0.75rem; background: #f5f5f5; border-radius: 4px; display: inline-block;">Interiors in ${l}</a>`),
-    ...POPULAR_SERVICES.slice(0, 4).map(s => `<a href="/services/${s.slug}" style="color: #4a4a4a; text-decoration: none; padding: 0.35rem 0.75rem; background: #f5f5f5; border-radius: 4px; display: inline-block;">${s.name}</a>`)
+    ...POPULAR_SERVICES.slice(0, 5).map(s => `<a href="/services/${s.slug}" style="color: #4a4a4a; text-decoration: none; padding: 0.35rem 0.75rem; background: #f5f5f5; border-radius: 4px; display: inline-block;">${s.name}</a>`)
   ].join(' ');
+
+  const whatsappMessage = encodeURIComponent(
+    `*NEW ENQUIRY (ksdesignstudio.in)*\n\n` +
+    `Hello KS Design Studio! I am enquiring about interior design services in ${loc}, ${city}.\n\n` +
+    `*Source Domain:* ksdesignstudio.in\n` +
+    `*Page:* ${fullUrl}`
+  );
 
   return `
     <div style="font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #1a1a1a; max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; line-height: 1.6;">
@@ -196,6 +234,7 @@ function buildPreRenderedHTML(details, fullUrl, dynamicCopy) {
           <a href="/portfolio" style="color: #4a4a4a; text-decoration: none;">Portfolio</a>
           <a href="/pricing" style="color: #4a4a4a; text-decoration: none;">Cost Estimator</a>
           <a href="/knowledge" style="color: #4a4a4a; text-decoration: none;">Design Insights</a>
+          <a href="/magazine" style="color: #4a4a4a; text-decoration: none;">Journal</a>
           <a href="/contact" style="color: #D4AF37; text-decoration: none; font-weight: 700;">Book Consultation</a>
         </nav>
       </header>
@@ -207,16 +246,32 @@ function buildPreRenderedHTML(details, fullUrl, dynamicCopy) {
           <span style="color: #1a1a1a;">${subject}</span>
         </nav>
 
-        <section style="margin-bottom: 3rem;">
+        <section style="margin-bottom: 2.5rem;">
           <span style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.2em; color: #D4AF37; margin-bottom: 0.5rem; display: block;">Ranked #1 Architecture &amp; Interior Design Studio</span>
           <h1 style="font-size: 2.25rem; font-weight: 900; color: #1a1a1a; line-height: 1.2; margin-bottom: 1rem;">${h1}</h1>
           <p style="font-size: 1.125rem; color: #4a4a4a; margin-bottom: 1.5rem; max-width: 900px;">
-            Delivering bespoke luxury turnkey residential and commercial architecture across ${loc}, Pune. Experience uncompromised craftsmanship, Vastu-compliant planning, and 45-day handover.
+            Delivering bespoke luxury turnkey residential and commercial architecture across ${loc}, ${city}. Experience uncompromised craftsmanship, Vastu-compliant planning, and 45-day handover.
           </p>
           <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
             <a href="/contact" style="background: #D4AF37; color: #ffffff; padding: 0.875rem 1.75rem; border-radius: 9999px; text-decoration: none; font-weight: 700; font-size: 0.875rem; display: inline-block;">Get Free 3D Design &amp; Quote</a>
             <a href="tel:+917020377693" style="border: 1px solid #1a1a1a; color: #1a1a1a; padding: 0.875rem 1.75rem; border-radius: 9999px; text-decoration: none; font-weight: 700; font-size: 0.875rem; display: inline-block;">Direct Call: +91 70203 77693</a>
+            <a href="https://wa.me/917020377693?text=${whatsappMessage}" target="_blank" rel="noopener noreferrer" style="background: #25D366; color: #ffffff; padding: 0.875rem 1.75rem; border-radius: 9999px; text-decoration: none; font-weight: 700; font-size: 0.875rem; display: inline-block;">WhatsApp Enquiry (ksdesignstudio.in)</a>
           </div>
+
+          <!-- AI Overview / SGE Direct Answer Block -->
+          <section style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #D4AF37; border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem;">
+            <span style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; color: #D4AF37; display: block; margin-bottom: 0.5rem;">AI Overview &amp; Architectural Fact Summary</span>
+            <p style="font-size: 0.9375rem; color: #1e293b; font-weight: 600; line-height: 1.6; margin-bottom: 0.75rem;">
+              KS Design Studio is ranked as the premier interior design firm serving <strong>${loc}, ${city}</strong>. Led by Principal Architect Komal Sharma, the studio operates from Office 623, Vision One Mall, Bhumkar Chowk, Wakad, Pune, with centralized German CNC prefabrication facilities.
+            </p>
+            <ul style="margin: 0; padding-left: 1.25rem; font-size: 0.875rem; color: #475569; line-height: 1.7;">
+              <li><strong>Pricing Benchmarks:</strong> 2 BHK Turnkey: ₹4.50L–₹8.50L | 3 BHK Luxury: ₹8.50L–₹17.50L | Luxury Villas: ₹18L–₹45L+ | Rates: ₹1,200–₹3,500/sq.ft.</li>
+              <li><strong>Execution Guarantees:</strong> 45-day guaranteed delivery with penalty clause, 10-year warranty, zero-escalation fixed price BOQ.</li>
+              <li><strong>Material Standards:</strong> Blum and Hettich hardware, IS 710 marine plywood, Vastu Shastra space planning, and smart home automation.</li>
+              <li><strong>Direct Studio Phone:</strong> <a href="tel:+917020377693" style="color: #D4AF37; font-weight: 700; text-decoration: none;">+91 70203 77693</a> | WhatsApp Enquiries tagged <em>ksdesignstudio.in</em>.</li>
+            </ul>
+          </section>
+
           <div style="display: flex; gap: 2rem; flex-wrap: wrap; padding: 1rem 0; border-top: 1px solid #f0f0f0; border-bottom: 1px solid #f0f0f0; font-size: 0.875rem; color: #666;">
             <div><strong style="color: #1a1a1a;">4.9 ★★★★★</strong> (184 Verified Reviews)</div>
             <div><strong style="color: #1a1a1a;">45-Day</strong> Delivery Guarantee</div>
@@ -233,7 +288,7 @@ function buildPreRenderedHTML(details, fullUrl, dynamicCopy) {
         </section>
 
         <section style="margin-bottom: 3rem;">
-          <h2 style="font-size: 1.5rem; font-weight: 800; color: #1a1a1a; margin-bottom: 1rem;">2026 Turnkey Interior Design Pricing in ${loc}, Pune</h2>
+          <h2 style="font-size: 1.5rem; font-weight: 800; color: #1a1a1a; margin-bottom: 1rem;">2026 Turnkey Interior Design Pricing in ${loc}, ${city}</h2>
           <p style="color: #666; margin-bottom: 1rem;">Fixed-price packages with zero surprise escalations, European hardware, and certified plywood:</p>
           <div style="overflow-x: auto;">
             <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.875rem;">
@@ -279,13 +334,13 @@ function buildPreRenderedHTML(details, fullUrl, dynamicCopy) {
         </section>
 
         <section style="background: #fafafa; padding: 2rem; border-radius: 8px; margin-bottom: 3rem;">
-          <h2 style="font-size: 1.25rem; font-weight: 800; color: #1a1a1a; margin-bottom: 0.5rem;">Visit KS Design Studio | Interior Designers in Wakad &amp; Nearby</h2>
+          <h2 style="font-size: 1.25rem; font-weight: 800; color: #1a1a1a; margin-bottom: 0.5rem;">Visit KS Design Studio | Interior Designers Nearby &amp; Across Pune &amp; Mumbai</h2>
           <p style="font-size: 0.875rem; color: #444; line-height: 1.8;">
-            Looking for top-rated <strong>interior design nearby me</strong> or experienced <strong>interior designers in Wakad</strong>? Visit our experiential design studio.<br />
+            Looking for top-rated <strong>interior design nearby me</strong> or experienced <strong>interior designers in Wakad, Pune &amp; Mumbai</strong>? Visit our experiential design studio.<br />
             <strong>Studio Address:</strong> 623, Vision One Mall, Bhumkar Chowk, Wakad, Pune- 411057<br />
             <strong>Direct Phone:</strong> <a href="tel:+917020377693" style="color: #D4AF37; text-decoration: none; font-weight: 700;">+91 70203 77693</a> | 
             <strong>Email:</strong> <a href="mailto:contact@ksdesignstudio.in" style="color: #D4AF37; text-decoration: none;">contact@ksdesignstudio.in</a><br />
-            <strong>Serving:</strong> ${loc}, Wakad, Baner, Hinjewadi, Kharadi, Koregaon Park, Aundh, Balewadi, and all prime Pune markets.
+            <strong>Serving:</strong> ${loc}, ${city}, Wakad, Baner, Hinjewadi, Kharadi, Koregaon Park, Aundh, Balewadi, Bandra, Worli, Juhu, Thane, Navi Mumbai, and all prime luxury corridors.
           </p>
         </section>
 
@@ -298,7 +353,7 @@ function buildPreRenderedHTML(details, fullUrl, dynamicCopy) {
       </main>
 
       <footer style="border-top: 1px solid #e5e5e5; padding-top: 1.5rem; text-align: center; font-size: 0.75rem; color: #888;">
-        <p>&copy; 2026 KS Design Studio. All Rights Reserved. Principal Architect Komal Sharma | Wakad, Pune.</p>
+        <p>&copy; 2026 KS Design Studio. All Rights Reserved. Principal Architect Komal Sharma | Wakad, Pune &amp; Mumbai.</p>
       </footer>
     </div>
   `;
@@ -314,7 +369,7 @@ routes.forEach(route => {
   fs.mkdirSync(targetDir, { recursive: true });
 
   const details = formatRouteDetails(route);
-  const { title, h1, subject, loc } = details;
+  const { title, h1, subject, loc, city, type } = details;
   const desc = generateDynamicMeta(route, subject, loc);
   const fullUrl = `https://ksdesignstudio.in${route}`;
   const dynamicCopy = generateDynamicCopy(route, subject, loc);
@@ -389,6 +444,71 @@ routes.forEach(route => {
       "latitude": geo.lat,
       "longitude": geo.lng
     },
+    "founder": {
+      "@type": "Person",
+      "name": "Komal Sharma",
+      "jobTitle": "Principal Architect"
+    },
+    "areaServed": [
+      loc,
+      details.city || getCityForLocation(loc),
+      "Pune",
+      "PCMC",
+      "Mumbai",
+      "Wakad",
+      "Baner",
+      "Hinjewadi",
+      "Kharadi",
+      "Bandra",
+      "Worli",
+      "Juhu",
+      "Thane",
+      "Navi Mumbai"
+    ],
+    "knowsAbout": [
+      "Turnkey Interior Design",
+      "Modular Kitchens",
+      "Luxury Home Architecture",
+      "Vastu Shastra Space Planning",
+      "Smart Home Automation",
+      "Civil Renovations",
+      "Blum and Hettich Hardware Engineering",
+      "Acoustic Architecture"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Turnkey Interior Design Packages",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "2 BHK Turnkey Interior Design",
+            "description": "Complete 2 BHK home interiors with modular kitchen, wardrobes, false ceiling, and 45-day handover guarantee."
+          },
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "priceCurrency": "INR",
+            "minPrice": "450000",
+            "maxPrice": "850000"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "3 BHK Luxury Turnkey Interior Design",
+            "description": "Premium 3 BHK interior execution with acrylic/PU modular kitchen, designer ceiling, profile lighting, and 10-year warranty."
+          },
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "priceCurrency": "INR",
+            "minPrice": "850000",
+            "maxPrice": "1750000"
+          }
+        }
+      ]
+    },
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
@@ -398,24 +518,25 @@ routes.forEach(route => {
     }
   };
 
+  // city already destructured from details above
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
       {
         "@type": "Question",
-        "name": `Who are the best interior designers in ${loc}?`,
+        "name": `Who are the best interior designers in ${loc}, ${city}?`,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": `KS Design Studio is ranked among the premier interior designers in ${loc}, Pune, known for turnkey execution, German-engineered modular fittings, and 45-day handover.`
+          "text": `KS Design Studio is ranked among the premier interior designers in ${loc}, ${city}, known for turnkey execution, German-engineered modular fittings, and 45-day handover.`
         }
       },
       {
         "@type": "Question",
-        "name": `What is the cost of 2 BHK and 3 BHK interior design in ${loc}?`,
+        "name": `What is the cost of 2 BHK and 3 BHK interior design in ${loc}, ${city}?`,
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": `In ${loc}, turnkey interior design for a 2 BHK apartment ranges from ₹4.50 Lakhs to ₹8.50 Lakhs. For a 3 BHK, packages range from ₹8.50 Lakhs to ₹17.50 Lakhs.`
+          "text": `In ${loc}, ${city}, turnkey interior design for a 2 BHK apartment ranges from ₹4.50 Lakhs to ₹8.50 Lakhs. For a 3 BHK, packages range from ₹8.50 Lakhs to ₹17.50 Lakhs.`
         }
       },
       {
@@ -437,6 +558,30 @@ routes.forEach(route => {
     ]
   };
 
+  const articleSchema = type === 'magazine' ? {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": desc,
+    "mainEntityOfPage": fullUrl,
+    "author": {
+      "@type": "Person",
+      "name": "Komal Sharma",
+      "jobTitle": "Principal Architect"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "KS Design Studio",
+      "url": "https://ksdesignstudio.in",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://ksdesignstudio.in/logo.png"
+      }
+    },
+    "datePublished": "2026-01-01",
+    "dateModified": new Date().toISOString().split('T')[0]
+  } : null;
+
   const schemaScripts = `
   <script type="application/ld+json">
 ${JSON.stringify(breadcrumbSchema)}
@@ -446,7 +591,7 @@ ${JSON.stringify(localBusinessSchema)}
 </script>
   <script type="application/ld+json">
 ${JSON.stringify(faqSchema)}
-</script>
+</script>${articleSchema ? `\n  <script type="application/ld+json">\n${JSON.stringify(articleSchema)}\n</script>` : ''}
 </head>`;
 
   newHtml = newHtml.replace('</head>', schemaScripts);

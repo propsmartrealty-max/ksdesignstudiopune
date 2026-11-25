@@ -3,15 +3,38 @@ import path from 'path';
 
 // Target High-Value Pune, PCMC & Mumbai Micro-Markets
 const TARGET_MARKETS = [
-  // Pune Complete Micro-Markets
-  "Baner", "Koregaon Park", "Kalyani Nagar", "Viman Nagar", "Hinjewadi", "Wakad", "Kharadi", "Aundh", "Magarpatta", "Balewadi",
-  "Pashan", "Kothrud", "Bavdhan", "Punawale", "Tathawade", "Ravet", "Pimple Saudagar", "Hadapsar", "NIBM", "Undri",
-  "Pimple Gurav", "Pimple Nilakh", "Sangvi", "Bhosari", "Chinchwad", "Nigdi", "Akurdi", "Thergaon", "Kalewadi",
-  "Karve Nagar", "Warje", "Sinhagad Road", "Dhankawadi", "Katraj", "Bibwewadi", "Swargate", "Camp", "Wanowrie",
-  "Pisoli", "Kondhwa", "Wagholi", "Vishrantwadi", "Dhanori", "Lohegaon", "Dighi", "Yerawada", "Shivaji Nagar",
-  "Deccan", "FC Road", "SB Road", "Model Colony", "Erandwane", "Sadashiv Peth", "Narayan Peth", "Shukrawar Peth",
-  // Mumbai Elite
-  "Bandra", "Juhu", "Worli", "Powai", "Andheri", "South Mumbai", "Malabar Hill", "Navi Mumbai", "Thane"
+  // Pune Prime & IT Hubs
+  "Baner", "Baner Annexe", "Balewadi", "Mahalunge", "Sus", "Pashan", "Aundh", "Bavdhan", "Kothrud", "Warje",
+  "Karve Nagar", "Erandwane", "Prabhat Road", "Shivaji Nagar", "Model Colony", "SB Road", "University Road",
+  "Law College Road", "Deccan", "FC Road", "JM Road", "Punawale", "Tathawade", "Ravet", "Kiwale", "Mamurdi",
+  
+  // PCMC & Industrial Tech Hubs
+  "Hinjewadi", "Hinjewadi Phase 1", "Hinjewadi Phase 2", "Hinjewadi Phase 3", "Wakad", "Pimple Saudagar",
+  "Pimple Nilakh", "Pimple Gurav", "Kalewadi", "Thergaon", "Nigdi", "Pimpri", "Chinchwad", "Akurdi",
+  "Pradhikaran", "Bhosari", "Moshi", "Spine Road", "Chikhali", "Charholi", "Dighi", "Talawade", "Sangvi",
+  "Dapodi", "Kasarwadi",
+
+  // East Pune Elite Hubs
+  "Kharadi", "New Kharadi", "Viman Nagar", "Koregaon Park", "Kalyani Nagar", "Magarpatta", "Mundhwa", "Hadapsar",
+  "Manjari", "Wagholi", "Lohegaon", "Dhanori", "Yerawada", "Keshav Nagar", "Vishrantwadi",
+
+  // South & Central Pune
+  "NIBM", "NIBM Road", "Mohammed Wadi", "Undri", "Kondhwa", "Pisoli", "Bibwewadi", "Katraj", "Narhe",
+  "Sinhagad Road", "Ambegaon", "Dhankawadi", "Wanowrie", "Amanora", "Camp", "Swargate", "Sadashiv Peth",
+  "Narayan Peth", "Shukrawar Peth",
+
+  // Mumbai Elite & Coastal
+  "Bandra", "Bandra West", "Bandra East", "Juhu", "Juhu Scheme", "Worli", "Worli Sea Face", "Lower Parel",
+  "Prabhadevi", "Dadar", "Mahalaxmi", "Peddar Road", "Breach Candy", "Colaba", "Marine Drive", "South Mumbai",
+  "Malabar Hill", "Khar", "Santacruz", "Vile Parle",
+
+  // Mumbai Western & Central Corridors
+  "Andheri", "Andheri West", "Andheri East", "Lokhandwala", "Versova", "Goregaon", "Malad", "Kandivali",
+  "Borivali", "Powai", "BKC", "Chembur", "Ghatkopar", "Mulund",
+
+  // Thane & Navi Mumbai
+  "Thane", "Majiwada", "Ghodbunder Road", "Hiranandani Estate", "Navi Mumbai", "Vashi", "Nerul", "Belapur",
+  "Kharghar", "Palm Beach Road", "Seawoods"
 ];
 
 const BUILDERS = {
@@ -78,6 +101,7 @@ const CORE_SERVICES = [
 
 const MAG_SLUGS = [
   'rise-of-japandi-in-pune',
+  'future-of-kitchens-pune',
   'sourcing-tuscan-marble',
   'architecture-of-light',
   'panchshil-towers-monograph',
@@ -86,7 +110,29 @@ const MAG_SLUGS = [
   'wakad-design-evolution',
   'bandra-bohemian',
   'ravet-punawale-trends',
-  'lighting-architecture-2024'
+  'lighting-architecture-2024',
+  'interior-design-wakad-tech-luxe',
+  'baner-high-altitude-luxury',
+  'balewadi-high-street-living',
+  'hinjewadi-ergonomic-sanctuaries',
+  'koregaon-park-legacy-restoration',
+  'kharadi-eastern-horizon',
+  'kalyani-nagar-quiet-luxury',
+  'kothrud-maratha-modern',
+  'bavdhan-biophilic-integration',
+  'ravet-new-urban-chic',
+  'viman-nagar-aviation-aesthetics',
+  'magarpatta-integrated-living',
+  'bandra-coastal-bohemian-luxury-interiors',
+  'worli-sea-face-luxury-sky-mansions',
+  'powai-lakeside-smart-home-interiors',
+  'lower-parel-industrial-luxe-duplex-interiors',
+  'thane-luxury-interior-designers-guide',
+  '2026-interior-design-cost-pune-mumbai',
+  'blum-vs-hettich-modular-kitchen-guide',
+  'vastu-shastra-modern-luxury-flats',
+  'pimple-saudagar-luxury-family-interiors',
+  'nibm-undri-luxury-villa-interior-design'
 ];
 
 // Clean High-Fidelity Image Assets for Image Sitemap
