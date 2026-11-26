@@ -9,6 +9,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "npm run build && wrangler dev",
     "seo:index": "node scripts/google-index.js",
+    "seo:indexnow": "node scripts/indexnow.js",
     "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {

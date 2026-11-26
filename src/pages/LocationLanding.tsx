@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { SEO_LOCATIONS, SEO_PROPERTY_TYPES, PUNE_NEIGHBORHOOD_USPS, GEO_COORDINATES } from '../registry/seo_registry';
+import { SEO_LOCATIONS, SEO_PROPERTY_TYPES, PUNE_NEIGHBORHOOD_USPS, GEO_COORDINATES, ALL_MUMBAI_LOCATIONS } from '../registry/seo_registry';
 import { MapPin, CheckCircle, ArrowRight, Star, Map as MapIcon } from 'lucide-react';
 import { generateDynamicCopy } from '../utils/copyEngine';
 import SEOClusterLinks from '../components/SEO/SEOClusterLinks';
@@ -12,27 +12,28 @@ const LocationLanding: React.FC = () => {
   
   // Format location name for display
   const formattedLocation = location?.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') || 'Pune';
+  const isMumbai = ALL_MUMBAI_LOCATIONS.some(m => m.toLowerCase() === formattedLocation.toLowerCase());
+  const city = isMumbai ? 'Mumbai' : 'Pune';
   
   const neighborhoodUSP = PUNE_NEIGHBORHOOD_USPS[formattedLocation];
   const uniqueCopy = generateDynamicCopy(location || 'pune', `Interior Design in ${formattedLocation}`, formattedLocation);
   
   const geo = GEO_COORDINATES[formattedLocation] || GEO_COORDINATES["Default"];
 
-  // Removed hardcoded breadcrumb in favor of component
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
-    "name": "KS Design Studio",
+    "name": `KS Design Studio - ${formattedLocation}, ${city}`,
     "image": "https://ksdesignstudio.in/logo.png",
     "description": uniqueCopy,
     "areaServed": {
       "@type": "City",
-      "name": formattedLocation
+      "name": `${formattedLocation}, ${city}`
     },
     "telephone": "+91 70203 77693",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": formattedLocation,
+      "addressLocality": `${formattedLocation}, ${city}`,
       "addressRegion": "Maharashtra",
       "addressCountry": "IN"
     }
@@ -55,7 +56,7 @@ const LocationLanding: React.FC = () => {
     <div className="pt-32 pb-20 bg-white relative overflow-hidden" itemScope itemType="https://schema.org/LocalBusiness">
       <BreadcrumbSchema items={[
         { name: 'Home', url: '/' },
-        { name: 'Locations', url: '/portfolio' },
+        { name: `${city} Interiors`, url: '/portfolio' },
         { name: `Interior Designers in ${formattedLocation}`, url: window.location.pathname }
       ]} />
       <script type="application/ld+json">
@@ -69,11 +70,11 @@ const LocationLanding: React.FC = () => {
           <div className="max-w-2xl">
             <div className="flex items-center space-x-2 text-brass mb-6">
               <MapPin size={16} />
-              <span className="text-[10px] uppercase font-black tracking-[0.4em]">Curated Design Laboratory</span>
+              <span className="text-[10px] uppercase font-black tracking-[0.4em]">Curated Design Laboratory • {city}</span>
             </div>
             <h1 className="text-5xl md:text-7xl  text-charcoal leading-tight mb-8" itemProp="name">
               Best Interior Designer <br /> 
-              <span className="italic">in {formattedLocation}</span>
+              <span className="italic">in {formattedLocation}, {city}</span>
             </h1>
             <div 
               className="text-charcoal/50 text-xl font-light leading-relaxed mb-10"
@@ -165,20 +166,20 @@ const LocationLanding: React.FC = () => {
 
         {/* FAQ & People Also Ask Section for SEO Dominance */}
         <div className="mb-32">
-          <h2 className="text-3xl text-charcoal mb-10">Frequently Asked Questions about Interiors in {formattedLocation}</h2>
+          <h2 className="text-3xl text-charcoal mb-10">Frequently Asked Questions about Interiors in {formattedLocation}, {city}</h2>
           <div className="space-y-6">
             {[
               {
-                q: `How much does interior design cost in ${formattedLocation}?`,
-                a: `The cost of interior design in ${formattedLocation} typically ranges from ₹800 to ₹2500 per sq.ft depending on the scope of work, material finishes, and luxury elements chosen. A standard 3BHK premium transformation starts around ₹15 Lakhs.`
+                q: `How much does interior design cost in ${formattedLocation}, ${city}?`,
+                a: `The cost of interior design in ${formattedLocation}, ${city} typically ranges from ₹800 to ₹2500 per sq.ft depending on the scope of work, material finishes, and luxury elements chosen. Turnkey packages for a 2 BHK start from ₹4.50 Lakhs and a 3 BHK starts from ₹8.50 Lakhs.`
               },
               {
-                q: `Do you provide turnkey interior solutions in ${formattedLocation}?`,
-                a: `Yes, we are end-to-end turnkey interior contractors. From civil modifications, plumbing, and false ceiling to custom modular furniture and styling, our ${formattedLocation} team manages the entire project lifecycle.`
+                q: `Do you provide turnkey interior solutions in ${formattedLocation}, ${city}?`,
+                a: `Yes, we are end-to-end turnkey interior contractors. From civil modifications, plumbing, and false ceiling to custom modular furniture and styling, our ${city} team manages the entire project lifecycle with a 45-day handover guarantee.`
               },
               {
                 q: `How long does an interior project take in ${formattedLocation}?`,
-                a: `For a standard apartment in ${formattedLocation}, our timeline is strictly 45 to 90 days from the design sign-off, facilitated by our automated in-house manufacturing units.`
+                a: `For a standard apartment in ${formattedLocation}, our timeline is strictly 45 to 60 days from the design sign-off, facilitated by our automated in-house German CNC manufacturing units.`
               }
             ].map((faq, i) => (
               <div key={i} className="glass-premium p-8 rounded-2xl">
@@ -195,26 +196,26 @@ const LocationLanding: React.FC = () => {
               "mainEntity": [
                 {
                   "@type": "Question",
-                  "name": `How much does interior design cost in ${formattedLocation}?`,
+                  "name": `How much does interior design cost in ${formattedLocation}, ${city}?`,
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": `The cost of interior design in ${formattedLocation} typically ranges from ₹800 to ₹2500 per sq.ft depending on the scope of work, material finishes, and luxury elements chosen.`
+                    "text": `The cost of interior design in ${formattedLocation}, ${city} typically ranges from ₹800 to ₹2500 per sq.ft depending on the scope of work, material finishes, and luxury elements chosen.`
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": `Do you provide turnkey interior solutions in ${formattedLocation}?`,
+                  "name": `Do you provide turnkey interior solutions in ${formattedLocation}, ${city}?`,
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": `Yes, we are end-to-end turnkey interior contractors. From civil modifications, plumbing, and false ceiling to custom modular furniture and styling, our ${formattedLocation} team manages the entire project lifecycle.`
+                    "text": `Yes, we are end-to-end turnkey interior contractors serving ${formattedLocation}, ${city}. From civil modifications, plumbing, and false ceiling to custom modular furniture and styling, our team manages the entire project lifecycle.`
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": `How long does an interior project take in ${formattedLocation}?`,
+                  "name": `How long does an interior project take in ${formattedLocation}, ${city}?`,
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": `For a standard apartment in ${formattedLocation}, our timeline is strictly 45 to 90 days from the design sign-off, facilitated by our automated in-house manufacturing units.`
+                    "text": `For a standard apartment in ${formattedLocation}, ${city}, our timeline is strictly 45 to 60 days from design sign-off, facilitated by our automated in-house manufacturing units.`
                   }
                 }
               ]

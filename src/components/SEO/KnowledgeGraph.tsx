@@ -20,7 +20,7 @@ export const KnowledgeGraph: React.FC<KnowledgeGraphProps> = ({ location, servic
     "url": SITE_URL,
     "logo": `${SITE_URL}/logo.png`,
     "image": `${SITE_URL}/office-exterior.jpg`,
-    "description": "Premium Turnkey Interior Design Studio in Pune specializing in luxury residences, villas, and commercial spaces.",
+    "description": "Premier Turnkey Luxury Interior Design & Architecture Studio serving Pune and Mumbai, specializing in bespoke residences, luxury apartments, and penthouses.",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "623, Vision One Mall, Bhumkar Chowk, Wakad, Pune- 411057",

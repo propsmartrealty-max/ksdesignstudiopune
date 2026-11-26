@@ -14,11 +14,16 @@ const KEY_FILE = path.join(process.cwd(), 'service-account.json');
 const ROUTES_FILE = path.join(process.cwd(), 'public', 'routes.json');
 const DAILY_QUOTA_LIMIT = 200;
 
-// High-Priority Keyword & Micro-Market Tiers
+// High-Priority Keyword & Micro-Market Tiers across Pune & Mumbai
 const TIER_1_LOCATIONS = [
+  // Pune & PCMC Primaries
   'wakad', 'baner', 'hinjewadi', 'balewadi', 'kharadi',
   'koregaon-park', 'aundh', 'kothrud', 'viman-nagar', 'magarpatta',
-  'bavdhan', 'ravet', 'punawale', 'tathawade', 'pimple-saudagar'
+  'bavdhan', 'ravet', 'punawale', 'tathawade', 'pimple-saudagar',
+  // Mumbai Primaries
+  'bandra', 'bandra-west', 'worli', 'juhu', 'lower-parel',
+  'prabhadevi', 'powai', 'andheri', 'andheri-west', 'bkc',
+  'thane', 'navi-mumbai', 'kharghar', 'vashi', 'palm-beach-road'
 ];
 
 const TIER_1_SERVICES = [
@@ -66,6 +71,8 @@ function getPriorityScore(route) {
     const loc = route.replace('/cost-guide/', '');
     return TIER_1_LOCATIONS.includes(loc) ? 90 : 80;
   }
+
+  if (route.startsWith('/magazine/')) return 89;
 
   if (route.startsWith('/interiors-in/')) {
     const loc = route.replace('/interiors-in/', '');

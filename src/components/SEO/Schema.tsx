@@ -6,10 +6,12 @@ const Schema: React.FC = () => {
     "@context": "https://schema.org",
     "@type": ["LocalBusiness", "InteriorDesign"],
     "name": "KS Design Studio",
-    "description": "KS Design Studio is Pune's premier interior designing company, specializing in luxury turnkey residential and commercial architecture. We deliver bespoke 2 BHK, 3 BHK, and Villa interior solutions across Baner, Wakad, Kharadi, and Koregaon Park, combining modern aesthetics, Vastu-compliance, and unparalleled spatial planning.",
-    "slogan": "Designing the Soul of Your Premium Homes in Pune",
+    "description": "KS Design Studio is the premier luxury interior design firm across Pune and Mumbai, specializing in bespoke turnkey residential and commercial architecture. Delivering German-engineered modular kitchens, Vastu-compliant layouts, and 45-day handover across Wakad, Baner, Kharadi, Koregaon Park, Bandra, Worli, Juhu, Lower Parel, Powai, Thane, and Navi Mumbai.",
+    "slogan": "Designing the Soul of Your Premium Homes Across Pune & Mumbai",
     "knowsAbout": [
       "Interior Designing in Pune",
+      "Interior Designing in Mumbai",
+      "Interior Design Nearby Me",
       "Luxury Turnkey Interiors",
       "Modular Kitchen Designers",
       "2 BHK and 3 BHK Interior Design Packages",
@@ -17,7 +19,10 @@ const Schema: React.FC = () => {
       "Commercial Interior Decorators",
       "Vastu-Compliant Interior Planning",
       "Bespoke Furniture and Material Sourcing",
-      "Smart Home Automation Integration"
+      "Smart Home Automation Integration",
+      "German Blum and Hettich Hardware Engineering",
+      "Penthouse and Sea-Face Luxury Architecture",
+      "Turnkey Interior Execution"
     ],
     "url": "https://ksdesignstudio.in",
     "logo": "https://ksdesignstudio.in/icon-512.png",
@@ -59,16 +64,24 @@ const Schema: React.FC = () => {
       { "@type": "City", "name": "Pune" },
       { "@type": "City", "name": "Mumbai" },
       { "@type": "City", "name": "Pimpri-Chinchwad" },
-      // Micro-locations - West
+      { "@type": "City", "name": "Thane" },
+      { "@type": "City", "name": "Navi Mumbai" },
+      // Pune Micro-locations - West
       "Baner", "Balewadi", "Aundh", "Wakad", "Hinjewadi", "Pashan", "Bavdhan", "Kothrud", "Warje", "Sus",
-      // Central
+      // Central Pune
       "Shivajinagar", "Deccan", "Model Colony", "Sadashiv Peth", "Erandwane",
-      // East
+      // East Pune
       "Kharadi", "Viman Nagar", "Wagholi", "Magarpatta", "Hadapsar", "Mundhwa", "Keshav Nagar",
-      // South
+      // South Pune
       "Kondhwa", "NIBM Road", "Undri", "Pisoli", "Bibwewadi",
-      // North
-      "Pimpri", "Chinchwad", "Akurdi", "Nigdi", "Ravet", "Tathawade"
+      // North Pune & PCMC
+      "Pimpri", "Chinchwad", "Akurdi", "Nigdi", "Ravet", "Tathawade", "Punawale",
+      // Mumbai South & Central
+      "South Mumbai", "Malabar Hill", "Worli", "Lower Parel", "Prabhadevi", "Dadar", "Mahalaxmi", "Colaba", "Marine Drive", "BKC", "Powai",
+      // Mumbai Western Suburbs
+      "Bandra", "Bandra West", "Bandra East", "Juhu", "Khar", "Santacruz", "Andheri", "Andheri West", "Lokhandwala", "Versova", "Goregaon", "Malad", "Borivali",
+      // Thane & Navi Mumbai
+      "Majiwada", "Ghodbunder Road", "Hiranandani Estate", "Vashi", "Kharghar", "Palm Beach Road", "Nerul", "Belapur"
     ],
     "geo": {
       "@type": "GeoCoordinates",
